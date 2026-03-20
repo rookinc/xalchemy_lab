@@ -1,0 +1,312 @@
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Dict, List, Literal, Optional
+
+
+NodeName = Literal[
+    "u3L", "u2L", "u1L",
+    "u3R", "u2R", "u1R",
+    "mL", "mR",
+    "d1L", "d2L", "d3L",
+    "d1R", "d2R", "d3R",
+]
+
+Chirality = Literal["L", "R"]
+Sign = Literal["+", "-"]
+
+
+ADJ: Dict[NodeName, List[NodeName]] = {
+    "u3L": ["u2L"],
+    "u2L": ["u3L", "u1L"],
+    "u1L": ["u2L", "u1R", "mL"],
+
+    "u3R": ["u2R"],
+    "u2R": ["u3R", "u1R"],
+    "u1R": ["u2R", "u1L", "mR"],
+
+    "mL": ["u1L", "d1L", "mR"],
+    "mR": ["u1R", "d1R", "mL"],
+
+    "d1L": ["mL", "d1R", "d2L"],
+    "d2L": ["d1L", "d3L"],
+    "d3L": ["d2L"],
+
+    "d1R": ["mR", "d1L", "d2R"],
+    "d2R": ["d1R", "d3R"],
+    "d3R": ["d2R"],
+}
+
+HUB_SIGN: Dict[NodeName, Sign] = {
+    "u1L": "+",
+    "u1R": "+",
+    "d1L": "-",
+    "d1R": "-",
+}
+
+
+@dataclass
+class Turtle:
+    name: str
+    chirality: Chirality
+    node: NodeName
+    heading: Optional[NodeName] = None
+    seen_nodes: List[NodeName] = field(default_factory=list)
+    bumps: int = 0
+    shared_tokens: List[str] = field(default_factory=list)
+    face_tokens: List[str] = field(default_factory=list)
+    carry_sign: Optional[Sign] = None
+    site_sign_history: List[Sign] = field(default_factory=list)
+    mismatch_count: int = 0
+    carried_stress: int = 0
+
+    def visit(self) -> None:
+        if self.node not in self.seen_nodes:
+            self.seen_nodes.append(self.node)
+
+
+@dataclass
+class Collision:
+    tick: int
+    node: NodeName
+    kind: str
+    turtles: List[str]
+    face_event: str
+    incoming_signs: Dict[str, Optional[Sign]]
+    outgoing_signs: Dict[str, Optional[Sign]]
+    incoming_stress: Dict[str, int]
+    outgoing_stress: Dict[str, int]
+    incoming_mismatch: Dict[str, int]
+    outgoing_mismatch: Dict[str, int]
+
+
+@dataclass
+class HubLedger:
+    plus_arrivals: int = 0
+    minus_arrivals: int = 0
+    unsigned_arrivals: int = 0
+    mismatch_events: int = 0
+    transfers: int = 0
+    clean_closures: int = 0
+    tension_closures: int = 0
+    stored_tension: int = 0
+    stress_energy: int = 0
+    deposited_stress: int = 0
+
+
+@dataclass
+class World:
+    turtles: Dict[str, Turtle]
+    tick: int = 0
+    collisions: List[Collision] = field(default_factory=list)
+    hub_ledger: Dict[NodeName, HubLedger] = field(
+        default_factory=lambda: {hub: HubLedger() for hub in HUB_SIGN}
+    )
+
+
+def classify_collision(names: List[str], world: World) -> str:
+    kinds = "".join(sorted(world.turtles[n].chirality for n in names))
+    if kinds == "LL":
+        return "LL"
+    if kinds == "LR":
+        return "LR"
+    if kinds == "LLR":
+        return "LLR"
+    return kinds
+
+
+def closure_event(node: NodeName, names: List[str], world: World) -> str:
+    sign = HUB_SIGN.get(node)
+    if sign is None:
+        return "backpressure_bundle"
+    any_tension = any(world.turtles[n].mismatch_count > 0 for n in names)
+    return f"ABC{sign}_{'tension' if any_tension else 'closed'}"
+
+
+def face_event_for(kind: str, node: NodeName, names: List[str], world: World) -> str:
+    sign = HUB_SIGN.get(node)
+    if sign is not None:
+        if kind == "LL":
+            return f"B{sign}"
+        if kind == "LR":
+            return f"sign_transfer{sign}"
+        if kind == "LLR":
+            return closure_event(node, names, world)
+    if kind == "LL":
+        return "support_pair"
+    if kind == "LR":
+        return "complement_exchange"
+    if kind == "LLR":
+        return "backpressure_bundle"
+    return "unknown"
+
+
+def deposit_carried_stress(world: World, node: NodeName, names: List[str]) -> None:
+    ledger = world.hub_ledger.get(node)
+    if ledger is None:
+        return
+    for n in names:
+        t = world.turtles[n]
+        if t.carried_stress > 0:
+            ledger.deposited_stress += t.carried_stress
+            ledger.stress_energy += t.carried_stress
+
+
+def update_site_sign_and_mismatch(world: World, node: NodeName, names: List[str]) -> None:
+    hub_sign = HUB_SIGN.get(node)
+    if hub_sign is None:
+        return
+    ledger = world.hub_ledger[node]
+    for n in names:
+        t = world.turtles[n]
+        t.site_sign_history.append(hub_sign)
+        if t.carry_sign == "+":
+            ledger.plus_arrivals += 1
+        elif t.carry_sign == "-":
+            ledger.minus_arrivals += 1
+        else:
+            ledger.unsigned_arrivals += 1
+        if t.carry_sign is not None and t.carry_sign != hub_sign:
+            t.mismatch_count += 1
+            ledger.mismatch_events += 1
+            ledger.stress_energy += 1
+
+
+def mutate_signs(world: World, node: NodeName, names: List[str], kind: str) -> None:
+    hub_sign = HUB_SIGN.get(node)
+    if hub_sign is None:
+        return
+    turtles = [world.turtles[n] for n in names]
+    if kind == "LL":
+        for t in turtles:
+            t.carry_sign = hub_sign
+    elif kind == "LR":
+        carried = next((t.carry_sign for t in turtles if t.carry_sign is not None), hub_sign)
+        for t in turtles:
+            t.carry_sign = carried
+        world.hub_ledger[node].transfers += 1
+    elif kind == "LLR":
+        for t in turtles:
+            t.carry_sign = hub_sign
+
+
+def propagate_stress_to_turtles(world: World, names: List[str], face_event: str) -> None:
+    if face_event.endswith("_tension"):
+        for n in names:
+            world.turtles[n].carried_stress += 1
+    elif face_event.endswith("_closed"):
+        for n in names:
+            if world.turtles[n].carried_stress > 0:
+                world.turtles[n].carried_stress -= 1
+
+
+def update_hub_closure_stats(world: World, node: NodeName, face_event: str) -> None:
+    ledger = world.hub_ledger.get(node)
+    if ledger is None:
+        return
+    if face_event.endswith("_closed"):
+        ledger.clean_closures += 1
+        if ledger.stored_tension > 0:
+            ledger.stored_tension -= 1
+        if ledger.stress_energy > 0:
+            ledger.stress_energy -= 1
+    elif face_event.endswith("_tension"):
+        ledger.tension_closures += 1
+        ledger.stored_tension += 1
+        ledger.stress_energy += 1
+
+
+def apply_collision(world: World, node: NodeName, names: List[str]) -> None:
+    kind = classify_collision(names, world)
+
+    incoming_signs = {n: world.turtles[n].carry_sign for n in names}
+    incoming_stress = {n: world.turtles[n].carried_stress for n in names}
+    incoming_mismatch = {n: world.turtles[n].mismatch_count for n in names}
+
+    union_seen: List[NodeName] = []
+    union_faces: List[str] = []
+    for n in names:
+        for s in world.turtles[n].seen_nodes:
+            if s not in union_seen:
+                union_seen.append(s)
+        for f in world.turtles[n].face_tokens:
+            if f not in union_faces:
+                union_faces.append(f)
+
+    deposit_carried_stress(world, node, names)
+    update_site_sign_and_mismatch(world, node, names)
+    mutate_signs(world, node, names, kind)
+
+    token = f"{kind}@{node}"
+    face_event = face_event_for(kind, node, names, world)
+    face_token = f"{face_event}@{node}"
+
+    for n in names:
+        t = world.turtles[n]
+        t.bumps += 1
+        t.shared_tokens.append(token)
+        t.seen_nodes = union_seen.copy()
+        if face_token not in union_faces:
+            union_faces.append(face_token)
+        t.face_tokens = union_faces.copy()
+
+    propagate_stress_to_turtles(world, names, face_event)
+    update_hub_closure_stats(world, node, face_event)
+
+    outgoing_signs = {n: world.turtles[n].carry_sign for n in names}
+    outgoing_stress = {n: world.turtles[n].carried_stress for n in names}
+    outgoing_mismatch = {n: world.turtles[n].mismatch_count for n in names}
+
+    world.collisions.append(
+        Collision(
+            tick=world.tick,
+            node=node,
+            kind=kind,
+            turtles=names.copy(),
+            face_event=face_event,
+            incoming_signs=incoming_signs,
+            outgoing_signs=outgoing_signs,
+            incoming_stress=incoming_stress,
+            outgoing_stress=outgoing_stress,
+            incoming_mismatch=incoming_mismatch,
+            outgoing_mismatch=outgoing_mismatch,
+        )
+    )
+
+
+def detect_collisions(world: World) -> set[str]:
+    by_node: Dict[NodeName, List[str]] = {}
+    for name, turtle in world.turtles.items():
+        by_node.setdefault(turtle.node, []).append(name)
+
+    collided: set[str] = set()
+    for node, names in by_node.items():
+        if len(names) >= 2:
+            collided.update(names)
+            apply_collision(world, node, sorted(names))
+    return collided
+
+
+def apply_travel_damping(world: World, previous_nodes: Dict[str, NodeName], collided: set[str]) -> None:
+    for name, turtle in world.turtles.items():
+        if previous_nodes[name] != turtle.node and name not in collided and turtle.carried_stress > 0:
+            turtle.carried_stress -= 1
+
+
+def step(world: World, scripted: Dict[str, NodeName]) -> None:
+    world.tick += 1
+    previous_nodes = {name: t.node for name, t in world.turtles.items()}
+
+    for name, turtle in world.turtles.items():
+        turtle.visit()
+        target = scripted[name]
+        if target not in ADJ[turtle.node] and target != turtle.node:
+            raise ValueError(f"Illegal scripted move for {name}: {turtle.node} -> {target}")
+        turtle.heading = target
+
+    for turtle in world.turtles.values():
+        turtle.node = turtle.heading  # type: ignore[assignment]
+        turtle.visit()
+
+    collided = detect_collisions(world)
+    apply_travel_damping(world, previous_nodes, collided)
