@@ -1,0 +1,221 @@
+{
+  "schema": "thalean_series_word_v1",
+  "schema_version": "1.0.0",
+  "status": "draft",
+  "kind": "ThaleanSeriesWord",
+
+  "identity": {
+    "id": "thalean_series_word.example.v1",
+    "name": "Example Thalean Series Word",
+    "label": "working chamber-native turtle",
+    "description": "A chamber-native trinary unfolding word whose coherent closure projects to a realized thalion."
+  },
+
+  "doctrine": {
+    "ladder": [
+      "The graph bears.",
+      "The series unfolds.",
+      "The thalion coheres."
+    ],
+    "principle": "The canonical object is a word class, not necessarily a single frozen literal string."
+  },
+
+  "tower": {
+    "flag_space": {
+      "name": "G120",
+      "kind": "flags",
+      "count": 120,
+      "role": "finest local orientation data"
+    },
+    "chamber_space": {
+      "name": "G60",
+      "kind": "downstairs chambers",
+      "count": 60,
+      "role": "native turtle state space"
+    },
+    "transport_layer": {
+      "name": "Q30",
+      "kind": "quotient",
+      "count": 30,
+      "role": "compressed transport layer"
+    },
+    "core_layer": {
+      "name": "Q15",
+      "kind": "core quotient",
+      "count": 15,
+      "role": "visible law-bearing core",
+      "identified_with": "L(Petersen)"
+    },
+    "summary": "120 flags -> 60 chambers -> 30 quotient -> 15 core"
+  },
+
+  "state_model": {
+    "native_space": "G60",
+    "optional_refinement_space": "G120",
+    "projects_to": ["Q30", "Q15"],
+    "state_payload": [
+      "current_chamber",
+      "entry_orientation",
+      "transport_class",
+      "closure_phase"
+    ],
+    "notes": [
+      "This file treats the turtle as chamber-native.",
+      "Refinement to flags is optional when chamber data is insufficient."
+    ]
+  },
+
+  "alphabet": {
+    "arity": 3,
+    "symbols": [
+      {
+        "symbol": "A",
+        "name": "advance",
+        "role": "propagate through chamber adjacency"
+      },
+      {
+        "symbol": "B",
+        "name": "bifurcate",
+        "role": "change transport mode, branch, or twist class"
+      },
+      {
+        "symbol": "C",
+        "name": "close",
+        "role": "perform coherence-restoring closure or return-identification"
+      }
+    ]
+  },
+
+  "semantics": {
+    "A": {
+      "effect": "move to the next admissible chamber state in the current mode",
+      "updates": ["current_chamber", "entry_orientation"]
+    },
+    "B": {
+      "effect": "change transport class or branch mode while preserving admissibility",
+      "updates": ["transport_class", "entry_orientation"]
+    },
+    "C": {
+      "effect": "apply closure logic, return-identification, or coherence restoration",
+      "updates": ["closure_phase", "transport_class"]
+    }
+  },
+
+  "grammar": {
+    "kind": "seed_plus_rewrite",
+    "seed_word": "ABC",
+    "rewrite_rules": [
+      {
+        "symbol": "A",
+        "replaces_with": "AB",
+        "status": "placeholder"
+      },
+      {
+        "symbol": "B",
+        "replaces_with": "AC",
+        "status": "placeholder"
+      },
+      {
+        "symbol": "C",
+        "replaces_with": "A",
+        "status": "placeholder"
+      }
+    ],
+    "normal_form": {
+      "type": "word_class",
+      "canonical_up_to": [
+        "cyclic_shift",
+        "reversal",
+        "graph_automorphism",
+        "equivalent_rewriting"
+      ]
+    },
+    "termination": {
+      "mode": "coherent_closure",
+      "condition": "Interpretation stabilizes to a law-pattern whose visible projection on Q15 is unchanged under one further rewrite step.",
+      "status": "provisional"
+    }
+  },
+
+  "execution": {
+    "start_state": {
+      "space": "G60",
+      "chamber": null,
+      "orientation": null,
+      "transport_class": null,
+      "closure_phase": null
+    },
+    "step_policy": {
+      "admissibility_required": true,
+      "fallback_to_flag_refinement": true,
+      "reject_nonprojecting_steps": true
+    },
+    "projection_policy": {
+      "record_q30_trace": true,
+      "record_q15_trace": true,
+      "preserve_native_memory": true
+    }
+  },
+
+  "coverage": {
+    "goal": "not_yet_fixed",
+    "candidate_goals": [
+      "visit_all_chambers",
+      "generate_canonical_transport_unfolding",
+      "project_to_full_support_on_q30",
+      "project_to_full_support_on_q15"
+    ],
+    "current_choice": null
+  },
+
+  "outputs": {
+    "native_trace": [],
+    "q30_trace": [],
+    "q15_trace": [],
+    "sector_support": [],
+    "law_artifacts": {
+      "sector_system_reference": null,
+      "incidence_matrix_M_reference": null,
+      "overlap_matrix_Q_reference": null
+    }
+  },
+
+  "memory": {
+    "core_only_word_is_insufficient": true,
+    "preserve_at_native_space": [
+      "orientation memory",
+      "transport class memory",
+      "quotient descent memory"
+    ],
+    "may_require_flag_refinement_for": [
+      "signed lift memory",
+      "cocycle recovery",
+      "binary sheet information"
+    ]
+  },
+
+  "verification": {
+    "checks": [
+      {
+        "name": "all_steps_admissible",
+        "statement": "Every executed symbol admits a valid next native state.",
+        "status": "pending"
+      },
+      {
+        "name": "projects_to_q15",
+        "statement": "Native execution projects to a well-defined visible trace on Q15.",
+        "status": "pending"
+      },
+      {
+        "name": "stable_closure",
+        "statement": "Termination condition produces a coherent closure class rather than an arbitrary halted trace.",
+        "status": "pending"
+      }
+    ]
+  },
+
+  "notes": [
+    "This file holds an experimental turtle grammar, separate from the main thalion spec.",
+    "Replace placeholder rewrite rules once a genuine chamber dynamics is chosen."
+  ]
+}

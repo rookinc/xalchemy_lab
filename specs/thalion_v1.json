@@ -1,0 +1,237 @@
+{
+  "schema": "thalion_v1",
+  "schema_version": "1.2.0",
+  "status": "draft",
+  "kind": "Thalion",
+
+  "identity": {
+    "id": "thalion.core.example.v1",
+    "name": "Example Thalion",
+    "label": "working example",
+    "description": "A thalion is the coherent realized form induced by a Thalean series on a Thalean graph.",
+    "doctrine": [
+      "The graph bears.",
+      "The series unfolds.",
+      "The thalion coheres."
+    ]
+  },
+
+  "carrier": {
+    "type": "Thalean graph",
+    "name": "G15",
+    "description": "Underlying visible carrier graph on which the realized thalion appears.",
+    "vertex_count": 15,
+    "edge_count": 30,
+    "identification": {
+      "isomorphic_to": "L(Petersen)",
+      "external_ids": {
+        "graphsym": "AT4val[60,6]",
+        "house_of_graphs": "Graph52002"
+      }
+    }
+  },
+
+  "tower": {
+    "flag_space": {
+      "name": "G120",
+      "kind": "flags",
+      "count": 120,
+      "role": "finest local orientation data"
+    },
+    "chamber_space": {
+      "name": "G60",
+      "kind": "downstairs chambers",
+      "count": 60,
+      "role": "native turtle state space"
+    },
+    "transport_layer": {
+      "name": "Q30",
+      "kind": "quotient",
+      "count": 30,
+      "role": "compressed transport layer"
+    },
+    "core_layer": {
+      "name": "Q15",
+      "kind": "core quotient",
+      "count": 15,
+      "role": "visible law-bearing core",
+      "identified_with": "L(Petersen)"
+    },
+    "summary": "120 flags -> 60 chambers -> 30 quotient -> 15 core"
+  },
+
+  "series": {
+    "type": "Thalean series",
+    "name": "core_transport_series",
+    "description": "The admissible unfolding carried by the tower and appearing on the core.",
+    "native_space": "G60",
+    "appears_on": "Q15",
+    "generator_summary": "Local transport/incidence unfolding descending through the quotient tower.",
+    "canonical": false,
+    "parameters": {
+      "filter": null,
+      "class": null,
+      "variant": null
+    }
+  },
+
+  "series_word": {
+    "type": "Thalean series word",
+    "description": "A trinary unfolding grammar interpreted natively on chamber space.",
+    "status": "provisional",
+    "state_space": "G60",
+    "state_space_kind": "downstairs chambers",
+    "optional_refinement_space": "G120",
+    "projects_to": ["Q30", "Q15"],
+    "canonical_form": "word_class",
+    "canonical_up_to": [
+      "cyclic_shift",
+      "reversal",
+      "graph_automorphism",
+      "equivalent_rewriting"
+    ],
+    "alphabet": {
+      "arity": 3,
+      "symbols": [
+        {
+          "symbol": "A",
+          "name": "advance",
+          "role": "propagate the series through chamber adjacency"
+        },
+        {
+          "symbol": "B",
+          "name": "bifurcate",
+          "role": "change transport mode, branch, or twist class"
+        },
+        {
+          "symbol": "C",
+          "name": "close",
+          "role": "perform coherence-restoring closure or return-identification"
+        }
+      ]
+    },
+    "grammar": {
+      "kind": "seed_plus_rewrite",
+      "seed_word": "",
+      "rewrite_rules": [],
+      "termination": {
+        "mode": "coherent_closure",
+        "condition": "Interpretation yields a stable realized law-pattern on Q15."
+      }
+    },
+    "interpretation": {
+      "acts_on": "G60",
+      "may_refine_to": "G120",
+      "intermediate_projection": "Q30",
+      "visible_projection": "Q15",
+      "yields": "law",
+      "notes": [
+        "The series word is not merely a tour of the core graph.",
+        "It is a chamber-native unfolding script whose coherent closure realizes a thalion."
+      ]
+    },
+    "coverage": {
+      "kind": "not_yet_fixed",
+      "requirements": [
+        "May visit all chamber states",
+        "May generate the canonical transport unfolding",
+        "May project to full support on Q30 and Q15"
+      ]
+    },
+    "memory": {
+      "core_only_word_is_insufficient": true,
+      "reason": "A core-only walk may lose lift, chamber, or signed companion information.",
+      "preserve_at_native_space": [
+        "orientation memory",
+        "transport class memory",
+        "quotient descent memory"
+      ]
+    }
+  },
+
+  "law": {
+    "type": "transport-incidence law",
+    "primary_representation": "sector_system",
+    "description": "The coherent incidence structure induced by the Thalean series on the carrier.",
+    "sector_system": {
+      "sector_count": 15,
+      "indexing": "by core vertex",
+      "sector_size": 14,
+      "sectors": []
+    },
+    "incidence_matrix_M": {
+      "description": "Sector-edge incidence matrix on the core.",
+      "rows": 15,
+      "cols": 30,
+      "entries": []
+    },
+    "overlap_matrix_Q": {
+      "description": "Quadratic overlap operator Q = M M^T on the core.",
+      "rows": 15,
+      "cols": 15,
+      "entries": [],
+      "identity_claim": "Q = A^3 + 2A^2 + 2I"
+    }
+  },
+
+  "verification": {
+    "invariants": {
+      "core_vertex_count": 15,
+      "core_edge_count": 30,
+      "sector_count": 15,
+      "sector_size": 14,
+      "edge_multiplicity": 7
+    },
+    "checks": [
+      {
+        "name": "q_equals_mmt",
+        "statement": "Q = M M^T",
+        "status": "pending"
+      },
+      {
+        "name": "transport_identity",
+        "statement": "Q = A^3 + 2A^2 + 2I",
+        "status": "pending"
+      }
+    ]
+  },
+
+  "quotient_memory": {
+    "intrinsic_on_core": false,
+    "native_above_core": true,
+    "descends_from_higher_transport": true,
+    "projection_maps": [],
+    "lift_data": [],
+    "notes": [
+      "Reserve this block for descent data from G120/G60 through Q30 to Q15."
+    ]
+  },
+
+  "companions": {
+    "include_cocycle": false,
+    "cocycle_reference": null,
+    "signed_lift_reference": null,
+    "notes": [
+      "Companion structures may be attached here without making them definitional."
+    ]
+  },
+
+  "presentation": {
+    "labeling_convention": "working",
+    "vertex_order": [],
+    "edge_order": [],
+    "chamber_order": [],
+    "rendering": {
+      "coordinates": [],
+      "style": null
+    },
+    "view": {
+      "filtered": false,
+      "filter_name": null
+    }
+  },
+
+  "artifacts": {
+    "related_files": []
+  }
+}
