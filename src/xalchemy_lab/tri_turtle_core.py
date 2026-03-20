@@ -79,6 +79,7 @@ class HubLedger:
     tension_closures: int = 0
     stored_tension: int = 0
     stress_energy: int = 0
+    deposited_stress: int = 0
 
 
 @dataclass
@@ -158,6 +159,17 @@ def face_event_for(kind: str, node: NodeName, names: List[str], world: World) ->
     if kind == "LLR":
         return "triadic_closure"
     return "unknown"
+
+
+def deposit_carried_stress(world: World, node: NodeName, names: List[str]) -> None:
+    if node not in world.hub_ledger:
+        return
+    ledger = world.hub_ledger[node]
+    for n in names:
+        t = world.turtles[n]
+        if t.carried_stress > 0:
+            ledger.deposited_stress += t.carried_stress
+            ledger.stress_energy += t.carried_stress
 
 
 def update_site_sign_and_mismatch(world: World, node: NodeName, names: List[str]) -> None:
@@ -256,6 +268,7 @@ def apply_collision(world: World, node: NodeName, names: List[str]) -> None:
             if f not in union_faces:
                 union_faces.append(f)
 
+    deposit_carried_stress(world, node, names)
     update_site_sign_and_mismatch(world, node, names)
     mutate_signs(world, node, names, kind)
 
@@ -284,18 +297,31 @@ def apply_collision(world: World, node: NodeName, names: List[str]) -> None:
     ))
 
 
-def detect_collisions(world: World) -> None:
+def detect_collisions(world: World) -> set[str]:
     by_node: Dict[NodeName, List[str]] = {}
     for name, turtle in world.turtles.items():
         by_node.setdefault(turtle.node, []).append(name)
 
+    collided: set[str] = set()
     for node, names in by_node.items():
         if len(names) >= 2:
+            collided.update(names)
             apply_collision(world, node, sorted(names))
+    return collided
+
+
+def apply_travel_damping(world: World, previous_nodes: Dict[str, NodeName], collided: set[str]) -> None:
+    for name, turtle in world.turtles.items():
+        prev = previous_nodes[name]
+        curr = turtle.node
+        moved = prev != curr
+        if moved and name not in collided and turtle.carried_stress > 0:
+            turtle.carried_stress -= 1
 
 
 def step(world: World, scripted: Optional[Dict[str, NodeName]] = None) -> None:
     world.tick += 1
+    previous_nodes = {name: t.node for name, t in world.turtles.items()}
 
     for name, turtle in world.turtles.items():
         turtle.visit()
@@ -312,4 +338,5 @@ def step(world: World, scripted: Optional[Dict[str, NodeName]] = None) -> None:
             turtle.node = turtle.heading
             turtle.visit()
 
-    detect_collisions(world)
+    collided = detect_collisions(world)
+    apply_travel_damping(world, previous_nodes, collided)

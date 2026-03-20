@@ -28,7 +28,7 @@ def print_state(label, world):
             f"unsigned={ledger.unsigned_arrivals} mismatches={ledger.mismatch_events} "
             f"transfers={ledger.transfers} clean={ledger.clean_closures} "
             f"tension={ledger.tension_closures} stored_tension={ledger.stored_tension} "
-            f"stress_energy={ledger.stress_energy}"
+            f"stress_energy={ledger.stress_energy} deposited_stress={ledger.deposited_stress}"
         )
 
 
@@ -42,74 +42,43 @@ def make_world(l1_node: str, l2_node: str, r1_node: str) -> World:
     )
 
 
-def scenario_default():
+def scenario_free_flight_damping():
     print("\n====================")
-    print("SCENARIO: default")
+    print("SCENARIO: free_flight_damping")
     print("====================")
     world = make_world("u3L", "u3R", "d1T")
     print_state("initial", world)
 
+    # Build + at u1T
     step(world, scripted={"L1": "u2L", "L2": "u2R", "R1": "d1T"})
     print_state("after tick 1", world)
 
     step(world, scripted={"L1": "u1T", "L2": "u1T", "R1": "d1T"})
     print_state("after tick 2", world)
 
-    step(world, scripted={"L1": "u1T", "L2": "u1T", "R1": "u1T"})
-    print_state("after tick 3", world)
-
-
-def scenario_mirror():
-    print("\n====================")
-    print("SCENARIO: mirror")
-    print("====================")
-    world = make_world("d3L", "d3R", "u1T")
-    print_state("initial", world)
-
-    step(world, scripted={"L1": "d2L", "L2": "d2R", "R1": "u1T"})
-    print_state("after tick 1", world)
-
-    step(world, scripted={"L1": "d1T", "L2": "d1T", "R1": "u1T"})
-    print_state("after tick 2", world)
-
-    step(world, scripted={"L1": "d1T", "L2": "d1T", "R1": "d1T"})
-    print_state("after tick 3", world)
-
-
-def scenario_split():
-    print("\n====================")
-    print("SCENARIO: split")
-    print("====================")
-    world = make_world("u3L", "u3R", "d1T")
-    print_state("initial", world)
-
-    step(world, scripted={"L1": "u2L", "L2": "u2R", "R1": "d1T"})
-    print_state("after tick 1", world)
-
-    step(world, scripted={"L1": "u1T", "L2": "u1T", "R1": "d1T"})
-    print_state("after tick 2", world)
-
+    # Transfer + into - hub
     step(world, scripted={"L1": "d1T", "L2": "u1T", "R1": "d1T"})
     print_state("after tick 3", world)
 
+    # Force tension closure at d1T
     step(world, scripted={"L1": "d1T", "L2": "d1T", "R1": "d1T"})
-    print_state("after tick 4", world)
+    print_state("after tick 4 (tension)", world)
 
-    world.turtles["L1"].carry_sign = "-"
-    world.turtles["L2"].carry_sign = "-"
-    world.turtles["R1"].carry_sign = "-"
-    world.turtles["L1"].mismatch_count = 0
-    world.turtles["L2"].mismatch_count = 0
-    world.turtles["R1"].mismatch_count = 0
+    # Separate the turtles so they free-fly without collision
+    step(world, scripted={"L1": "d2L", "L2": "d2R", "R1": "u1T"})
+    print_state("after tick 5 (separated)", world)
 
-    step(world, scripted={"L1": "d1T", "L2": "d1T", "R1": "d1T"})
-    print_state("after tick 5 (discharge)", world)
+    # More free flight: only L1 continues outward; others hold separated/no collision
+    step(world, scripted={"L1": "d3L", "L2": "d2R", "R1": "u1T"})
+    print_state("after tick 6 (free flight)", world)
+
+    # Turn L1 back inward; still avoid collisions
+    step(world, scripted={"L1": "d2L", "L2": "d2R", "R1": "u1T"})
+    print_state("after tick 7 (return leg)", world)
 
 
 def main():
-    scenario_default()
-    scenario_mirror()
-    scenario_split()
+    scenario_free_flight_damping()
 
 
 if __name__ == "__main__":
