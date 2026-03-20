@@ -9,6 +9,8 @@ def print_state(label, world):
     for name, t in sorted(world.turtles.items()):
         print(
             f"  {name}: node={t.node} chirality={t.chirality} "
+            f"sign={t.carry_sign} carried_stress={t.carried_stress} "
+            f"mismatches={t.mismatch_count} site_signs={t.site_sign_history} "
             f"bumps={t.bumps} seen={t.seen_nodes} "
             f"tokens={t.shared_tokens} faces={t.face_tokens}"
         )
@@ -19,6 +21,15 @@ def print_state(label, world):
                 f"    tick={c.tick} node={c.node} kind={c.kind} "
                 f"face_event={c.face_event} turtles={c.turtles}"
             )
+    print("  hub ledger:")
+    for hub, ledger in sorted(world.hub_ledger.items()):
+        print(
+            f"    {hub}: +arr={ledger.plus_arrivals} -arr={ledger.minus_arrivals} "
+            f"unsigned={ledger.unsigned_arrivals} mismatches={ledger.mismatch_events} "
+            f"transfers={ledger.transfers} clean={ledger.clean_closures} "
+            f"tension={ledger.tension_closures} stored_tension={ledger.stored_tension} "
+            f"stress_energy={ledger.stress_energy}"
+        )
 
 
 def make_world(l1_node: str, l2_node: str, r1_node: str) -> World:
@@ -80,6 +91,19 @@ def scenario_split():
 
     step(world, scripted={"L1": "d1T", "L2": "u1T", "R1": "d1T"})
     print_state("after tick 3", world)
+
+    step(world, scripted={"L1": "d1T", "L2": "d1T", "R1": "d1T"})
+    print_state("after tick 4", world)
+
+    world.turtles["L1"].carry_sign = "-"
+    world.turtles["L2"].carry_sign = "-"
+    world.turtles["R1"].carry_sign = "-"
+    world.turtles["L1"].mismatch_count = 0
+    world.turtles["L2"].mismatch_count = 0
+    world.turtles["R1"].mismatch_count = 0
+
+    step(world, scripted={"L1": "d1T", "L2": "d1T", "R1": "d1T"})
+    print_state("after tick 5 (discharge)", world)
 
 
 def main():

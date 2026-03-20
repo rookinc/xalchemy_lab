@@ -11,6 +11,7 @@ NodeName = Literal[
 ]
 
 Chirality = Literal["L", "R"]
+Sign = Literal["+", "-"]
 
 
 ADJ: Dict[NodeName, List[NodeName]] = {
@@ -32,6 +33,11 @@ NODE_CLASS: Dict[NodeName, int] = {
     "d2L": 2, "d3L": 3, "d2R": 2, "d3R": 3,
 }
 
+HUB_SIGN: Dict[NodeName, Sign] = {
+    "u1T": "+",
+    "d1T": "-",
+}
+
 
 @dataclass
 class Turtle:
@@ -43,6 +49,10 @@ class Turtle:
     bumps: int = 0
     shared_tokens: List[str] = field(default_factory=list)
     face_tokens: List[str] = field(default_factory=list)
+    carry_sign: Optional[Sign] = None
+    site_sign_history: List[Sign] = field(default_factory=list)
+    mismatch_count: int = 0
+    carried_stress: int = 0
 
     def visit(self) -> None:
         if self.node not in self.seen_nodes:
@@ -59,10 +69,29 @@ class Collision:
 
 
 @dataclass
+class HubLedger:
+    plus_arrivals: int = 0
+    minus_arrivals: int = 0
+    unsigned_arrivals: int = 0
+    mismatch_events: int = 0
+    transfers: int = 0
+    clean_closures: int = 0
+    tension_closures: int = 0
+    stored_tension: int = 0
+    stress_energy: int = 0
+
+
+@dataclass
 class World:
     turtles: Dict[str, Turtle]
     tick: int = 0
     collisions: List[Collision] = field(default_factory=list)
+    hub_ledger: Dict[NodeName, HubLedger] = field(
+        default_factory=lambda: {
+            "u1T": HubLedger(),
+            "d1T": HubLedger(),
+        }
+    )
 
     def snapshot(self) -> Dict[str, Tuple[NodeName, Optional[NodeName]]]:
         return {name: (t.node, t.heading) for name, t in self.turtles.items()}
@@ -99,14 +128,29 @@ def classify_collision(names: List[str], world: World) -> str:
     return kinds
 
 
-def face_event_for(kind: str, node: NodeName) -> str:
+def closure_event(node: NodeName, names: List[str], world: World) -> str:
+    sign = HUB_SIGN.get(node)
+    if sign is None:
+        return "triadic_closure"
+
+    any_tension = any(world.turtles[n].mismatch_count > 0 for n in names)
+    if any_tension:
+        return f"ABC{sign}_tension"
+    return f"ABC{sign}_closed"
+
+
+def face_event_for(kind: str, node: NodeName, names: List[str], world: World) -> str:
     cls = NODE_CLASS[node]
-    if kind == "LL" and cls == 1:
-        return "B_stabilized"
-    if kind == "LR" and cls == 1:
-        return "sign_transfer"
-    if kind == "LLR" and cls == 1:
-        return "ABC_closed"
+    sign = HUB_SIGN.get(node)
+
+    if cls == 1 and sign is not None:
+        if kind == "LL":
+            return f"B{sign}"
+        if kind == "LR":
+            return f"sign_transfer{sign}"
+        if kind == "LLR":
+            return closure_event(node, names, world)
+
     if kind == "LL":
         return "support_pair"
     if kind == "LR":
@@ -114,6 +158,89 @@ def face_event_for(kind: str, node: NodeName) -> str:
     if kind == "LLR":
         return "triadic_closure"
     return "unknown"
+
+
+def update_site_sign_and_mismatch(world: World, node: NodeName, names: List[str]) -> None:
+    hub_sign = HUB_SIGN.get(node)
+    if hub_sign is None:
+        return
+
+    ledger = world.hub_ledger[node]
+
+    for n in names:
+        t = world.turtles[n]
+        t.site_sign_history.append(hub_sign)
+
+        if t.carry_sign == "+":
+            ledger.plus_arrivals += 1
+        elif t.carry_sign == "-":
+            ledger.minus_arrivals += 1
+        else:
+            ledger.unsigned_arrivals += 1
+
+        if t.carry_sign is not None and t.carry_sign != hub_sign:
+            t.mismatch_count += 1
+            ledger.mismatch_events += 1
+            ledger.stress_energy += 1
+
+
+def mutate_signs(world: World, node: NodeName, names: List[str], kind: str) -> None:
+    hub_sign = HUB_SIGN.get(node)
+    if hub_sign is None:
+        return
+
+    turtles = [world.turtles[n] for n in names]
+
+    if kind == "LL":
+        for t in turtles:
+            t.carry_sign = hub_sign
+        return
+
+    if kind == "LR":
+        carried = None
+        for t in turtles:
+            if t.carry_sign is not None:
+                carried = t.carry_sign
+                break
+        if carried is None:
+            carried = hub_sign
+        for t in turtles:
+            t.carry_sign = carried
+        world.hub_ledger[node].transfers += 1
+        return
+
+    if kind == "LLR":
+        for t in turtles:
+            t.carry_sign = hub_sign
+        return
+
+
+def propagate_stress_to_turtles(world: World, names: List[str], face_event: str) -> None:
+    if face_event.endswith("_tension"):
+        for n in names:
+            world.turtles[n].carried_stress += 1
+    elif face_event.endswith("_closed"):
+        for n in names:
+            if world.turtles[n].carried_stress > 0:
+                world.turtles[n].carried_stress -= 1
+
+
+def update_hub_closure_stats(world: World, node: NodeName, face_event: str) -> None:
+    if node not in world.hub_ledger:
+        return
+
+    ledger = world.hub_ledger[node]
+
+    if face_event.endswith("_closed"):
+        ledger.clean_closures += 1
+        if ledger.stored_tension > 0:
+            ledger.stored_tension -= 1
+        if ledger.stress_energy > 0:
+            ledger.stress_energy -= 1
+    elif face_event.endswith("_tension"):
+        ledger.tension_closures += 1
+        ledger.stored_tension += 1
+        ledger.stress_energy += 1
 
 
 def apply_collision(world: World, node: NodeName, names: List[str]) -> None:
@@ -129,8 +256,11 @@ def apply_collision(world: World, node: NodeName, names: List[str]) -> None:
             if f not in union_faces:
                 union_faces.append(f)
 
+    update_site_sign_and_mismatch(world, node, names)
+    mutate_signs(world, node, names, kind)
+
     token = f"{kind}@{node}"
-    face_event = face_event_for(kind, node)
+    face_event = face_event_for(kind, node, names, world)
     face_token = f"{face_event}@{node}"
 
     for n in names:
@@ -141,6 +271,9 @@ def apply_collision(world: World, node: NodeName, names: List[str]) -> None:
         if face_token not in union_faces:
             union_faces.append(face_token)
         t.face_tokens = union_faces.copy()
+
+    propagate_stress_to_turtles(world, names, face_event)
+    update_hub_closure_stats(world, node, face_event)
 
     world.collisions.append(Collision(
         tick=world.tick,
