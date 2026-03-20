@@ -13,15 +13,6 @@ NodeName = Literal[
 Chirality = Literal["L", "R"]
 
 
-# Rooted 1-2-3 scaffold
-# u3L -- u2L \       / u2R -- u3R
-#              \ u1T /
-#                |
-#               d1T
-#              /   \
-#           d2L     d2R
-#           /         \
-#         d3L         d3R
 ADJ: Dict[NodeName, List[NodeName]] = {
     "u3L": ["u2L"],
     "u2L": ["u3L", "u1T"],
@@ -51,6 +42,7 @@ class Turtle:
     seen_nodes: List[NodeName] = field(default_factory=list)
     bumps: int = 0
     shared_tokens: List[str] = field(default_factory=list)
+    face_tokens: List[str] = field(default_factory=list)
 
     def visit(self) -> None:
         if self.node not in self.seen_nodes:
@@ -63,6 +55,7 @@ class Collision:
     node: NodeName
     kind: str
     turtles: List[str]
+    face_event: str
 
 
 @dataclass
@@ -76,55 +69,85 @@ class World:
 
 
 def inward_move(node: NodeName) -> NodeName:
-    """Minimal v0 rule: move toward the class-1 spine if possible."""
-    if node in ("u3L",):
+    if node == "u3L":
         return "u2L"
-    if node in ("u2L",):
+    if node == "u2L":
         return "u1T"
-    if node in ("u3R",):
+    if node == "u3R":
         return "u2R"
-    if node in ("u2R",):
+    if node == "u2R":
         return "u1T"
-    if node in ("d3L",):
+    if node == "d3L":
         return "d2L"
-    if node in ("d2L",):
+    if node == "d2L":
         return "d1T"
-    if node in ("d3R",):
+    if node == "d3R":
         return "d2R"
-    if node in ("d2R",):
+    if node == "d2R":
         return "d1T"
-    return node  # hubs hold by default
+    return node
+
+
+def classify_collision(names: List[str], world: World) -> str:
+    kinds = "".join(sorted(world.turtles[n].chirality for n in names))
+    if kinds == "LL":
+        return "LL"
+    if kinds == "LR":
+        return "LR"
+    if kinds == "LLR":
+        return "LLR"
+    return kinds
+
+
+def face_event_for(kind: str, node: NodeName) -> str:
+    cls = NODE_CLASS[node]
+    if kind == "LL" and cls == 1:
+        return "B_stabilized"
+    if kind == "LR" and cls == 1:
+        return "sign_transfer"
+    if kind == "LLR" and cls == 1:
+        return "ABC_closed"
+    if kind == "LL":
+        return "support_pair"
+    if kind == "LR":
+        return "complement_exchange"
+    if kind == "LLR":
+        return "triadic_closure"
+    return "unknown"
 
 
 def apply_collision(world: World, node: NodeName, names: List[str]) -> None:
-    kinds = "".join(sorted(world.turtles[n].chirality for n in names))
-    if kinds == "LL":
-        kind = "LL"
-    elif kinds == "LR":
-        kind = "LR"
-    elif kinds == "LLR":
-        kind = "LLR"
-    else:
-        kind = kinds
+    kind = classify_collision(names, world)
 
     union_seen: List[NodeName] = []
+    union_faces: List[str] = []
     for n in names:
         for s in world.turtles[n].seen_nodes:
             if s not in union_seen:
                 union_seen.append(s)
+        for f in world.turtles[n].face_tokens:
+            if f not in union_faces:
+                union_faces.append(f)
 
     token = f"{kind}@{node}"
+    face_event = face_event_for(kind, node)
+    face_token = f"{face_event}@{node}"
+
     for n in names:
         t = world.turtles[n]
         t.bumps += 1
         t.shared_tokens.append(token)
         t.seen_nodes = union_seen.copy()
+        if face_token not in union_faces:
+            union_faces.append(face_token)
+        t.face_tokens = union_faces.copy()
 
     world.collisions.append(Collision(
         tick=world.tick,
         node=node,
         kind=kind,
         turtles=names.copy(),
+        face_event=face_event,
     ))
 
 
@@ -141,7 +164,6 @@ def detect_collisions(world: World) -> None:
 def step(world: World, scripted: Optional[Dict[str, NodeName]] = None) -> None:
     world.tick += 1
 
-    # choose moves
     for name, turtle in world.turtles.items():
         turtle.visit()
         if scripted and name in scripted:
@@ -152,19 +174,9 @@ def step(world: World, scripted: Optional[Dict[str, NodeName]] = None) -> None:
         else:
             turtle.heading = inward_move(turtle.node)
 
-    # commit moves
     for turtle in world.turtles.values():
         if turtle.heading is not None:
             turtle.node = turtle.heading
             turtle.visit()
 
     detect_collisions(world)
-
-
-def default_world() -> World:
-    turtles = {
-        "L1": Turtle(name="L1", chirality="L", node="u3L"),
-        "L2": Turtle(name="L2", chirality="L", node="u3R"),
-        "R1": Turtle(name="R1", chirality="R", node="d1T"),
-    }
-    return World(turtles=turtles)
