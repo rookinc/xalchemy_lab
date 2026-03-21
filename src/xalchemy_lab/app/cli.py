@@ -48,6 +48,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("contact", help="build contact sheet from gallery renders")
     sub.add_parser("sheet", help="export unfolded state sheet SVG/PNG renders")
     sub.add_parser("dxf", help="export unfolded state sheet DXF renders")
+    sub.add_parser("stress", help="run stressed vertex controller demo")
     sub.add_parser("all", help="run gallery, contact, sheet, and dxf")
 
     return parser
@@ -72,6 +73,7 @@ def main() -> int:
         "contact": "xalchemy_lab.app.export_g60_state_contact_sheet",
         "sheet": "xalchemy_lab.app.export_g60_state_sheet_svg",
         "dxf": "xalchemy_lab.app.export_g60_state_sheet_dxf",
+        "stress": "xalchemy_lab.app.hello_vertex_controller_stress",
     }
 
     if args.command == "all":
