@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+<rect x="0" y="0" width="1200" height="900" fill="white"/>
+<text x="600.00" y="34.00" font-family="Helvetica,Arial,sans-serif" font-size="22" text-anchor="middle" fill="black">g60_cube_kernel_v1</text>
+<text x="600.00" y="58.00" font-family="Helvetica,Arial,sans-serif" font-size="13" text-anchor="middle" fill="black">hello-world semantic cube: G15 -&gt; G30 -&gt; Faces(G60)</text>
+<polygon points="612.88,528.39 509.31,515.77 524.21,406.33 611.12,435.62" fill="none" stroke="black" stroke-width="1.0"/>
+<polygon points="701.16,508.29 612.88,528.39 611.12,435.62 682.97,389.82" fill="none" stroke="black" stroke-width="2.2"/>
+<circle cx="652.03" cy="465.53" r="18.00" fill="none" stroke="black" stroke-width="1.0"/>
+<circle cx="652.03" cy="465.53" r="6.30" fill="none" stroke="black" stroke-width="1.0"/>
+<line x1="652.03" y1="465.53" x2="670.03" y2="465.53" stroke="black" stroke-width="1.0"/>
+<line x1="652.03" y1="465.53" x2="664.76" y2="478.26" stroke="black" stroke-width="1.0"/>
+<line x1="652.03" y1="465.53" x2="652.03" y2="483.53" stroke="black" stroke-width="1.0"/>
+<line x1="652.03" y1="465.53" x2="639.30" y2="478.26" stroke="black" stroke-width="1.0"/>
+<line x1="652.03" y1="465.53" x2="634.03" y2="465.53" stroke="black" stroke-width="1.0"/>
+<line x1="652.03" y1="465.53" x2="639.30" y2="452.80" stroke="black" stroke-width="1.0"/>
+<line x1="652.03" y1="465.53" x2="652.03" y2="447.53" stroke="black" stroke-width="1.0"/>
+<line x1="652.03" y1="465.53" x2="664.76" y2="452.80" stroke="black" stroke-width="1.0"/>
+<circle cx="680.52" cy="489.65" r="5.12" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="633.48" cy="498.57" r="5.12" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="660.93" cy="433.22" r="5.12" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="628.11" cy="447.20" r="5.12" fill="black" stroke="black" stroke-width="1.0"/>
+<line x1="680.52" y1="489.65" x2="633.48" y2="498.57" stroke="black" stroke-width="1.0"/>
+<line x1="633.48" y1="498.57" x2="628.11" y2="447.20" stroke="black" stroke-width="1.0"/>
+<line x1="628.11" y1="447.20" x2="660.93" y2="433.22" stroke="black" stroke-width="1.0"/>
+<line x1="660.93" y1="433.22" x2="680.52" y2="489.65" stroke="black" stroke-width="1.0"/>
+<line x1="680.52" y1="489.65" x2="628.11" y2="447.20" stroke="black" stroke-width="1.0"/>
+<line x1="701.16" y1="508.29" x2="652.03" y2="465.53" stroke="black" stroke-width="0.8"/>
+<line x1="612.88" y1="528.39" x2="652.03" y2="465.53" stroke="black" stroke-width="0.8"/>
+<line x1="611.12" y1="435.62" x2="652.03" y2="465.53" stroke="black" stroke-width="0.8"/>
+<line x1="682.97" y1="389.82" x2="652.03" y2="465.53" stroke="black" stroke-width="0.8"/>
+<text x="652.03" y="509.53" font-family="Helvetica,Arial,sans-serif" font-size="12" text-anchor="middle" fill="black">right: anchored_E2</text>
+<text x="652.03" y="525.53" font-family="Helvetica,Arial,sans-serif" font-size="11" text-anchor="middle" fill="black">w=0.75</text>
+<polygon points="581.21,335.65 682.97,389.82 611.12,435.62 524.21,406.33" fill="none" stroke="black" stroke-width="2.2"/>
+<circle cx="599.88" cy="391.85" r="18.00" fill="none" stroke="black" stroke-width="1.0"/>
+<circle cx="599.88" cy="391.85" r="6.30" fill="none" stroke="black" stroke-width="1.0"/>
+<line x1="599.88" y1="391.85" x2="617.88" y2="391.85" stroke="black" stroke-width="1.0"/>
+<line x1="599.88" y1="391.85" x2="612.61" y2="404.58" stroke="black" stroke-width="1.0"/>
+<line x1="599.88" y1="391.85" x2="599.88" y2="409.85" stroke="black" stroke-width="1.0"/>
+<line x1="599.88" y1="391.85" x2="587.15" y2="404.58" stroke="black" stroke-width="1.0"/>
+<line x1="599.88" y1="391.85" x2="581.88" y2="391.85" stroke="black" stroke-width="1.0"/>
+<line x1="599.88" y1="391.85" x2="587.15" y2="379.13" stroke="black" stroke-width="1.0"/>
+<line x1="599.88" y1="391.85" x2="599.88" y2="373.85" stroke="black" stroke-width="1.0"/>
+<line x1="599.88" y1="391.85" x2="612.61" y2="379.13" stroke="black" stroke-width="1.0"/>
+<circle cx="586.40" cy="359.96" r="5.12" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="650.82" cy="390.13" r="5.12" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="601.17" cy="390.69" r="5.12" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="556.59" cy="398.43" r="5.12" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="608.46" cy="416.87" r="5.12" fill="black" stroke="black" stroke-width="1.0"/>
+<line x1="586.40" y1="359.96" x2="601.17" y2="390.69" stroke="black" stroke-width="1.0"/>
+<line x1="650.82" y1="390.13" x2="601.17" y2="390.69" stroke="black" stroke-width="1.0"/>
+<line x1="556.59" y1="398.43" x2="601.17" y2="390.69" stroke="black" stroke-width="1.0"/>
+<line x1="608.46" y1="416.87" x2="601.17" y2="390.69" stroke="black" stroke-width="1.0"/>
+<line x1="586.40" y1="359.96" x2="650.82" y2="390.13" stroke="black" stroke-width="1.0"/>
+<line x1="556.59" y1="398.43" x2="608.46" y2="416.87" stroke="black" stroke-width="1.0"/>
+<line x1="586.40" y1="359.96" x2="608.46" y2="416.87" stroke="black" stroke-width="1.0"/>
+<line x1="650.82" y1="390.13" x2="556.59" y2="398.43" stroke="black" stroke-width="1.0"/>
+<line x1="581.21" y1="335.65" x2="599.88" y2="391.85" stroke="black" stroke-width="0.8"/>
+<line x1="682.97" y1="389.82" x2="599.88" y2="391.85" stroke="black" stroke-width="0.8"/>
+<line x1="611.12" y1="435.62" x2="599.88" y2="391.85" stroke="black" stroke-width="0.8"/>
+<line x1="524.21" y1="406.33" x2="599.88" y2="391.85" stroke="black" stroke-width="0.8"/>
+<text x="599.88" y="435.85" font-family="Helvetica,Arial,sans-serif" font-size="12" text-anchor="middle" fill="black">top: anchored_E1</text>
+<text x="599.88" y="451.85" font-family="Helvetica,Arial,sans-serif" font-size="11" text-anchor="middle" fill="black">w=0.75</text>
+<polygon points="509.31,515.77 612.88,528.39 701.16,508.29 575.57,481.60" fill="none" stroke="black" stroke-width="1.0"/>
+<polygon points="509.31,515.77 575.57,481.60 581.21,335.65 524.21,406.33" fill="none" stroke="black" stroke-width="1.0"/>
+<polygon points="575.57,481.60 701.16,508.29 682.97,389.82 581.21,335.65" fill="none" stroke="black" stroke-width="2.2"/>
+<circle cx="635.23" cy="428.84" r="18.00" fill="none" stroke="black" stroke-width="1.0"/>
+<circle cx="635.23" cy="428.84" r="6.30" fill="none" stroke="black" stroke-width="1.0"/>
+<line x1="635.23" y1="428.84" x2="653.23" y2="428.84" stroke="black" stroke-width="1.0"/>
+<line x1="635.23" y1="428.84" x2="647.96" y2="441.57" stroke="black" stroke-width="1.0"/>
+<line x1="635.23" y1="428.84" x2="635.23" y2="446.84" stroke="black" stroke-width="1.0"/>
+<line x1="635.23" y1="428.84" x2="622.50" y2="441.57" stroke="black" stroke-width="1.0"/>
+<line x1="635.23" y1="428.84" x2="617.23" y2="428.84" stroke="black" stroke-width="1.0"/>
+<line x1="635.23" y1="428.84" x2="622.50" y2="416.11" stroke="black" stroke-width="1.0"/>
+<line x1="635.23" y1="428.84" x2="635.23" y2="410.84" stroke="black" stroke-width="1.0"/>
+<line x1="635.23" y1="428.84" x2="647.96" y2="416.11" stroke="black" stroke-width="1.0"/>
+<circle cx="598.42" cy="461.02" r="6.00" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="676.05" cy="481.27" r="6.00" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="635.23" cy="428.84" r="6.00" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="603.53" cy="372.75" r="6.00" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="662.91" cy="400.32" r="6.00" fill="black" stroke="black" stroke-width="1.0"/>
+<line x1="598.42" y1="461.02" x2="635.23" y2="428.84" stroke="black" stroke-width="1.0"/>
+<line x1="676.05" y1="481.27" x2="635.23" y2="428.84" stroke="black" stroke-width="1.0"/>
+<line x1="603.53" y1="372.75" x2="635.23" y2="428.84" stroke="black" stroke-width="1.0"/>
+<line x1="662.91" y1="400.32" x2="635.23" y2="428.84" stroke="black" stroke-width="1.0"/>
+<line x1="598.42" y1="461.02" x2="676.05" y2="481.27" stroke="black" stroke-width="1.0"/>
+<line x1="603.53" y1="372.75" x2="662.91" y2="400.32" stroke="black" stroke-width="1.0"/>
+<line x1="575.57" y1="481.60" x2="635.23" y2="428.84" stroke="black" stroke-width="0.8"/>
+<line x1="701.16" y1="508.29" x2="635.23" y2="428.84" stroke="black" stroke-width="0.8"/>
+<line x1="682.97" y1="389.82" x2="635.23" y2="428.84" stroke="black" stroke-width="0.8"/>
+<line x1="581.21" y1="335.65" x2="635.23" y2="428.84" stroke="black" stroke-width="0.8"/>
+<text x="635.23" y="472.84" font-family="Helvetica,Arial,sans-serif" font-size="12" text-anchor="middle" fill="black">front: anchor_controller</text>
+<text x="635.23" y="488.84" font-family="Helvetica,Arial,sans-serif" font-size="11" text-anchor="middle" fill="black">w=1.00</text>
+</svg>
