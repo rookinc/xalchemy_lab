@@ -1,0 +1,181 @@
+{
+  "system": {
+    "name": "hello_trurtle",
+    "version": "1.0",
+    "substrate": "triangular_sheet",
+    "class_set": [1, 2, 3],
+    "max_ticks": 100,
+    "update_protocol": [
+      "sense",
+      "propose",
+      "resolve",
+      "inscribe",
+      "commit",
+      "log"
+    ]
+  },
+  "rules": {
+    "motion": "handed_legal_preference",
+    "encounter": "co_arrival_flip",
+    "coupling": "cross_class_side_touch",
+    "blocked": "halt"
+  },
+  "substrate": {
+    "kind": "toy_sheet",
+    "cell_count": 7,
+    "side_count_per_cell": 3,
+    "memory_model": "persistent_side_state"
+  },
+  "semantics": {
+    "informative_action": "persistent_local_residue",
+    "side_kinds": [
+      "empty",
+      "trace",
+      "reinforce",
+      "coupling"
+    ]
+  },
+  "trurtle_schema": {
+    "required": [
+      "id",
+      "class",
+      "cell",
+      "entry_side",
+      "handedness"
+    ],
+    "optional": [
+      "status",
+      "previous_cell",
+      "just_coupled",
+      "cooldown",
+      "step_count"
+    ],
+    "defaults": {
+      "status": "active",
+      "previous_cell": null,
+      "just_coupled": false,
+      "cooldown": 0,
+      "step_count": 0
+    }
+  },
+  "side_state_schema": {
+    "touch_count": 0,
+    "trurtle_ids": [],
+    "classes_present": [],
+    "semantic_kind": "empty"
+  },
+  "trurtles": [
+    {
+      "id": "T1",
+      "class": 1,
+      "cell": "c1",
+      "entry_side": 0,
+      "handedness": "left"
+    },
+    {
+      "id": "T2",
+      "class": 2,
+      "cell": "c2",
+      "entry_side": 1,
+      "handedness": "right"
+    },
+    {
+      "id": "T3",
+      "class": 3,
+      "cell": "c3",
+      "entry_side": 2,
+      "handedness": "left"
+    }
+  ],
+  "cells": {
+    "c0": {
+      "neighbors": {
+        "0": "c1",
+        "1": "c2",
+        "2": "c3"
+      },
+      "tags": []
+    },
+    "c1": {
+      "neighbors": {
+        "0": "boundary",
+        "1": "c0",
+        "2": "c2"
+      },
+      "tags": []
+    },
+    "c2": {
+      "neighbors": {
+        "0": "c1",
+        "1": "c4",
+        "2": "c0"
+      },
+      "tags": []
+    },
+    "c3": {
+      "neighbors": {
+        "0": "c0",
+        "1": "c4",
+        "2": "boundary"
+      },
+      "tags": []
+    },
+    "c4": {
+      "neighbors": {
+        "0": "c2",
+        "1": "c5",
+        "2": "c3"
+      },
+      "tags": []
+    },
+    "c5": {
+      "neighbors": {
+        "0": "boundary",
+        "1": "boundary",
+        "2": "c4"
+      },
+      "tags": []
+    },
+    "c6": {
+      "neighbors": {
+        "0": "boundary",
+        "1": "boundary",
+        "2": "boundary"
+      },
+      "tags": [
+        "isolated_test_cell"
+      ]
+    }
+  },
+  "event_schema": {
+    "fields": [
+      "tick",
+      "trurtle_id",
+      "event_type",
+      "cell_id",
+      "side",
+      "note"
+    ],
+    "event_types": [
+      "spawn",
+      "move",
+      "halt",
+      "meet",
+      "trace",
+      "reinforce",
+      "coupling",
+      "flip"
+    ]
+  },
+  "invariants": [
+    "local_legality",
+    "deterministic_resolution",
+    "informative_persistence",
+    "finite_state_clarity",
+    "semantic_consistency"
+  ],
+  "definitions": {
+    "trurtle": "A local triangular transport agent whose actions are informative: it moves by local rules and leaves persistent substrate residue that can condition later propagation.",
+    "informative_action": "An action that alters the substrate state in a way that can affect later lawful propagation."
+  }
+}
