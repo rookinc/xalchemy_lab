@@ -1,0 +1,864 @@
+{
+  "name": "trurtle_walk",
+  "max_ticks": 20,
+  "final_trurtles": [
+    {
+      "id": "T1",
+      "class": 1,
+      "cell": "c0",
+      "entry_side": 0,
+      "handedness": "left",
+      "status": "active",
+      "steps": 20
+    },
+    {
+      "id": "T2",
+      "class": 2,
+      "cell": "c5",
+      "entry_side": 2,
+      "handedness": "left",
+      "status": "halted",
+      "steps": 9
+    },
+    {
+      "id": "T3",
+      "class": 3,
+      "cell": "c5",
+      "entry_side": 2,
+      "handedness": "left",
+      "status": "halted",
+      "steps": 4
+    }
+  ],
+  "events": [
+    {
+      "tick": 1,
+      "turtle_id": "T1",
+      "event_type": "meet",
+      "cell_id": "c0",
+      "side": null,
+      "note": "with=T1,T2,T3"
+    },
+    {
+      "tick": 1,
+      "turtle_id": "T1",
+      "event_type": "trace",
+      "cell_id": "c1",
+      "side": 1,
+      "note": "class=1; mark=trace; encounter"
+    },
+    {
+      "tick": 1,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c0",
+      "side": 0,
+      "note": "from=c1; flipped=right"
+    },
+    {
+      "tick": 1,
+      "turtle_id": "T2",
+      "event_type": "meet",
+      "cell_id": "c0",
+      "side": null,
+      "note": "with=T1,T2,T3"
+    },
+    {
+      "tick": 1,
+      "turtle_id": "T2",
+      "event_type": "trace",
+      "cell_id": "c2",
+      "side": 2,
+      "note": "class=2; mark=trace; encounter"
+    },
+    {
+      "tick": 1,
+      "turtle_id": "T2",
+      "event_type": "move",
+      "cell_id": "c0",
+      "side": 1,
+      "note": "from=c2; flipped=left"
+    },
+    {
+      "tick": 1,
+      "turtle_id": "T3",
+      "event_type": "meet",
+      "cell_id": "c0",
+      "side": null,
+      "note": "with=T1,T2,T3"
+    },
+    {
+      "tick": 1,
+      "turtle_id": "T3",
+      "event_type": "trace",
+      "cell_id": "c3",
+      "side": 0,
+      "note": "class=3; mark=trace; encounter"
+    },
+    {
+      "tick": 1,
+      "turtle_id": "T3",
+      "event_type": "move",
+      "cell_id": "c0",
+      "side": 2,
+      "note": "from=c3; flipped=right"
+    },
+    {
+      "tick": 2,
+      "turtle_id": "T1",
+      "event_type": "trace",
+      "cell_id": "c0",
+      "side": 2,
+      "note": "class=1; mark=trace"
+    },
+    {
+      "tick": 2,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c3",
+      "side": 0,
+      "note": "from=c0"
+    },
+    {
+      "tick": 2,
+      "turtle_id": "T2",
+      "event_type": "trace",
+      "cell_id": "c0",
+      "side": 0,
+      "note": "class=2; mark=trace"
+    },
+    {
+      "tick": 2,
+      "turtle_id": "T2",
+      "event_type": "move",
+      "cell_id": "c1",
+      "side": 1,
+      "note": "from=c0"
+    },
+    {
+      "tick": 2,
+      "turtle_id": "T3",
+      "event_type": "trace",
+      "cell_id": "c0",
+      "side": 1,
+      "note": "class=3; mark=trace"
+    },
+    {
+      "tick": 2,
+      "turtle_id": "T3",
+      "event_type": "move",
+      "cell_id": "c2",
+      "side": 2,
+      "note": "from=c0"
+    },
+    {
+      "tick": 3,
+      "turtle_id": "T1",
+      "event_type": "meet",
+      "cell_id": "c4",
+      "side": null,
+      "note": "with=T1,T3"
+    },
+    {
+      "tick": 3,
+      "turtle_id": "T1",
+      "event_type": "trace",
+      "cell_id": "c3",
+      "side": 1,
+      "note": "class=1; mark=trace; encounter"
+    },
+    {
+      "tick": 3,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c4",
+      "side": 2,
+      "note": "from=c3; flipped=left"
+    },
+    {
+      "tick": 3,
+      "turtle_id": "T3",
+      "event_type": "meet",
+      "cell_id": "c4",
+      "side": null,
+      "note": "with=T1,T3"
+    },
+    {
+      "tick": 3,
+      "turtle_id": "T3",
+      "event_type": "trace",
+      "cell_id": "c2",
+      "side": 1,
+      "note": "class=3; mark=trace; encounter"
+    },
+    {
+      "tick": 3,
+      "turtle_id": "T3",
+      "event_type": "move",
+      "cell_id": "c4",
+      "side": 0,
+      "note": "from=c2; flipped=left"
+    },
+    {
+      "tick": 3,
+      "turtle_id": "T2",
+      "event_type": "trace",
+      "cell_id": "c1",
+      "side": 2,
+      "note": "class=2; mark=trace"
+    },
+    {
+      "tick": 3,
+      "turtle_id": "T2",
+      "event_type": "move",
+      "cell_id": "c2",
+      "side": 0,
+      "note": "from=c1"
+    },
+    {
+      "tick": 4,
+      "turtle_id": "T1",
+      "event_type": "trace",
+      "cell_id": "c4",
+      "side": 0,
+      "note": "class=1; mark=trace"
+    },
+    {
+      "tick": 4,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c2",
+      "side": 1,
+      "note": "from=c4"
+    },
+    {
+      "tick": 4,
+      "turtle_id": "T2",
+      "event_type": "coupling",
+      "cell_id": "c2",
+      "side": 1,
+      "note": "class=2; mark=coupling"
+    },
+    {
+      "tick": 4,
+      "turtle_id": "T2",
+      "event_type": "move",
+      "cell_id": "c4",
+      "side": 0,
+      "note": "from=c2"
+    },
+    {
+      "tick": 4,
+      "turtle_id": "T3",
+      "event_type": "trace",
+      "cell_id": "c4",
+      "side": 1,
+      "note": "class=3; mark=trace"
+    },
+    {
+      "tick": 4,
+      "turtle_id": "T3",
+      "event_type": "move",
+      "cell_id": "c5",
+      "side": 2,
+      "note": "from=c4"
+    },
+    {
+      "tick": 5,
+      "turtle_id": "T3",
+      "event_type": "halt",
+      "cell_id": "c5",
+      "side": null,
+      "note": "no legal exit"
+    },
+    {
+      "tick": 5,
+      "turtle_id": "T1",
+      "event_type": "trace",
+      "cell_id": "c2",
+      "side": 0,
+      "note": "class=1; mark=trace"
+    },
+    {
+      "tick": 5,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c1",
+      "side": 2,
+      "note": "from=c2"
+    },
+    {
+      "tick": 5,
+      "turtle_id": "T2",
+      "event_type": "trace",
+      "cell_id": "c4",
+      "side": 2,
+      "note": "class=2; mark=trace"
+    },
+    {
+      "tick": 5,
+      "turtle_id": "T2",
+      "event_type": "move",
+      "cell_id": "c3",
+      "side": 1,
+      "note": "from=c4"
+    },
+    {
+      "tick": 6,
+      "turtle_id": "T1",
+      "event_type": "meet",
+      "cell_id": "c0",
+      "side": null,
+      "note": "with=T1,T2"
+    },
+    {
+      "tick": 6,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c1",
+      "side": 1,
+      "note": "class=1; mark=reinforce; encounter"
+    },
+    {
+      "tick": 6,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c0",
+      "side": 0,
+      "note": "from=c1; flipped=right"
+    },
+    {
+      "tick": 6,
+      "turtle_id": "T2",
+      "event_type": "meet",
+      "cell_id": "c0",
+      "side": null,
+      "note": "with=T1,T2"
+    },
+    {
+      "tick": 6,
+      "turtle_id": "T2",
+      "event_type": "coupling",
+      "cell_id": "c3",
+      "side": 0,
+      "note": "class=2; mark=coupling; encounter"
+    },
+    {
+      "tick": 6,
+      "turtle_id": "T2",
+      "event_type": "move",
+      "cell_id": "c0",
+      "side": 2,
+      "note": "from=c3; flipped=right"
+    },
+    {
+      "tick": 7,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c0",
+      "side": 2,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 7,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c3",
+      "side": 0,
+      "note": "from=c0"
+    },
+    {
+      "tick": 7,
+      "turtle_id": "T2",
+      "event_type": "coupling",
+      "cell_id": "c0",
+      "side": 1,
+      "note": "class=2; mark=coupling"
+    },
+    {
+      "tick": 7,
+      "turtle_id": "T2",
+      "event_type": "move",
+      "cell_id": "c2",
+      "side": 2,
+      "note": "from=c0"
+    },
+    {
+      "tick": 8,
+      "turtle_id": "T1",
+      "event_type": "meet",
+      "cell_id": "c4",
+      "side": null,
+      "note": "with=T1,T2"
+    },
+    {
+      "tick": 8,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c3",
+      "side": 1,
+      "note": "class=1; mark=reinforce; encounter"
+    },
+    {
+      "tick": 8,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c4",
+      "side": 2,
+      "note": "from=c3; flipped=left"
+    },
+    {
+      "tick": 8,
+      "turtle_id": "T2",
+      "event_type": "meet",
+      "cell_id": "c4",
+      "side": null,
+      "note": "with=T1,T2"
+    },
+    {
+      "tick": 8,
+      "turtle_id": "T2",
+      "event_type": "reinforce",
+      "cell_id": "c2",
+      "side": 1,
+      "note": "class=2; mark=reinforce; encounter"
+    },
+    {
+      "tick": 8,
+      "turtle_id": "T2",
+      "event_type": "move",
+      "cell_id": "c4",
+      "side": 0,
+      "note": "from=c2; flipped=left"
+    },
+    {
+      "tick": 9,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c4",
+      "side": 0,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 9,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c2",
+      "side": 1,
+      "note": "from=c4"
+    },
+    {
+      "tick": 9,
+      "turtle_id": "T2",
+      "event_type": "coupling",
+      "cell_id": "c4",
+      "side": 1,
+      "note": "class=2; mark=coupling"
+    },
+    {
+      "tick": 9,
+      "turtle_id": "T2",
+      "event_type": "move",
+      "cell_id": "c5",
+      "side": 2,
+      "note": "from=c4"
+    },
+    {
+      "tick": 10,
+      "turtle_id": "T2",
+      "event_type": "halt",
+      "cell_id": "c5",
+      "side": null,
+      "note": "no legal exit"
+    },
+    {
+      "tick": 10,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c2",
+      "side": 0,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 10,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c1",
+      "side": 2,
+      "note": "from=c2"
+    },
+    {
+      "tick": 11,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c1",
+      "side": 1,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 11,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c0",
+      "side": 0,
+      "note": "from=c1"
+    },
+    {
+      "tick": 12,
+      "turtle_id": "T1",
+      "event_type": "coupling",
+      "cell_id": "c0",
+      "side": 1,
+      "note": "class=1; mark=coupling"
+    },
+    {
+      "tick": 12,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c2",
+      "side": 2,
+      "note": "from=c0"
+    },
+    {
+      "tick": 13,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c2",
+      "side": 0,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 13,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c1",
+      "side": 2,
+      "note": "from=c2"
+    },
+    {
+      "tick": 14,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c1",
+      "side": 1,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 14,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c0",
+      "side": 0,
+      "note": "from=c1"
+    },
+    {
+      "tick": 15,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c0",
+      "side": 1,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 15,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c2",
+      "side": 2,
+      "note": "from=c0"
+    },
+    {
+      "tick": 16,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c2",
+      "side": 0,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 16,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c1",
+      "side": 2,
+      "note": "from=c2"
+    },
+    {
+      "tick": 17,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c1",
+      "side": 1,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 17,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c0",
+      "side": 0,
+      "note": "from=c1"
+    },
+    {
+      "tick": 18,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c0",
+      "side": 1,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 18,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c2",
+      "side": 2,
+      "note": "from=c0"
+    },
+    {
+      "tick": 19,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c2",
+      "side": 0,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 19,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c1",
+      "side": 2,
+      "note": "from=c2"
+    },
+    {
+      "tick": 20,
+      "turtle_id": "T1",
+      "event_type": "reinforce",
+      "cell_id": "c1",
+      "side": 1,
+      "note": "class=1; mark=reinforce"
+    },
+    {
+      "tick": 20,
+      "turtle_id": "T1",
+      "event_type": "move",
+      "cell_id": "c0",
+      "side": 0,
+      "note": "from=c1"
+    }
+  ],
+  "final_marks": {
+    "c0": {
+      "0": {
+        "touch_count": 1,
+        "trurtle_ids": [
+          "T2"
+        ],
+        "classes_present": [
+          2
+        ]
+      },
+      "1": {
+        "touch_count": 5,
+        "trurtle_ids": [
+          "T3",
+          "T2",
+          "T1",
+          "T1",
+          "T1"
+        ],
+        "classes_present": [
+          3,
+          2,
+          1,
+          1,
+          1
+        ]
+      },
+      "2": {
+        "touch_count": 2,
+        "trurtle_ids": [
+          "T1",
+          "T1"
+        ],
+        "classes_present": [
+          1,
+          1
+        ]
+      }
+    },
+    "c1": {
+      "0": {
+        "touch_count": 0,
+        "trurtle_ids": [],
+        "classes_present": []
+      },
+      "1": {
+        "touch_count": 6,
+        "trurtle_ids": [
+          "T1",
+          "T1",
+          "T1",
+          "T1",
+          "T1",
+          "T1"
+        ],
+        "classes_present": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "2": {
+        "touch_count": 1,
+        "trurtle_ids": [
+          "T2"
+        ],
+        "classes_present": [
+          2
+        ]
+      }
+    },
+    "c2": {
+      "0": {
+        "touch_count": 5,
+        "trurtle_ids": [
+          "T1",
+          "T1",
+          "T1",
+          "T1",
+          "T1"
+        ],
+        "classes_present": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "1": {
+        "touch_count": 3,
+        "trurtle_ids": [
+          "T3",
+          "T2",
+          "T2"
+        ],
+        "classes_present": [
+          3,
+          2,
+          2
+        ]
+      },
+      "2": {
+        "touch_count": 1,
+        "trurtle_ids": [
+          "T2"
+        ],
+        "classes_present": [
+          2
+        ]
+      }
+    },
+    "c3": {
+      "0": {
+        "touch_count": 2,
+        "trurtle_ids": [
+          "T3",
+          "T2"
+        ],
+        "classes_present": [
+          3,
+          2
+        ]
+      },
+      "1": {
+        "touch_count": 2,
+        "trurtle_ids": [
+          "T1",
+          "T1"
+        ],
+        "classes_present": [
+          1,
+          1
+        ]
+      },
+      "2": {
+        "touch_count": 0,
+        "trurtle_ids": [],
+        "classes_present": []
+      }
+    },
+    "c4": {
+      "0": {
+        "touch_count": 2,
+        "trurtle_ids": [
+          "T1",
+          "T1"
+        ],
+        "classes_present": [
+          1,
+          1
+        ]
+      },
+      "1": {
+        "touch_count": 2,
+        "trurtle_ids": [
+          "T3",
+          "T2"
+        ],
+        "classes_present": [
+          3,
+          2
+        ]
+      },
+      "2": {
+        "touch_count": 1,
+        "trurtle_ids": [
+          "T2"
+        ],
+        "classes_present": [
+          2
+        ]
+      }
+    },
+    "c5": {
+      "0": {
+        "touch_count": 0,
+        "trurtle_ids": [],
+        "classes_present": []
+      },
+      "1": {
+        "touch_count": 0,
+        "trurtle_ids": [],
+        "classes_present": []
+      },
+      "2": {
+        "touch_count": 0,
+        "trurtle_ids": [],
+        "classes_present": []
+      }
+    },
+    "c6": {
+      "0": {
+        "touch_count": 0,
+        "trurtle_ids": [],
+        "classes_present": []
+      },
+      "1": {
+        "touch_count": 0,
+        "trurtle_ids": [],
+        "classes_present": []
+      },
+      "2": {
+        "touch_count": 0,
+        "trurtle_ids": [],
+        "classes_present": []
+      }
+    }
+  }
+}

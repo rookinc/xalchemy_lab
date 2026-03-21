@@ -1,0 +1,2009 @@
+{
+  "name": "batched_vertex_walk_demo",
+  "ticks": 8,
+  "trurtles": [
+    {
+      "id": "T1",
+      "class": 1,
+      "current_vertex": "v2",
+      "incoming_edge": "e12",
+      "handedness": "right",
+      "status": "active",
+      "step_count": 8
+    },
+    {
+      "id": "T2",
+      "class": 2,
+      "current_vertex": "v2",
+      "incoming_edge": "e02",
+      "handedness": "left",
+      "status": "active",
+      "step_count": 8
+    },
+    {
+      "id": "T3",
+      "class": 3,
+      "current_vertex": "v0",
+      "incoming_edge": "e02",
+      "handedness": "left",
+      "status": "active",
+      "step_count": 8
+    }
+  ],
+  "edges": {
+    "e01": {
+      "endpoints": [
+        "v0",
+        "v1"
+      ],
+      "touch_count": 5,
+      "trurtle_ids": [
+        "T1",
+        "T3",
+        "T2",
+        "T3",
+        "T2"
+      ],
+      "classes_present": [
+        1,
+        3,
+        2,
+        3,
+        2
+      ],
+      "contention_count": 0
+    },
+    "e02": {
+      "endpoints": [
+        "v0",
+        "v2"
+      ],
+      "touch_count": 5,
+      "trurtle_ids": [
+        "T3",
+        "T3",
+        "T2",
+        "T2",
+        "T3"
+      ],
+      "classes_present": [
+        3,
+        3,
+        2,
+        2,
+        3
+      ],
+      "contention_count": 0
+    },
+    "e12": {
+      "endpoints": [
+        "v1",
+        "v2"
+      ],
+      "touch_count": 6,
+      "trurtle_ids": [
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T1"
+      ],
+      "classes_present": [
+        1,
+        2,
+        3,
+        1,
+        2,
+        1
+      ],
+      "contention_count": 0
+    },
+    "e13": {
+      "endpoints": [
+        "v1",
+        "v3"
+      ],
+      "touch_count": 4,
+      "trurtle_ids": [
+        "T2",
+        "T1",
+        "T3",
+        "T1"
+      ],
+      "classes_present": [
+        2,
+        1,
+        3,
+        1
+      ],
+      "contention_count": 0
+    },
+    "e23": {
+      "endpoints": [
+        "v2",
+        "v3"
+      ],
+      "touch_count": 4,
+      "trurtle_ids": [
+        "T2",
+        "T1",
+        "T1",
+        "T3"
+      ],
+      "classes_present": [
+        2,
+        1,
+        1,
+        3
+      ],
+      "contention_count": 0
+    }
+  },
+  "controllers": {
+    "v0": {
+      "routing_bias": "polarity_under_load",
+      "threshold": 1,
+      "yield_cooldown": 2,
+      "classes_seen": [
+        1,
+        2,
+        3
+      ],
+      "coupling_count": 1,
+      "switch_state": "neutral",
+      "cooldown_left": 0,
+      "route_counts": {
+        "e01": 3,
+        "e02": 2
+      },
+      "controller_events": [
+        {
+          "seq": 1,
+          "vertex_id": "v0",
+          "event_type": "arrive",
+          "trurtle_id": "T1",
+          "incoming_edge": "e02",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=1; hand=left"
+        },
+        {
+          "seq": 2,
+          "vertex_id": "v0",
+          "event_type": "route",
+          "trurtle_id": "T1",
+          "incoming_edge": "e02",
+          "outgoing_edge": "e01",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 3,
+          "vertex_id": "v0",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 4,
+          "vertex_id": "v0",
+          "event_type": "arrive",
+          "trurtle_id": "T3",
+          "incoming_edge": "e02",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=3; hand=left"
+        },
+        {
+          "seq": 5,
+          "vertex_id": "v0",
+          "event_type": "route",
+          "trurtle_id": "T3",
+          "incoming_edge": "e02",
+          "outgoing_edge": "e01",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 6,
+          "vertex_id": "v0",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 7,
+          "vertex_id": "v0",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 8,
+          "vertex_id": "v0",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 9,
+          "vertex_id": "v0",
+          "event_type": "couple",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "distinct_classes=[2, 3]"
+        },
+        {
+          "seq": 10,
+          "vertex_id": "v0",
+          "event_type": "arrive",
+          "trurtle_id": "T2",
+          "incoming_edge": "e01",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=2; hand=left"
+        },
+        {
+          "seq": 11,
+          "vertex_id": "v0",
+          "event_type": "flip",
+          "trurtle_id": "T2",
+          "incoming_edge": "e01",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "left->right"
+        },
+        {
+          "seq": 12,
+          "vertex_id": "v0",
+          "event_type": "route",
+          "trurtle_id": "T2",
+          "incoming_edge": "e01",
+          "outgoing_edge": "e02",
+          "switch_state": "neutral",
+          "note": "simultaneous; override=false"
+        },
+        {
+          "seq": 13,
+          "vertex_id": "v0",
+          "event_type": "arrive",
+          "trurtle_id": "T3",
+          "incoming_edge": "e02",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=3; hand=left"
+        },
+        {
+          "seq": 14,
+          "vertex_id": "v0",
+          "event_type": "flip",
+          "trurtle_id": "T3",
+          "incoming_edge": "e02",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "left->right"
+        },
+        {
+          "seq": 15,
+          "vertex_id": "v0",
+          "event_type": "route",
+          "trurtle_id": "T3",
+          "incoming_edge": "e02",
+          "outgoing_edge": "e01",
+          "switch_state": "neutral",
+          "note": "simultaneous; override=false"
+        },
+        {
+          "seq": 16,
+          "vertex_id": "v0",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 17,
+          "vertex_id": "v0",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 18,
+          "vertex_id": "v0",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 19,
+          "vertex_id": "v0",
+          "event_type": "arrive",
+          "trurtle_id": "T2",
+          "incoming_edge": "e01",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=2; hand=left"
+        },
+        {
+          "seq": 20,
+          "vertex_id": "v0",
+          "event_type": "route",
+          "trurtle_id": "T2",
+          "incoming_edge": "e01",
+          "outgoing_edge": "e02",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 21,
+          "vertex_id": "v0",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        }
+      ]
+    },
+    "v1": {
+      "routing_bias": "handedness_first",
+      "threshold": 1,
+      "yield_cooldown": 2,
+      "classes_seen": [
+        1,
+        2,
+        3
+      ],
+      "coupling_count": 0,
+      "switch_state": "neutral",
+      "cooldown_left": 0,
+      "route_counts": {
+        "e13": 2,
+        "e12": 4,
+        "e01": 2
+      },
+      "controller_events": [
+        {
+          "seq": 1,
+          "vertex_id": "v1",
+          "event_type": "arrive",
+          "trurtle_id": "T2",
+          "incoming_edge": "e12",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=2; hand=right"
+        },
+        {
+          "seq": 2,
+          "vertex_id": "v1",
+          "event_type": "route",
+          "trurtle_id": "T2",
+          "incoming_edge": "e12",
+          "outgoing_edge": "e13",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 3,
+          "vertex_id": "v1",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 4,
+          "vertex_id": "v1",
+          "event_type": "arrive",
+          "trurtle_id": "T1",
+          "incoming_edge": "e01",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=1; hand=left"
+        },
+        {
+          "seq": 5,
+          "vertex_id": "v1",
+          "event_type": "route",
+          "trurtle_id": "T1",
+          "incoming_edge": "e01",
+          "outgoing_edge": "e12",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 6,
+          "vertex_id": "v1",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 7,
+          "vertex_id": "v1",
+          "event_type": "arrive",
+          "trurtle_id": "T3",
+          "incoming_edge": "e01",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=3; hand=left"
+        },
+        {
+          "seq": 8,
+          "vertex_id": "v1",
+          "event_type": "route",
+          "trurtle_id": "T3",
+          "incoming_edge": "e01",
+          "outgoing_edge": "e12",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 9,
+          "vertex_id": "v1",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 10,
+          "vertex_id": "v1",
+          "event_type": "arrive",
+          "trurtle_id": "T2",
+          "incoming_edge": "e12",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=2; hand=left"
+        },
+        {
+          "seq": 11,
+          "vertex_id": "v1",
+          "event_type": "route",
+          "trurtle_id": "T2",
+          "incoming_edge": "e12",
+          "outgoing_edge": "e01",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 12,
+          "vertex_id": "v1",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 13,
+          "vertex_id": "v1",
+          "event_type": "arrive",
+          "trurtle_id": "T1",
+          "incoming_edge": "e13",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=1; hand=right"
+        },
+        {
+          "seq": 14,
+          "vertex_id": "v1",
+          "event_type": "route",
+          "trurtle_id": "T1",
+          "incoming_edge": "e13",
+          "outgoing_edge": "e12",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 15,
+          "vertex_id": "v1",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 16,
+          "vertex_id": "v1",
+          "event_type": "arrive",
+          "trurtle_id": "T3",
+          "incoming_edge": "e01",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=3; hand=right"
+        },
+        {
+          "seq": 17,
+          "vertex_id": "v1",
+          "event_type": "route",
+          "trurtle_id": "T3",
+          "incoming_edge": "e01",
+          "outgoing_edge": "e13",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 18,
+          "vertex_id": "v1",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 19,
+          "vertex_id": "v1",
+          "event_type": "arrive",
+          "trurtle_id": "T2",
+          "incoming_edge": "e12",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=2; hand=left"
+        },
+        {
+          "seq": 20,
+          "vertex_id": "v1",
+          "event_type": "route",
+          "trurtle_id": "T2",
+          "incoming_edge": "e12",
+          "outgoing_edge": "e01",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 21,
+          "vertex_id": "v1",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 22,
+          "vertex_id": "v1",
+          "event_type": "arrive",
+          "trurtle_id": "T1",
+          "incoming_edge": "e13",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=1; hand=right"
+        },
+        {
+          "seq": 23,
+          "vertex_id": "v1",
+          "event_type": "route",
+          "trurtle_id": "T1",
+          "incoming_edge": "e13",
+          "outgoing_edge": "e12",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 24,
+          "vertex_id": "v1",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        }
+      ]
+    },
+    "v2": {
+      "routing_bias": "least_used",
+      "threshold": 1,
+      "yield_cooldown": 2,
+      "classes_seen": [
+        1,
+        2,
+        3
+      ],
+      "coupling_count": 2,
+      "switch_state": "neutral",
+      "cooldown_left": 0,
+      "route_counts": {
+        "e02": 3,
+        "e23": 2,
+        "e12": 2
+      },
+      "controller_events": [
+        {
+          "seq": 1,
+          "vertex_id": "v2",
+          "event_type": "arrive",
+          "trurtle_id": "T3",
+          "incoming_edge": "e23",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=3; hand=left"
+        },
+        {
+          "seq": 2,
+          "vertex_id": "v2",
+          "event_type": "route",
+          "trurtle_id": "T3",
+          "incoming_edge": "e23",
+          "outgoing_edge": "e02",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 3,
+          "vertex_id": "v2",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 4,
+          "vertex_id": "v2",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 5,
+          "vertex_id": "v2",
+          "event_type": "couple",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "distinct_classes=[1, 2]"
+        },
+        {
+          "seq": 6,
+          "vertex_id": "v2",
+          "event_type": "arrive",
+          "trurtle_id": "T1",
+          "incoming_edge": "e12",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=1; hand=left"
+        },
+        {
+          "seq": 7,
+          "vertex_id": "v2",
+          "event_type": "flip",
+          "trurtle_id": "T1",
+          "incoming_edge": "e12",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "left->right"
+        },
+        {
+          "seq": 8,
+          "vertex_id": "v2",
+          "event_type": "route",
+          "trurtle_id": "T1",
+          "incoming_edge": "e12",
+          "outgoing_edge": "e23",
+          "switch_state": "neutral",
+          "note": "simultaneous; override=false"
+        },
+        {
+          "seq": 9,
+          "vertex_id": "v2",
+          "event_type": "arrive",
+          "trurtle_id": "T2",
+          "incoming_edge": "e23",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=2; hand=right"
+        },
+        {
+          "seq": 10,
+          "vertex_id": "v2",
+          "event_type": "flip",
+          "trurtle_id": "T2",
+          "incoming_edge": "e23",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "right->left"
+        },
+        {
+          "seq": 11,
+          "vertex_id": "v2",
+          "event_type": "route",
+          "trurtle_id": "T2",
+          "incoming_edge": "e23",
+          "outgoing_edge": "e12",
+          "switch_state": "neutral",
+          "note": "simultaneous; override=false"
+        },
+        {
+          "seq": 12,
+          "vertex_id": "v2",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 13,
+          "vertex_id": "v2",
+          "event_type": "arrive",
+          "trurtle_id": "T3",
+          "incoming_edge": "e12",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=3; hand=left"
+        },
+        {
+          "seq": 14,
+          "vertex_id": "v2",
+          "event_type": "route",
+          "trurtle_id": "T3",
+          "incoming_edge": "e12",
+          "outgoing_edge": "e02",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 15,
+          "vertex_id": "v2",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 16,
+          "vertex_id": "v2",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 17,
+          "vertex_id": "v2",
+          "event_type": "couple",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "distinct_classes=[1, 2]"
+        },
+        {
+          "seq": 18,
+          "vertex_id": "v2",
+          "event_type": "arrive",
+          "trurtle_id": "T1",
+          "incoming_edge": "e12",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=1; hand=right"
+        },
+        {
+          "seq": 19,
+          "vertex_id": "v2",
+          "event_type": "flip",
+          "trurtle_id": "T1",
+          "incoming_edge": "e12",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "right->left"
+        },
+        {
+          "seq": 20,
+          "vertex_id": "v2",
+          "event_type": "route",
+          "trurtle_id": "T1",
+          "incoming_edge": "e12",
+          "outgoing_edge": "e23",
+          "switch_state": "neutral",
+          "note": "simultaneous; override=false"
+        },
+        {
+          "seq": 21,
+          "vertex_id": "v2",
+          "event_type": "arrive",
+          "trurtle_id": "T2",
+          "incoming_edge": "e02",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=2; hand=right"
+        },
+        {
+          "seq": 22,
+          "vertex_id": "v2",
+          "event_type": "flip",
+          "trurtle_id": "T2",
+          "incoming_edge": "e02",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "right->left"
+        },
+        {
+          "seq": 23,
+          "vertex_id": "v2",
+          "event_type": "route",
+          "trurtle_id": "T2",
+          "incoming_edge": "e02",
+          "outgoing_edge": "e12",
+          "switch_state": "neutral",
+          "note": "simultaneous; override=false"
+        },
+        {
+          "seq": 24,
+          "vertex_id": "v2",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 25,
+          "vertex_id": "v2",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 26,
+          "vertex_id": "v2",
+          "event_type": "arrive",
+          "trurtle_id": "T3",
+          "incoming_edge": "e23",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=3; hand=left"
+        },
+        {
+          "seq": 27,
+          "vertex_id": "v2",
+          "event_type": "route",
+          "trurtle_id": "T3",
+          "incoming_edge": "e23",
+          "outgoing_edge": "e02",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 28,
+          "vertex_id": "v2",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        }
+      ]
+    },
+    "v3": {
+      "routing_bias": "polarity_under_load",
+      "threshold": 2,
+      "yield_cooldown": 2,
+      "classes_seen": [
+        1,
+        2,
+        3
+      ],
+      "coupling_count": 1,
+      "switch_state": "neutral",
+      "cooldown_left": 0,
+      "route_counts": {
+        "e23": 2,
+        "e13": 2
+      },
+      "controller_events": [
+        {
+          "seq": 1,
+          "vertex_id": "v3",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 2,
+          "vertex_id": "v3",
+          "event_type": "arrive",
+          "trurtle_id": "T2",
+          "incoming_edge": "e13",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=2; hand=right"
+        },
+        {
+          "seq": 3,
+          "vertex_id": "v3",
+          "event_type": "route",
+          "trurtle_id": "T2",
+          "incoming_edge": "e13",
+          "outgoing_edge": "e23",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 4,
+          "vertex_id": "v3",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 5,
+          "vertex_id": "v3",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 6,
+          "vertex_id": "v3",
+          "event_type": "arrive",
+          "trurtle_id": "T1",
+          "incoming_edge": "e23",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=1; hand=right"
+        },
+        {
+          "seq": 7,
+          "vertex_id": "v3",
+          "event_type": "route",
+          "trurtle_id": "T1",
+          "incoming_edge": "e23",
+          "outgoing_edge": "e13",
+          "switch_state": "neutral",
+          "note": "override=false"
+        },
+        {
+          "seq": 8,
+          "vertex_id": "v3",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 9,
+          "vertex_id": "v3",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 10,
+          "vertex_id": "v3",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 11,
+          "vertex_id": "v3",
+          "event_type": "couple",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "distinct_classes=[1, 3]"
+        },
+        {
+          "seq": 12,
+          "vertex_id": "v3",
+          "event_type": "arrive",
+          "trurtle_id": "T1",
+          "incoming_edge": "e23",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=1; hand=left"
+        },
+        {
+          "seq": 13,
+          "vertex_id": "v3",
+          "event_type": "flip",
+          "trurtle_id": "T1",
+          "incoming_edge": "e23",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "left->right"
+        },
+        {
+          "seq": 14,
+          "vertex_id": "v3",
+          "event_type": "route",
+          "trurtle_id": "T1",
+          "incoming_edge": "e23",
+          "outgoing_edge": "e13",
+          "switch_state": "neutral",
+          "note": "simultaneous; override=false"
+        },
+        {
+          "seq": 15,
+          "vertex_id": "v3",
+          "event_type": "arrive",
+          "trurtle_id": "T3",
+          "incoming_edge": "e13",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "class=3; hand=right"
+        },
+        {
+          "seq": 16,
+          "vertex_id": "v3",
+          "event_type": "flip",
+          "trurtle_id": "T3",
+          "incoming_edge": "e13",
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "right->left"
+        },
+        {
+          "seq": 17,
+          "vertex_id": "v3",
+          "event_type": "route",
+          "trurtle_id": "T3",
+          "incoming_edge": "e13",
+          "outgoing_edge": "e23",
+          "switch_state": "neutral",
+          "note": "simultaneous; override=false"
+        },
+        {
+          "seq": 18,
+          "vertex_id": "v3",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        },
+        {
+          "seq": 19,
+          "vertex_id": "v3",
+          "event_type": "idle",
+          "trurtle_id": null,
+          "incoming_edge": null,
+          "outgoing_edge": null,
+          "switch_state": "neutral",
+          "note": "no arrival"
+        }
+      ]
+    }
+  },
+  "trurtle_events": [
+    {
+      "tick": 1,
+      "trurtle_id": "T1",
+      "event_type": "arrive",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e01",
+      "note": "routed from e02 to e01; threshold=1; override=false"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T1",
+      "event_type": "propose_move",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e01",
+      "note": "to=v1"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T2",
+      "event_type": "arrive",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e13",
+      "note": "routed from e12 to e13; threshold=1; override=false"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T2",
+      "event_type": "propose_move",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e13",
+      "note": "to=v3"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T3",
+      "event_type": "arrive",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e02",
+      "note": "routed from e23 to e02; threshold=1; override=false"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T3",
+      "event_type": "propose_move",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e02",
+      "note": "to=v0"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T1",
+      "event_type": "traverse",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e01",
+      "note": "to=v1"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T1",
+      "event_type": "depart",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=1"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T2",
+      "event_type": "traverse",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e13",
+      "note": "to=v3"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T2",
+      "event_type": "depart",
+      "vertex_id": "v3",
+      "incoming_edge": "e13",
+      "outgoing_edge": null,
+      "note": "hand=right; steps=1"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T3",
+      "event_type": "traverse",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e02",
+      "note": "to=v0"
+    },
+    {
+      "tick": 1,
+      "trurtle_id": "T3",
+      "event_type": "depart",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=1"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T1",
+      "event_type": "arrive",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e12",
+      "note": "routed from e01 to e12; threshold=1; override=false"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T1",
+      "event_type": "propose_move",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e12",
+      "note": "to=v2"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T2",
+      "event_type": "arrive",
+      "vertex_id": "v3",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e23",
+      "note": "routed from e13 to e23; threshold=2; override=false"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T2",
+      "event_type": "propose_move",
+      "vertex_id": "v3",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e23",
+      "note": "to=v2"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T3",
+      "event_type": "arrive",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e01",
+      "note": "routed from e02 to e01; threshold=1; override=false"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T3",
+      "event_type": "propose_move",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e01",
+      "note": "to=v1"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T1",
+      "event_type": "traverse",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e12",
+      "note": "to=v2"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T1",
+      "event_type": "depart",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=2"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T2",
+      "event_type": "traverse",
+      "vertex_id": "v3",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e23",
+      "note": "to=v2"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T2",
+      "event_type": "depart",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": null,
+      "note": "hand=right; steps=2"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T3",
+      "event_type": "traverse",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e01",
+      "note": "to=v1"
+    },
+    {
+      "tick": 2,
+      "trurtle_id": "T3",
+      "event_type": "depart",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=2"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T1",
+      "event_type": "arrive_batch",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e23",
+      "note": "simultaneous arrival; flipped to right; threshold=1; override=false"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T1",
+      "event_type": "propose_move",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e23",
+      "note": "to=v3"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T2",
+      "event_type": "arrive_batch",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e12",
+      "note": "simultaneous arrival; flipped to left; threshold=1; override=false"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T2",
+      "event_type": "propose_move",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e12",
+      "note": "to=v1"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T3",
+      "event_type": "arrive",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e12",
+      "note": "routed from e01 to e12; threshold=1; override=false"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T3",
+      "event_type": "propose_move",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e12",
+      "note": "to=v2"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T1",
+      "event_type": "traverse",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e23",
+      "note": "to=v3"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T1",
+      "event_type": "depart",
+      "vertex_id": "v3",
+      "incoming_edge": "e23",
+      "outgoing_edge": null,
+      "note": "hand=right; steps=3"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T2",
+      "event_type": "traverse",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e12",
+      "note": "to=v1"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T2",
+      "event_type": "depart",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=3"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T3",
+      "event_type": "traverse",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e12",
+      "note": "to=v2"
+    },
+    {
+      "tick": 3,
+      "trurtle_id": "T3",
+      "event_type": "depart",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=3"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T1",
+      "event_type": "arrive",
+      "vertex_id": "v3",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e13",
+      "note": "routed from e23 to e13; threshold=2; override=false"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T1",
+      "event_type": "propose_move",
+      "vertex_id": "v3",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e13",
+      "note": "to=v1"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T2",
+      "event_type": "arrive",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e01",
+      "note": "routed from e12 to e01; threshold=1; override=false"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T2",
+      "event_type": "propose_move",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e01",
+      "note": "to=v0"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T3",
+      "event_type": "arrive",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e02",
+      "note": "routed from e12 to e02; threshold=1; override=false"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T3",
+      "event_type": "propose_move",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e02",
+      "note": "to=v0"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T1",
+      "event_type": "traverse",
+      "vertex_id": "v3",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e13",
+      "note": "to=v1"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T1",
+      "event_type": "depart",
+      "vertex_id": "v1",
+      "incoming_edge": "e13",
+      "outgoing_edge": null,
+      "note": "hand=right; steps=4"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T2",
+      "event_type": "traverse",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e01",
+      "note": "to=v0"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T2",
+      "event_type": "depart",
+      "vertex_id": "v0",
+      "incoming_edge": "e01",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=4"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T3",
+      "event_type": "traverse",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e02",
+      "note": "to=v0"
+    },
+    {
+      "tick": 4,
+      "trurtle_id": "T3",
+      "event_type": "depart",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=4"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T1",
+      "event_type": "arrive",
+      "vertex_id": "v1",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e12",
+      "note": "routed from e13 to e12; threshold=1; override=false"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T1",
+      "event_type": "propose_move",
+      "vertex_id": "v1",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e12",
+      "note": "to=v2"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T2",
+      "event_type": "arrive_batch",
+      "vertex_id": "v0",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e02",
+      "note": "simultaneous arrival; flipped to right; threshold=1; override=false"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T2",
+      "event_type": "propose_move",
+      "vertex_id": "v0",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e02",
+      "note": "to=v2"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T3",
+      "event_type": "arrive_batch",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e01",
+      "note": "simultaneous arrival; flipped to right; threshold=1; override=false"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T3",
+      "event_type": "propose_move",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e01",
+      "note": "to=v1"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T1",
+      "event_type": "traverse",
+      "vertex_id": "v1",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e12",
+      "note": "to=v2"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T1",
+      "event_type": "depart",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": null,
+      "note": "hand=right; steps=5"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T2",
+      "event_type": "traverse",
+      "vertex_id": "v0",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e02",
+      "note": "to=v2"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T2",
+      "event_type": "depart",
+      "vertex_id": "v2",
+      "incoming_edge": "e02",
+      "outgoing_edge": null,
+      "note": "hand=right; steps=5"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T3",
+      "event_type": "traverse",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e01",
+      "note": "to=v1"
+    },
+    {
+      "tick": 5,
+      "trurtle_id": "T3",
+      "event_type": "depart",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": null,
+      "note": "hand=right; steps=5"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T1",
+      "event_type": "arrive_batch",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e23",
+      "note": "simultaneous arrival; flipped to left; threshold=1; override=false"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T1",
+      "event_type": "propose_move",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e23",
+      "note": "to=v3"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T2",
+      "event_type": "arrive_batch",
+      "vertex_id": "v2",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e12",
+      "note": "simultaneous arrival; flipped to left; threshold=1; override=false"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T2",
+      "event_type": "propose_move",
+      "vertex_id": "v2",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e12",
+      "note": "to=v1"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T3",
+      "event_type": "arrive",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e13",
+      "note": "routed from e01 to e13; threshold=1; override=false"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T3",
+      "event_type": "propose_move",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e13",
+      "note": "to=v3"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T1",
+      "event_type": "traverse",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e23",
+      "note": "to=v3"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T1",
+      "event_type": "depart",
+      "vertex_id": "v3",
+      "incoming_edge": "e23",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=6"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T2",
+      "event_type": "traverse",
+      "vertex_id": "v2",
+      "incoming_edge": "e02",
+      "outgoing_edge": "e12",
+      "note": "to=v1"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T2",
+      "event_type": "depart",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=6"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T3",
+      "event_type": "traverse",
+      "vertex_id": "v1",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e13",
+      "note": "to=v3"
+    },
+    {
+      "tick": 6,
+      "trurtle_id": "T3",
+      "event_type": "depart",
+      "vertex_id": "v3",
+      "incoming_edge": "e13",
+      "outgoing_edge": null,
+      "note": "hand=right; steps=6"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T1",
+      "event_type": "arrive_batch",
+      "vertex_id": "v3",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e13",
+      "note": "simultaneous arrival; flipped to right; threshold=2; override=false"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T1",
+      "event_type": "propose_move",
+      "vertex_id": "v3",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e13",
+      "note": "to=v1"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T3",
+      "event_type": "arrive_batch",
+      "vertex_id": "v3",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e23",
+      "note": "simultaneous arrival; flipped to left; threshold=2; override=false"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T3",
+      "event_type": "propose_move",
+      "vertex_id": "v3",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e23",
+      "note": "to=v2"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T2",
+      "event_type": "arrive",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e01",
+      "note": "routed from e12 to e01; threshold=1; override=false"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T2",
+      "event_type": "propose_move",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e01",
+      "note": "to=v0"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T1",
+      "event_type": "traverse",
+      "vertex_id": "v3",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e13",
+      "note": "to=v1"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T1",
+      "event_type": "depart",
+      "vertex_id": "v1",
+      "incoming_edge": "e13",
+      "outgoing_edge": null,
+      "note": "hand=right; steps=7"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T3",
+      "event_type": "traverse",
+      "vertex_id": "v3",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e23",
+      "note": "to=v2"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T3",
+      "event_type": "depart",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=7"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T2",
+      "event_type": "traverse",
+      "vertex_id": "v1",
+      "incoming_edge": "e12",
+      "outgoing_edge": "e01",
+      "note": "to=v0"
+    },
+    {
+      "tick": 7,
+      "trurtle_id": "T2",
+      "event_type": "depart",
+      "vertex_id": "v0",
+      "incoming_edge": "e01",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=7"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T1",
+      "event_type": "arrive",
+      "vertex_id": "v1",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e12",
+      "note": "routed from e13 to e12; threshold=1; override=false"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T1",
+      "event_type": "propose_move",
+      "vertex_id": "v1",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e12",
+      "note": "to=v2"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T2",
+      "event_type": "arrive",
+      "vertex_id": "v0",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e02",
+      "note": "routed from e01 to e02; threshold=1; override=false"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T2",
+      "event_type": "propose_move",
+      "vertex_id": "v0",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e02",
+      "note": "to=v2"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T3",
+      "event_type": "arrive",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e02",
+      "note": "routed from e23 to e02; threshold=1; override=false"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T3",
+      "event_type": "propose_move",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e02",
+      "note": "to=v0"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T1",
+      "event_type": "traverse",
+      "vertex_id": "v1",
+      "incoming_edge": "e13",
+      "outgoing_edge": "e12",
+      "note": "to=v2"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T1",
+      "event_type": "depart",
+      "vertex_id": "v2",
+      "incoming_edge": "e12",
+      "outgoing_edge": null,
+      "note": "hand=right; steps=8"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T2",
+      "event_type": "traverse",
+      "vertex_id": "v0",
+      "incoming_edge": "e01",
+      "outgoing_edge": "e02",
+      "note": "to=v2"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T2",
+      "event_type": "depart",
+      "vertex_id": "v2",
+      "incoming_edge": "e02",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=8"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T3",
+      "event_type": "traverse",
+      "vertex_id": "v2",
+      "incoming_edge": "e23",
+      "outgoing_edge": "e02",
+      "note": "to=v0"
+    },
+    {
+      "tick": 8,
+      "trurtle_id": "T3",
+      "event_type": "depart",
+      "vertex_id": "v0",
+      "incoming_edge": "e02",
+      "outgoing_edge": null,
+      "note": "hand=left; steps=8"
+    }
+  ]
+}

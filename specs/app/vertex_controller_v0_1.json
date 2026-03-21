@@ -1,0 +1,214 @@
+{
+  "name": "vertex_controller_v0_1",
+  "version": "0.1",
+  "purpose": "Local routing locus for trurtle transport on a triangular substrate.",
+  "canonical_sentence": "Informative transport is routed at vertices, inscribed on edges, and embedded in sectors.",
+  "definitions": {
+    "vertex_controller": "A finite local routing object attached to a vertex of a transport substrate. It receives arriving trurtles through incident edges, applies deterministic local routing law using controller state and incident edge residue, and selects lawful outgoing edges while recording locally informative transport events.",
+    "traffic_controller": "The vertex is the traffic controller of informative transport.",
+    "polarity_under_load": "Route by handedness unless handedness would deepen a local imbalance."
+  },
+  "object_model": {
+    "vertex_controller": {
+      "fields": {
+        "id": {
+          "type": "string",
+          "required": true
+        },
+        "incident_edges": {
+          "type": "array",
+          "items": "string",
+          "required": true
+        },
+        "routing_bias": {
+          "type": "string",
+          "required": true,
+          "default": "handedness_first",
+          "allowed": [
+            "handedness_first",
+            "least_used",
+            "polarity_under_load"
+          ]
+        },
+        "load_override_threshold": {
+          "type": "integer",
+          "required": true,
+          "default": 1,
+          "minimum": 1
+        },
+        "classes_seen": {
+          "type": "array",
+          "items": "integer",
+          "required": true,
+          "default": []
+        },
+        "recent_arrivals": {
+          "type": "array",
+          "items": "object",
+          "required": true,
+          "default": []
+        },
+        "coupling_count": {
+          "type": "integer",
+          "required": true,
+          "default": 0,
+          "minimum": 0
+        },
+        "switch_state": {
+          "type": "string",
+          "required": true,
+          "default": "neutral",
+          "allowed": [
+            "neutral",
+            "flipped",
+            "alternating",
+            "locked",
+            "cooldown"
+          ]
+        },
+        "route_counts": {
+          "type": "object",
+          "required": true,
+          "default": {}
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "default": []
+        }
+      }
+    }
+  },
+  "arrival_packet": {
+    "fields": {
+      "trurtle_id": "string",
+      "trurtle_class": "integer",
+      "incoming_edge": "string",
+      "handedness": {
+        "type": "string",
+        "allowed": ["left", "right"]
+      },
+      "previous_vertex": {
+        "type": ["string", "null"]
+      },
+      "step_count": "integer",
+      "local_flags": {
+        "type": "object",
+        "default": {}
+      }
+    }
+  },
+  "routing_decision": {
+    "fields": {
+      "outgoing_edge": {
+        "type": ["string", "null"]
+      },
+      "action": {
+        "type": "string",
+        "allowed": [
+          "route",
+          "halt",
+          "wait",
+          "couple",
+          "flip",
+          "reject"
+        ]
+      },
+      "handedness_update": {
+        "type": ["string", "null"],
+        "allowed": ["left", "right", null]
+      },
+      "switch_state_update": {
+        "type": ["string", "null"],
+        "allowed": [
+          "neutral",
+          "flipped",
+          "alternating",
+          "locked",
+          "cooldown",
+          null
+        ]
+      },
+      "notes": {
+        "type": "string",
+        "default": ""
+      }
+    }
+  },
+  "routing_laws": {
+    "handedness_first": {
+      "description": "Routes by local polarity preference."
+    },
+    "least_used": {
+      "description": "Routes toward the lesser-burdened candidate edge."
+    },
+    "polarity_under_load": {
+      "description": "Routes by handedness unless the burden on the preferred exit exceeds the burden threshold relative to an available alternative, at which point routing is diverted toward the lesser-burdened channel."
+    }
+  },
+  "simultaneous_arrivals": {
+    "minimal_law": {
+      "all_arrivals_succeed": true,
+      "emit_meet": true,
+      "flip_handedness_once": true,
+      "increment_coupling_count_if_distinct_classes": true
+    }
+  },
+  "memory_model": {
+    "vertex_memory": [
+      "recent_arrivals",
+      "classes_seen",
+      "coupling_count",
+      "switch_state",
+      "route_counts",
+      "load_override_threshold"
+    ],
+    "edge_memory_is_separate": true,
+    "canonical_principle": "The edge carries residue; the vertex decides flow."
+  },
+  "event_schema": {
+    "fields": [
+      "tick",
+      "vertex_id",
+      "trurtle_id",
+      "event_type",
+      "incoming_edge",
+      "outgoing_edge",
+      "switch_state",
+      "note"
+    ],
+    "event_types": [
+      "arrive",
+      "route",
+      "meet",
+      "couple",
+      "flip",
+      "halt",
+      "lock",
+      "release",
+      "switch",
+      "override"
+    ]
+  },
+  "invariants": [
+    "locality",
+    "determinism",
+    "incident_legality",
+    "state_coherence",
+    "coupling_consistency",
+    "finite_state_clarity"
+  ],
+  "example_instance": {
+    "id": "v0",
+    "incident_edges": ["e0", "e1", "e2"],
+    "routing_bias": "polarity_under_load",
+    "load_override_threshold": 1,
+    "classes_seen": [],
+    "recent_arrivals": [],
+    "coupling_count": 0,
+    "switch_state": "neutral",
+    "route_counts": {},
+    "tags": []
+  }
+}
