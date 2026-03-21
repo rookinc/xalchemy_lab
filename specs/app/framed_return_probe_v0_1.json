@@ -1,0 +1,353 @@
+{
+  "name": "framed_return_probe_v0_1",
+  "loops": [
+    {
+      "name": "return_A",
+      "controller_specs": [
+        {
+          "vertex_id": "rA1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "rA2",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "rA3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "right",
+        "left"
+      ],
+      "steps": [
+        {
+          "vertex_id": "rA1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": null,
+          "running_H": 1
+        },
+        {
+          "vertex_id": "rA2",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": -1,
+          "running_H": -1
+        },
+        {
+          "vertex_id": "rA3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": -1,
+          "running_H": 1
+        }
+      ],
+      "physical_trace": [
+        "e_right",
+        "e_left",
+        "e_right"
+      ],
+      "chart_trace": [
+        "chart_right",
+        "chart_left",
+        "chart_right"
+      ],
+      "transition_signs": [
+        -1,
+        -1
+      ],
+      "H": 1,
+      "initial_frame": "chart_right",
+      "final_frame": "chart_right",
+      "return_class": "same"
+    },
+    {
+      "name": "return_B",
+      "controller_specs": [
+        {
+          "vertex_id": "rB1",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "rB2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "rB3",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "right",
+        "left"
+      ],
+      "steps": [
+        {
+          "vertex_id": "rB1",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": null,
+          "running_H": 1
+        },
+        {
+          "vertex_id": "rB2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": -1,
+          "running_H": -1
+        },
+        {
+          "vertex_id": "rB3",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": -1,
+          "running_H": 1
+        }
+      ],
+      "physical_trace": [
+        "e_right",
+        "e_left",
+        "e_right"
+      ],
+      "chart_trace": [
+        "chart_left",
+        "chart_right",
+        "chart_left"
+      ],
+      "transition_signs": [
+        -1,
+        -1
+      ],
+      "H": 1,
+      "initial_frame": "chart_left",
+      "final_frame": "chart_left",
+      "return_class": "same"
+    },
+    {
+      "name": "return_C_mixed_chart",
+      "controller_specs": [
+        {
+          "vertex_id": "rC1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "rC2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "rC3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "right",
+        "left"
+      ],
+      "steps": [
+        {
+          "vertex_id": "rC1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": null,
+          "running_H": 1
+        },
+        {
+          "vertex_id": "rC2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": 1,
+          "running_H": 1
+        },
+        {
+          "vertex_id": "rC3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": 1,
+          "running_H": 1
+        }
+      ],
+      "physical_trace": [
+        "e_right",
+        "e_left",
+        "e_right"
+      ],
+      "chart_trace": [
+        "chart_right",
+        "chart_right",
+        "chart_right"
+      ],
+      "transition_signs": [
+        1,
+        1
+      ],
+      "H": 1,
+      "initial_frame": "chart_right",
+      "final_frame": "chart_right",
+      "return_class": "same"
+    },
+    {
+      "name": "return_D_unary_mixed",
+      "controller_specs": [
+        {
+          "vertex_id": "rD1",
+          "A": 0,
+          "sigma": 0,
+          "tau": 1
+        },
+        {
+          "vertex_id": "rD2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 0
+        },
+        {
+          "vertex_id": "rD3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "left",
+        "right"
+      ],
+      "steps": [
+        {
+          "vertex_id": "rD1",
+          "A": 0,
+          "sigma": 0,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=0; tau=1; threshold=1; override=false",
+          "transition_sign": null,
+          "running_H": 1
+        },
+        {
+          "vertex_id": "rD2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 0,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=0; threshold=1; override=false",
+          "transition_sign": -1,
+          "running_H": -1
+        },
+        {
+          "vertex_id": "rD3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": 1,
+          "running_H": -1
+        }
+      ],
+      "physical_trace": [
+        "e_right",
+        "e_right",
+        "e_left"
+      ],
+      "chart_trace": [
+        "chart_right",
+        "chart_left",
+        "chart_left"
+      ],
+      "transition_signs": [
+        -1,
+        1
+      ],
+      "H": -1,
+      "initial_frame": "chart_right",
+      "final_frame": "chart_left",
+      "return_class": "reversed"
+    }
+  ]
+}

@@ -3,10 +3,38 @@
   "version": "0.1",
   "purpose": "Local routing locus for trurtle transport on a triangular substrate.",
   "canonical_sentence": "Informative transport is routed at vertices, inscribed on edges, and embedded in sectors.",
+  "coordinate_priority": {
+    "primary": "chart_coordinate_exit",
+    "derived": "physical_edge_label",
+    "canonical_principle": "The primary local transport object is the chart-relative exit; the physical edge label is a projected readout."
+  },
   "definitions": {
     "vertex_controller": "A finite local routing object attached to a vertex of a transport substrate. It receives arriving trurtles through incident edges, applies deterministic local routing law using controller state and incident edge residue, and selects lawful outgoing edges while recording locally informative transport events.",
     "traffic_controller": "The vertex is the traffic controller of informative transport.",
-    "polarity_under_load": "Route by handedness unless handedness would deepen a local imbalance."
+    "polarity_under_load": "Route by handedness unless handedness would deepen a local imbalance.",
+    "chart_relative_exit": "The preferred outgoing choice expressed in the controller's local chart coordinates such as chart_left or chart_right.",
+    "physical_edge_label": "A projected physical readout of a chart-relative exit such as e_left or e_right.",
+    "holonomic_flavor": "What appears identical in physical exits may be oppositely oriented in chart coordinates, so the local law is framed and holonomic in flavor."
+  },
+  "structural_state": {
+    "register": ["A", "sigma", "tau"],
+    "fields": {
+      "A": "local chart selector / chart orientation bit",
+      "sigma": "chart-relative collapse toward chart_left",
+      "tau": "chart-relative collapse toward chart_right"
+    },
+    "canonical_sentence": "Structural state says what controller law is active."
+  },
+  "runtime_state": {
+    "fields": [
+      "switch_state",
+      "switch_cooldown_remaining",
+      "route_counts",
+      "recent_arrivals",
+      "classes_seen",
+      "coupling_count"
+    ],
+    "canonical_sentence": "Runtime state says how the controller is behaving right now."
   },
   "object_model": {
     "vertex_controller": {
@@ -27,7 +55,9 @@
           "allowed": [
             "handedness_first",
             "least_used",
-            "polarity_under_load"
+            "polarity_under_load",
+            "state_sensitive",
+            "state_sensitive_under_load"
           ]
         },
         "load_override_threshold": {
@@ -35,6 +65,24 @@
           "required": true,
           "default": 1,
           "minimum": 1
+        },
+        "anchored_chart": {
+          "type": "integer",
+          "required": true,
+          "default": 0,
+          "allowed": [0, 1]
+        },
+        "sigma_state": {
+          "type": "integer",
+          "required": true,
+          "default": 0,
+          "allowed": [0, 1]
+        },
+        "tau_state": {
+          "type": "integer",
+          "required": true,
+          "default": 0,
+          "allowed": [0, 1]
         },
         "classes_seen": {
           "type": "array",
@@ -145,6 +193,46 @@
     },
     "polarity_under_load": {
       "description": "Routes by handedness unless the burden on the preferred exit exceeds the burden threshold relative to an available alternative, at which point routing is diverted toward the lesser-burdened channel."
+    },
+    "state_sensitive": {
+      "description": "Routes by structural local state (A,sigma,tau) interpreted in chart coordinates."
+    },
+    "state_sensitive_under_load": {
+      "description": "Uses the chart-relative state-sensitive preference law first, then allows burden-threshold override."
+    }
+  },
+  "chart_relative_routing_law": {
+    "domain": {
+      "incoming_edge": "e_in",
+      "candidate_exits": ["e_left", "e_right"]
+    },
+    "base_chart_orientation": {
+      "A=0": {
+        "left": "e_left",
+        "right": "e_right"
+      },
+      "A=1": {
+        "left": "e_right",
+        "right": "e_left"
+      }
+    },
+    "chart_coordinates": {
+      "A=0": {
+        "chart_left": "e_left",
+        "chart_right": "e_right"
+      },
+      "A=1": {
+        "chart_left": "e_right",
+        "chart_right": "e_left"
+      }
+    },
+    "unary_collapse_operators": {
+      "sigma": "collapse toward chart_left",
+      "tau": "collapse toward chart_right"
+    },
+    "mixed_reopening": {
+      "description": "When sigma=tau=1, the controller reopens a handed split in chart-relative coordinates.",
+      "note": "This mixed reopening may appear physically identical in raw edge labels across charts while remaining reversed in chart coordinates."
     }
   },
   "simultaneous_arrivals": {
@@ -162,7 +250,10 @@
       "coupling_count",
       "switch_state",
       "route_counts",
-      "load_override_threshold"
+      "load_override_threshold",
+      "anchored_chart",
+      "sigma_state",
+      "tau_state"
     ],
     "edge_memory_is_separate": true,
     "canonical_principle": "The edge carries residue; the vertex decides flow."
@@ -176,6 +267,9 @@
       "incoming_edge",
       "outgoing_edge",
       "switch_state",
+      "anchored_chart",
+      "sigma_state",
+      "tau_state",
       "note"
     ],
     "event_types": [
@@ -197,13 +291,21 @@
     "incident_legality",
     "state_coherence",
     "coupling_consistency",
-    "finite_state_clarity"
+    "finite_state_clarity",
+    "chart_coordinate_primacy"
   ],
+  "probe_results": {
+    "single_controller_mixed_state": "Same physical exit pattern can carry opposite chart-coordinate meaning.",
+    "multi_controller_holonomy_probe": "Multiple controller loops can preserve physical traces while changing chart traces."
+  },
   "example_instance": {
     "id": "v0",
     "incident_edges": ["e0", "e1", "e2"],
-    "routing_bias": "polarity_under_load",
+    "routing_bias": "state_sensitive_under_load",
     "load_override_threshold": 1,
+    "anchored_chart": 0,
+    "sigma_state": 1,
+    "tau_state": 1,
     "classes_seen": [],
     "recent_arrivals": [],
     "coupling_count": 0,

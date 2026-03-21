@@ -55,6 +55,8 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("mixed-symmetry", help="probe chart covariance of mixed reopening")
     sub.add_parser("holonomic-loop", help="run local holonomic loop probe")
     sub.add_parser("holonomy-probe", help="run multi-controller holonomy probe")
+    sub.add_parser("framed-return", help="run framed return probe")
+    sub.add_parser("framed-invariant", help="compute framed return invariant from chart traces")
     sub.add_parser("all", help="run gallery, contact, sheet, and dxf")
 
     return parser
@@ -86,6 +88,8 @@ def main() -> int:
         "mixed-symmetry": "xalchemy_lab.app.hello_mixed_reopening_symmetry_probe",
         "holonomic-loop": "xalchemy_lab.app.hello_holonomic_loop_probe",
         "holonomy-probe": "xalchemy_lab.app.hello_multi_controller_holonomy_probe",
+        "framed-return": "xalchemy_lab.app.hello_framed_return_probe",
+        "framed-invariant": "xalchemy_lab.app.hello_framed_return_invariant",
     }
 
     if args.command == "all":
