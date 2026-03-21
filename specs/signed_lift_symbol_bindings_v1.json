@@ -1,0 +1,98 @@
+{
+  "name": "signed_lift_symbol_bindings_v1",
+  "version": "0.5",
+  "status": "provisional_base_graph_binding",
+  "purpose": "Bind symbolic loop letters to provisional base-graph meanings before signed-lift evaluation exists.",
+  "convention": {
+    "object_type": "G15_vertex",
+    "step_type": "oriented_G15_edge",
+    "inverse_notation": "s^-1 means the same edge traversed in reverse orientation"
+  },
+  "objects": {
+    "q0": {
+      "meaning": "chosen base vertex of G15 for symbolic bridge loops",
+      "status": "provisional"
+    },
+    "q1": {
+      "meaning": "intermediate vertex on the first twist path and first square edge target",
+      "status": "provisional"
+    },
+    "q2": {
+      "meaning": "common endpoint of the two-path comparison",
+      "status": "provisional"
+    },
+    "q3": {
+      "meaning": "intermediate vertex on the second twist path",
+      "status": "provisional"
+    },
+    "q4": {
+      "meaning": "third vertex in the provisional square cycle",
+      "status": "provisional"
+    }
+  },
+  "symbols": {
+    "x": {
+      "meaning": "oriented edge from q0 to q1 for global_return",
+      "from": "q0",
+      "to": "q1",
+      "status": "provisional_explicit"
+    },
+
+    "a": {
+      "meaning": "oriented edge from q0 to q1 for twist path 1",
+      "from": "q0",
+      "to": "q1",
+      "status": "provisional_explicit"
+    },
+    "b": {
+      "meaning": "oriented edge from q1 to q2 for twist path 1",
+      "from": "q1",
+      "to": "q2",
+      "status": "provisional_explicit"
+    },
+    "c": {
+      "meaning": "oriented edge from q0 to q3 for twist path 2",
+      "from": "q0",
+      "to": "q3",
+      "status": "provisional_explicit"
+    },
+    "d": {
+      "meaning": "oriented edge from q3 to q2 for twist path 2",
+      "from": "q3",
+      "to": "q2",
+      "status": "provisional_explicit"
+    },
+
+    "s1": {
+      "meaning": "oriented edge from q0 to q1 for the square cycle",
+      "from": "q0",
+      "to": "q1",
+      "status": "provisional_explicit"
+    },
+    "s2": {
+      "meaning": "oriented edge from q1 to q2 for the square cycle",
+      "from": "q1",
+      "to": "q2",
+      "status": "provisional_explicit"
+    },
+    "s3": {
+      "meaning": "oriented edge from q2 to q4 for the square cycle",
+      "from": "q2",
+      "to": "q4",
+      "status": "provisional_explicit"
+    },
+    "s4": {
+      "meaning": "oriented edge from q4 to q0 for the square cycle",
+      "from": "q4",
+      "to": "q0",
+      "status": "provisional_explicit"
+    }
+  },
+  "notes": [
+    "This file does not define the signed lift yet.",
+    "It fixes a reading convention for symbolic bridge loops on the base-graph side.",
+    "global_return is explicit at the base-graph level: q0 --x--> q1, then back by x^-1.",
+    "global_twist is explicit as two paths from q0 to q2: [a,b] and [c,d].",
+    "global_square is explicit as a dedicated 4-step cycle: [s1,s2,s3,s4]."
+  ]
+}

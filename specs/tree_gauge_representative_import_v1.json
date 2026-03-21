@@ -1,0 +1,18 @@
+{
+  "import_source": "replace_this_with_actual_signed_lift_source",
+  "import_notes": [
+    "Fill this file from independently obtained signed-lift/tree-gauge data.",
+    "Then run run_import_independent_tree_gauge.py."
+  ],
+  "edge_cocycle": {
+    "x": 0,
+    "s1": 0,
+    "s2": 0,
+    "s3": 0,
+    "s4": 0,
+    "a": 0,
+    "b": 0,
+    "c": 1,
+    "d": 0
+  }
+}

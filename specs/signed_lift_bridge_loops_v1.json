@@ -1,0 +1,48 @@
+{
+  "name": "signed_lift_bridge_loops_v1",
+  "version": "0.7",
+  "status": "symbolic_bridge_seed_with_bound_alphabet",
+  "purpose": "Symbolic closed-walk representatives for bridge-table global loop slots.",
+  "binding_reference": "specs/signed_lift_symbol_bindings_v1.json",
+  "binding_summary": {
+    "object_type": "G15_vertex",
+    "step_type": "oriented_G15_edge",
+    "inverse_notation": "s^-1 means the same edge traversed in reverse orientation"
+  },
+  "loops": [
+    {
+      "name": "global_return",
+      "representation_type": "symbolic_closed_walk",
+      "start_object": "q0",
+      "path": ["x", "x^-1"],
+      "closed": true,
+      "notes": [
+        "Minimal out-and-back loop.",
+        "Read using the bound G15-edge alphabet."
+      ]
+    },
+    {
+      "name": "global_square",
+      "representation_type": "symbolic_closed_walk",
+      "start_object": "q0",
+      "path": ["s1", "s2", "s3", "s4"],
+      "closed": true,
+      "notes": [
+        "Candidate small untwisted closed cycle.",
+        "Read using the dedicated square-cycle alphabet."
+      ]
+    },
+    {
+      "name": "global_twist",
+      "representation_type": "symbolic_two_path_loop",
+      "start_object": "q0",
+      "path_1": ["a", "b"],
+      "path_2": ["c", "d"],
+      "closed": true,
+      "notes": [
+        "Candidate two-path comparison loop.",
+        "Read using the dedicated twist-path alphabet."
+      ]
+    }
+  ]
+}

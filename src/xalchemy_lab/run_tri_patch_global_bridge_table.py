@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
 
 from xalchemy_lab.tri_patch_core import World, Turtle, step
@@ -32,27 +34,27 @@ LOCAL_WORDS: dict[str, tuple[str, ...]] = {
     "w_two_LR": ("advance_L1_R1", "advance_L2_R1"),
 }
 
-GLOBAL_LOOPS: dict[str, dict[str, Any]] = {
-    "global_square": {
-        "description": "User-supplied global loop",
-        "cocycle": 0,
-    },
-    "global_twist": {
-        "description": "User-supplied global loop",
-        "cocycle": 1,
-    },
-    "global_return": {
-        "description": "User-supplied global loop",
-        "cocycle": 0,
-    },
-}
-
 BRIDGE_PAIRS: list[tuple[str, str]] = [
     ("w_bundled", "global_square"),
     ("w_hold", "global_twist"),
     ("w_LR_1", "global_twist"),
     ("w_LR_2", "global_twist"),
     ("w_LL", "global_return"),
+
+    # diagnostic stress-test rows
+    ("w_single_L1", "global_square"),
+    ("w_single_L2", "global_square"),
+    ("w_single_R1", "global_square"),
+    ("w_hold_then_LR", "global_return"),
+    ("w_LR_then_hold", "global_return"),
+    ("w_LL_then_LR", "global_twist"),
+    ("w_two_LR", "global_return"),
+
+    # break-search rows
+    ("w_hold_then_LR", "global_return"),
+    ("w_LR_then_hold", "global_return"),
+    ("w_two_LR", "global_return"),
+    ("w_LL_then_LR", "global_twist"),
 ]
 
 
@@ -60,6 +62,31 @@ BRIDGE_PAIRS: list[tuple[str, str]] = [
 class LiftState:
     world: World
     lift_bit: int = 0
+
+
+def load_global_loops() -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    spec_path = Path("specs/signed_lift_bridge_loops_v1.json")
+    data = json.loads(spec_path.read_text())
+    loops = {}
+    for loop in data.get("loops", []):
+        loops[loop["name"]] = loop
+    alphabet = data.get("symbol_alphabet", {})
+    return loops, alphabet
+
+
+def load_actual_loop_artifacts() -> dict[str, dict[str, Any]]:
+    artifact_path = Path("specs/signed_lift_actual_loop_artifacts_v1.json")
+    if not artifact_path.exists():
+        return {}
+    data = json.loads(artifact_path.read_text())
+    loops = {}
+    for loop in data.get("loops", []):
+        loops[loop["name"]] = loop
+    return loops
+
+
+GLOBAL_LOOPS, SYMBOL_ALPHABET = load_global_loops()
+ACTUAL_LOOP_ARTIFACTS = load_actual_loop_artifacts()
 
 
 def make_world(
@@ -111,7 +138,7 @@ def sign_vec(world: World) -> tuple[str | None, str | None, str | None]:
 
 
 def node_vec(world: World) -> tuple[str, str, str]:
-    return tuple(world.turtles[name].node for name in ("L1", "L2", "R1"))  # type: ignore[return-value]
+    return tuple(world.turtles[name].node for name in ("L1", "L2", "R1"))
 
 
 def sub3(a: tuple[int, int, int], b: tuple[int, int, int]) -> tuple[int, int, int]:
@@ -209,8 +236,8 @@ def local_holonomy_data(
     base = run_local_word(start_node, sign, stress, mismatch, bundled_word)
     run = run_local_word(start_node, sign, stress, mismatch, word)
 
-    ds = sub3(run["final_stress"], base["final_stress"])      # type: ignore[arg-type]
-    dm = sub3(run["final_mismatch"], base["final_mismatch"])  # type: ignore[arg-type]
+    ds = sub3(run["final_stress"], base["final_stress"])
+    dm = sub3(run["final_mismatch"], base["final_mismatch"])
 
     return {
         "word": word,
@@ -223,8 +250,81 @@ def local_holonomy_data(
     }
 
 
-def global_cocycle_value(loop_label: str, loop_info: dict[str, Any]) -> int | None:
-    return loop_info.get("cocycle")
+def global_cocycle_value(loop_name: str, loop_info: dict[str, Any]) -> tuple[int | None, str]:
+    actual_artifact = ACTUAL_LOOP_ARTIFACTS.get(loop_name)
+    if actual_artifact is not None and actual_artifact.get("actual_cocycle") is not None:
+        return int(actual_artifact["actual_cocycle"]), "actual_signed_lift_artifact"
+
+    actual = loop_info.get("actual_cocycle")
+    if actual is not None:
+        return int(actual), "loop_spec_actual"
+
+    rtype = loop_info.get("representation_type")
+    path = loop_info.get("path")
+    path_1 = loop_info.get("path_1")
+    path_2 = loop_info.get("path_2")
+
+    if rtype == "symbolic_closed_walk" and path == ["x", "x^-1"]:
+        return 0, "provisional_symbolic"
+    if rtype == "symbolic_closed_walk" and path == ["s1", "s2", "s3", "s4"]:
+        return 0, "provisional_symbolic"
+    if rtype == "symbolic_two_path_loop" and path_1 == ["a", "b"] and path_2 == ["c", "d"]:
+        return 1, "provisional_symbolic"
+
+    return None, "missing"
+
+
+def summarize_loop(loop_name: str, loop_info: dict[str, Any]) -> str:
+    artifact = ACTUAL_LOOP_ARTIFACTS.get(loop_name, {})
+    if artifact.get("base_walk_type") == "symbolic_closed_walk" and artifact.get("base_walk") is not None:
+        return f"{artifact['base_walk_type']} path={artifact.get('base_walk', [])}"
+    if artifact.get("base_walk_type") == "symbolic_two_path_loop":
+        return (
+            f"{artifact['base_walk_type']} "
+            f"path_1={artifact.get('path_1', [])} "
+            f"path_2={artifact.get('path_2', [])}"
+        )
+
+    rtype = loop_info.get("representation_type", "unknown")
+    start = loop_info.get("start_object", "?")
+    if rtype == "symbolic_closed_walk":
+        return f"{rtype} start={start} path={loop_info.get('path', [])}"
+    if rtype == "symbolic_two_path_loop":
+        return (
+            f"{rtype} start={start} "
+            f"path_1={loop_info.get('path_1', [])} "
+            f"path_2={loop_info.get('path_2', [])}"
+        )
+    return repr(loop_info)
+
+
+def interpret_loop(loop_name: str, loop_info: dict[str, Any]) -> str:
+    artifact = ACTUAL_LOOP_ARTIFACTS.get(loop_name, {})
+    if artifact.get("base_meaning"):
+        return str(artifact["base_meaning"])
+
+    rtype = loop_info.get("representation_type", "unknown")
+    start = loop_info.get("start_object", "?")
+
+    if rtype == "symbolic_closed_walk":
+        path = loop_info.get("path", [])
+        if path == ["x", "x^-1"]:
+            return "explicit out-and-back walk: q0 -> q1 -> q0"
+        if path == ["s1", "s2", "s3", "s4"]:
+            return "explicit small cycle walk: q0 -> q1 -> q2 -> q4 -> q0"
+        return f"closed walk from {start} with symbolic path {path}"
+
+    if rtype == "symbolic_two_path_loop":
+        path_1 = loop_info.get("path_1", [])
+        path_2 = loop_info.get("path_2", [])
+        if path_1 == ["a", "b"] and path_2 == ["c", "d"]:
+            return "explicit two-path comparison: path_1 is q0 -> q1 -> q2, path_2 is q0 -> q3 -> q2"
+        return (
+            f"two-path comparison loop from {start}: "
+            f"go out by {path_1}, return by comparing against {path_2}"
+        )
+
+    return "uninterpreted symbolic loop"
 
 
 def format_triple(x: tuple[int, int, int]) -> str:
@@ -235,39 +335,56 @@ def main() -> None:
     print("\n====================")
     print("TRI-PATCH GLOBAL BRIDGE TABLE")
     print("====================")
-    print("First explicit local/global comparison table using your named global loop bits.")
+    print("Bridge table prefers actual signed-lift artifact values and falls back to the provisional symbolic evaluator.")
+    print()
 
     for case_label, start_node, sign, stress, mismatch in [
-        ("u1R_clean_locked", "u1R", "+", (8, 8, 8), (4, 4, 4)),
-        ("d1R_clean_locked", "d1R", "-", (8, 8, 8), (4, 4, 4)),
+        ("u1R_clean_locked", "u1R", "+", (0, 0, 0), (0, 0, 0)),
+        ("d1R_clean_locked", "d1R", "-", (0, 0, 0), (0, 0, 0)),
     ]:
-        print(f"\n====================")
-        print(f"LOCAL CASE: {case_label}")
         print("====================")
+        print(f"LOCAL CASE: {case_label}")
+        print("====================\n")
+        print("BRIDGE PAIR TABLE")
 
-        local_cache: dict[str, dict[str, Any]] = {}
-        for local_label, word in LOCAL_WORDS.items():
-            local_cache[local_label] = local_holonomy_data(
-                start_node, sign, stress, mismatch, word
+        for local_word_name, global_loop_name in BRIDGE_PAIRS:
+            hol = local_holonomy_data(
+                start_node=start_node,
+                sign=sign,
+                stress=stress,
+                mismatch=mismatch,
+                word=LOCAL_WORDS[local_word_name],
             )
 
-        print("\nBRIDGE PAIR TABLE")
-        for local_label, global_label in BRIDGE_PAIRS:
-            local_data = local_cache[local_label]
-            global_info = GLOBAL_LOOPS[global_label]
-            global_bit = global_cocycle_value(global_label, global_info)
+            ginfo = GLOBAL_LOOPS[global_loop_name]
+            gcocycle, gsource = global_cocycle_value(global_loop_name, ginfo)
 
-            print(f"  local={local_label:16s} <-> global={global_label}")
-            print(f"    local_delta_s    = {format_triple(local_data['delta_stress'])}")
-            print(f"    local_delta_m    = {format_triple(local_data['delta_mismatch'])}")
-            print(f"    local_dm_parity  = {local_data['mismatch_parity']}")
-            print(f"    local_lift_bit   = {local_data['lift_bit']}")
-            print(f"    global_cocycle   = {global_bit}")
-            print(f"    global_note      = {global_info.get('description', '')}")
+            print(f"  local={local_word_name:18s} <-> global={global_loop_name}")
+            print(f"    local_delta_s    = {format_triple(hol['delta_stress'])}")
+            print(f"    local_delta_m    = {format_triple(hol['delta_mismatch'])}")
+            print(f"    local_dm_parity  = {hol['mismatch_parity']}")
+            print(f"    local_lift_bit   = {hol['lift_bit']}")
+            print(f"    global_repr      = {summarize_loop(global_loop_name, ginfo)}")
+            print(f"    global_meaning   = {interpret_loop(global_loop_name, ginfo)}")
+            print(f"    global_cocycle   = {gcocycle}")
+            print(f"    global_source    = {gsource}")
 
-        print("\nREADING")
-        print("  mismatch_parity is the kernel channel.")
-        print("  lift_bit is the bridge candidate channel.")
+            if gcocycle is None:
+                print("    bridge_status    = VALUE_PENDING")
+            else:
+                print(f"    bridge_status    = {'MATCH' if hol['lift_bit'] == gcocycle else 'MISMATCH'}")
+            print()
+
+        print()
+
+    print("Summary:")
+    print("  mismatch parity remains the kernel channel")
+    print("  lift_bit remains the current local bridge candidate")
+    print("  symbolic global loop bodies are now present")
+    print("  global_return and global_square now have minimal formal interpretations")
+    print("  bridge table now prefers actual signed-lift artifact values")
+    print("  provisional symbolic cocycle evaluation remains the fallback")
+    print()
 
 
 if __name__ == "__main__":

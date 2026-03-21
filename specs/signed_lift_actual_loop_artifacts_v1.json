@@ -1,0 +1,60 @@
+{
+  "name": "signed_lift_actual_loop_artifacts_v1",
+  "version": "0.2",
+  "status": "artifact_stub",
+  "purpose": "Storage for actual signed-lift loop representatives and true cocycle values replacing the provisional symbolic evaluator.",
+  "binding_reference": "specs/signed_lift_symbol_bindings_v1.json",
+  "loops": [
+    {
+      "name": "global_return",
+      "base_walk_type": "symbolic_closed_walk",
+      "base_walk": [
+        "x",
+        "x^-1"
+      ],
+      "base_meaning": "q0 -> q1 -> q0",
+      "lift_representative_type": null,
+      "lift_representative": null,
+      "actual_cocycle": 0,
+      "status": "computed_from_tree_gauge_representative_v1"
+    },
+    {
+      "name": "global_square",
+      "base_walk_type": "symbolic_closed_walk",
+      "base_walk": [
+        "e00",
+        "e05",
+        "e10",
+        "e02^-1"
+      ],
+      "base_meaning": "explicit even 4-cycle: q0 -> q1 -> q6 -> q3 -> q0",
+      "lift_representative_type": null,
+      "lift_representative": null,
+      "actual_cocycle": 0,
+      "status": "repaired_actual_edge_square_representative"
+    },
+    {
+      "name": "global_twist",
+      "base_walk_type": "symbolic_closed_walk",
+      "path_1": [
+        "a",
+        "b"
+      ],
+      "path_2": [
+        "c",
+        "d"
+      ],
+      "base_meaning": "explicit odd 4-cycle: q0 -> q1 -> q5 -> q2 -> q0",
+      "lift_representative_type": null,
+      "lift_representative": null,
+      "actual_cocycle": 1,
+      "status": "actual_odd_four_cycle_representative",
+      "base_walk": [
+        "e00",
+        "e04",
+        "e07",
+        "e01^-1"
+      ]
+    }
+  ]
+}

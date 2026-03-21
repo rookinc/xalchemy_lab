@@ -1,0 +1,48 @@
+{
+  "name": "tree_gauge_representative_v1",
+  "version": "0.2",
+  "status": "derived_from_partial_signed_lift_source",
+  "source_kind": "derived_from_signed_lift_source",
+  "purpose": "Z2 cocycle representative derived from the currently filled portion of the lift data.",
+  "convention": {
+    "domain": "G15 base-edge symbols",
+    "codomain": "Z2",
+    "orientation_rule": "symbol^-1 uses the same cocycle value as symbol"
+  },
+  "edge_cocycle": {
+    "e00": 0,
+    "e01": 1,
+    "e02": 1,
+    "e03": 0,
+    "e04": 0,
+    "e05": 1,
+    "e06": 0,
+    "e07": 0,
+    "e08": 0,
+    "e09": 1,
+    "e10": 0,
+    "e11": 0,
+    "e12": 1,
+    "e13": 0,
+    "e14": 0,
+    "e15": 0,
+    "e16": 1,
+    "e17": 0,
+    "e18": 0,
+    "e19": 1,
+    "e20": 0,
+    "e21": 0,
+    "e22": 1,
+    "e23": 0,
+    "e24": 1,
+    "e25": 1,
+    "e26": 0,
+    "e27": 0,
+    "e28": 0,
+    "e29": 0
+  },
+  "notes": [
+    "Only fully filled lift edges are included.",
+    "Unfilled TBD rows are ignored."
+  ]
+}
