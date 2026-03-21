@@ -1,0 +1,609 @@
+{
+  "name": "trace_to_invariant_descent_table_v1",
+  "local_invariants": {
+    "A": 0,
+    "sigma": 0,
+    "tau": 1
+  },
+  "bridge_signature": {
+    "return": 0,
+    "square": 0,
+    "twist": 1
+  },
+  "rows": [
+    {
+      "vertices": [
+        "q0",
+        "q1",
+        "q6",
+        "q3",
+        "q0"
+      ],
+      "edges": [
+        "e00",
+        "e05",
+        "e10",
+        "e02"
+      ],
+      "trace": [
+        "A",
+        "E1",
+        "E1",
+        "E1"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "anchored even continuation"
+    },
+    {
+      "vertices": [
+        "q0",
+        "q1",
+        "q7",
+        "q4",
+        "q0"
+      ],
+      "edges": [
+        "e00",
+        "e06",
+        "e13",
+        "e03"
+      ],
+      "trace": [
+        "A",
+        "E2",
+        "E2",
+        "E2"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "anchored even continuation"
+    },
+    {
+      "vertices": [
+        "q11",
+        "q5",
+        "q2",
+        "q8",
+        "q11"
+      ],
+      "edges": [
+        "e16",
+        "e07",
+        "e08",
+        "e22"
+      ],
+      "trace": [
+        "D",
+        "E1",
+        "O",
+        "M+"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "distal-defect regime"
+    },
+    {
+      "vertices": [
+        "q0",
+        "q3",
+        "q10",
+        "q4",
+        "q0"
+      ],
+      "edges": [
+        "e02",
+        "e12",
+        "e15",
+        "e03"
+      ],
+      "trace": [
+        "E1",
+        "E1",
+        "E1",
+        "E2"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "even-sheet / merged continuation"
+    },
+    {
+      "vertices": [
+        "q0",
+        "q2",
+        "q8",
+        "q3",
+        "q0"
+      ],
+      "edges": [
+        "e01",
+        "e08",
+        "e11",
+        "e02"
+      ],
+      "trace": [
+        "E1",
+        "E1",
+        "E1",
+        "O"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "odd-branch continuation / mixed even closure"
+    },
+    {
+      "vertices": [
+        "q10",
+        "q3",
+        "q6",
+        "q13",
+        "q10"
+      ],
+      "edges": [
+        "e12",
+        "e10",
+        "e19",
+        "e26"
+      ],
+      "trace": [
+        "E1",
+        "E1",
+        "M+",
+        "M+"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "even-sheet / merged continuation"
+    },
+    {
+      "vertices": [
+        "q14",
+        "q8",
+        "q2",
+        "q9",
+        "q14"
+      ],
+      "edges": [
+        "e23",
+        "e08",
+        "e09",
+        "e25"
+      ],
+      "trace": [
+        "E1",
+        "E2",
+        "E2",
+        "E2"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "even-sheet / merged continuation"
+    },
+    {
+      "vertices": [
+        "q1",
+        "q6",
+        "q13",
+        "q7",
+        "q1"
+      ],
+      "edges": [
+        "e05",
+        "e19",
+        "e21",
+        "e06"
+      ],
+      "trace": [
+        "E1",
+        "E2",
+        "M+",
+        "M+"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "even-sheet / merged continuation"
+    },
+    {
+      "vertices": [
+        "q10",
+        "q4",
+        "q7",
+        "q13",
+        "q10"
+      ],
+      "edges": [
+        "e15",
+        "e13",
+        "e21",
+        "e26"
+      ],
+      "trace": [
+        "E1",
+        "E2",
+        "M+",
+        "M+"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "even-sheet / merged continuation"
+    },
+    {
+      "vertices": [
+        "q1",
+        "q5",
+        "q11",
+        "q6",
+        "q1"
+      ],
+      "edges": [
+        "e04",
+        "e16",
+        "e18",
+        "e05"
+      ],
+      "trace": [
+        "E1",
+        "M+",
+        "M+",
+        "O"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "odd-branch continuation / mixed even closure"
+    },
+    {
+      "vertices": [
+        "q0",
+        "q2",
+        "q9",
+        "q4",
+        "q0"
+      ],
+      "edges": [
+        "e01",
+        "e09",
+        "e14",
+        "e03"
+      ],
+      "trace": [
+        "E2",
+        "E2",
+        "E2",
+        "O"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "odd-branch continuation / mixed even closure"
+    },
+    {
+      "vertices": [
+        "q1",
+        "q5",
+        "q12",
+        "q7",
+        "q1"
+      ],
+      "edges": [
+        "e04",
+        "e17",
+        "e20",
+        "e06"
+      ],
+      "trace": [
+        "E2",
+        "E2",
+        "E2",
+        "O"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "odd-branch continuation / mixed even closure"
+    },
+    {
+      "vertices": [
+        "q12",
+        "q5",
+        "q2",
+        "q9",
+        "q12"
+      ],
+      "edges": [
+        "e17",
+        "e07",
+        "e09",
+        "e24"
+      ],
+      "trace": [
+        "E2",
+        "E2",
+        "E2",
+        "O"
+      ],
+      "parity": 0,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "odd-branch continuation / mixed even closure"
+    },
+    {
+      "vertices": [
+        "q0",
+        "q1",
+        "q5",
+        "q2",
+        "q0"
+      ],
+      "edges": [
+        "e00",
+        "e04",
+        "e07",
+        "e01"
+      ],
+      "trace": [
+        "A",
+        "O",
+        "O",
+        "O"
+      ],
+      "parity": 1,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "anchor-exchange / twist-side generator"
+    },
+    {
+      "vertices": [
+        "q10",
+        "q3",
+        "q8",
+        "q14",
+        "q10"
+      ],
+      "edges": [
+        "e12",
+        "e11",
+        "e23",
+        "e27"
+      ],
+      "trace": [
+        "D",
+        "E1",
+        "E1",
+        "E2"
+      ],
+      "parity": 1,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "distal-defect regime"
+    },
+    {
+      "vertices": [
+        "q11",
+        "q6",
+        "q3",
+        "q8",
+        "q11"
+      ],
+      "edges": [
+        "e18",
+        "e10",
+        "e11",
+        "e22"
+      ],
+      "trace": [
+        "D",
+        "E1",
+        "E1",
+        "M+"
+      ],
+      "parity": 1,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "distal-defect regime"
+    },
+    {
+      "vertices": [
+        "q10",
+        "q4",
+        "q9",
+        "q14",
+        "q10"
+      ],
+      "edges": [
+        "e15",
+        "e14",
+        "e25",
+        "e27"
+      ],
+      "trace": [
+        "D",
+        "E1",
+        "E2",
+        "E2"
+      ],
+      "parity": 1,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "distal-defect regime"
+    },
+    {
+      "vertices": [
+        "q12",
+        "q7",
+        "q4",
+        "q9",
+        "q12"
+      ],
+      "edges": [
+        "e20",
+        "e13",
+        "e14",
+        "e24"
+      ],
+      "trace": [
+        "E2",
+        "E2",
+        "E2",
+        "E2"
+      ],
+      "parity": 1,
+      "invariants": [
+        0,
+        0,
+        1
+      ],
+      "bridge_signature": [
+        0,
+        0,
+        1
+      ],
+      "reading": "pure E2 closure residue"
+    }
+  ]
+}

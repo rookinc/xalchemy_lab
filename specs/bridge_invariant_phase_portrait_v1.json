@@ -1,0 +1,395 @@
+{
+  "name": "bridge_invariant_phase_portrait_v1",
+  "version": "0.1",
+  "quotient_map": "(A,sigma,tau) -> (0,A+sigma,A+tau)",
+  "states": [
+    {
+      "invariants": {
+        "A": 0,
+        "sigma": 0,
+        "tau": 0
+      },
+      "signature": {
+        "return": 0,
+        "square": 0,
+        "twist": 0
+      },
+      "realized": true,
+      "realizations": [
+        {
+          "label": "single_core_e01",
+          "flips": [
+            "e01"
+          ]
+        },
+        {
+          "label": "single_core_e04",
+          "flips": [
+            "e04"
+          ]
+        },
+        {
+          "label": "single_core_e07",
+          "flips": [
+            "e07"
+          ]
+        },
+        {
+          "label": "twist_cluster",
+          "flips": [
+            "e01",
+            "e04",
+            "e07"
+          ]
+        }
+      ]
+    },
+    {
+      "invariants": {
+        "A": 0,
+        "sigma": 0,
+        "tau": 1
+      },
+      "signature": {
+        "return": 0,
+        "square": 0,
+        "twist": 1
+      },
+      "realized": true,
+      "realizations": [
+        {
+          "label": "baseline",
+          "flips": []
+        },
+        {
+          "label": "single_boundary_e03",
+          "flips": [
+            "e03"
+          ]
+        },
+        {
+          "label": "single_boundary_e06",
+          "flips": [
+            "e06"
+          ]
+        },
+        {
+          "label": "single_boundary_e11",
+          "flips": [
+            "e11"
+          ]
+        },
+        {
+          "label": "single_boundary_e12",
+          "flips": [
+            "e12"
+          ]
+        },
+        {
+          "label": "single_boundary_e14",
+          "flips": [
+            "e14"
+          ]
+        },
+        {
+          "label": "single_boundary_e15",
+          "flips": [
+            "e15"
+          ]
+        },
+        {
+          "label": "single_spectator_e13",
+          "flips": [
+            "e13"
+          ]
+        },
+        {
+          "label": "single_spectator_e16",
+          "flips": [
+            "e16"
+          ]
+        },
+        {
+          "label": "single_spectator_e22",
+          "flips": [
+            "e22"
+          ]
+        },
+        {
+          "label": "single_spectator_e25",
+          "flips": [
+            "e25"
+          ]
+        },
+        {
+          "label": "double_core_e01_e04",
+          "flips": [
+            "e01",
+            "e04"
+          ]
+        },
+        {
+          "label": "double_core_e01_e07",
+          "flips": [
+            "e01",
+            "e07"
+          ]
+        },
+        {
+          "label": "double_core_e02_e05",
+          "flips": [
+            "e02",
+            "e05"
+          ]
+        },
+        {
+          "label": "double_core_e02_e10",
+          "flips": [
+            "e02",
+            "e10"
+          ]
+        },
+        {
+          "label": "double_core_e04_e07",
+          "flips": [
+            "e04",
+            "e07"
+          ]
+        },
+        {
+          "label": "double_core_e05_e10",
+          "flips": [
+            "e05",
+            "e10"
+          ]
+        }
+      ]
+    },
+    {
+      "invariants": {
+        "A": 0,
+        "sigma": 1,
+        "tau": 0
+      },
+      "signature": {
+        "return": 0,
+        "square": 1,
+        "twist": 0
+      },
+      "realized": true,
+      "realizations": [
+        {
+          "label": "double_core_e01_e02",
+          "flips": [
+            "e01",
+            "e02"
+          ]
+        },
+        {
+          "label": "double_core_e01_e05",
+          "flips": [
+            "e01",
+            "e05"
+          ]
+        },
+        {
+          "label": "double_core_e01_e10",
+          "flips": [
+            "e01",
+            "e10"
+          ]
+        },
+        {
+          "label": "double_core_e02_e04",
+          "flips": [
+            "e02",
+            "e04"
+          ]
+        },
+        {
+          "label": "double_core_e02_e07",
+          "flips": [
+            "e02",
+            "e07"
+          ]
+        },
+        {
+          "label": "double_core_e04_e05",
+          "flips": [
+            "e04",
+            "e05"
+          ]
+        },
+        {
+          "label": "double_core_e04_e10",
+          "flips": [
+            "e04",
+            "e10"
+          ]
+        },
+        {
+          "label": "double_core_e05_e07",
+          "flips": [
+            "e05",
+            "e07"
+          ]
+        },
+        {
+          "label": "double_core_e07_e10",
+          "flips": [
+            "e07",
+            "e10"
+          ]
+        }
+      ]
+    },
+    {
+      "invariants": {
+        "A": 0,
+        "sigma": 1,
+        "tau": 1
+      },
+      "signature": {
+        "return": 0,
+        "square": 1,
+        "twist": 1
+      },
+      "realized": true,
+      "realizations": [
+        {
+          "label": "single_core_e02",
+          "flips": [
+            "e02"
+          ]
+        },
+        {
+          "label": "single_core_e05",
+          "flips": [
+            "e05"
+          ]
+        },
+        {
+          "label": "single_core_e10",
+          "flips": [
+            "e10"
+          ]
+        },
+        {
+          "label": "square_cluster",
+          "flips": [
+            "e02",
+            "e05",
+            "e10"
+          ]
+        }
+      ]
+    },
+    {
+      "invariants": {
+        "A": 1,
+        "sigma": 0,
+        "tau": 0
+      },
+      "signature": {
+        "return": 0,
+        "square": 1,
+        "twist": 1
+      },
+      "realized": true,
+      "realizations": [
+        {
+          "label": "double_core_e00_e01",
+          "flips": [
+            "e00",
+            "e01"
+          ]
+        },
+        {
+          "label": "double_core_e00_e04",
+          "flips": [
+            "e00",
+            "e04"
+          ]
+        },
+        {
+          "label": "double_core_e00_e07",
+          "flips": [
+            "e00",
+            "e07"
+          ]
+        }
+      ]
+    },
+    {
+      "invariants": {
+        "A": 1,
+        "sigma": 0,
+        "tau": 1
+      },
+      "signature": {
+        "return": 0,
+        "square": 1,
+        "twist": 0
+      },
+      "realized": true,
+      "realizations": [
+        {
+          "label": "single_core_e00",
+          "flips": [
+            "e00"
+          ]
+        }
+      ]
+    },
+    {
+      "invariants": {
+        "A": 1,
+        "sigma": 1,
+        "tau": 0
+      },
+      "signature": {
+        "return": 0,
+        "square": 0,
+        "twist": 1
+      },
+      "realized": false,
+      "realizations": []
+    },
+    {
+      "invariants": {
+        "A": 1,
+        "sigma": 1,
+        "tau": 1
+      },
+      "signature": {
+        "return": 0,
+        "square": 0,
+        "twist": 0
+      },
+      "realized": true,
+      "realizations": [
+        {
+          "label": "double_core_e00_e02",
+          "flips": [
+            "e00",
+            "e02"
+          ]
+        },
+        {
+          "label": "double_core_e00_e05",
+          "flips": [
+            "e00",
+            "e05"
+          ]
+        },
+        {
+          "label": "double_core_e00_e10",
+          "flips": [
+            "e00",
+            "e10"
+          ]
+        }
+      ]
+    }
+  ]
+}
