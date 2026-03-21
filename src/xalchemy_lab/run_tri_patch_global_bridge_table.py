@@ -1,37 +1,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from itertools import product
 from typing import Any
 
-
-# ---------------------------------------------------------------------
-# PURPOSE
-# ---------------------------------------------------------------------
-# This script is a scaffold for the first explicit local/global bridge table.
-#
-# Local side:
-#   - compute local holonomy vector (delta_s, delta_m)
-#   - compute even-mismatch kernel parity
-#   - compute lift_bit from the finalized local binary law
-#
-# Global side:
-#   - placeholder hook for a signed-lift cocycle value on a chosen loop type
-#
-# The user can start by filling in `GLOBAL_LOOPS` and `global_cocycle_value(...)`
-# once the corresponding global loop representatives are chosen.
-# ---------------------------------------------------------------------
-
-
-# -----------------------------
-# Local transport imports
-# -----------------------------
 from xalchemy_lab.tri_patch_core import World, Turtle, step
 
 
-# -----------------------------
-# Local route primitives
-# -----------------------------
 ROUTES: dict[str, tuple[str, ...]] = {
     "hold_all": (),
     "advance_L1": ("L1",),
@@ -43,8 +17,6 @@ ROUTES: dict[str, tuple[str, ...]] = {
     "advance_L1_L2_R1": ("L1", "L2", "R1"),
 }
 
-# Short local words to inspect.
-# Expand freely.
 LOCAL_WORDS: dict[str, tuple[str, ...]] = {
     "w_bundled": ("advance_L1_L2_R1",),
     "w_hold": ("hold_all",),
@@ -60,34 +32,27 @@ LOCAL_WORDS: dict[str, tuple[str, ...]] = {
     "w_two_LR": ("advance_L1_R1", "advance_L2_R1"),
 }
 
-
-# -----------------------------
-# Global loop placeholders
-# -----------------------------
-# Replace / expand with actual named global loop representatives
-# once you settle the first bridge comparison family.
 GLOBAL_LOOPS: dict[str, dict[str, Any]] = {
-    "g_placeholder_even": {
-        "description": "Replace with an explicit signed-lift loop known or expected to have cocycle 0."
+    "global_square": {
+        "description": "User-supplied global loop",
+        "cocycle": 0,
     },
-    "g_placeholder_odd": {
-        "description": "Replace with an explicit signed-lift loop known or expected to have cocycle 1."
+    "global_twist": {
+        "description": "User-supplied global loop",
+        "cocycle": 1,
+    },
+    "global_return": {
+        "description": "User-supplied global loop",
+        "cocycle": 0,
     },
 }
 
-
-# -----------------------------
-# Pairing plan
-# -----------------------------
-# This is the first local/global comparison table.
-# Map each local word label to a candidate global loop label.
-# Adjust as you refine the bridge dictionary.
 BRIDGE_PAIRS: list[tuple[str, str]] = [
-    ("w_bundled", "g_placeholder_even"),
-    ("w_hold", "g_placeholder_odd"),
-    ("w_LR_1", "g_placeholder_odd"),
-    ("w_LR_2", "g_placeholder_odd"),
-    ("w_LL", "g_placeholder_even"),
+    ("w_bundled", "global_square"),
+    ("w_hold", "global_twist"),
+    ("w_LR_1", "global_twist"),
+    ("w_LR_2", "global_twist"),
+    ("w_LL", "global_return"),
 ]
 
 
@@ -166,17 +131,14 @@ def do_step(world: World, moves: dict[str, str]) -> tuple[str | None, str | None
     return c.node, c.kind, c.face_event
 
 
-def maybe_toggle_lift_bit(
-    state: LiftState,
-    middle_event: tuple[str | None, str | None, str | None],
-    route_name: str,
-) -> None:
-    # Final local binary law:
-    #   lambda = 1_stall XOR 1_(2-advancer LR route)
+def maybe_toggle_lift_bit(state: LiftState, route_name: str) -> None:
     advancers = ROUTES[route_name]
     is_stall = len(advancers) == 0
-    is_two_advancer_lr = len(advancers) == 2 and "R1" in advancers and len(set(advancers) & {"L1", "L2"}) == 1
-
+    is_two_advancer_lr = (
+        len(advancers) == 2
+        and "R1" in advancers
+        and len(set(advancers) & {"L1", "L2"}) == 1
+    )
     if is_stall or is_two_advancer_lr:
         state.lift_bit ^= 1
 
@@ -186,7 +148,7 @@ def run_route_once(
     start_node: str,
     advancers: tuple[str, ...],
     route_name: str,
-) -> tuple[str | None, str | None, str | None]:
+) -> None:
     world = state.world
 
     if start_node == "u1R":
@@ -204,14 +166,12 @@ def run_route_once(
     middle_moves = {}
     for name in ("L1", "L2", "R1"):
         middle_moves[name] = opposite_hub if name in advancers else "mR"
-    middle_event = do_step(world, middle_moves)
+    do_step(world, middle_moves)
 
-    maybe_toggle_lift_bit(state, middle_event, route_name)
+    maybe_toggle_lift_bit(state, route_name)
 
     do_step(world, {"L1": "mR", "L2": "mR", "R1": "mR"})
     do_step(world, {"L1": first_hub, "L2": first_hub, "R1": first_hub})
-
-    return middle_event
 
 
 def run_local_word(
@@ -225,19 +185,15 @@ def run_local_word(
         world=make_world(start_node, sign, stress, mismatch),
         lift_bit=0,
     )
-    middle_events: list[tuple[str | None, str | None, str | None]] = []
 
     for route_name in word:
-        middle_events.append(
-            run_route_once(state, start_node, ROUTES[route_name], route_name)
-        )
+        run_route_once(state, start_node, ROUTES[route_name], route_name)
 
     return {
         "final_nodes": node_vec(state.world),
         "final_signs": sign_vec(state.world),
         "final_stress": stress_vec(state.world),
         "final_mismatch": mismatch_vec(state.world),
-        "middle_events": middle_events,
         "lift_bit": state.lift_bit,
     }
 
@@ -262,27 +218,13 @@ def local_holonomy_data(
         "delta_mismatch": dm,
         "mismatch_parity": total_mismatch_parity(dm),
         "lift_bit": run["lift_bit"],
-        "middle_events": run["middle_events"],
         "final_nodes": run["final_nodes"],
         "final_signs": run["final_signs"],
     }
 
 
 def global_cocycle_value(loop_label: str, loop_info: dict[str, Any]) -> int | None:
-    """
-    Placeholder hook for the signed-lift cocycle value.
-
-    Return:
-      0 or 1 if known
-      None if not yet assigned
-
-    Replace this with actual bridge-side data when you choose explicit global loops.
-    """
-    if "even" in loop_label:
-        return 0
-    if "odd" in loop_label:
-        return 1
-    return None
+    return loop_info.get("cocycle")
 
 
 def format_triple(x: tuple[int, int, int]) -> str:
@@ -293,8 +235,7 @@ def main() -> None:
     print("\n====================")
     print("TRI-PATCH GLOBAL BRIDGE TABLE")
     print("====================")
-    print("First explicit local/global comparison table.")
-    print("Local side is computed; global cocycle values are placeholders until explicit signed-lift loops are chosen.")
+    print("First explicit local/global comparison table using your named global loop bits.")
 
     for case_label, start_node, sign, stress, mismatch in [
         ("u1R_clean_locked", "u1R", "+", (8, 8, 8), (4, 4, 4)),
@@ -306,17 +247,9 @@ def main() -> None:
 
         local_cache: dict[str, dict[str, Any]] = {}
         for local_label, word in LOCAL_WORDS.items():
-            data = local_holonomy_data(start_node, sign, stress, mismatch, word)
-            local_cache[local_label] = data
-
-        print("\nLOCAL WORD TABLE")
-        for local_label, data in local_cache.items():
-            print(f"  {local_label:16s} word={data['word']}")
-            print(f"    delta_s         = {format_triple(data['delta_stress'])}")
-            print(f"    delta_m         = {format_triple(data['delta_mismatch'])}")
-            print(f"    mismatch_parity = {data['mismatch_parity']}")
-            print(f"    lift_bit        = {data['lift_bit']}")
-            print(f"    middle_events   = {data['middle_events']}")
+            local_cache[local_label] = local_holonomy_data(
+                start_node, sign, stress, mismatch, word
+            )
 
         print("\nBRIDGE PAIR TABLE")
         for local_label, global_label in BRIDGE_PAIRS:
@@ -332,14 +265,9 @@ def main() -> None:
             print(f"    global_cocycle   = {global_bit}")
             print(f"    global_note      = {global_info.get('description', '')}")
 
-        print("\nWORKING QUESTIONS")
-        print("  1. Does global cocycle align better with local mismatch_parity, local lift_bit, or the pair (kernel, lift_bit)?")
-        print("  2. Which local words are the most plausible shadows of the first explicit global odd loops?")
-        print("  3. Should the bridge compare primitive words, longer words, or route differences?")
-
-    print("\nNEXT ACTION")
-    print("  Replace GLOBAL_LOOPS and global_cocycle_value(...) with explicit signed-lift loop representatives and their known cocycle values.")
-    print("  Then rerun this script to get the first real bridge table.")
+        print("\nREADING")
+        print("  mismatch_parity is the kernel channel.")
+        print("  lift_bit is the bridge candidate channel.")
 
 
 if __name__ == "__main__":
