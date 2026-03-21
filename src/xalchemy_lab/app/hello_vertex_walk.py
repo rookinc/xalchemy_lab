@@ -39,6 +39,7 @@ def print_controllers(controller_summary: dict[str, dict]) -> None:
     for vertex_id, data in sorted(controller_summary.items()):
         print(
             f"  {vertex_id}: bias={data['routing_bias']} "
+            f"A={data['anchored_chart']} sigma={data['sigma_state']} tau={data['tau_state']} "
             f"threshold={data['threshold']} state={data['switch_state']} "
             f"cooldown={data['cooldown_left']} routes={data['route_counts']}"
         )

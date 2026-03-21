@@ -37,6 +37,9 @@ class ControllerEvent:
     incoming_edge: str | None = None
     outgoing_edge: str | None = None
     switch_state: SwitchState | None = None
+    anchored_chart: int | None = None
+    sigma_state: int | None = None
+    tau_state: int | None = None
     note: str = ""
 
 
@@ -47,6 +50,13 @@ class VertexController:
     routing_bias: str = "handedness_first"
     load_override_threshold: int = 1
     yield_cooldown_ticks: int = 0
+
+    # structural controller state
+    anchored_chart: int = 0
+    sigma_state: int = 0
+    tau_state: int = 0
+
+    # transient runtime state
     classes_seen: set[int] = field(default_factory=set)
     recent_arrivals: list[dict] = field(default_factory=list)
     coupling_count: int = 0
@@ -76,6 +86,9 @@ class VertexController:
                 incoming_edge=incoming_edge,
                 outgoing_edge=outgoing_edge,
                 switch_state=self.switch_state,
+                anchored_chart=self.anchored_chart,
+                sigma_state=self.sigma_state,
+                tau_state=self.tau_state,
                 note=note,
             )
         )
@@ -97,7 +110,10 @@ class VertexController:
             "arrive",
             trurtle_id=arrival.trurtle_id,
             incoming_edge=arrival.incoming_edge,
-            note=f"class={arrival.trurtle_class}; hand={arrival.handedness}",
+            note=(
+                f"class={arrival.trurtle_class}; hand={arrival.handedness}; "
+                f"A={self.anchored_chart}; sigma={self.sigma_state}; tau={self.tau_state}"
+            ),
         )
 
     def legal_outgoing_edges(self, incoming_edge: str) -> list[str]:
@@ -111,12 +127,41 @@ class VertexController:
         ordered = sorted(candidates)
         return min(ordered, key=lambda e: (self.route_counts.get(e, 0), e))
 
+    def _state_sensitive_choice(self, candidates: list[str], handedness: Handedness) -> str:
+        ordered = sorted(candidates)
+        if len(ordered) == 1:
+            return ordered[0]
+        if len(ordered) != 2:
+            # fallback for larger degree until a fuller local ordering law is defined
+            return ordered[0] if handedness == "left" else ordered[-1]
+
+        left_edge = ordered[0]
+        right_edge = ordered[-1]
+
+        table = {
+            (0, 0, 0): {"left": left_edge,  "right": right_edge},
+            (0, 0, 1): {"left": right_edge, "right": right_edge},
+            (0, 1, 0): {"left": left_edge,  "right": left_edge},
+            (0, 1, 1): {"left": right_edge, "right": left_edge},
+            (1, 0, 0): {"left": right_edge, "right": left_edge},
+            (1, 0, 1): {"left": left_edge,  "right": left_edge},
+            (1, 1, 0): {"left": right_edge, "right": right_edge},
+            (1, 1, 1): {"left": left_edge,  "right": right_edge},
+        }
+
+        state = (self.anchored_chart, self.sigma_state, self.tau_state)
+        return table[state][handedness]
+
     def _polarity_under_load_choice(
         self,
         candidates: list[str],
         handedness: Handedness,
     ) -> tuple[str, bool]:
-        preferred = self._handedness_choice(candidates, handedness)
+        if self.routing_bias == "state_sensitive_under_load":
+            preferred = self._state_sensitive_choice(candidates, handedness)
+        else:
+            preferred = self._handedness_choice(candidates, handedness)
+
         alternates = [e for e in candidates if e != preferred]
         if not alternates:
             return preferred, False
@@ -140,7 +185,10 @@ class VertexController:
         if self.routing_bias == "least_used":
             return self._least_used_choice(candidates), False
 
-        if self.routing_bias in {"handedness_then_least_used", "polarity_under_load"}:
+        if self.routing_bias == "state_sensitive":
+            return self._state_sensitive_choice(candidates, arrival.handedness), False
+
+        if self.routing_bias in {"handedness_then_least_used", "polarity_under_load", "state_sensitive_under_load"}:
             return self._polarity_under_load_choice(candidates, arrival.handedness)
 
         return sorted(candidates)[0], False
@@ -219,6 +267,7 @@ class VertexController:
             switch_state_update=self.switch_state,
             notes=(
                 f"routed from {arrival.incoming_edge} to {outgoing}; "
+                f"A={self.anchored_chart}; sigma={self.sigma_state}; tau={self.tau_state}; "
                 f"threshold={self.load_override_threshold}; "
                 f"override={str(overridden).lower()}"
             ),
@@ -273,7 +322,7 @@ class VertexController:
                     trurtle_id=arrival.trurtle_id,
                     incoming_edge=arrival.incoming_edge,
                     outgoing_edge=outgoing,
-                    note=f"simultaneous; override={str(overridden).lower()}",
+                    note=f"override={str(overridden).lower()}",
                 )
                 decision = RoutingDecision(
                     outgoing_edge=outgoing,
@@ -281,10 +330,11 @@ class VertexController:
                     handedness_update=flipped,
                     switch_state_update=self.switch_state,
                     notes=(
-                        f"simultaneous arrival; flipped to {flipped}; "
-                        f"threshold={self.load_override_threshold}; "
+                        f"simultaneous route from {arrival.incoming_edge} to {outgoing}; "
+                        f"A={self.anchored_chart}; sigma={self.sigma_state}; tau={self.tau_state}; "
                         f"override={str(overridden).lower()}"
                     ),
                 )
             results.append((arrival, decision))
+
         return results

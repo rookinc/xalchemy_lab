@@ -1,0 +1,30 @@
+{
+  "name": "state_sensitive_routing_table_v0_1",
+  "version": "0.1",
+  "purpose": "Explicit degree-3 local routing table for structural controller state (A,sigma,tau).",
+  "domain": {
+    "controller_degree": 3,
+    "incoming_edge": "e_in",
+    "candidate_exits": ["e_left", "e_right"]
+  },
+  "canonical_sentence": "Structural state selects the local preference law; burden may override it transiently.",
+  "state_register": {
+    "A": "anchored chart selector",
+    "sigma": "E1-sensitive bias",
+    "tau": "odd-branch-sensitive bias"
+  },
+  "table": {
+    "000": { "left": "e_left",  "right": "e_right" },
+    "001": { "left": "e_right", "right": "e_right" },
+    "010": { "left": "e_left",  "right": "e_left"  },
+    "011": { "left": "e_right", "right": "e_left"  },
+    "100": { "left": "e_right", "right": "e_left"  },
+    "101": { "left": "e_left",  "right": "e_left"  },
+    "110": { "left": "e_right", "right": "e_right" },
+    "111": { "left": "e_left",  "right": "e_right" }
+  },
+  "runtime_note": {
+    "state_sensitive": "Use table directly as preferred exit law.",
+    "state_sensitive_under_load": "Use table as preferred exit law, then allow burden-threshold override to divert to the alternate."
+  }
+}

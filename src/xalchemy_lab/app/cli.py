@@ -49,6 +49,8 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("sheet", help="export unfolded state sheet SVG/PNG renders")
     sub.add_parser("dxf", help="export unfolded state sheet DXF renders")
     sub.add_parser("stress", help="run stressed vertex controller demo")
+    sub.add_parser("stateful", help="run stateful vertex controller demo")
+    sub.add_parser("state-table", help="print current state-sensitive routing table")
     sub.add_parser("all", help="run gallery, contact, sheet, and dxf")
 
     return parser
@@ -74,6 +76,8 @@ def main() -> int:
         "sheet": "xalchemy_lab.app.export_g60_state_sheet_svg",
         "dxf": "xalchemy_lab.app.export_g60_state_sheet_dxf",
         "stress": "xalchemy_lab.app.hello_vertex_controller_stress",
+        "stateful": "xalchemy_lab.app.hello_vertex_controller_stateful",
+        "state-table": "xalchemy_lab.app.hello_state_sensitive_table",
     }
 
     if args.command == "all":

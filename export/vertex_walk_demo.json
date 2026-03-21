@@ -137,9 +137,12 @@
   },
   "controllers": {
     "v0": {
-      "routing_bias": "polarity_under_load",
+      "routing_bias": "state_sensitive_under_load",
       "threshold": 1,
       "yield_cooldown": 2,
+      "anchored_chart": 0,
+      "sigma_state": 0,
+      "tau_state": 1,
       "classes_seen": [
         1,
         3
@@ -160,7 +163,10 @@
           "incoming_edge": "e02",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=1; hand=left"
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
+          "note": "class=1; hand=left; A=0; sigma=0; tau=1"
         },
         {
           "seq": 2,
@@ -170,6 +176,9 @@
           "incoming_edge": "e02",
           "outgoing_edge": "e01",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "override=false"
         },
         {
@@ -180,6 +189,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -190,7 +202,10 @@
           "incoming_edge": "e02",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=3; hand=left"
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
+          "note": "class=3; hand=left; A=0; sigma=0; tau=1"
         },
         {
           "seq": 5,
@@ -200,6 +215,9 @@
           "incoming_edge": "e02",
           "outgoing_edge": "e01",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "override=false"
         },
         {
@@ -210,6 +228,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -220,6 +241,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -230,6 +254,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -240,7 +267,10 @@
           "incoming_edge": "e02",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=3; hand=left"
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
+          "note": "class=3; hand=left; A=0; sigma=0; tau=1"
         },
         {
           "seq": 10,
@@ -250,6 +280,9 @@
           "incoming_edge": "e02",
           "outgoing_edge": "e01",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "override=false"
         },
         {
@@ -260,6 +293,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -270,7 +306,10 @@
           "incoming_edge": "e01",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=1; hand=left"
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
+          "note": "class=1; hand=left; A=0; sigma=0; tau=1"
         },
         {
           "seq": 13,
@@ -280,6 +319,9 @@
           "incoming_edge": "e01",
           "outgoing_edge": "e02",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "override=false"
         },
         {
@@ -290,6 +332,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -300,6 +345,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -310,7 +358,10 @@
           "incoming_edge": "e02",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=3; hand=left"
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
+          "note": "class=3; hand=left; A=0; sigma=0; tau=1"
         },
         {
           "seq": 17,
@@ -320,6 +371,9 @@
           "incoming_edge": "e02",
           "outgoing_edge": "e01",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "override=false"
         },
         {
@@ -330,6 +384,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 0,
+          "tau_state": 1,
           "note": "no arrival"
         }
       ]
@@ -338,6 +395,9 @@
       "routing_bias": "handedness_first",
       "threshold": 1,
       "yield_cooldown": 2,
+      "anchored_chart": 0,
+      "sigma_state": 1,
+      "tau_state": 0,
       "classes_seen": [
         1,
         2,
@@ -360,7 +420,10 @@
           "incoming_edge": "e12",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=2; hand=right"
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
+          "note": "class=2; hand=right; A=0; sigma=1; tau=0"
         },
         {
           "seq": 2,
@@ -370,6 +433,9 @@
           "incoming_edge": "e12",
           "outgoing_edge": "e13",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -380,6 +446,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -390,7 +459,10 @@
           "incoming_edge": "e01",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=1; hand=left"
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
+          "note": "class=1; hand=left; A=0; sigma=1; tau=0"
         },
         {
           "seq": 5,
@@ -400,6 +472,9 @@
           "incoming_edge": "e01",
           "outgoing_edge": "e12",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -410,6 +485,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -420,7 +498,10 @@
           "incoming_edge": "e01",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=3; hand=left"
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
+          "note": "class=3; hand=left; A=0; sigma=1; tau=0"
         },
         {
           "seq": 8,
@@ -430,6 +511,9 @@
           "incoming_edge": "e01",
           "outgoing_edge": "e12",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -440,6 +524,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -450,7 +537,10 @@
           "incoming_edge": "e12",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=2; hand=right"
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
+          "note": "class=2; hand=right; A=0; sigma=1; tau=0"
         },
         {
           "seq": 11,
@@ -460,6 +550,9 @@
           "incoming_edge": "e12",
           "outgoing_edge": "e13",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -470,6 +563,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -480,7 +576,10 @@
           "incoming_edge": "e13",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=1; hand=left"
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
+          "note": "class=1; hand=left; A=0; sigma=1; tau=0"
         },
         {
           "seq": 14,
@@ -490,6 +589,9 @@
           "incoming_edge": "e13",
           "outgoing_edge": "e01",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -500,6 +602,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -510,7 +615,10 @@
           "incoming_edge": "e01",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=3; hand=left"
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
+          "note": "class=3; hand=left; A=0; sigma=1; tau=0"
         },
         {
           "seq": 17,
@@ -520,6 +628,9 @@
           "incoming_edge": "e01",
           "outgoing_edge": "e12",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -530,6 +641,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -540,7 +654,10 @@
           "incoming_edge": "e12",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=2; hand=right"
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
+          "note": "class=2; hand=right; A=0; sigma=1; tau=0"
         },
         {
           "seq": 20,
@@ -550,6 +667,9 @@
           "incoming_edge": "e12",
           "outgoing_edge": "e13",
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -560,6 +680,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -570,6 +693,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 0,
+          "sigma_state": 1,
+          "tau_state": 0,
           "note": "no arrival"
         }
       ]
@@ -578,6 +704,9 @@
       "routing_bias": "least_used",
       "threshold": 1,
       "yield_cooldown": 2,
+      "anchored_chart": 1,
+      "sigma_state": 0,
+      "tau_state": 0,
       "classes_seen": [
         1,
         2,
@@ -600,7 +729,10 @@
           "incoming_edge": "e23",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=3; hand=left"
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
+          "note": "class=3; hand=left; A=1; sigma=0; tau=0"
         },
         {
           "seq": 2,
@@ -610,6 +742,9 @@
           "incoming_edge": "e23",
           "outgoing_edge": "e02",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -620,6 +755,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -630,6 +768,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -640,7 +781,10 @@
           "incoming_edge": "e12",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=1; hand=left"
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
+          "note": "class=1; hand=left; A=1; sigma=0; tau=0"
         },
         {
           "seq": 6,
@@ -650,6 +794,9 @@
           "incoming_edge": "e12",
           "outgoing_edge": "e23",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -660,7 +807,10 @@
           "incoming_edge": "e23",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=2; hand=right"
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
+          "note": "class=2; hand=right; A=1; sigma=0; tau=0"
         },
         {
           "seq": 8,
@@ -670,6 +820,9 @@
           "incoming_edge": "e23",
           "outgoing_edge": "e12",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -680,6 +833,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -690,7 +846,10 @@
           "incoming_edge": "e12",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=3; hand=left"
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
+          "note": "class=3; hand=left; A=1; sigma=0; tau=0"
         },
         {
           "seq": 11,
@@ -700,6 +859,9 @@
           "incoming_edge": "e12",
           "outgoing_edge": "e02",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -710,6 +872,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -720,6 +885,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -730,7 +898,10 @@
           "incoming_edge": "e23",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=2; hand=right"
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
+          "note": "class=2; hand=right; A=1; sigma=0; tau=0"
         },
         {
           "seq": 15,
@@ -740,6 +911,9 @@
           "incoming_edge": "e23",
           "outgoing_edge": "e12",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -750,6 +924,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -760,7 +937,10 @@
           "incoming_edge": "e02",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=1; hand=left"
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
+          "note": "class=1; hand=left; A=1; sigma=0; tau=0"
         },
         {
           "seq": 18,
@@ -770,6 +950,9 @@
           "incoming_edge": "e02",
           "outgoing_edge": "e23",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -780,7 +963,10 @@
           "incoming_edge": "e12",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=3; hand=left"
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
+          "note": "class=3; hand=left; A=1; sigma=0; tau=0"
         },
         {
           "seq": 20,
@@ -790,6 +976,9 @@
           "incoming_edge": "e12",
           "outgoing_edge": "e02",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "override=false"
         },
         {
@@ -800,6 +989,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "no arrival"
         },
         {
@@ -810,14 +1002,20 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 0,
+          "tau_state": 0,
           "note": "no arrival"
         }
       ]
     },
     "v3": {
-      "routing_bias": "polarity_under_load",
+      "routing_bias": "state_sensitive_under_load",
       "threshold": 2,
       "yield_cooldown": 2,
+      "anchored_chart": 1,
+      "sigma_state": 1,
+      "tau_state": 1,
       "classes_seen": [
         1,
         2
@@ -838,6 +1036,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -848,7 +1049,10 @@
           "incoming_edge": "e13",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=2; hand=right"
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
+          "note": "class=2; hand=right; A=1; sigma=1; tau=1"
         },
         {
           "seq": 3,
@@ -858,6 +1062,9 @@
           "incoming_edge": "e13",
           "outgoing_edge": "e23",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "override=false"
         },
         {
@@ -868,6 +1075,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -878,6 +1088,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -888,7 +1101,10 @@
           "incoming_edge": "e23",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=1; hand=left"
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
+          "note": "class=1; hand=left; A=1; sigma=1; tau=1"
         },
         {
           "seq": 7,
@@ -898,6 +1114,9 @@
           "incoming_edge": "e23",
           "outgoing_edge": "e13",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "override=false"
         },
         {
@@ -908,6 +1127,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -918,7 +1140,10 @@
           "incoming_edge": "e13",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=2; hand=right"
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
+          "note": "class=2; hand=right; A=1; sigma=1; tau=1"
         },
         {
           "seq": 10,
@@ -928,6 +1153,9 @@
           "incoming_edge": "e13",
           "outgoing_edge": "e23",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "override=false"
         },
         {
@@ -938,6 +1166,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -948,6 +1179,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -958,6 +1192,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "no arrival"
         },
         {
@@ -968,7 +1205,10 @@
           "incoming_edge": "e23",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=1; hand=left"
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
+          "note": "class=1; hand=left; A=1; sigma=1; tau=1"
         },
         {
           "seq": 15,
@@ -978,6 +1218,9 @@
           "incoming_edge": "e23",
           "outgoing_edge": "e13",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "override=false"
         },
         {
@@ -988,7 +1231,10 @@
           "incoming_edge": "e13",
           "outgoing_edge": null,
           "switch_state": "neutral",
-          "note": "class=2; hand=right"
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
+          "note": "class=2; hand=right; A=1; sigma=1; tau=1"
         },
         {
           "seq": 17,
@@ -998,6 +1244,9 @@
           "incoming_edge": "e13",
           "outgoing_edge": "e23",
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "override=false"
         },
         {
@@ -1008,6 +1257,9 @@
           "incoming_edge": null,
           "outgoing_edge": null,
           "switch_state": "neutral",
+          "anchored_chart": 1,
+          "sigma_state": 1,
+          "tau_state": 1,
           "note": "no arrival"
         }
       ]
@@ -1021,7 +1273,7 @@
       "vertex_id": "v0",
       "incoming_edge": "e02",
       "outgoing_edge": "e01",
-      "note": "routed from e02 to e01; threshold=1; override=false"
+      "note": "routed from e02 to e01; A=0; sigma=0; tau=1; threshold=1; override=false"
     },
     {
       "tick": 1,
@@ -1048,7 +1300,7 @@
       "vertex_id": "v1",
       "incoming_edge": "e12",
       "outgoing_edge": "e13",
-      "note": "routed from e12 to e13; threshold=1; override=false"
+      "note": "routed from e12 to e13; A=0; sigma=1; tau=0; threshold=1; override=false"
     },
     {
       "tick": 1,
@@ -1075,7 +1327,7 @@
       "vertex_id": "v2",
       "incoming_edge": "e23",
       "outgoing_edge": "e02",
-      "note": "routed from e23 to e02; threshold=1; override=false"
+      "note": "routed from e23 to e02; A=1; sigma=0; tau=0; threshold=1; override=false"
     },
     {
       "tick": 1,
@@ -1102,7 +1354,7 @@
       "vertex_id": "v1",
       "incoming_edge": "e01",
       "outgoing_edge": "e12",
-      "note": "routed from e01 to e12; threshold=1; override=false"
+      "note": "routed from e01 to e12; A=0; sigma=1; tau=0; threshold=1; override=false"
     },
     {
       "tick": 2,
@@ -1129,7 +1381,7 @@
       "vertex_id": "v3",
       "incoming_edge": "e13",
       "outgoing_edge": "e23",
-      "note": "routed from e13 to e23; threshold=2; override=false"
+      "note": "routed from e13 to e23; A=1; sigma=1; tau=1; threshold=2; override=false"
     },
     {
       "tick": 2,
@@ -1156,7 +1408,7 @@
       "vertex_id": "v0",
       "incoming_edge": "e02",
       "outgoing_edge": "e01",
-      "note": "routed from e02 to e01; threshold=1; override=false"
+      "note": "routed from e02 to e01; A=0; sigma=0; tau=1; threshold=1; override=false"
     },
     {
       "tick": 2,
@@ -1183,7 +1435,7 @@
       "vertex_id": "v2",
       "incoming_edge": "e12",
       "outgoing_edge": "e23",
-      "note": "routed from e12 to e23; threshold=1; override=false"
+      "note": "routed from e12 to e23; A=1; sigma=0; tau=0; threshold=1; override=false"
     },
     {
       "tick": 3,
@@ -1210,7 +1462,7 @@
       "vertex_id": "v2",
       "incoming_edge": "e23",
       "outgoing_edge": "e12",
-      "note": "routed from e23 to e12; threshold=1; override=false"
+      "note": "routed from e23 to e12; A=1; sigma=0; tau=0; threshold=1; override=false"
     },
     {
       "tick": 3,
@@ -1237,7 +1489,7 @@
       "vertex_id": "v1",
       "incoming_edge": "e01",
       "outgoing_edge": "e12",
-      "note": "routed from e01 to e12; threshold=1; override=false"
+      "note": "routed from e01 to e12; A=0; sigma=1; tau=0; threshold=1; override=false"
     },
     {
       "tick": 3,
@@ -1264,7 +1516,7 @@
       "vertex_id": "v3",
       "incoming_edge": "e23",
       "outgoing_edge": "e13",
-      "note": "routed from e23 to e13; threshold=2; override=false"
+      "note": "routed from e23 to e13; A=1; sigma=1; tau=1; threshold=2; override=false"
     },
     {
       "tick": 4,
@@ -1291,7 +1543,7 @@
       "vertex_id": "v1",
       "incoming_edge": "e12",
       "outgoing_edge": "e13",
-      "note": "routed from e12 to e13; threshold=1; override=false"
+      "note": "routed from e12 to e13; A=0; sigma=1; tau=0; threshold=1; override=false"
     },
     {
       "tick": 4,
@@ -1318,7 +1570,7 @@
       "vertex_id": "v2",
       "incoming_edge": "e12",
       "outgoing_edge": "e02",
-      "note": "routed from e12 to e02; threshold=1; override=false"
+      "note": "routed from e12 to e02; A=1; sigma=0; tau=0; threshold=1; override=false"
     },
     {
       "tick": 4,
@@ -1345,7 +1597,7 @@
       "vertex_id": "v1",
       "incoming_edge": "e13",
       "outgoing_edge": "e01",
-      "note": "routed from e13 to e01; threshold=1; override=false"
+      "note": "routed from e13 to e01; A=0; sigma=1; tau=0; threshold=1; override=false"
     },
     {
       "tick": 5,
@@ -1372,7 +1624,7 @@
       "vertex_id": "v3",
       "incoming_edge": "e13",
       "outgoing_edge": "e23",
-      "note": "routed from e13 to e23; threshold=2; override=false"
+      "note": "routed from e13 to e23; A=1; sigma=1; tau=1; threshold=2; override=false"
     },
     {
       "tick": 5,
@@ -1399,7 +1651,7 @@
       "vertex_id": "v0",
       "incoming_edge": "e02",
       "outgoing_edge": "e01",
-      "note": "routed from e02 to e01; threshold=1; override=false"
+      "note": "routed from e02 to e01; A=0; sigma=0; tau=1; threshold=1; override=false"
     },
     {
       "tick": 5,
@@ -1426,7 +1678,7 @@
       "vertex_id": "v0",
       "incoming_edge": "e01",
       "outgoing_edge": "e02",
-      "note": "routed from e01 to e02; threshold=1; override=false"
+      "note": "routed from e01 to e02; A=0; sigma=0; tau=1; threshold=1; override=false"
     },
     {
       "tick": 6,
@@ -1453,7 +1705,7 @@
       "vertex_id": "v2",
       "incoming_edge": "e23",
       "outgoing_edge": "e12",
-      "note": "routed from e23 to e12; threshold=1; override=false"
+      "note": "routed from e23 to e12; A=1; sigma=0; tau=0; threshold=1; override=false"
     },
     {
       "tick": 6,
@@ -1480,7 +1732,7 @@
       "vertex_id": "v1",
       "incoming_edge": "e01",
       "outgoing_edge": "e12",
-      "note": "routed from e01 to e12; threshold=1; override=false"
+      "note": "routed from e01 to e12; A=0; sigma=1; tau=0; threshold=1; override=false"
     },
     {
       "tick": 6,
@@ -1507,7 +1759,7 @@
       "vertex_id": "v2",
       "incoming_edge": "e02",
       "outgoing_edge": "e23",
-      "note": "routed from e02 to e23; threshold=1; override=false"
+      "note": "routed from e02 to e23; A=1; sigma=0; tau=0; threshold=1; override=false"
     },
     {
       "tick": 7,
@@ -1534,7 +1786,7 @@
       "vertex_id": "v1",
       "incoming_edge": "e12",
       "outgoing_edge": "e13",
-      "note": "routed from e12 to e13; threshold=1; override=false"
+      "note": "routed from e12 to e13; A=0; sigma=1; tau=0; threshold=1; override=false"
     },
     {
       "tick": 7,
@@ -1561,7 +1813,7 @@
       "vertex_id": "v2",
       "incoming_edge": "e12",
       "outgoing_edge": "e02",
-      "note": "routed from e12 to e02; threshold=1; override=false"
+      "note": "routed from e12 to e02; A=1; sigma=0; tau=0; threshold=1; override=false"
     },
     {
       "tick": 7,
@@ -1588,7 +1840,7 @@
       "vertex_id": "v3",
       "incoming_edge": "e23",
       "outgoing_edge": "e13",
-      "note": "routed from e23 to e13; threshold=2; override=false"
+      "note": "routed from e23 to e13; A=1; sigma=1; tau=1; threshold=2; override=false"
     },
     {
       "tick": 8,
@@ -1615,7 +1867,7 @@
       "vertex_id": "v3",
       "incoming_edge": "e13",
       "outgoing_edge": "e23",
-      "note": "routed from e13 to e23; threshold=2; override=false"
+      "note": "routed from e13 to e23; A=1; sigma=1; tau=1; threshold=2; override=false"
     },
     {
       "tick": 8,
@@ -1642,7 +1894,7 @@
       "vertex_id": "v0",
       "incoming_edge": "e02",
       "outgoing_edge": "e01",
-      "note": "routed from e02 to e01; threshold=1; override=false"
+      "note": "routed from e02 to e01; A=0; sigma=0; tau=1; threshold=1; override=false"
     },
     {
       "tick": 8,
