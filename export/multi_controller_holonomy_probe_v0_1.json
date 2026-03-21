@@ -1,0 +1,338 @@
+{
+  "name": "multi_controller_holonomy_probe_v0_1",
+  "loops": [
+    {
+      "name": "loop_A",
+      "controller_specs": [
+        {
+          "vertex_id": "vA1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "vA2",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "vA3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "right",
+        "left"
+      ],
+      "steps": [
+        {
+          "vertex_id": "vA1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false"
+        },
+        {
+          "vertex_id": "vA2",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=0; sigma=1; tau=1; threshold=1; override=false"
+        },
+        {
+          "vertex_id": "vA3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false"
+        }
+      ],
+      "physical_trace": [
+        "e_right",
+        "e_left",
+        "e_right"
+      ],
+      "chart_trace": [
+        "chart_right",
+        "chart_left",
+        "chart_right"
+      ],
+      "controller_summaries": [
+        {
+          "vertex_id": "vA1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "switch_state": "neutral",
+          "cooldown_left": 0,
+          "route_counts": {
+            "e_right": 1
+          },
+          "event_count": 2
+        },
+        {
+          "vertex_id": "vA2",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "switch_state": "neutral",
+          "cooldown_left": 0,
+          "route_counts": {
+            "e_left": 1
+          },
+          "event_count": 2
+        },
+        {
+          "vertex_id": "vA3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "switch_state": "neutral",
+          "cooldown_left": 0,
+          "route_counts": {
+            "e_right": 1
+          },
+          "event_count": 2
+        }
+      ]
+    },
+    {
+      "name": "loop_B",
+      "controller_specs": [
+        {
+          "vertex_id": "vB1",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "vB2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "vB3",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "right",
+        "left"
+      ],
+      "steps": [
+        {
+          "vertex_id": "vB1",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false"
+        },
+        {
+          "vertex_id": "vB2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false"
+        },
+        {
+          "vertex_id": "vB3",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false"
+        }
+      ],
+      "physical_trace": [
+        "e_right",
+        "e_left",
+        "e_right"
+      ],
+      "chart_trace": [
+        "chart_left",
+        "chart_right",
+        "chart_left"
+      ],
+      "controller_summaries": [
+        {
+          "vertex_id": "vB1",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "switch_state": "neutral",
+          "cooldown_left": 0,
+          "route_counts": {
+            "e_right": 1
+          },
+          "event_count": 2
+        },
+        {
+          "vertex_id": "vB2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "switch_state": "neutral",
+          "cooldown_left": 0,
+          "route_counts": {
+            "e_left": 1
+          },
+          "event_count": 2
+        },
+        {
+          "vertex_id": "vB3",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "switch_state": "neutral",
+          "cooldown_left": 0,
+          "route_counts": {
+            "e_right": 1
+          },
+          "event_count": 2
+        }
+      ]
+    },
+    {
+      "name": "loop_C_mixed_chart",
+      "controller_specs": [
+        {
+          "vertex_id": "vC1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "vC2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "vC3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "right",
+        "left"
+      ],
+      "steps": [
+        {
+          "vertex_id": "vC1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false"
+        },
+        {
+          "vertex_id": "vC2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false"
+        },
+        {
+          "vertex_id": "vC3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false"
+        }
+      ],
+      "physical_trace": [
+        "e_right",
+        "e_left",
+        "e_right"
+      ],
+      "chart_trace": [
+        "chart_right",
+        "chart_right",
+        "chart_right"
+      ],
+      "controller_summaries": [
+        {
+          "vertex_id": "vC1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "switch_state": "neutral",
+          "cooldown_left": 0,
+          "route_counts": {
+            "e_right": 1
+          },
+          "event_count": 2
+        },
+        {
+          "vertex_id": "vC2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "switch_state": "neutral",
+          "cooldown_left": 0,
+          "route_counts": {
+            "e_left": 1
+          },
+          "event_count": 2
+        },
+        {
+          "vertex_id": "vC3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "switch_state": "neutral",
+          "cooldown_left": 0,
+          "route_counts": {
+            "e_right": 1
+          },
+          "event_count": 2
+        }
+      ]
+    }
+  ]
+}

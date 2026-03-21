@@ -53,6 +53,8 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("state-table", help="print current state-sensitive routing table")
     sub.add_parser("state-sweep", help="write full state-sensitive routing sweep artifact")
     sub.add_parser("mixed-symmetry", help="probe chart covariance of mixed reopening")
+    sub.add_parser("holonomic-loop", help="run local holonomic loop probe")
+    sub.add_parser("holonomy-probe", help="run multi-controller holonomy probe")
     sub.add_parser("all", help="run gallery, contact, sheet, and dxf")
 
     return parser
@@ -82,6 +84,8 @@ def main() -> int:
         "state-table": "xalchemy_lab.app.hello_state_sensitive_table",
         "state-sweep": "xalchemy_lab.app.hello_state_sensitive_sweep",
         "mixed-symmetry": "xalchemy_lab.app.hello_mixed_reopening_symmetry_probe",
+        "holonomic-loop": "xalchemy_lab.app.hello_holonomic_loop_probe",
+        "holonomy-probe": "xalchemy_lab.app.hello_multi_controller_holonomy_probe",
     }
 
     if args.command == "all":

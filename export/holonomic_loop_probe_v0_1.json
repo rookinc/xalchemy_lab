@@ -1,0 +1,86 @@
+{
+  "name": "holonomic_loop_probe_v0_1",
+  "sequence": [
+    "left",
+    "right",
+    "left"
+  ],
+  "controllers": {
+    "v011": {
+      "routes": [
+        {
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false"
+        },
+        {
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=0; sigma=1; tau=1; threshold=1; override=false"
+        },
+        {
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false"
+        }
+      ],
+      "summary": {
+        "vertex_id": "v011",
+        "A": 0,
+        "sigma": 1,
+        "tau": 1,
+        "switch_state": "neutral",
+        "cooldown_left": 0,
+        "route_counts": {
+          "e_right": 2,
+          "e_left": 1
+        },
+        "event_count": 6
+      }
+    },
+    "v111": {
+      "routes": [
+        {
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false"
+        },
+        {
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false"
+        },
+        {
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false"
+        }
+      ],
+      "summary": {
+        "vertex_id": "v111",
+        "A": 1,
+        "sigma": 1,
+        "tau": 1,
+        "switch_state": "neutral",
+        "cooldown_left": 0,
+        "route_counts": {
+          "e_right": 2,
+          "e_left": 1
+        },
+        "event_count": 6
+      }
+    }
+  }
+}
