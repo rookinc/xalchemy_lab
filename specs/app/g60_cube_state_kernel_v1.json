@@ -1,0 +1,28 @@
+{
+  "name": "g60_cube_state_kernel_v1",
+  "cell_scale": 1.0,
+  "view": {
+    "yaw_deg": 35.0,
+    "pitch_deg": -25.0,
+    "distance": 4.5,
+    "cube_size_px": 420
+  },
+  "states": {
+    "000": { "A": 0, "sigma": 0, "tau": 0 },
+    "001": { "A": 0, "sigma": 0, "tau": 1 },
+    "010": { "A": 0, "sigma": 1, "tau": 0 },
+    "011": { "A": 0, "sigma": 1, "tau": 1 },
+    "100": { "A": 1, "sigma": 0, "tau": 0 },
+    "101": { "A": 1, "sigma": 0, "tau": 1 },
+    "110": { "A": 1, "sigma": 1, "tau": 0 },
+    "111": { "A": 1, "sigma": 1, "tau": 1 }
+  },
+  "roles": {
+    "front":  "anchor_controller",
+    "right":  "anchored_E2",
+    "top":    "anchored_E1",
+    "left":   "distal_odd_backbone",
+    "bottom": "distal_even_backbone",
+    "back":   "seam_cancellation"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "name": "canonical_state_space_v1",
+  "scope": "local",
+  "status": "validated_on_full_realized_local_cube",
+  "state_register": {
+    "symbol": "S",
+    "definition": "(A,sigma,tau)",
+    "domain": "Z2^3",
+    "bits": {
+      "A": "anchored chart selector",
+      "sigma": "E1-sheet activation",
+      "tau": "odd-branch activation"
+    }
+  },
+  "realized_states": [
+    "000",
+    "001",
+    "010",
+    "011",
+    "100",
+    "101",
+    "110",
+    "111"
+  ],
+  "charts": {
+    "A0": {
+      "states": ["000", "001", "010", "011"],
+      "reading": "odd/E1 anchored chart"
+    },
+    "A1": {
+      "states": ["100", "101", "110", "111"],
+      "reading": "E2-dominant anchored chart"
+    }
+  },
+  "anchored_receipt_law": {
+    "A0": {
+      "AOOO": "tau",
+      "AE1E1E1": "sigma",
+      "AE2E2E2": 0,
+      "E1E1E1O": "1 iff sigma=tau",
+      "E1E1E1E2": "sigma"
+    },
+    "A1": {
+      "AE2E2E2": 1,
+      "AE1E1E1": "1 except at (sigma,tau)=(1,0)",
+      "AOOO": "1 except at (sigma,tau)=(0,1)",
+      "E1E1E1O": "1 iff sigma=tau",
+      "E1E1E1E2": "sigma"
+    }
+  },
+  "rigid_distal_backbone": {
+    "always_odd": [
+      "DE1E1E2",
+      "DE1E1M+",
+      "DE1E2E2",
+      "E2E2E2E2"
+    ],
+    "always_even": [
+      "DE1OM+",
+      "E1E1M+M+",
+      "E1E2E2E2",
+      "E1E2M+M+",
+      "E1M+M+O",
+      "E2E2E2O"
+    ]
+  },
+  "quotient_bridge_signature": {
+    "symbol": "(R,Q,W)",
+    "definition": "(0,A+sigma,A+tau)",
+    "domain": "Z2^3",
+    "note": "quotient receipt only; does not preserve full trace catalog"
+  },
+  "readout_ladder": [
+    "(A,sigma,tau)",
+    "trace receipts",
+    "(R,Q,W)"
+  ],
+  "visual_projection": {
+    "name": "canonical triangular receipt sheet",
+    "encoding": {
+      "black": "active/odd/occupied receipt",
+      "white": "inactive/even/unoccupied receipt"
+    },
+    "channels": {
+      "H/O": "anchor / odd face",
+      "E1": "E1 face",
+      "E2": "E2 face",
+      "Do": "distal odd face",
+      "De": "distal even face",
+      "C": "cancellation / seam face"
+    }
+  },
+  "validation": {
+    "mechanism": "Toy G60 Automaton v2",
+    "total_checks": 120,
+    "mismatches": 0,
+    "matches": 120
+  },
+  "scope_limit": [
+    "not yet a global G60 derivation",
+    "not yet a proof of geometric origin of chart split",
+    "not yet a global chamber gluing law"
+  ]
+}

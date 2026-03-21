@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+<rect x="0" y="0" width="1200" height="900" fill="white"/>
+<text x="600.00" y="36.00" font-family="Helvetica,Arial,sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="black">g60_cube_state_kernel_v1 :: state 111</text>
+<text x="600.00" y="62.00" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="normal" text-anchor="middle" fill="black">(A,sigma,tau)=(1,1,1)</text>
+<polygon points="619.32,567.58 463.96,548.66 486.31,384.49 616.68,428.42" fill="none" stroke="black" stroke-width="1.0"/>
+<polygon points="751.74,537.44 619.32,567.58 616.68,428.42 724.46,359.74" fill="none" stroke="black" stroke-width="2.4"/>
+<circle cx="678.05" cy="473.30" r="20.40" fill="none" stroke="black" stroke-width="1.2"/>
+<circle cx="678.05" cy="473.30" r="7.14" fill="none" stroke="black" stroke-width="1.0"/>
+<line x1="751.74" y1="537.44" x2="678.05" y2="473.30" stroke="black" stroke-width="0.8"/>
+<line x1="619.32" y1="567.58" x2="678.05" y2="473.30" stroke="black" stroke-width="0.8"/>
+<line x1="616.68" y1="428.42" x2="678.05" y2="473.30" stroke="black" stroke-width="0.8"/>
+<line x1="724.46" y1="359.74" x2="678.05" y2="473.30" stroke="black" stroke-width="0.8"/>
+<line x1="720.79" y1="509.47" x2="643.91" y2="524.84" stroke="black" stroke-width="1.0"/>
+<line x1="643.91" y1="524.84" x2="639.75" y2="444.06" stroke="black" stroke-width="1.0"/>
+<line x1="639.75" y1="444.06" x2="691.40" y2="424.83" stroke="black" stroke-width="1.0"/>
+<line x1="691.40" y1="424.83" x2="720.79" y2="509.47" stroke="black" stroke-width="1.0"/>
+<line x1="720.79" y1="509.47" x2="678.05" y2="473.30" stroke="black" stroke-width="1.0"/>
+<line x1="643.91" y1="524.84" x2="678.05" y2="473.30" stroke="black" stroke-width="1.0"/>
+<line x1="691.40" y1="424.83" x2="678.05" y2="473.30" stroke="black" stroke-width="1.0"/>
+<line x1="639.75" y1="444.06" x2="678.05" y2="473.30" stroke="black" stroke-width="1.0"/>
+<circle cx="720.79" cy="509.47" r="5.40" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="643.91" cy="524.84" r="5.40" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="691.40" cy="424.83" r="5.40" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="639.75" cy="444.06" r="5.40" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="678.05" cy="473.30" r="5.40" fill="black" stroke="black" stroke-width="1.0"/>
+<text x="678.05" y="523.30" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="black">E2</text>
+<text x="678.05" y="541.30" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="middle" fill="black">w=0.80</text>
+<polygon points="571.82,278.47 724.46,359.74 616.68,428.42 486.31,384.49" fill="none" stroke="black" stroke-width="2.4"/>
+<circle cx="599.82" cy="362.78" r="17.60" fill="none" stroke="black" stroke-width="1.2"/>
+<circle cx="599.82" cy="362.78" r="6.16" fill="none" stroke="black" stroke-width="1.0"/>
+<line x1="571.82" y1="278.47" x2="599.82" y2="362.78" stroke="black" stroke-width="0.8"/>
+<line x1="724.46" y1="359.74" x2="599.82" y2="362.78" stroke="black" stroke-width="0.8"/>
+<line x1="616.68" y1="428.42" x2="599.82" y2="362.78" stroke="black" stroke-width="0.8"/>
+<line x1="486.31" y1="384.49" x2="599.82" y2="362.78" stroke="black" stroke-width="0.8"/>
+<line x1="588.87" y1="327.98" x2="578.55" y2="382.00" stroke="black" stroke-width="1.0"/>
+<line x1="653.29" y1="359.14" x2="578.55" y2="382.00" stroke="black" stroke-width="1.0"/>
+<circle cx="588.87" cy="327.98" r="4.35" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="653.29" cy="359.14" r="4.35" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="578.55" cy="382.00" r="4.35" fill="black" stroke="black" stroke-width="1.0"/>
+<text x="599.82" y="412.78" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="black">E1</text>
+<text x="599.82" y="430.78" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="middle" fill="black">w=0.45</text>
+<polygon points="463.96,548.66 619.32,567.58 751.74,537.44 563.36,497.40" fill="none" stroke="black" stroke-width="1.0"/>
+<polygon points="463.96,548.66 563.36,497.40 571.82,278.47 486.31,384.49" fill="none" stroke="black" stroke-width="1.0"/>
+<polygon points="563.36,497.40 751.74,537.44 724.46,359.74 571.82,278.47" fill="none" stroke="black" stroke-width="2.4"/>
+<circle cx="652.85" cy="418.26" r="18.40" fill="none" stroke="black" stroke-width="1.2"/>
+<circle cx="652.85" cy="418.26" r="6.44" fill="none" stroke="black" stroke-width="1.0"/>
+<line x1="563.36" y1="497.40" x2="652.85" y2="418.26" stroke="black" stroke-width="0.8"/>
+<line x1="751.74" y1="537.44" x2="652.85" y2="418.26" stroke="black" stroke-width="0.8"/>
+<line x1="724.46" y1="359.74" x2="652.85" y2="418.26" stroke="black" stroke-width="0.8"/>
+<line x1="571.82" y1="278.47" x2="652.85" y2="418.26" stroke="black" stroke-width="0.8"/>
+<line x1="601.30" y1="463.27" x2="652.85" y2="418.26" stroke="black" stroke-width="1.0"/>
+<line x1="710.04" y1="492.24" x2="652.85" y2="418.26" stroke="black" stroke-width="1.0"/>
+<line x1="602.09" y1="336.86" x2="652.85" y2="418.26" stroke="black" stroke-width="1.0"/>
+<line x1="697.96" y1="380.67" x2="652.85" y2="418.26" stroke="black" stroke-width="1.0"/>
+<line x1="601.30" y1="463.27" x2="710.04" y2="492.24" stroke="black" stroke-width="1.0"/>
+<line x1="602.09" y1="336.86" x2="697.96" y2="380.67" stroke="black" stroke-width="1.0"/>
+<circle cx="601.30" cy="463.27" r="4.65" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="710.04" cy="492.24" r="4.65" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="652.85" cy="418.26" r="4.65" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="602.09" cy="336.86" r="4.65" fill="black" stroke="black" stroke-width="1.0"/>
+<circle cx="697.96" cy="380.67" r="4.65" fill="black" stroke="black" stroke-width="1.0"/>
+<text x="652.85" y="468.26" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="black">H/O</text>
+<text x="652.85" y="486.26" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="middle" fill="black">w=0.55</text>
+<text x="950.00" y="130.00" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" text-anchor="start" fill="black">trace receipts</text>
+<text x="950.00" y="156.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">AOOO = EVEN</text>
+<text x="950.00" y="174.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">AE1E1E1 = EVEN</text>
+<text x="950.00" y="192.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">AE2E2E2 = ODD</text>
+<text x="950.00" y="210.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">E1E1E1O = ODD</text>
+<text x="950.00" y="228.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">E1E1E1E2 = ODD</text>
+<text x="950.00" y="246.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">DE1E1E2 = ODD</text>
+<text x="950.00" y="264.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">DE1E1M+ = ODD</text>
+<text x="950.00" y="282.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">DE1E2E2 = ODD</text>
+<text x="950.00" y="300.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">E2E2E2E2 = ODD</text>
+<text x="950.00" y="318.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">DE1OM+ = EVEN</text>
+<text x="950.00" y="336.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">E1E1M+M+ = EVEN</text>
+<text x="950.00" y="354.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">E1E2E2E2 = EVEN</text>
+<text x="950.00" y="372.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">E1E2M+M+ = EVEN</text>
+<text x="950.00" y="390.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">E1M+M+O = EVEN</text>
+<text x="950.00" y="408.00" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="normal" text-anchor="start" fill="black">E2E2E2O = EVEN</text>
+</svg>

@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="810" height="714" viewBox="0 0 810 714">
+<rect x="0" y="0" width="810" height="714" fill="white"/>
+<text x="405.00" y="28.00" font-family="Helvetica,Arial,sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="black">state sheet 000</text>
+<text x="405.00" y="52.00" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="normal" text-anchor="middle" fill="black">(A,sigma,tau)=(0,0,0)</text>
+<polygon points="198.00,20.00 243.00,20.00 243.00,65.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,20.00 243.00,65.00 198.00,65.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,20.00 288.00,20.00 288.00,65.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,20.00 288.00,65.00 243.00,65.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,20.00 333.00,20.00 333.00,65.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,20.00 333.00,65.00 288.00,65.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,20.00 378.00,20.00 378.00,65.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,20.00 378.00,65.00 333.00,65.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,65.00 243.00,65.00 243.00,110.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,65.00 243.00,110.00 198.00,110.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,65.00 288.00,65.00 288.00,110.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,65.00 288.00,110.00 243.00,110.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,65.00 333.00,65.00 333.00,110.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,65.00 333.00,110.00 288.00,110.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,65.00 378.00,65.00 378.00,110.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,65.00 378.00,110.00 333.00,110.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,110.00 243.00,110.00 243.00,155.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,110.00 243.00,155.00 198.00,155.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,110.00 288.00,110.00 288.00,155.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,110.00 288.00,155.00 243.00,155.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,110.00 333.00,110.00 333.00,155.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,110.00 333.00,155.00 288.00,155.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,110.00 378.00,110.00 378.00,155.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,110.00 378.00,155.00 333.00,155.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,155.00 243.00,155.00 243.00,200.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,155.00 243.00,200.00 198.00,200.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,155.00 288.00,155.00 288.00,200.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,155.00 288.00,200.00 243.00,200.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,155.00 333.00,155.00 333.00,200.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,155.00 333.00,200.00 288.00,200.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,155.00 378.00,155.00 378.00,200.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,155.00 378.00,200.00 333.00,200.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,20.00 378.00,20.00 378.00,200.00 198.00,200.00" fill="none" stroke="black" stroke-width="2.0"/>
+<text x="288.00" y="14.00" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="black">E1</text>
+<text x="288.00" y="216.00" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="normal" text-anchor="middle" fill="black">AE1E1E1=0</text>
+<polygon points="0.00,218.00 45.00,218.00 45.00,263.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="0.00,218.00 45.00,263.00 0.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="45.00,218.00 90.00,218.00 90.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="45.00,218.00 90.00,263.00 45.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="90.00,218.00 135.00,218.00 135.00,263.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="90.00,218.00 135.00,263.00 90.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="135.00,218.00 180.00,218.00 180.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="135.00,218.00 180.00,263.00 135.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="0.00,263.00 45.00,263.00 45.00,308.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="0.00,263.00 45.00,308.00 0.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="45.00,263.00 90.00,263.00 90.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="45.00,263.00 90.00,308.00 45.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="90.00,263.00 135.00,263.00 135.00,308.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="90.00,263.00 135.00,308.00 90.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="135.00,263.00 180.00,263.00 180.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="135.00,263.00 180.00,308.00 135.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="0.00,308.00 45.00,308.00 45.00,353.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="0.00,308.00 45.00,353.00 0.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="45.00,308.00 90.00,308.00 90.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="45.00,308.00 90.00,353.00 45.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="90.00,308.00 135.00,308.00 135.00,353.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="90.00,308.00 135.00,353.00 90.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="135.00,308.00 180.00,308.00 180.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="135.00,308.00 180.00,353.00 135.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="0.00,353.00 45.00,353.00 45.00,398.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="0.00,353.00 45.00,398.00 0.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="45.00,353.00 90.00,353.00 90.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="45.00,353.00 90.00,398.00 45.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="90.00,353.00 135.00,353.00 135.00,398.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="90.00,353.00 135.00,398.00 90.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="135.00,353.00 180.00,353.00 180.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="135.00,353.00 180.00,398.00 135.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="0.00,218.00 180.00,218.00 180.00,398.00 0.00,398.00" fill="none" stroke="black" stroke-width="2.0"/>
+<text x="90.00" y="212.00" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="black">Do</text>
+<text x="90.00" y="414.00" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="normal" text-anchor="middle" fill="black">DE1E1E2=1</text>
+<polygon points="198.00,218.00 243.00,218.00 243.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,218.00 243.00,263.00 198.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,218.00 288.00,218.00 288.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,218.00 288.00,263.00 243.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,218.00 333.00,218.00 333.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,218.00 333.00,263.00 288.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,218.00 378.00,218.00 378.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,218.00 378.00,263.00 333.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,263.00 243.00,263.00 243.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,263.00 243.00,308.00 198.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,263.00 288.00,263.00 288.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,263.00 288.00,308.00 243.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,263.00 333.00,263.00 333.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,263.00 333.00,308.00 288.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,263.00 378.00,263.00 378.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,263.00 378.00,308.00 333.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,308.00 243.00,308.00 243.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,308.00 243.00,353.00 198.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,308.00 288.00,308.00 288.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,308.00 288.00,353.00 243.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,308.00 333.00,308.00 333.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,308.00 333.00,353.00 288.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,308.00 378.00,308.00 378.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,308.00 378.00,353.00 333.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,353.00 243.00,353.00 243.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,353.00 243.00,398.00 198.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,353.00 288.00,353.00 288.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,353.00 288.00,398.00 243.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,353.00 333.00,353.00 333.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,353.00 333.00,398.00 288.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,353.00 378.00,353.00 378.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,353.00 378.00,398.00 333.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,218.00 378.00,218.00 378.00,398.00 198.00,398.00" fill="none" stroke="black" stroke-width="2.0"/>
+<text x="288.00" y="212.00" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="black">H/O</text>
+<text x="288.00" y="414.00" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="normal" text-anchor="middle" fill="black">AOOO=0</text>
+<polygon points="396.00,218.00 441.00,218.00 441.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="396.00,218.00 441.00,263.00 396.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="441.00,218.00 486.00,218.00 486.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="441.00,218.00 486.00,263.00 441.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="486.00,218.00 531.00,218.00 531.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="486.00,218.00 531.00,263.00 486.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="531.00,218.00 576.00,218.00 576.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="531.00,218.00 576.00,263.00 531.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="396.00,263.00 441.00,263.00 441.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="396.00,263.00 441.00,308.00 396.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="441.00,263.00 486.00,263.00 486.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="441.00,263.00 486.00,308.00 441.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="486.00,263.00 531.00,263.00 531.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="486.00,263.00 531.00,308.00 486.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="531.00,263.00 576.00,263.00 576.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="531.00,263.00 576.00,308.00 531.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="396.00,308.00 441.00,308.00 441.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="396.00,308.00 441.00,353.00 396.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="441.00,308.00 486.00,308.00 486.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="441.00,308.00 486.00,353.00 441.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="486.00,308.00 531.00,308.00 531.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="486.00,308.00 531.00,353.00 486.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="531.00,308.00 576.00,308.00 576.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="531.00,308.00 576.00,353.00 531.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="396.00,353.00 441.00,353.00 441.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="396.00,353.00 441.00,398.00 396.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="441.00,353.00 486.00,353.00 486.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="441.00,353.00 486.00,398.00 441.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="486.00,353.00 531.00,353.00 531.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="486.00,353.00 531.00,398.00 486.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="531.00,353.00 576.00,353.00 576.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="531.00,353.00 576.00,398.00 531.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="396.00,218.00 576.00,218.00 576.00,398.00 396.00,398.00" fill="none" stroke="black" stroke-width="2.0"/>
+<text x="486.00" y="212.00" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="black">E2</text>
+<text x="486.00" y="414.00" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="normal" text-anchor="middle" fill="black">AE2E2E2=0</text>
+<polygon points="594.00,218.00 639.00,218.00 639.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="594.00,218.00 639.00,263.00 594.00,263.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="639.00,218.00 684.00,218.00 684.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="639.00,218.00 684.00,263.00 639.00,263.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="684.00,218.00 729.00,218.00 729.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="684.00,218.00 729.00,263.00 684.00,263.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="729.00,218.00 774.00,218.00 774.00,263.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="729.00,218.00 774.00,263.00 729.00,263.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="594.00,263.00 639.00,263.00 639.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="594.00,263.00 639.00,308.00 594.00,308.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="639.00,263.00 684.00,263.00 684.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="639.00,263.00 684.00,308.00 639.00,308.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="684.00,263.00 729.00,263.00 729.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="684.00,263.00 729.00,308.00 684.00,308.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="729.00,263.00 774.00,263.00 774.00,308.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="729.00,263.00 774.00,308.00 729.00,308.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="594.00,308.00 639.00,308.00 639.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="594.00,308.00 639.00,353.00 594.00,353.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="639.00,308.00 684.00,308.00 684.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="639.00,308.00 684.00,353.00 639.00,353.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="684.00,308.00 729.00,308.00 729.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="684.00,308.00 729.00,353.00 684.00,353.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="729.00,308.00 774.00,308.00 774.00,353.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="729.00,308.00 774.00,353.00 729.00,353.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="594.00,353.00 639.00,353.00 639.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="594.00,353.00 639.00,398.00 594.00,398.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="639.00,353.00 684.00,353.00 684.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="639.00,353.00 684.00,398.00 639.00,398.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="684.00,353.00 729.00,353.00 729.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="684.00,353.00 729.00,398.00 684.00,398.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="729.00,353.00 774.00,353.00 774.00,398.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="729.00,353.00 774.00,398.00 729.00,398.00" fill="black" stroke="black" stroke-width="0.8"/>
+<polygon points="594.00,218.00 774.00,218.00 774.00,398.00 594.00,398.00" fill="none" stroke="black" stroke-width="2.0"/>
+<text x="684.00" y="212.00" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="black">C</text>
+<text x="684.00" y="414.00" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="normal" text-anchor="middle" fill="black">E1E1E1O=1</text>
+<polygon points="198.00,416.00 243.00,416.00 243.00,461.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,416.00 243.00,461.00 198.00,461.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,416.00 288.00,416.00 288.00,461.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,416.00 288.00,461.00 243.00,461.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,416.00 333.00,416.00 333.00,461.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,416.00 333.00,461.00 288.00,461.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,416.00 378.00,416.00 378.00,461.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,416.00 378.00,461.00 333.00,461.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,461.00 243.00,461.00 243.00,506.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,461.00 243.00,506.00 198.00,506.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,461.00 288.00,461.00 288.00,506.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,461.00 288.00,506.00 243.00,506.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,461.00 333.00,461.00 333.00,506.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,461.00 333.00,506.00 288.00,506.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,461.00 378.00,461.00 378.00,506.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,461.00 378.00,506.00 333.00,506.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,506.00 243.00,506.00 243.00,551.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,506.00 243.00,551.00 198.00,551.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,506.00 288.00,506.00 288.00,551.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,506.00 288.00,551.00 243.00,551.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,506.00 333.00,506.00 333.00,551.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,506.00 333.00,551.00 288.00,551.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,506.00 378.00,506.00 378.00,551.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,506.00 378.00,551.00 333.00,551.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,551.00 243.00,551.00 243.00,596.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,551.00 243.00,596.00 198.00,596.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,551.00 288.00,551.00 288.00,596.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="243.00,551.00 288.00,596.00 243.00,596.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,551.00 333.00,551.00 333.00,596.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="288.00,551.00 333.00,596.00 288.00,596.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,551.00 378.00,551.00 378.00,596.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="333.00,551.00 378.00,596.00 333.00,596.00" fill="white" stroke="black" stroke-width="0.8"/>
+<polygon points="198.00,416.00 378.00,416.00 378.00,596.00 198.00,596.00" fill="none" stroke="black" stroke-width="2.0"/>
+<text x="288.00" y="410.00" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="black">De</text>
+<text x="288.00" y="612.00" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="normal" text-anchor="middle" fill="black">DE1OM+=0</text>
+</svg>
