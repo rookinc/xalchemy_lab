@@ -1,0 +1,87 @@
+{
+  "name": "mixed_reopening_fork_comparison_v0_1",
+  "laws": {
+    "M1_chart_blind_mixed_reopening": {
+      "000": {
+        "left": "e_left",
+        "right": "e_right"
+      },
+      "001": {
+        "left": "e_right",
+        "right": "e_right"
+      },
+      "010": {
+        "left": "e_left",
+        "right": "e_left"
+      },
+      "011": {
+        "left": "e_right",
+        "right": "e_left"
+      },
+      "100": {
+        "left": "e_right",
+        "right": "e_left"
+      },
+      "101": {
+        "left": "e_left",
+        "right": "e_left"
+      },
+      "110": {
+        "left": "e_right",
+        "right": "e_right"
+      },
+      "111": {
+        "left": "e_right",
+        "right": "e_left"
+      }
+    },
+    "M2_chart_sensitive_mixed_reopening": {
+      "000": {
+        "left": "e_left",
+        "right": "e_right"
+      },
+      "001": {
+        "left": "e_right",
+        "right": "e_right"
+      },
+      "010": {
+        "left": "e_left",
+        "right": "e_left"
+      },
+      "011": {
+        "left": "e_right",
+        "right": "e_left"
+      },
+      "100": {
+        "left": "e_right",
+        "right": "e_left"
+      },
+      "101": {
+        "left": "e_left",
+        "right": "e_left"
+      },
+      "110": {
+        "left": "e_right",
+        "right": "e_right"
+      },
+      "111": {
+        "left": "e_left",
+        "right": "e_right"
+      }
+    }
+  },
+  "differences": [
+    {
+      "state": "111",
+      "law_a": {
+        "left": "e_right",
+        "right": "e_left"
+      },
+      "law_b": {
+        "left": "e_left",
+        "right": "e_right"
+      }
+    }
+  ],
+  "question": "Should A reverse the mixed reopening state 111, or only the unary/chart base frame?"
+}

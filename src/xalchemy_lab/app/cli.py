@@ -52,6 +52,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("stateful", help="run stateful vertex controller demo")
     sub.add_parser("state-table", help="print current state-sensitive routing table")
     sub.add_parser("state-sweep", help="write full state-sensitive routing sweep artifact")
+    sub.add_parser("mixed-symmetry", help="probe chart covariance of mixed reopening")
     sub.add_parser("all", help="run gallery, contact, sheet, and dxf")
 
     return parser
@@ -80,6 +81,7 @@ def main() -> int:
         "stateful": "xalchemy_lab.app.hello_vertex_controller_stateful",
         "state-table": "xalchemy_lab.app.hello_state_sensitive_table",
         "state-sweep": "xalchemy_lab.app.hello_state_sensitive_sweep",
+        "mixed-symmetry": "xalchemy_lab.app.hello_mixed_reopening_symmetry_probe",
     }
 
     if args.command == "all":
