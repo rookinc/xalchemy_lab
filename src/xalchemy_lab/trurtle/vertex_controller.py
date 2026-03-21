@@ -127,30 +127,44 @@ class VertexController:
         ordered = sorted(candidates)
         return min(ordered, key=lambda e: (self.route_counts.get(e, 0), e))
 
+    def _base_chart_choice(self, ordered: list[str], handedness: Handedness) -> str:
+        left_edge = ordered[0]
+        right_edge = ordered[-1]
+
+        if self.anchored_chart == 0:
+            return left_edge if handedness == "left" else right_edge
+        return right_edge if handedness == "left" else left_edge
+
+    def _chart_left_edge(self, ordered: list[str]) -> str:
+        return ordered[0] if self.anchored_chart == 0 else ordered[-1]
+
+    def _chart_right_edge(self, ordered: list[str]) -> str:
+        return ordered[-1] if self.anchored_chart == 0 else ordered[0]
+
     def _state_sensitive_choice(self, candidates: list[str], handedness: Handedness) -> str:
         ordered = sorted(candidates)
         if len(ordered) == 1:
             return ordered[0]
         if len(ordered) != 2:
-            # fallback for larger degree until a fuller local ordering law is defined
-            return ordered[0] if handedness == "left" else ordered[-1]
+            return self._base_chart_choice(ordered, handedness)
 
-        left_edge = ordered[0]
-        right_edge = ordered[-1]
+        base_choice = self._base_chart_choice(ordered, handedness)
+        chart_left = self._chart_left_edge(ordered)
+        chart_right = self._chart_right_edge(ordered)
 
-        table = {
-            (0, 0, 0): {"left": left_edge,  "right": right_edge},
-            (0, 0, 1): {"left": right_edge, "right": right_edge},
-            (0, 1, 0): {"left": left_edge,  "right": left_edge},
-            (0, 1, 1): {"left": right_edge, "right": left_edge},
-            (1, 0, 0): {"left": right_edge, "right": left_edge},
-            (1, 0, 1): {"left": left_edge,  "right": left_edge},
-            (1, 1, 0): {"left": right_edge, "right": right_edge},
-            (1, 1, 1): {"left": left_edge,  "right": right_edge},
-        }
+        # mixed-state reopening rule
+        if self.sigma_state == 1 and self.tau_state == 1:
+            if self.anchored_chart == 0:
+                return chart_right if handedness == "left" else chart_left
+            return chart_left if handedness == "left" else chart_right
 
-        state = (self.anchored_chart, self.sigma_state, self.tau_state)
-        return table[state][handedness]
+        # unary collapse operators
+        if self.sigma_state == 1:
+            return chart_left
+        if self.tau_state == 1:
+            return chart_right
+
+        return base_choice
 
     def _polarity_under_load_choice(
         self,
@@ -188,7 +202,11 @@ class VertexController:
         if self.routing_bias == "state_sensitive":
             return self._state_sensitive_choice(candidates, arrival.handedness), False
 
-        if self.routing_bias in {"handedness_then_least_used", "polarity_under_load", "state_sensitive_under_load"}:
+        if self.routing_bias in {
+            "handedness_then_least_used",
+            "polarity_under_load",
+            "state_sensitive_under_load",
+        }:
             return self._polarity_under_load_choice(candidates, arrival.handedness)
 
         return sorted(candidates)[0], False

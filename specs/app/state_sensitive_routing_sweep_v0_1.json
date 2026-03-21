@@ -660,20 +660,20 @@
         "state": "111",
         "mode": "state_sensitive",
         "left": {
-          "outgoing_edge": "e_left",
-          "action": "route",
-          "switch_state": "neutral",
-          "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false"
-        },
-        "right": {
           "outgoing_edge": "e_right",
           "action": "route",
           "switch_state": "neutral",
           "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false"
         },
+        "right": {
+          "outgoing_edge": "e_left",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false"
+        },
         "route_counts": {
-          "e_left": 1,
-          "e_right": 1
+          "e_right": 1,
+          "e_left": 1
         },
         "final_switch_state": "neutral",
         "event_count": 4
@@ -685,31 +685,31 @@
           {
             "trurtle_id": "T1",
             "handedness": "left",
-            "outgoing_edge": "e_left",
+            "outgoing_edge": "e_right",
             "action": "route",
             "switch_state": "neutral",
-            "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false"
+            "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false"
           },
           {
             "trurtle_id": "T2",
             "handedness": "left",
-            "outgoing_edge": "e_right",
+            "outgoing_edge": "e_left",
             "action": "route",
             "switch_state": "flipped",
-            "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=true"
+            "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=true"
           },
           {
             "trurtle_id": "T3",
             "handedness": "right",
-            "outgoing_edge": "e_right",
+            "outgoing_edge": "e_left",
             "action": "route",
             "switch_state": "flipped",
-            "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false"
+            "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false"
           }
         ],
         "route_counts": {
-          "e_left": 1,
-          "e_right": 2
+          "e_right": 1,
+          "e_left": 2
         },
         "final_switch_state": "flipped",
         "cooldown_left": 1,
