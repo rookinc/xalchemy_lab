@@ -1,0 +1,10 @@
+[view]
+yaw_deg = 35.0
+pitch_deg = -25.0
+distance = 4.5
+cube_size_px = 420
+
+[labels]
+show_title = true
+show_face_tags = true
+show_weights = true

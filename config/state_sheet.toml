@@ -1,0 +1,10 @@
+[sheet]
+face_size = 180.0
+gap = 18.0
+subdivision = 4
+y_offset = 20.0
+
+[labels]
+show_state_title = true
+show_face_tags = true
+show_trace_bits = true

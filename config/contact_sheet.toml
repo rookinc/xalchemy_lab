@@ -1,0 +1,10 @@
+[layout]
+columns = 4
+rows = 2
+tile_scale = 0.28
+padding = 28
+label_height = 58
+
+[title]
+text = "G60 state cube contact sheet"
+subtitle = "top row: A=0 chart   |   bottom row: A=1 chart"

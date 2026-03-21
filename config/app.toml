@@ -1,0 +1,31 @@
+name = "alchemy_lab"
+
+default_kernel = "specs/app/g60_cube_state_kernel_v1.json"
+cube_kernel = "specs/app/g60_cube_kernel_v1.json"
+
+render_dir = "renders/state_cube_gallery_v1"
+sheet_dir = "renders/state_sheet_gallery_v1"
+
+export_png = true
+state_order = ["000", "001", "010", "011", "100", "101", "110", "111"]
+
+[view]
+yaw_deg = 35.0
+pitch_deg = -25.0
+distance = 4.5
+cube_size_px = 420
+
+[contact]
+columns = 4
+rows = 2
+tile_scale = 0.28
+padding = 28
+label_height = 58
+title = "G60 state cube contact sheet"
+subtitle = "top row: A=0 chart   |   bottom row: A=1 chart"
+
+[sheet]
+face_size = 180.0
+gap = 18.0
+subdivision = 4
+y_offset = 20.0
