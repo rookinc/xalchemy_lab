@@ -1,0 +1,746 @@
+{
+  "name": "state_sensitive_routing_sweep_v0_1",
+  "version": "0.1",
+  "states": [
+    {
+      "state": "000",
+      "structural_register": {
+        "A": 0,
+        "sigma": 0,
+        "tau": 0
+      },
+      "state_sensitive": {
+        "state": "000",
+        "mode": "state_sensitive",
+        "left": {
+          "outgoing_edge": "e_left",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=0; sigma=0; tau=0; threshold=1; override=false"
+        },
+        "right": {
+          "outgoing_edge": "e_right",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=0; tau=0; threshold=1; override=false"
+        },
+        "route_counts": {
+          "e_left": 1,
+          "e_right": 1
+        },
+        "final_switch_state": "neutral",
+        "event_count": 4
+      },
+      "state_sensitive_under_load": {
+        "state": "000",
+        "mode": "state_sensitive_under_load",
+        "decisions": [
+          {
+            "trurtle_id": "T1",
+            "handedness": "left",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "neutral",
+            "notes": "routed from e_in to e_left; A=0; sigma=0; tau=0; threshold=1; override=false"
+          },
+          {
+            "trurtle_id": "T2",
+            "handedness": "left",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_right; A=0; sigma=0; tau=0; threshold=1; override=true"
+          },
+          {
+            "trurtle_id": "T3",
+            "handedness": "right",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_right; A=0; sigma=0; tau=0; threshold=1; override=false"
+          }
+        ],
+        "route_counts": {
+          "e_left": 1,
+          "e_right": 2
+        },
+        "final_switch_state": "flipped",
+        "cooldown_left": 1,
+        "override_trace": [
+          {
+            "seq": 4,
+            "event_type": "override",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "preferred exit over burden threshold=1; cooldown=2"
+          },
+          {
+            "seq": 5,
+            "event_type": "switch_to_flipped",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "polarity yielded under burden"
+          },
+          {
+            "seq": 8,
+            "event_type": "cooldown_tick",
+            "incoming_edge": null,
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "cooldown_remaining=1"
+          }
+        ],
+        "event_count": 9
+      }
+    },
+    {
+      "state": "001",
+      "structural_register": {
+        "A": 0,
+        "sigma": 0,
+        "tau": 1
+      },
+      "state_sensitive": {
+        "state": "001",
+        "mode": "state_sensitive",
+        "left": {
+          "outgoing_edge": "e_right",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=0; tau=1; threshold=1; override=false"
+        },
+        "right": {
+          "outgoing_edge": "e_right",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=0; tau=1; threshold=1; override=false"
+        },
+        "route_counts": {
+          "e_right": 2
+        },
+        "final_switch_state": "neutral",
+        "event_count": 4
+      },
+      "state_sensitive_under_load": {
+        "state": "001",
+        "mode": "state_sensitive_under_load",
+        "decisions": [
+          {
+            "trurtle_id": "T1",
+            "handedness": "left",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "neutral",
+            "notes": "routed from e_in to e_right; A=0; sigma=0; tau=1; threshold=1; override=false"
+          },
+          {
+            "trurtle_id": "T2",
+            "handedness": "left",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_left; A=0; sigma=0; tau=1; threshold=1; override=true"
+          },
+          {
+            "trurtle_id": "T3",
+            "handedness": "right",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_right; A=0; sigma=0; tau=1; threshold=1; override=false"
+          }
+        ],
+        "route_counts": {
+          "e_right": 2,
+          "e_left": 1
+        },
+        "final_switch_state": "flipped",
+        "cooldown_left": 1,
+        "override_trace": [
+          {
+            "seq": 4,
+            "event_type": "override",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "preferred exit over burden threshold=1; cooldown=2"
+          },
+          {
+            "seq": 5,
+            "event_type": "switch_to_flipped",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "polarity yielded under burden"
+          },
+          {
+            "seq": 8,
+            "event_type": "cooldown_tick",
+            "incoming_edge": null,
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "cooldown_remaining=1"
+          }
+        ],
+        "event_count": 9
+      }
+    },
+    {
+      "state": "010",
+      "structural_register": {
+        "A": 0,
+        "sigma": 1,
+        "tau": 0
+      },
+      "state_sensitive": {
+        "state": "010",
+        "mode": "state_sensitive",
+        "left": {
+          "outgoing_edge": "e_left",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=0; sigma=1; tau=0; threshold=1; override=false"
+        },
+        "right": {
+          "outgoing_edge": "e_left",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=0; sigma=1; tau=0; threshold=1; override=false"
+        },
+        "route_counts": {
+          "e_left": 2
+        },
+        "final_switch_state": "neutral",
+        "event_count": 4
+      },
+      "state_sensitive_under_load": {
+        "state": "010",
+        "mode": "state_sensitive_under_load",
+        "decisions": [
+          {
+            "trurtle_id": "T1",
+            "handedness": "left",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "neutral",
+            "notes": "routed from e_in to e_left; A=0; sigma=1; tau=0; threshold=1; override=false"
+          },
+          {
+            "trurtle_id": "T2",
+            "handedness": "left",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_right; A=0; sigma=1; tau=0; threshold=1; override=true"
+          },
+          {
+            "trurtle_id": "T3",
+            "handedness": "right",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_left; A=0; sigma=1; tau=0; threshold=1; override=false"
+          }
+        ],
+        "route_counts": {
+          "e_left": 2,
+          "e_right": 1
+        },
+        "final_switch_state": "flipped",
+        "cooldown_left": 1,
+        "override_trace": [
+          {
+            "seq": 4,
+            "event_type": "override",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "preferred exit over burden threshold=1; cooldown=2"
+          },
+          {
+            "seq": 5,
+            "event_type": "switch_to_flipped",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "polarity yielded under burden"
+          },
+          {
+            "seq": 8,
+            "event_type": "cooldown_tick",
+            "incoming_edge": null,
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "cooldown_remaining=1"
+          }
+        ],
+        "event_count": 9
+      }
+    },
+    {
+      "state": "011",
+      "structural_register": {
+        "A": 0,
+        "sigma": 1,
+        "tau": 1
+      },
+      "state_sensitive": {
+        "state": "011",
+        "mode": "state_sensitive",
+        "left": {
+          "outgoing_edge": "e_right",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false"
+        },
+        "right": {
+          "outgoing_edge": "e_left",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=0; sigma=1; tau=1; threshold=1; override=false"
+        },
+        "route_counts": {
+          "e_right": 1,
+          "e_left": 1
+        },
+        "final_switch_state": "neutral",
+        "event_count": 4
+      },
+      "state_sensitive_under_load": {
+        "state": "011",
+        "mode": "state_sensitive_under_load",
+        "decisions": [
+          {
+            "trurtle_id": "T1",
+            "handedness": "left",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "neutral",
+            "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false"
+          },
+          {
+            "trurtle_id": "T2",
+            "handedness": "left",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_left; A=0; sigma=1; tau=1; threshold=1; override=true"
+          },
+          {
+            "trurtle_id": "T3",
+            "handedness": "right",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_left; A=0; sigma=1; tau=1; threshold=1; override=false"
+          }
+        ],
+        "route_counts": {
+          "e_right": 1,
+          "e_left": 2
+        },
+        "final_switch_state": "flipped",
+        "cooldown_left": 1,
+        "override_trace": [
+          {
+            "seq": 4,
+            "event_type": "override",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "preferred exit over burden threshold=1; cooldown=2"
+          },
+          {
+            "seq": 5,
+            "event_type": "switch_to_flipped",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "polarity yielded under burden"
+          },
+          {
+            "seq": 8,
+            "event_type": "cooldown_tick",
+            "incoming_edge": null,
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "cooldown_remaining=1"
+          }
+        ],
+        "event_count": 9
+      }
+    },
+    {
+      "state": "100",
+      "structural_register": {
+        "A": 1,
+        "sigma": 0,
+        "tau": 0
+      },
+      "state_sensitive": {
+        "state": "100",
+        "mode": "state_sensitive",
+        "left": {
+          "outgoing_edge": "e_right",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=0; tau=0; threshold=1; override=false"
+        },
+        "right": {
+          "outgoing_edge": "e_left",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=0; tau=0; threshold=1; override=false"
+        },
+        "route_counts": {
+          "e_right": 1,
+          "e_left": 1
+        },
+        "final_switch_state": "neutral",
+        "event_count": 4
+      },
+      "state_sensitive_under_load": {
+        "state": "100",
+        "mode": "state_sensitive_under_load",
+        "decisions": [
+          {
+            "trurtle_id": "T1",
+            "handedness": "left",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "neutral",
+            "notes": "routed from e_in to e_right; A=1; sigma=0; tau=0; threshold=1; override=false"
+          },
+          {
+            "trurtle_id": "T2",
+            "handedness": "left",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_left; A=1; sigma=0; tau=0; threshold=1; override=true"
+          },
+          {
+            "trurtle_id": "T3",
+            "handedness": "right",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_left; A=1; sigma=0; tau=0; threshold=1; override=false"
+          }
+        ],
+        "route_counts": {
+          "e_right": 1,
+          "e_left": 2
+        },
+        "final_switch_state": "flipped",
+        "cooldown_left": 1,
+        "override_trace": [
+          {
+            "seq": 4,
+            "event_type": "override",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "preferred exit over burden threshold=1; cooldown=2"
+          },
+          {
+            "seq": 5,
+            "event_type": "switch_to_flipped",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "polarity yielded under burden"
+          },
+          {
+            "seq": 8,
+            "event_type": "cooldown_tick",
+            "incoming_edge": null,
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "cooldown_remaining=1"
+          }
+        ],
+        "event_count": 9
+      }
+    },
+    {
+      "state": "101",
+      "structural_register": {
+        "A": 1,
+        "sigma": 0,
+        "tau": 1
+      },
+      "state_sensitive": {
+        "state": "101",
+        "mode": "state_sensitive",
+        "left": {
+          "outgoing_edge": "e_left",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=0; tau=1; threshold=1; override=false"
+        },
+        "right": {
+          "outgoing_edge": "e_left",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=0; tau=1; threshold=1; override=false"
+        },
+        "route_counts": {
+          "e_left": 2
+        },
+        "final_switch_state": "neutral",
+        "event_count": 4
+      },
+      "state_sensitive_under_load": {
+        "state": "101",
+        "mode": "state_sensitive_under_load",
+        "decisions": [
+          {
+            "trurtle_id": "T1",
+            "handedness": "left",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "neutral",
+            "notes": "routed from e_in to e_left; A=1; sigma=0; tau=1; threshold=1; override=false"
+          },
+          {
+            "trurtle_id": "T2",
+            "handedness": "left",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_right; A=1; sigma=0; tau=1; threshold=1; override=true"
+          },
+          {
+            "trurtle_id": "T3",
+            "handedness": "right",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_left; A=1; sigma=0; tau=1; threshold=1; override=false"
+          }
+        ],
+        "route_counts": {
+          "e_left": 2,
+          "e_right": 1
+        },
+        "final_switch_state": "flipped",
+        "cooldown_left": 1,
+        "override_trace": [
+          {
+            "seq": 4,
+            "event_type": "override",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "preferred exit over burden threshold=1; cooldown=2"
+          },
+          {
+            "seq": 5,
+            "event_type": "switch_to_flipped",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "polarity yielded under burden"
+          },
+          {
+            "seq": 8,
+            "event_type": "cooldown_tick",
+            "incoming_edge": null,
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "cooldown_remaining=1"
+          }
+        ],
+        "event_count": 9
+      }
+    },
+    {
+      "state": "110",
+      "structural_register": {
+        "A": 1,
+        "sigma": 1,
+        "tau": 0
+      },
+      "state_sensitive": {
+        "state": "110",
+        "mode": "state_sensitive",
+        "left": {
+          "outgoing_edge": "e_right",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=0; threshold=1; override=false"
+        },
+        "right": {
+          "outgoing_edge": "e_right",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=0; threshold=1; override=false"
+        },
+        "route_counts": {
+          "e_right": 2
+        },
+        "final_switch_state": "neutral",
+        "event_count": 4
+      },
+      "state_sensitive_under_load": {
+        "state": "110",
+        "mode": "state_sensitive_under_load",
+        "decisions": [
+          {
+            "trurtle_id": "T1",
+            "handedness": "left",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "neutral",
+            "notes": "routed from e_in to e_right; A=1; sigma=1; tau=0; threshold=1; override=false"
+          },
+          {
+            "trurtle_id": "T2",
+            "handedness": "left",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_left; A=1; sigma=1; tau=0; threshold=1; override=true"
+          },
+          {
+            "trurtle_id": "T3",
+            "handedness": "right",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_right; A=1; sigma=1; tau=0; threshold=1; override=false"
+          }
+        ],
+        "route_counts": {
+          "e_right": 2,
+          "e_left": 1
+        },
+        "final_switch_state": "flipped",
+        "cooldown_left": 1,
+        "override_trace": [
+          {
+            "seq": 4,
+            "event_type": "override",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "preferred exit over burden threshold=1; cooldown=2"
+          },
+          {
+            "seq": 5,
+            "event_type": "switch_to_flipped",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "polarity yielded under burden"
+          },
+          {
+            "seq": 8,
+            "event_type": "cooldown_tick",
+            "incoming_edge": null,
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "cooldown_remaining=1"
+          }
+        ],
+        "event_count": 9
+      }
+    },
+    {
+      "state": "111",
+      "structural_register": {
+        "A": 1,
+        "sigma": 1,
+        "tau": 1
+      },
+      "state_sensitive": {
+        "state": "111",
+        "mode": "state_sensitive",
+        "left": {
+          "outgoing_edge": "e_left",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false"
+        },
+        "right": {
+          "outgoing_edge": "e_right",
+          "action": "route",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false"
+        },
+        "route_counts": {
+          "e_left": 1,
+          "e_right": 1
+        },
+        "final_switch_state": "neutral",
+        "event_count": 4
+      },
+      "state_sensitive_under_load": {
+        "state": "111",
+        "mode": "state_sensitive_under_load",
+        "decisions": [
+          {
+            "trurtle_id": "T1",
+            "handedness": "left",
+            "outgoing_edge": "e_left",
+            "action": "route",
+            "switch_state": "neutral",
+            "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false"
+          },
+          {
+            "trurtle_id": "T2",
+            "handedness": "left",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=true"
+          },
+          {
+            "trurtle_id": "T3",
+            "handedness": "right",
+            "outgoing_edge": "e_right",
+            "action": "route",
+            "switch_state": "flipped",
+            "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false"
+          }
+        ],
+        "route_counts": {
+          "e_left": 1,
+          "e_right": 2
+        },
+        "final_switch_state": "flipped",
+        "cooldown_left": 1,
+        "override_trace": [
+          {
+            "seq": 4,
+            "event_type": "override",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "preferred exit over burden threshold=1; cooldown=2"
+          },
+          {
+            "seq": 5,
+            "event_type": "switch_to_flipped",
+            "incoming_edge": "e_in",
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "polarity yielded under burden"
+          },
+          {
+            "seq": 8,
+            "event_type": "cooldown_tick",
+            "incoming_edge": null,
+            "outgoing_edge": null,
+            "switch_state": "flipped",
+            "note": "cooldown_remaining=1"
+          }
+        ],
+        "event_count": 9
+      }
+    }
+  ]
+}
