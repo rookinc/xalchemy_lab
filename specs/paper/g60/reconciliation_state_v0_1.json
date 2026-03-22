@@ -1,0 +1,24 @@
+{
+  "name": "reconciliation_state_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "purpose": "First concrete candidate for the reconciliation component of r1.",
+  "fields": {
+    "sector_id": {
+      "type": "string",
+      "allowed": ["A1", "A2", "A3", "A4"],
+      "description": "Coarse oriented sector selected in the centered square decomposition."
+    },
+    "inner_class": {
+      "type": "string",
+      "allowed": ["lift", "twist", "lift_plus_twist", "unknown"],
+      "description": "Local inner reconciliation class."
+    },
+    "anchor_path": {
+      "type": "array",
+      "items": "integer",
+      "description": "Optional ordered list of numbered motif sites supporting the reconciliation readout."
+    }
+  },
+  "canonical_sentence": "A reconciliation state consists of an oriented sector choice and a local inner lift/twist class."
+}

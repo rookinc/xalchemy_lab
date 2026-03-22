@@ -1,0 +1,70 @@
+{
+  "name": "four_state_orientation_table_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "purpose": "First finite orientation alphabet inferred from the four-sketch motif.",
+  "states": [
+    {
+      "state_id": "s0",
+      "role": "reference_orientation",
+      "invariants": [
+        "outer_loop",
+        "anchored_top_contact",
+        "internal_triangular_frame",
+        "central_spiral_core",
+        "dominant_diagonal"
+      ],
+      "varying_features": {
+        "rotation_class": 0
+      },
+      "next_state": "s1"
+    },
+    {
+      "state_id": "s1",
+      "role": "first_rotated_orientation",
+      "invariants": [
+        "outer_loop",
+        "anchored_top_contact",
+        "internal_triangular_frame",
+        "central_spiral_core",
+        "dominant_diagonal"
+      ],
+      "varying_features": {
+        "rotation_class": 1
+      },
+      "next_state": "s2"
+    },
+    {
+      "state_id": "s2",
+      "role": "second_rotated_orientation",
+      "invariants": [
+        "outer_loop",
+        "anchored_top_contact",
+        "internal_triangular_frame",
+        "central_spiral_core",
+        "dominant_diagonal"
+      ],
+      "varying_features": {
+        "rotation_class": 2
+      },
+      "next_state": "s3"
+    },
+    {
+      "state_id": "s3",
+      "role": "third_rotated_orientation",
+      "invariants": [
+        "outer_loop",
+        "anchored_top_contact",
+        "internal_triangular_frame",
+        "central_spiral_core",
+        "dominant_diagonal"
+      ],
+      "varying_features": {
+        "rotation_class": 3
+      },
+      "next_state": "s0"
+    }
+  ],
+  "transition_rule": "cyclic_rotation_mod_4",
+  "canonical_sentence": "The local object is modeled as one motif occupying four cyclic orientation states."
+}

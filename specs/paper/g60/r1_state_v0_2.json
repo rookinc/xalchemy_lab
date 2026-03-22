@@ -1,0 +1,35 @@
+{
+  "name": "r1_state_v0_2",
+  "version": "0.2",
+  "status": "draft",
+  "purpose": "Refined resolved state produced by the kernel map r0 -> r1, including reconciliation.",
+  "tuple": [
+    "localized_site",
+    "centroid_orientation",
+    "reconciliation_state",
+    "initial_grammar_state"
+  ],
+  "fields": {
+    "localized_site": {
+      "type": "string",
+      "required": true,
+      "description": "Discrete site at which the spark resolves."
+    },
+    "centroid_orientation": {
+      "type": "string",
+      "required": true,
+      "description": "Finite orientation label of the centroid relative to the resolved spark."
+    },
+    "reconciliation_state": {
+      "type": "string",
+      "required": true,
+      "description": "Finite state describing how spark-local orientation and cube orientation have been reconciled."
+    },
+    "initial_grammar_state": {
+      "type": "string",
+      "required": true,
+      "description": "Seed grammar state for downstream deterministic propagation."
+    }
+  },
+  "canonical_sentence": "r1 is the reconciled centroid-oriented initial state."
+}

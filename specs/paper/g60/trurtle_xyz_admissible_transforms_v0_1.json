@@ -1,0 +1,65 @@
+{
+  "name": "trurtle_xyz_admissible_transforms_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "purpose": "First candidate transform set acting on the ordered trurtle frame xyz before identification.",
+  "input_frame": {
+    "name": "xyz",
+    "type": "ordered_triadic_frame"
+  },
+  "transform_classes": {
+    "permutation_like": [
+      {
+        "transform_id": "id",
+        "name": "identity",
+        "action": "xyz -> xyz"
+      },
+      {
+        "transform_id": "cyc_fwd",
+        "name": "cyclic_shift_forward",
+        "action": "xyz -> yzx"
+      },
+      {
+        "transform_id": "cyc_bwd",
+        "name": "cyclic_shift_backward",
+        "action": "xyz -> zxy"
+      },
+      {
+        "transform_id": "swap_23",
+        "name": "adjacent_swap_23",
+        "action": "xyz -> xzy"
+      },
+      {
+        "transform_id": "swap_12",
+        "name": "adjacent_swap_12",
+        "action": "xyz -> yxz"
+      },
+      {
+        "transform_id": "rev",
+        "name": "full_reversal",
+        "action": "xyz -> zyx"
+      }
+    ],
+    "structural": [
+      {
+        "transform_id": "lift",
+        "name": "lift",
+        "action": "Lift(xyz)",
+        "status": "placeholder_rule"
+      },
+      {
+        "transform_id": "twist",
+        "name": "twist",
+        "action": "Twist(xyz)",
+        "status": "placeholder_rule"
+      },
+      {
+        "transform_id": "lift_twist",
+        "name": "lift_plus_twist",
+        "action": "xyz -> I",
+        "status": "leading_reconciliation_operator"
+      }
+    ]
+  },
+  "canonical_sentence": "Ordered permutations act on xyz, but lift+twist is the candidate reconciliation operator that sends xyz into I."
+}

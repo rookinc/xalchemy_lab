@@ -1,0 +1,20 @@
+{
+  "name": "identification_state_I_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "purpose": "First explicit intermediate identification state produced by the lift+twist half-step.",
+  "input_frame": {
+    "axes": ["x", "y", "z"],
+    "description": "Local oriented triple entering reconciliation."
+  },
+  "operator": {
+    "name": "lift_twist",
+    "step": "0.5",
+    "description": "Half-step reconciliation operator acting on the local oriented frame."
+  },
+  "output_state": {
+    "name": "I",
+    "description": "Single identified reconciliation state produced by lift+twist."
+  },
+  "canonical_sentence": "The lift+twist half-step sends a local oriented triple into the identified state I."
+}

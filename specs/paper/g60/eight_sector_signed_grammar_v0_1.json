@@ -1,0 +1,22 @@
+{
+  "name": "eight_sector_signed_grammar_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "purpose": "Finite lookup model for sector-oriented signed lift+twist reconciliation.",
+  "sector_count": 8,
+  "fields": {
+    "sector_id": {
+      "type": "string",
+      "description": "Internal sector in which the spark resolves."
+    },
+    "sector_orientation": {
+      "type": "string",
+      "description": "Orientation label associated with the sector."
+    },
+    "signed_operator": {
+      "type": "string",
+      "description": "Signed lift+twist grammar assigned by the sector."
+    }
+  },
+  "canonical_sentence": "The spark's internal sector determines the signed lift+twist grammar in one move."
+}

@@ -1,0 +1,54 @@
+{
+  "name": "kernel_r0_r1_v0_2",
+  "version": "0.2",
+  "status": "draft",
+  "purpose": "Formal specification of the kernel transition from raw perturbation state r0 to reconciled initial state r1.",
+  "kernel_statement": "The kernel of the system is the transition r0 -> r1.",
+  "input_state": {
+    "name": "r0",
+    "description": "Raw perturbation state before resolved localization and reconciliation.",
+    "fields": {
+      "spark": {
+        "type": "object",
+        "required": true,
+        "description": "Spark event serving as the minimal perturbation primitive."
+      }
+    }
+  },
+  "output_state": {
+    "name": "r1",
+    "description": "First resolved state after localization, centroid orientation, and reconciliation.",
+    "fields": {
+      "localized_site": {
+        "type": "string",
+        "required": true,
+        "description": "Resolved initial active site."
+      },
+      "centroid_orientation": {
+        "type": "string",
+        "required": true,
+        "description": "Orientation of the cube centroid relative to the localized spark."
+      },
+      "reconciliation_state": {
+        "type": "string",
+        "required": true,
+        "description": "Resolved orientation-reconciliation class."
+      },
+      "initial_grammar_state": {
+        "type": "string",
+        "required": true,
+        "description": "Seeded propagation grammar state."
+      }
+    }
+  },
+  "map": {
+    "name": "Kernel",
+    "signature": "Kernel(r0) -> r1",
+    "description": "Resolve a raw spark into a reconciled centroid-oriented initial state."
+  },
+  "interpretation": {
+    "r0": "raw spark state",
+    "r1": "localized spark, oriented centroid, reconciled state, seeded grammar"
+  },
+  "canonical_sentence": "The kernel is the map from raw perturbation to reconciled centroid-oriented initial state."
+}

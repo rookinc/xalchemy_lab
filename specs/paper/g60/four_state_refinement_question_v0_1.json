@@ -1,0 +1,37 @@
+{
+  "name": "four_state_refinement_question_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "question": "Are the four observed states pure rotations, or do they decompose into rotation class times handedness?",
+  "candidate_models": [
+    {
+      "model_id": "A",
+      "name": "pure_rotation_mod_4",
+      "state_form": [
+        "s0",
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "transition_rule": "cyclic_rotation_mod_4"
+    },
+    {
+      "model_id": "B",
+      "name": "rotation_times_handedness",
+      "state_form": [
+        "(r0,hL)",
+        "(r0,hR)",
+        "(r1,hL)",
+        "(r1,hR)"
+      ],
+      "transition_rule": "mixed_rotation_and_handedness_rule"
+    }
+  ],
+  "decision_criteria": [
+    "Can each state be obtained from another by rotation alone?",
+    "Does the inner motif ever appear mirrored rather than merely rotated?",
+    "Does the spiral/core switch side relative to the dominant diagonal?",
+    "Is a chart or handed label needed to preserve the observed distinctions?"
+  ],
+  "canonical_sentence": "The next rigorous question is whether the four-state family is pure rotation or rotation doubled by handedness."
+}

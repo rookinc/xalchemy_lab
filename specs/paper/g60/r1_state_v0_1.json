@@ -1,0 +1,29 @@
+{
+  "name": "r1_state_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "purpose": "Minimal resolved state produced by the kernel map r0 -> r1.",
+  "tuple": [
+    "localized_site",
+    "centroid_orientation",
+    "initial_grammar_state"
+  ],
+  "fields": {
+    "localized_site": {
+      "type": "string",
+      "required": true,
+      "description": "Discrete site at which the spark resolves."
+    },
+    "centroid_orientation": {
+      "type": "string",
+      "required": true,
+      "description": "Finite orientation label of the centroid relative to the resolved spark."
+    },
+    "initial_grammar_state": {
+      "type": "string",
+      "required": true,
+      "description": "Seed grammar state for downstream deterministic propagation."
+    }
+  },
+  "canonical_sentence": "r1 is the resolved state consisting of a localized site, a centroid orientation, and an initial grammar seed."
+}
