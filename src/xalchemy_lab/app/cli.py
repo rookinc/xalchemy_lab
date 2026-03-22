@@ -57,6 +57,11 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("holonomy-probe", help="run multi-controller holonomy probe")
     sub.add_parser("framed-return", help="run framed return probe")
     sub.add_parser("framed-invariant", help="compute framed return invariant from chart traces")
+    sub.add_parser("framed-displacement", help="compute signed framed displacement from chart traces")
+    sub.add_parser("framed-signature", help="compute combined framed signature (H,S) from chart traces")
+    sub.add_parser("framed-compose", help="test composition law for framed signatures")
+    sub.add_parser("native-accumulator", help="run native framed signature accumulator")
+    sub.add_parser("predict-signature", help="predict framed signature from controller sequence")
     sub.add_parser("all", help="run gallery, contact, sheet, and dxf")
 
     return parser
@@ -90,6 +95,11 @@ def main() -> int:
         "holonomy-probe": "xalchemy_lab.app.hello_multi_controller_holonomy_probe",
         "framed-return": "xalchemy_lab.app.hello_framed_return_probe",
         "framed-invariant": "xalchemy_lab.app.hello_framed_return_invariant",
+        "framed-displacement": "xalchemy_lab.app.hello_signed_framed_displacement",
+        "framed-signature": "xalchemy_lab.app.hello_framed_signature",
+        "framed-compose": "xalchemy_lab.app.hello_framed_signature_composition",
+        "native-accumulator": "xalchemy_lab.app.hello_native_framed_accumulator",
+        "predict-signature": "xalchemy_lab.app.hello_predict_framed_signature",
     }
 
     if args.command == "all":

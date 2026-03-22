@@ -1,0 +1,178 @@
+{
+  "name": "framed_signature_composition_v0_1",
+  "source": "framed_signature_v0_1.json",
+  "pairs": [
+    {
+      "left": {
+        "name": "return_A",
+        "trace": [
+          "chart_right",
+          "chart_left",
+          "chart_right"
+        ],
+        "H": 1,
+        "S": 1
+      },
+      "right": {
+        "name": "return_B",
+        "trace": [
+          "chart_left",
+          "chart_right",
+          "chart_left"
+        ],
+        "H": 1,
+        "S": -1
+      },
+      "join_term": -1,
+      "combined_trace": [
+        "chart_right",
+        "chart_left",
+        "chart_right",
+        "chart_left",
+        "chart_right",
+        "chart_left"
+      ],
+      "combined": {
+        "H": -1,
+        "S": 0
+      },
+      "predicted": {
+        "H": -1,
+        "S": 0
+      },
+      "matches": {
+        "H": true,
+        "S": true
+      }
+    },
+    {
+      "left": {
+        "name": "return_A",
+        "trace": [
+          "chart_right",
+          "chart_left",
+          "chart_right"
+        ],
+        "H": 1,
+        "S": 1
+      },
+      "right": {
+        "name": "return_C_mixed_chart",
+        "trace": [
+          "chart_right",
+          "chart_right",
+          "chart_right"
+        ],
+        "H": 1,
+        "S": 3
+      },
+      "join_term": 1,
+      "combined_trace": [
+        "chart_right",
+        "chart_left",
+        "chart_right",
+        "chart_right",
+        "chart_right",
+        "chart_right"
+      ],
+      "combined": {
+        "H": 1,
+        "S": 4
+      },
+      "predicted": {
+        "H": 1,
+        "S": 4
+      },
+      "matches": {
+        "H": true,
+        "S": true
+      }
+    },
+    {
+      "left": {
+        "name": "return_B",
+        "trace": [
+          "chart_left",
+          "chart_right",
+          "chart_left"
+        ],
+        "H": 1,
+        "S": -1
+      },
+      "right": {
+        "name": "return_D_unary_mixed",
+        "trace": [
+          "chart_right",
+          "chart_left",
+          "chart_left"
+        ],
+        "H": -1,
+        "S": -1
+      },
+      "join_term": -1,
+      "combined_trace": [
+        "chart_left",
+        "chart_right",
+        "chart_left",
+        "chart_right",
+        "chart_left",
+        "chart_left"
+      ],
+      "combined": {
+        "H": 1,
+        "S": -2
+      },
+      "predicted": {
+        "H": 1,
+        "S": -2
+      },
+      "matches": {
+        "H": true,
+        "S": true
+      }
+    },
+    {
+      "left": {
+        "name": "return_C_mixed_chart",
+        "trace": [
+          "chart_right",
+          "chart_right",
+          "chart_right"
+        ],
+        "H": 1,
+        "S": 3
+      },
+      "right": {
+        "name": "return_D_unary_mixed",
+        "trace": [
+          "chart_right",
+          "chart_left",
+          "chart_left"
+        ],
+        "H": -1,
+        "S": -1
+      },
+      "join_term": 1,
+      "combined_trace": [
+        "chart_right",
+        "chart_right",
+        "chart_right",
+        "chart_right",
+        "chart_left",
+        "chart_left"
+      ],
+      "combined": {
+        "H": -1,
+        "S": 2
+      },
+      "predicted": {
+        "H": -1,
+        "S": 2
+      },
+      "matches": {
+        "H": true,
+        "S": true
+      }
+    }
+  ]
+}

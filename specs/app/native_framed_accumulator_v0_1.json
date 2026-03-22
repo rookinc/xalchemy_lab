@@ -1,0 +1,341 @@
+{
+  "name": "native_framed_accumulator_v0_1",
+  "loops": [
+    {
+      "name": "return_A",
+      "controller_specs": [
+        {
+          "vertex_id": "a1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "a2",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "a3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "right",
+        "left"
+      ],
+      "steps": [
+        {
+          "vertex_id": "a1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": null,
+          "running_H": 1,
+          "running_S": 1,
+          "prev_chart": "chart_right"
+        },
+        {
+          "vertex_id": "a2",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": -1,
+          "running_H": -1,
+          "running_S": 0,
+          "prev_chart": "chart_left"
+        },
+        {
+          "vertex_id": "a3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": -1,
+          "running_H": 1,
+          "running_S": 1,
+          "prev_chart": "chart_right"
+        }
+      ],
+      "final_accumulator": {
+        "prev_chart": "chart_right",
+        "H": 1,
+        "S": 1
+      },
+      "signature": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "return_B",
+      "controller_specs": [
+        {
+          "vertex_id": "b1",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "b2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "b3",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "right",
+        "left"
+      ],
+      "steps": [
+        {
+          "vertex_id": "b1",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": null,
+          "running_H": 1,
+          "running_S": -1,
+          "prev_chart": "chart_left"
+        },
+        {
+          "vertex_id": "b2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": -1,
+          "running_H": -1,
+          "running_S": 0,
+          "prev_chart": "chart_right"
+        },
+        {
+          "vertex_id": "b3",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": -1,
+          "running_H": 1,
+          "running_S": -1,
+          "prev_chart": "chart_left"
+        }
+      ],
+      "final_accumulator": {
+        "prev_chart": "chart_left",
+        "H": 1,
+        "S": -1
+      },
+      "signature": [
+        1,
+        -1
+      ]
+    },
+    {
+      "name": "return_C_mixed_chart",
+      "controller_specs": [
+        {
+          "vertex_id": "c1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "c2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1
+        },
+        {
+          "vertex_id": "c3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "right",
+        "left"
+      ],
+      "steps": [
+        {
+          "vertex_id": "c1",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": null,
+          "running_H": 1,
+          "running_S": 1,
+          "prev_chart": "chart_right"
+        },
+        {
+          "vertex_id": "c2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=1; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": 1,
+          "running_H": 1,
+          "running_S": 2,
+          "prev_chart": "chart_right"
+        },
+        {
+          "vertex_id": "c3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": 1,
+          "running_H": 1,
+          "running_S": 3,
+          "prev_chart": "chart_right"
+        }
+      ],
+      "final_accumulator": {
+        "prev_chart": "chart_right",
+        "H": 1,
+        "S": 3
+      },
+      "signature": [
+        1,
+        3
+      ]
+    },
+    {
+      "name": "return_D_unary_mixed",
+      "controller_specs": [
+        {
+          "vertex_id": "d1",
+          "A": 0,
+          "sigma": 0,
+          "tau": 1
+        },
+        {
+          "vertex_id": "d2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 0
+        },
+        {
+          "vertex_id": "d3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1
+        }
+      ],
+      "hand_sequence": [
+        "left",
+        "left",
+        "right"
+      ],
+      "steps": [
+        {
+          "vertex_id": "d1",
+          "A": 0,
+          "sigma": 0,
+          "tau": 1,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_right",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=0; sigma=0; tau=1; threshold=1; override=false",
+          "transition_sign": null,
+          "running_H": 1,
+          "running_S": 1,
+          "prev_chart": "chart_right"
+        },
+        {
+          "vertex_id": "d2",
+          "A": 1,
+          "sigma": 1,
+          "tau": 0,
+          "handedness": "left",
+          "physical_exit": "e_right",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_right; A=1; sigma=1; tau=0; threshold=1; override=false",
+          "transition_sign": -1,
+          "running_H": -1,
+          "running_S": 0,
+          "prev_chart": "chart_left"
+        },
+        {
+          "vertex_id": "d3",
+          "A": 0,
+          "sigma": 1,
+          "tau": 1,
+          "handedness": "right",
+          "physical_exit": "e_left",
+          "chart_exit": "chart_left",
+          "switch_state": "neutral",
+          "notes": "routed from e_in to e_left; A=0; sigma=1; tau=1; threshold=1; override=false",
+          "transition_sign": 1,
+          "running_H": -1,
+          "running_S": -1,
+          "prev_chart": "chart_left"
+        }
+      ],
+      "final_accumulator": {
+        "prev_chart": "chart_left",
+        "H": -1,
+        "S": -1
+      },
+      "signature": [
+        -1,
+        -1
+      ]
+    }
+  ]
+}

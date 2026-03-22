@@ -1,0 +1,52 @@
+{
+  "name": "g60_two_face_snap_experiment_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "purpose": "First structured experiment for two-face perturbation, interior reduction, and nearest-vertex snap in G60.",
+  "principle": "Boundary perturbations reduce in the interior and then resolve discretely by nearest-vertex snap.",
+  "cases": [
+    {
+      "case_id": "north_east",
+      "active_faces": [
+        "north",
+        "east"
+      ],
+      "qualitative_interior_bias": "TODO",
+      "nearest_g60_vertex": "TODO",
+      "snap_class": "TODO",
+      "next_carrier_site": "TODO",
+      "closure_redirection_note": "TODO"
+    },
+    {
+      "case_id": "north_south",
+      "active_faces": [
+        "north",
+        "south"
+      ],
+      "qualitative_interior_bias": "TODO",
+      "nearest_g60_vertex": "TODO",
+      "snap_class": "TODO",
+      "next_carrier_site": "TODO",
+      "closure_redirection_note": "TODO"
+    },
+    {
+      "case_id": "east_west",
+      "active_faces": [
+        "east",
+        "west"
+      ],
+      "qualitative_interior_bias": "TODO",
+      "nearest_g60_vertex": "TODO",
+      "snap_class": "TODO",
+      "next_carrier_site": "TODO",
+      "closure_redirection_note": "TODO"
+    }
+  ],
+  "snap_classes": [
+    "reinforced",
+    "opposed",
+    "neutralized",
+    "skewed"
+  ],
+  "success_condition": "At least one two-face case yields a defensible interior bias and a plausible nearest snapped G60 vertex."
+}

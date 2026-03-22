@@ -1,0 +1,122 @@
+{
+  "name": "g60_first_patch_instance_v0_1",
+  "version": "0.1",
+  "status": "placeholder_instance",
+  "purpose": "First concrete chamber-centered local G60 patch instance for chart-relative framed readout.",
+  "source_schema": "g60_first_explicit_patch_schema_v0_1.json",
+
+  "carrier": {
+    "carrier_id": "TODO",
+    "carrier_type": "oriented_chamber",
+    "why_chosen": "TODO"
+  },
+
+  "local_chart": {
+    "chart_id": "TODO",
+    "chart_orientation": "TODO",
+    "chart_order": [
+      "TODO"
+    ],
+    "chart_flip_description": "TODO"
+  },
+
+  "incoming_incidence": {
+    "incoming_id": "TODO",
+    "incoming_type": "TODO",
+    "incoming_orientation": "TODO",
+    "note": "TODO"
+  },
+
+  "candidate_continuations": {
+    "continuation_ids": [
+      "TODO"
+    ],
+    "continuation_types": {
+      "TODO": "TODO"
+    },
+    "continuation_orientations": {
+      "TODO": "TODO"
+    },
+    "note": "TODO"
+  },
+
+  "framed_partition": {
+    "left_like_ids": [
+      "TODO"
+    ],
+    "right_like_ids": [
+      "TODO"
+    ],
+    "partition_note": "TODO"
+  },
+
+  "local_reversal_data": {
+    "reversal_pairs": [
+      {
+        "from": "TODO",
+        "to": "TODO"
+      }
+    ],
+    "chart_flip_action": "TODO"
+  },
+
+  "short_return_neighborhood": {
+    "adjacent_carrier_ids": [
+      "TODO"
+    ],
+    "short_path_candidates": [
+      [
+        "TODO"
+      ]
+    ],
+    "note": "TODO"
+  },
+
+  "readout_targets": {
+    "chart_relative_exit": true,
+    "parity_like_quantity": false,
+    "displacement_like_quantity": false
+  },
+
+  "toy_comparison": {
+    "local_carrier": {
+      "toy": "vertex_controller",
+      "g60": "TODO"
+    },
+    "incoming_incidence": {
+      "toy": "incoming_edge",
+      "g60": "TODO"
+    },
+    "chart_selector": {
+      "toy": "A",
+      "g60": "TODO"
+    },
+    "chart_relative_continuations": {
+      "toy": [
+        "chart_left",
+        "chart_right"
+      ],
+      "g60": [
+        "TODO"
+      ]
+    },
+    "parity_like_quantity": {
+      "toy": "H",
+      "g60": "TODO"
+    },
+    "displacement_like_quantity": {
+      "toy": "S",
+      "g60": "TODO"
+    }
+  },
+
+  "success_checklist": {
+    "explicit_carrier": false,
+    "explicit_incoming_incidence": false,
+    "at_least_two_continuations": false,
+    "explicit_left_right_partition": false,
+    "explicit_chart_flip_effect": false
+  },
+
+  "next_step": "Replace TODO fields with one actual chamber-centered G60 local neighborhood and then promote parity_like_quantity / displacement_like_quantity once the first framed readout is stable."
+}

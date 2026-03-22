@@ -1,0 +1,103 @@
+{
+  "name": "g60_first_anchored_patch_instance_v0_1",
+  "version": "0.1",
+  "status": "first_named_instance",
+  "purpose": "First anchored G60 support patch instance built around the north face-center anchor.",
+  "source_schema": "g60_anchored_support_patch_schema_v0_1.json",
+
+  "carrier": {
+    "carrier_id": "north_face_center",
+    "carrier_type": "anchored_vertex",
+    "anchor_role": "face_center",
+    "why_chosen": "North was selected as the first speaking face-center anchor."
+  },
+
+  "local_chart": {
+    "chart_id": "north_face_chart_v0",
+    "chart_orientation": "chart read on the north face after eastern-sector perturbation",
+    "chart_order": [
+      "incoming_from_east_sector",
+      "left_like_continuation",
+      "right_like_continuation"
+    ],
+    "chart_flip_description": "swap left-like and right-like continuation classes relative to the north-face chart"
+  },
+
+  "incoming_incidence": {
+    "incoming_id": "north_east_sector_perturbation",
+    "incoming_type": "support_link",
+    "incoming_orientation": "east_to_north_face_center",
+    "note": "First lawful arrival into north_face_center, sourced from the eastern sector of the north face."
+  },
+
+  "candidate_continuations": {
+    "continuation_ids": [
+      "to_north_nw_corner",
+      "to_north_ne_corner"
+    ],
+    "continuation_types": {
+      "to_north_nw_corner": "support_link",
+      "to_north_ne_corner": "support_link"
+    },
+    "continuation_orientations": {
+      "to_north_nw_corner": "north_rim_westward",
+      "to_north_ne_corner": "north_rim_eastward"
+    },
+    "continuation_anchor_targets": {
+      "to_north_nw_corner": "north_nw_corner",
+      "to_north_ne_corner": "north_ne_corner"
+    },
+    "note": "First two admissible anchored continuations from north_face_center under east-sector perturbation."
+  },
+
+  "framed_partition": {
+    "left_like_ids": [
+      "to_north_nw_corner"
+    ],
+    "right_like_ids": [
+      "to_north_ne_corner"
+    ],
+    "partition_note": "Initial North-relative partition after East perturbs the North face."
+  },
+
+  "local_reversal_data": {
+    "reversal_pairs": [
+      {
+        "from": "to_north_nw_corner",
+        "to": "to_north_ne_corner"
+      }
+    ],
+    "chart_flip_action": "swap the two continuation classes under North-chart reversal"
+  },
+
+  "anchored_neighborhood": {
+    "adjacent_anchor_ids": [
+      "north_nw_corner",
+      "north_ne_corner",
+      "cube_center"
+    ],
+    "adjacent_anchor_roles": {
+      "north_nw_corner": "corner",
+      "north_ne_corner": "corner",
+      "cube_center": "cube_center"
+    },
+    "short_path_candidates": [
+      [
+        "north_face_center",
+        "north_nw_corner",
+        "north_face_center"
+      ],
+      [
+        "north_face_center",
+        "north_ne_corner",
+        "north_face_center"
+      ]
+    ]
+  },
+
+  "readout_targets": {
+    "chart_relative_exit": true,
+    "parity_like_quantity": false,
+    "displacement_like_quantity": false
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "name": "g60_first_explicit_patch_schema_v0_1",
+  "version": "0.1",
+  "purpose": "Schema for the first explicit chamber-centered local G60 patch supporting chart-relative framed readout.",
+  "status": "draft",
+  "carrier": {
+    "carrier_id": {
+      "type": "string",
+      "required": true,
+      "description": "Unique identifier of the local carrier."
+    },
+    "carrier_type": {
+      "type": "string",
+      "required": true,
+      "allowed": [
+        "oriented_chamber"
+      ],
+      "description": "Type of the local carrier."
+    }
+  },
+  "local_chart": {
+    "chart_id": {
+      "type": "string",
+      "required": true,
+      "description": "Identifier for the local chart choice."
+    },
+    "chart_orientation": {
+      "type": "string",
+      "required": true,
+      "description": "Human-readable description of the local orientation convention."
+    },
+    "chart_order": {
+      "type": "array",
+      "required": true,
+      "items": "string",
+      "description": "Ordered local frame data used to interpret continuations."
+    }
+  },
+  "incoming_incidence": {
+    "incoming_id": {
+      "type": "string",
+      "required": true,
+      "description": "Identifier of the incoming oriented incidence."
+    },
+    "incoming_type": {
+      "type": "string",
+      "required": true,
+      "allowed": [
+        "oriented_adjacency",
+        "flag_transition",
+        "chamber_transition",
+        "local_incidence"
+      ],
+      "description": "Type of incoming local incidence."
+    },
+    "incoming_orientation": {
+      "type": "string",
+      "required": true,
+      "description": "Orientation label of the incoming local incidence."
+    }
+  },
+  "candidate_continuations": {
+    "continuation_ids": {
+      "type": "array",
+      "required": true,
+      "items": "string",
+      "description": "Identifiers of locally admissible continuations."
+    },
+    "continuation_types": {
+      "type": "object",
+      "required": true,
+      "description": "Map from continuation id to continuation type."
+    },
+    "continuation_orientations": {
+      "type": "object",
+      "required": true,
+      "description": "Map from continuation id to local orientation descriptor."
+    }
+  },
+  "framed_partition": {
+    "left_like_ids": {
+      "type": "array",
+      "required": true,
+      "items": "string",
+      "description": "Continuations read as chart-left-like in the chosen chart."
+    },
+    "right_like_ids": {
+      "type": "array",
+      "required": true,
+      "items": "string",
+      "description": "Continuations read as chart-right-like in the chosen chart."
+    },
+    "partition_note": {
+      "type": "string",
+      "required": false,
+      "description": "Optional note describing why the partition is valid."
+    }
+  },
+  "local_reversal_data": {
+    "reversal_pairs": {
+      "type": "array",
+      "required": true,
+      "items": "object",
+      "description": "Pairs of continuation ids exchanged or compared under local chart reversal."
+    },
+    "chart_flip_action": {
+      "type": "string",
+      "required": true,
+      "description": "Description of how the local chart reversal acts on continuation classes."
+    }
+  },
+  "short_return_neighborhood": {
+    "adjacent_carrier_ids": {
+      "type": "array",
+      "required": true,
+      "items": "string",
+      "description": "Nearby carriers needed for a first short framed return test."
+    },
+    "short_path_candidates": {
+      "type": "array",
+      "required": true,
+      "items": "array",
+      "description": "Candidate short local paths for framed return or parity/displacement tests."
+    }
+  },
+  "readout_targets": {
+    "chart_relative_exit": {
+      "type": "boolean",
+      "required": true,
+      "default": true,
+      "description": "Whether the patch supports a chart-relative continuation readout."
+    },
+    "parity_like_quantity": {
+      "type": "boolean",
+      "required": true,
+      "default": false,
+      "description": "Whether the patch is rich enough to define a first parity-like local quantity."
+    },
+    "displacement_like_quantity": {
+      "type": "boolean",
+      "required": true,
+      "default": false,
+      "description": "Whether the patch is rich enough to define a first displacement-like local quantity."
+    }
+  },
+  "success_condition": {
+    "type": "string",
+    "value": "A valid first patch instantiation exhibits one carrier, one incoming oriented incidence, at least two locally distinct continuations, a chart-relative left/right-like partition, and a visible chart-flip effect."
+  },
+  "example_stub": {
+    "carrier": {
+      "carrier_id": "patch_001",
+      "carrier_type": "oriented_chamber"
+    },
+    "local_chart": {
+      "chart_id": "chart_A",
+      "chart_orientation": "placeholder orientation convention",
+      "chart_order": [
+        "slot_0",
+        "slot_1",
+        "slot_2"
+      ]
+    },
+    "incoming_incidence": {
+      "incoming_id": "inc_0",
+      "incoming_type": "oriented_adjacency",
+      "incoming_orientation": "forward"
+    },
+    "candidate_continuations": {
+      "continuation_ids": [
+        "cont_L",
+        "cont_R"
+      ],
+      "continuation_types": {
+        "cont_L": "local_incidence",
+        "cont_R": "local_incidence"
+      },
+      "continuation_orientations": {
+        "cont_L": "candidate_left_slot",
+        "cont_R": "candidate_right_slot"
+      }
+    },
+    "framed_partition": {
+      "left_like_ids": [
+        "cont_L"
+      ],
+      "right_like_ids": [
+        "cont_R"
+      ],
+      "partition_note": "Stub only; replace with actual G60 local readout."
+    },
+    "local_reversal_data": {
+      "reversal_pairs": [
+        {
+          "from": "cont_L",
+          "to": "cont_R"
+        }
+      ],
+      "chart_flip_action": "swap left-like and right-like continuation classes"
+    },
+    "short_return_neighborhood": {
+      "adjacent_carrier_ids": [
+        "patch_002",
+        "patch_003"
+      ],
+      "short_path_candidates": [
+        [
+          "patch_001",
+          "patch_002",
+          "patch_001"
+        ],
+        [
+          "patch_001",
+          "patch_003",
+          "patch_001"
+        ]
+      ]
+    },
+    "readout_targets": {
+      "chart_relative_exit": true,
+      "parity_like_quantity": false,
+      "displacement_like_quantity": false
+    }
+  }
+}

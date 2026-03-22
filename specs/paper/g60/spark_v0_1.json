@@ -1,0 +1,39 @@
+{
+  "name": "spark_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "purpose": "Minimal perturbation event serving as input to the kernel map r0 -> r1.",
+  "fields": {
+    "face": {
+      "type": "string",
+      "required": true,
+      "description": "Boundary face on which the perturbation occurs."
+    },
+    "sector": {
+      "type": "string",
+      "required": true,
+      "description": "Local sector of the face in which the perturbation is localized."
+    },
+    "polarity": {
+      "type": "string",
+      "required": true,
+      "description": "Discrete orientation or sign of the perturbation."
+    },
+    "magnitude": {
+      "type": "number",
+      "required": false,
+      "description": "Optional perturbation strength."
+    },
+    "phase": {
+      "type": "number",
+      "required": false,
+      "description": "Optional perturbation phase."
+    },
+    "time_index": {
+      "type": "integer",
+      "required": false,
+      "description": "Optional event index."
+    }
+  },
+  "canonical_sentence": "A spark is the minimal perturbation event sufficient to localize the initial active site and orient the centroid."
+}

@@ -1,0 +1,264 @@
+{
+  "name": "g60_anchored_support_patch_schema_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "purpose": "Schema for a first anchored G60 support patch built on the 15-anchor cube scaffold.",
+  "anchor_system": {
+    "total_anchors": 15,
+    "roles": {
+      "corner": 8,
+      "face_center": 6,
+      "cube_center": 1
+    },
+    "canonical_sentence": "The 15-anchor cube is the rigid framed support set."
+  },
+  "carrier": {
+    "carrier_id": {
+      "type": "string",
+      "required": true
+    },
+    "carrier_type": {
+      "type": "string",
+      "required": true,
+      "allowed": [
+        "anchored_vertex"
+      ]
+    },
+    "anchor_role": {
+      "type": "string",
+      "required": true,
+      "allowed": [
+        "corner",
+        "face_center",
+        "cube_center"
+      ]
+    },
+    "why_chosen": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "local_chart": {
+    "chart_id": {
+      "type": "string",
+      "required": true
+    },
+    "chart_orientation": {
+      "type": "string",
+      "required": true
+    },
+    "chart_order": {
+      "type": "array",
+      "required": true,
+      "items": "string"
+    },
+    "chart_flip_description": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "incoming_incidence": {
+    "incoming_id": {
+      "type": "string",
+      "required": true
+    },
+    "incoming_type": {
+      "type": "string",
+      "required": true,
+      "allowed": [
+        "anchored_edge",
+        "oriented_adjacency",
+        "local_incidence",
+        "support_link"
+      ]
+    },
+    "incoming_orientation": {
+      "type": "string",
+      "required": true
+    },
+    "note": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "candidate_continuations": {
+    "continuation_ids": {
+      "type": "array",
+      "required": true,
+      "items": "string"
+    },
+    "continuation_types": {
+      "type": "object",
+      "required": true
+    },
+    "continuation_orientations": {
+      "type": "object",
+      "required": true
+    },
+    "continuation_anchor_targets": {
+      "type": "object",
+      "required": true
+    },
+    "note": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "framed_partition": {
+    "left_like_ids": {
+      "type": "array",
+      "required": true,
+      "items": "string"
+    },
+    "right_like_ids": {
+      "type": "array",
+      "required": true,
+      "items": "string"
+    },
+    "partition_note": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "local_reversal_data": {
+    "reversal_pairs": {
+      "type": "array",
+      "required": true,
+      "items": "object"
+    },
+    "chart_flip_action": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "anchored_neighborhood": {
+    "adjacent_anchor_ids": {
+      "type": "array",
+      "required": true,
+      "items": "string"
+    },
+    "adjacent_anchor_roles": {
+      "type": "object",
+      "required": true
+    },
+    "short_path_candidates": {
+      "type": "array",
+      "required": true,
+      "items": "array"
+    }
+  },
+  "readout_targets": {
+    "chart_relative_exit": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "parity_like_quantity": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "displacement_like_quantity": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "toy_bridge": {
+    "local_carrier": "anchored_vertex",
+    "chart_selector": "local_anchor_chart",
+    "chart_relative_continuations": "anchor-relative continuation classes",
+    "parity_like_quantity": "candidate anchored framed reversal class",
+    "displacement_like_quantity": "candidate anchored framed bias"
+  },
+  "example_stub": {
+    "carrier": {
+      "carrier_id": "A_face_001",
+      "carrier_type": "anchored_vertex",
+      "anchor_role": "face_center",
+      "why_chosen": "Face-center anchors are natural mediators between corners and the cube center."
+    },
+    "local_chart": {
+      "chart_id": "chart_face_A",
+      "chart_orientation": "placeholder face-oriented frame",
+      "chart_order": [
+        "incoming",
+        "left_like",
+        "right_like"
+      ],
+      "chart_flip_description": "swap left-like and right-like continuation classes"
+    },
+    "incoming_incidence": {
+      "incoming_id": "inc_stub",
+      "incoming_type": "anchored_edge",
+      "incoming_orientation": "toward_face_center",
+      "note": "Replace with actual anchored incidence."
+    },
+    "candidate_continuations": {
+      "continuation_ids": [
+        "cont_L",
+        "cont_R"
+      ],
+      "continuation_types": {
+        "cont_L": "support_link",
+        "cont_R": "support_link"
+      },
+      "continuation_orientations": {
+        "cont_L": "left_like_slot",
+        "cont_R": "right_like_slot"
+      },
+      "continuation_anchor_targets": {
+        "cont_L": "A_corner_stub_1",
+        "cont_R": "A_corner_stub_2"
+      },
+      "note": "Replace with actual anchored targets."
+    },
+    "framed_partition": {
+      "left_like_ids": [
+        "cont_L"
+      ],
+      "right_like_ids": [
+        "cont_R"
+      ],
+      "partition_note": "Stub only; replace with actual anchored framed readout."
+    },
+    "local_reversal_data": {
+      "reversal_pairs": [
+        {
+          "from": "cont_L",
+          "to": "cont_R"
+        }
+      ],
+      "chart_flip_action": "swap left-like and right-like continuation classes"
+    },
+    "anchored_neighborhood": {
+      "adjacent_anchor_ids": [
+        "A_corner_stub_1",
+        "A_corner_stub_2",
+        "A_center_stub"
+      ],
+      "adjacent_anchor_roles": {
+        "A_corner_stub_1": "corner",
+        "A_corner_stub_2": "corner",
+        "A_center_stub": "cube_center"
+      },
+      "short_path_candidates": [
+        [
+          "A_face_001",
+          "A_corner_stub_1",
+          "A_face_001"
+        ],
+        [
+          "A_face_001",
+          "A_center_stub",
+          "A_face_001"
+        ]
+      ]
+    },
+    "readout_targets": {
+      "chart_relative_exit": true,
+      "parity_like_quantity": false,
+      "displacement_like_quantity": false
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "g60_phi3_attractor_cycle_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "principle": "Use phi^3 to set the attractor vertex; after that, transport follows known grammar.",
+  "cycle": {
+    "input": "face_or_sector_perturbation",
+    "packet": "tri_turtle_packet",
+    "packet_scale": "phi^3",
+    "resolution": "nearest_g60_attractor_vertex",
+    "return_rule": "known_fastest_path_to_center",
+    "closure_output": "closure_receipt",
+    "reemission": "finite_library_of_next_face_states"
+  },
+  "state_fields": {
+    "poke_set": "TODO",
+    "packet_phase": "phi^3",
+    "attractor_vertex": "TODO",
+    "fastest_return_class": "TODO",
+    "closure_receipt": "TODO",
+    "next_face_state_key": "TODO"
+  },
+  "library_targets": {
+    "attractor_classes": [],
+    "return_classes": [],
+    "face_state_outputs": []
+  }
+}

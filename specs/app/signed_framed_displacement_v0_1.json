@@ -1,0 +1,62 @@
+{
+  "name": "signed_framed_displacement_v0_1",
+  "source": "framed_return_probe_v0_1.json",
+  "loops": [
+    {
+      "name": "return_A",
+      "chart_trace": [
+        "chart_right",
+        "chart_left",
+        "chart_right"
+      ],
+      "chart_values": [
+        1,
+        -1,
+        1
+      ],
+      "S": 1
+    },
+    {
+      "name": "return_B",
+      "chart_trace": [
+        "chart_left",
+        "chart_right",
+        "chart_left"
+      ],
+      "chart_values": [
+        -1,
+        1,
+        -1
+      ],
+      "S": -1
+    },
+    {
+      "name": "return_C_mixed_chart",
+      "chart_trace": [
+        "chart_right",
+        "chart_right",
+        "chart_right"
+      ],
+      "chart_values": [
+        1,
+        1,
+        1
+      ],
+      "S": 3
+    },
+    {
+      "name": "return_D_unary_mixed",
+      "chart_trace": [
+        "chart_right",
+        "chart_left",
+        "chart_left"
+      ],
+      "chart_values": [
+        1,
+        -1,
+        -1
+      ],
+      "S": -1
+    }
+  ]
+}

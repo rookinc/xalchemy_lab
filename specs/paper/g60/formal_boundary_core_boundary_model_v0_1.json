@@ -1,0 +1,89 @@
+{
+  "name": "formal_boundary_core_boundary_model_v0_1",
+  "version": "0.1",
+  "status": "draft",
+  "purpose": "Formal model class for the current boundary-core-boundary cube/G60 cycle.",
+  "parameters": {
+    "phi": {
+      "symbol": "phi",
+      "definition": "(1 + sqrt(5)) / 2",
+      "approx": 1.61803398875
+    },
+    "alpha": {
+      "symbol": "alpha",
+      "definition": "phi^3",
+      "role": "ignition / outward radiation scale",
+      "approx": 4.2360679775
+    },
+    "x": {
+      "symbol": "x",
+      "definition": "real root of 64x^3 + 63x^2 + 7x - 9 = 0",
+      "approx": 0.2918496024
+    },
+    "beta": {
+      "symbol": "beta",
+      "definition": "x^2",
+      "role": "inward drain / centerward collapse scale",
+      "approx": 0.0851761954
+    }
+  },
+  "state_variables": {
+    "poke_set_t": {
+      "type": "object",
+      "description": "Active boundary perturbation set at time t."
+    },
+    "snapped_vertex_t": {
+      "type": "string",
+      "description": "Discrete G60 attractor vertex selected by nearest-vertex snap."
+    },
+    "return_path_class_t": {
+      "type": "string",
+      "description": "Class of shortest admissible path from snapped vertex back to center."
+    },
+    "center_state_t": {
+      "type": "object",
+      "description": "Internal state of the cube center / core at time t."
+    },
+    "next_face_state_t": {
+      "type": "object",
+      "description": "Boundary face-state pattern emitted from center at time t."
+    }
+  },
+  "maps": {
+    "Snap": {
+      "signature": "Snap(poke_set_t) -> snapped_vertex_t",
+      "description": "Discretize induced interior bias by nearest G60 vertex."
+    },
+    "Return": {
+      "signature": "Return(snapped_vertex_t) -> return_path_class_t",
+      "description": "Assign known fastest admissible return path class to center."
+    },
+    "CenterUpdate": {
+      "signature": "CenterUpdate(center_state_t, return_path_class_t; beta) -> center_state_t_plus_1",
+      "description": "Update the core using inward drain scale beta."
+    },
+    "Emit": {
+      "signature": "Emit(center_state_t_plus_1; alpha) -> next_face_state_t_plus_1",
+      "description": "Radiate updated state to the boundary using outward scale alpha."
+    }
+  },
+  "candidate_cycle": [
+    "snapped_vertex_t = Snap(poke_set_t)",
+    "return_path_class_t = Return(snapped_vertex_t)",
+    "center_state_t_plus_1 = CenterUpdate(center_state_t, return_path_class_t; beta)",
+    "next_face_state_t_plus_1 = Emit(center_state_t_plus_1; alpha)"
+  ],
+  "claims": [
+    "alpha is expansive relative to beta",
+    "alpha is a candidate ignition / re-radiation scale",
+    "beta is a candidate inward drain / collapse scale"
+  ],
+  "formal_conjecture": "There exists a discrete boundary-core-boundary dynamical system on the anchored cube / G60 scaffold in which ignition and re-radiation are governed by alpha = phi^3, while centerward collapse is governed by beta = x^2, where x is the real root of 64x^3 + 63x^2 + 7x - 9 = 0.",
+  "next_tasks": [
+    "define admissible poke_set",
+    "define nearest-vertex snap rule",
+    "define return-path-class library",
+    "define center update grammar",
+    "define face-state emission grammar"
+  ]
+}
