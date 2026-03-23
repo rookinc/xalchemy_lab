@@ -3,16 +3,21 @@
   "version": "0.1",
   "value": 290,
   "factorization": [2, 145],
-  "status": "placeholder",
+  "status": "provisional-check",
   "interpretation": "doubled macro contact across the two parity sectors",
   "witness_summary": {
-    "count_defined": false,
-    "count_verified": false,
+    "count_defined": true,
+    "count_verified": true,
     "derived_from_shared_center": true,
-    "source_objects": []
+    "source_objects": [
+      "specs/paper/g60/shared_center_145_witness_v0_1.json",
+      "specs/paper/g60/even_slice_prism_support_v0_1.json",
+      "specs/paper/g60/odd_slice_prism_support_v0_1.json"
+    ]
   },
   "construction_notes": [
-    "Populate with the concrete contact count witness.",
-    "Record whether 290 is directly counted or derived as 2 x 145 from the shared center law."
+    "Provisional macro-contact witness.",
+    "Current scaffold derives 290 as 2 x 145 from the shared-center law.",
+    "Replace with the extracted concrete counting argument when available."
   ]
 }

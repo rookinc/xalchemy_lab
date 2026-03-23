@@ -28,6 +28,6 @@
     "parity_checked": true,
     "collapse_checked": true,
     "center_checked": true,
-    "macro_contact_checked": false
+    "macro_contact_checked": true
   }
 }
