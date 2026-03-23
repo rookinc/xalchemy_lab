@@ -6,22 +6,22 @@
   },
   "first_quotient": {
     "type": "exact weighted triangular prism",
-    "even_slice_support": null,
-    "odd_slice_support": null,
+    "even_slice_support": "pending:specs/paper/g60/even_slice_prism_support_v0_1.json",
+    "odd_slice_support": "pending:specs/paper/g60/odd_slice_prism_support_v0_1.json",
     "parity_stable": true
   },
   "second_quotient": {
     "type": "exact weighted triangle",
-    "collapse_map": null
+    "collapse_map": "pending:specs/paper/g60/prism_to_triangle_collapse_v0_1.json"
   },
   "shared_center": {
     "value": 145,
-    "witness": null
+    "witness": "pending:specs/paper/g60/shared_center_145_witness_v0_1.json"
   },
   "macro_contact": {
     "value": 290,
     "factorization": [2, 145],
-    "witness": null
+    "witness": "pending:specs/paper/g60/macro_contact_290_witness_v0_1.json"
   },
   "status": {
     "parity_checked": false,

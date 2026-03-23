@@ -26,6 +26,17 @@ def bool_label(value: bool) -> str:
     return "PASS" if value else "PENDING"
 
 
+def require_pointer_when_checked(
+    checked: bool,
+    value,
+    label: str,
+) -> None:
+    if checked and value in (None, "", [], {}):
+        raise ValueError(
+            f"{label} is marked checked but has no witness pointer"
+        )
+
+
 def main() -> None:
     invariants = load_json(INVARIANT_PATH)
     witness = load_json(WITNESS_PATH)
@@ -62,6 +73,30 @@ def main() -> None:
     collapse_checked = witness["status"]["collapse_checked"]
     center_checked = witness["status"]["center_checked"]
     macro_contact_checked = witness["status"]["macro_contact_checked"]
+
+    require_pointer_when_checked(
+        parity_checked,
+        {
+            "even_slice_support": witness["first_quotient"]["even_slice_support"],
+            "odd_slice_support": witness["first_quotient"]["odd_slice_support"],
+        },
+        "parity witness",
+    )
+    require_pointer_when_checked(
+        collapse_checked,
+        witness["second_quotient"]["collapse_map"],
+        "collapse map",
+    )
+    require_pointer_when_checked(
+        center_checked,
+        witness["shared_center"]["witness"],
+        "center witness",
+    )
+    require_pointer_when_checked(
+        macro_contact_checked,
+        witness["macro_contact"]["witness"],
+        "macro witness",
+    )
 
     print("\nG900 DESCENT TABLE")
     print("==================")
