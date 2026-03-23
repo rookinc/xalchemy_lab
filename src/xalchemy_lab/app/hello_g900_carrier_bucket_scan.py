@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import DefaultDict, Dict, Tuple
+from typing import DefaultDict, Tuple
 
 from xalchemy_lab.app.hello_g900_subdivision import generate_order_n_triangular_cells
 
@@ -27,7 +27,6 @@ def main() -> None:
     n = 30
     cells = generate_order_n_triangular_cells(n)
 
-    bucket_counts: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
     macro_bit_counts: DefaultDict[Tuple[int, int], int] = defaultdict(int)
     layer_macro_bit_counts: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
 
@@ -36,7 +35,6 @@ def main() -> None:
         macro = macro_index(c)
         bit = bit_index(c)
 
-        bucket_counts[(layer, macro, bit)] += 1
         macro_bit_counts[(macro, bit)] += 1
         layer_macro_bit_counts[(layer, macro, bit)] += 1
 
@@ -64,3 +62,7 @@ def main() -> None:
     print("==============")
     print("This scan exposes the carrier bucket structure before any quotient claim.")
     print("The next question is whether these buckets collapse naturally to the 3x2 prism classes.")
+
+
+if __name__ == "__main__":
+    main()
