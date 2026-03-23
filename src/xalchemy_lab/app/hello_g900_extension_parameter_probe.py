@@ -25,3 +25,7 @@ def main() -> None:
     print("==============")
     print("For fixed center I, the quotient image 2I is insensitive to d.")
     print("So d is invisible to the base quotient image and must be fixed by extra structure.")
+
+
+if __name__ == "__main__":
+    main()
