@@ -117,6 +117,8 @@ def build_svg(width: int, height: int) -> str:
         svg_parts.append(text_svg(x, y, s, size=14))
 
     svg_parts.append(text_svg(760, 515, "triangle_face", size=14))
+    svg_parts.append(text_svg(760, 545, "AB/BC/CA base = 290", size=16, weight="bold"))
+    svg_parts.append(text_svg(760, 570, "side contribution unresolved", size=14))
 
     arrow_targets = {
         "top_a": tgt[0],
@@ -141,6 +143,10 @@ def build_svg(width: int, height: int) -> str:
         "vertical = 145",
         "bottom face = 150",
         "",
+        "triangle edge base candidate:",
+        "AB = BC = CA = 290",
+        "side contribution unresolved",
+        "",
         "offset form around center 145:",
         "top = -5",
         "vertical = 0",
@@ -152,9 +158,9 @@ def build_svg(width: int, height: int) -> str:
                 legend_x,
                 legend_y + i * 22,
                 s,
-                size=15 if i not in (0, 5) else 16,
+                size=15 if i not in (0, 5, 9) else 16,
                 anchor="start",
-                weight="bold" if i in (0, 5) else "normal",
+                weight="bold" if i in (0, 5, 9) else "normal",
             )
         )
 
@@ -219,9 +225,14 @@ def build_png(width: int, height: int) -> bool:
         draw.ellipse((x - 6, y - 6, x + 6, y + 6), outline="black", fill="white", width=2)
         draw.text((x - 6, y - 24), label, fill="black")
 
+    draw.text((700, 545), "AB/BC/CA base = 290", fill="black")
+    draw.text((680, 568), "side contribution unresolved", fill="black")
+
     for (x, y), label in list(zip(top, labels_top)) + list(zip(bot, labels_bot)):
-        tx, ty = {"top_a": tgt[0], "top_b": tgt[1], "top_c": tgt[2],
-                  "bottom_a": tgt[0], "bottom_b": tgt[1], "bottom_c": tgt[2]}[label]
+        tx, ty = {
+            "top_a": tgt[0], "top_b": tgt[1], "top_c": tgt[2],
+            "bottom_a": tgt[0], "bottom_b": tgt[1], "bottom_c": tgt[2],
+        }[label]
         draw.line((x, y, tx, ty), fill="gray", width=1)
 
     legend = [
@@ -229,6 +240,9 @@ def build_png(width: int, height: int) -> bool:
         "top face = 140",
         "vertical = 145",
         "bottom face = 150",
+        "triangle base candidate:",
+        "AB = BC = CA = 290",
+        "side contribution unresolved",
         "offsets around 145: -5, 0, +5",
     ]
     for i, s in enumerate(legend):
@@ -241,7 +255,7 @@ def build_png(width: int, height: int) -> bool:
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     width = 1000
-    height = 760
+    height = 820
 
     svg = build_svg(width, height)
     SVG_PATH.write_text(svg, encoding="utf-8")
