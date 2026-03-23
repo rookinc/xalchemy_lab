@@ -13,6 +13,9 @@ MODULES = [
     "xalchemy_lab.app.hello_g900_centered_quotient",
     "xalchemy_lab.app.hello_g900_offset_law_probe",
     "xalchemy_lab.app.hello_g900_extension_parameter_probe",
+    "xalchemy_lab.app.hello_g900_half_layer_offset_probe",
+    "xalchemy_lab.app.hello_g900_mid_band_geometric_test",
+    "xalchemy_lab.app.hello_g900_derived_closure_law",
 ]
 
 
