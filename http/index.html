@@ -4,46 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>xyzti renderer</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #111;
-      color: #eee;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      padding: 24px;
-    }
-
-    h1 {
-      margin: 0 0 16px 0;
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    #stage {
-      width: 800px;
-      max-width: 100%;
-      border: 1px solid #444;
-      background: #000;
-    }
-
-    svg {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>xyzti renderer</h1>
+  <main>
+    <h1>xyzti renderer</h1>
+    <div id="app"></div>
 
-  <div id="stage">
-    <svg id="view" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg"></svg>
-  </div>
-
-  <script src="app.js"></script>
+    <section id="caption">
+      <h2>caption</h2>
+      <p>
+        Local xyzti sketch with origin-centered loop structure. The center <b>0</b>
+        is the common origin. <b>z</b> is fixed on the positive axis, <b>I</b> on the
+        negative axis, <b>x</b> and <b>y</b> spread symmetrically from center, and
+        <b>r</b> gives the 45° continuation ray. The parameter <b>T</b> drives the
+        loop itself rather than a separate witness axis.
+      </p>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

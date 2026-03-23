@@ -1,11 +1,90 @@
 body {
-  font-family: sans-serif;
-  margin: 2rem;
-  background: #111;
-  color: #eee;
+  margin: 0;
+  background: #050505;
+  color: #eaeaea;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 {
+  margin: 0 0 18px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
 #app {
+  width: 100%;
+}
+
+#controls {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 14px;
+  border: 1px solid #333;
+  background: #0d0d0d;
+}
+
+.control-row {
+  display: grid;
+  grid-template-columns: 40px 50px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.control-label {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.control-value {
+  font-size: 14px;
+  color: #f2cc5c;
+  text-align: right;
+}
+
+.control-slider {
+  width: 100%;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+.control-button {
+  background: #1b1b1b;
+  color: #eaeaea;
   border: 1px solid #444;
-  min-height: 400px;
-  padding: 1rem;
+  padding: 10px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+#scene {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+#caption {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #333;
+  background: #0d0d0d;
+}
+
+#caption h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+#caption p {
+  margin: 0;
+  color: #ccc;
+  line-height: 1.5;
 }
