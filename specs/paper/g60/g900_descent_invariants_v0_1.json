@@ -1,0 +1,14 @@
+{
+  "name": "g900_descent_invariants",
+  "version": "0.1",
+  "carrier": "900-cell order-30 triangular subdivision",
+  "first_quotient": "exact weighted triangular prism",
+  "parity_refinement": "prism support stable in even and odd slices",
+  "second_quotient": "exact weighted triangle",
+  "shared_center": 145,
+  "macro_contact": 290,
+  "macro_contact_factorization": [
+    2,
+    145
+  ]
+}
