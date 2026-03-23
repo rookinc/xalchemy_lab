@@ -6,6 +6,7 @@ from pathlib import Path
 
 INVARIANT_PATH = Path("specs/paper/g60/g900_descent_invariants_v0_1.json")
 WITNESS_PATH = Path("specs/paper/g60/g900_descent_witness_v0_1.json")
+WEIGHT_PATH = Path("specs/paper/g60/g900_prism_weight_table_v0_1.json")
 
 
 def load_json(path: Path) -> dict:
@@ -83,6 +84,7 @@ def prism_signature(prism_doc: dict) -> dict:
 def main() -> None:
     invariants = load_json(INVARIANT_PATH)
     witness = load_json(WITNESS_PATH)
+    weights = load_json(WEIGHT_PATH)
 
     expect_equal("carrier", witness["carrier"]["type"], invariants["carrier"])
     expect_equal(
@@ -203,6 +205,9 @@ def main() -> None:
         ),
     )
 
+    expect_equal("even weight table", weights["even_slice"], even_doc["prism_model"]["weights"])
+    expect_equal("odd weight table", weights["odd_slice"], odd_doc["prism_model"]["weights"])
+
     print("\nG900 DESCENT TABLE")
     print("==================")
     print(f"carrier            : {invariants['carrier']}")
@@ -250,8 +255,14 @@ def main() -> None:
     print("collapse domains    : PASS")
     print("collapse codomains  : PASS")
 
+    print("\nWEIGHT CHECK")
+    print("============")
+    print("even slice weights  : PASS")
+    print("odd slice weights   : PASS")
+
     print(f"\nread {INVARIANT_PATH}")
     print(f"read {WITNESS_PATH}")
+    print(f"read {WEIGHT_PATH}")
 
 
 if __name__ == "__main__":
