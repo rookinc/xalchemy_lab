@@ -46,13 +46,13 @@ def layer_mod3(cell, n: int) -> int:
 
 
 def argmin_sector(cell, n: int) -> int:
-    mins = []
+    triples = []
     for i, j in cell.verts:
         k = n - i - j
-        mins.append((i, j, k))
-    a = min(x[0] for x in mins)
-    b = min(x[1] for x in mins)
-    c = min(x[2] for x in mins)
+        triples.append((i, j, k))
+    a = min(t[0] for t in triples)
+    b = min(t[1] for t in triples)
+    c = min(t[2] for t in triples)
     triple = [a, b, c]
     return triple.index(min(triple))
 
@@ -130,3 +130,7 @@ def main() -> None:
     print("\nINTERPRETATION")
     print("==============")
     print("The best macro rule is the one with the highest prism-overlap and the fewest extra/missing edges.")
+
+
+if __name__ == "__main__":
+    main()
