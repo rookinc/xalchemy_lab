@@ -114,3 +114,12 @@ The supporting verification and generation artifacts are:
 The current figure is a symbolic structural rendering of the shared prism carrier and its collapse to the weighted triangle target.
 It is not yet an extracted geometric embedding from the full carrier.
 Its present role is to make the verified symbolic quotient law visually inspectable.
+
+## Weight artifacts
+
+The current prism-weight scaffold is available as:
+
+- `specs/paper/g60/g900_prism_weight_table_v0_1.json`
+- `src/xalchemy_lab/app/hello_g900_weight_table.py`
+
+This is the current landing point for extracted edge weights on the shared symbolic prism carrier and their pushforward to the weighted triangle.
