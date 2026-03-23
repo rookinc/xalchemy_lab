@@ -26,7 +26,7 @@
   },
   "status": {
     "parity_checked": true,
-    "collapse_checked": false,
+    "collapse_checked": true,
     "center_checked": false,
     "macro_contact_checked": false
   }
