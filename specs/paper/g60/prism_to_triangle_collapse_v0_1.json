@@ -6,16 +6,40 @@
     "support_refs": [
       "specs/paper/g60/even_slice_prism_support_v0_1.json",
       "specs/paper/g60/odd_slice_prism_support_v0_1.json"
-    ]
+    ],
+    "symbolic_model": {
+      "vertices": [
+        "top_a", "top_b", "top_c",
+        "bottom_a", "bottom_b", "bottom_c"
+      ],
+      "edges": [
+        "top_ab", "top_bc", "top_ca",
+        "bottom_ab", "bottom_bc", "bottom_ca",
+        "vertical_a", "vertical_b", "vertical_c"
+      ],
+      "faces": [
+        "top_face",
+        "bottom_face",
+        "side_ab",
+        "side_bc",
+        "side_ca"
+      ]
+    }
   },
   "target": {
-    "type": "exact weighted triangle"
+    "type": "exact weighted triangle",
+    "symbolic_model": {
+      "vertices": ["A", "B", "C"],
+      "edges": ["AB", "BC", "CA"],
+      "faces": ["triangle_face"]
+    }
   },
-  "status": "provisional-check",
+  "status": "provisional-structure",
   "collapse_summary": {
     "map_defined": true,
     "weight_pushforward_defined": true,
-    "incidence_preserved": true
+    "incidence_preserved": true,
+    "symbolic_source_consumed": true
   },
   "vertex_map": {
     "top_a": "A",
@@ -49,7 +73,7 @@
     "CA": "w(top_ca) + w(bottom_ca) + side contribution"
   },
   "construction_notes": [
-    "Provisional collapse witness.",
-    "Replace symbolic assignments with extracted concrete quotient data when available."
+    "Collapse now explicitly consumes the shared symbolic prism carrier.",
+    "Replace symbolic pushforward rules with extracted quotient weights when available."
   ]
 }
