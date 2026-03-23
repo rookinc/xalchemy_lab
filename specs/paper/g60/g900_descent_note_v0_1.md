@@ -148,3 +148,30 @@ This upstream artifact is the present numeric source for the shared prism law:
 - bit1_face = 150
 
 The downstream even/odd prism support files and the prism weight table currently inherit their extracted weights from this source.
+
+## Triangle pushforward checkpoint
+
+Using the extracted prism law
+
+- top = 140
+- vertical = 145
+- bottom = 150
+
+the current base pushforward sums for the weighted triangle edge classes are:
+
+- AB base = 140 + 150 = 290
+- BC base = 140 + 150 = 290
+- CA base = 140 + 150 = 290
+
+This matches the current macro contact count:
+
+- macro contact = 290
+
+So the present bundle supports the following careful checkpoint:
+
+- each triangle edge class has base pushforward candidate 290 before resolving side-contribution semantics.
+
+What remains open is whether the side contribution is:
+- zero in the final pushed-forward edge total,
+- bookkeeping-only,
+- or encoded by a different normalization.
