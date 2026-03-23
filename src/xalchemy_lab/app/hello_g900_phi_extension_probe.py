@@ -56,3 +56,7 @@ def main() -> None:
     print("==============")
     print("A clean match would support phi as a direct extension normalizer.")
     print("A miss does not kill the hypothesis; phi may still act upstream in the 5-side geometry.")
+
+
+if __name__ == "__main__":
+    main()
