@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+import shutil
 from pathlib import Path
 
 try:
@@ -13,6 +14,33 @@ except ImportError:
 OUT_DIR = Path("specs/paper/g60")
 SVG_PATH = OUT_DIR / "g900_symbolic_prism.svg"
 PNG_PATH = OUT_DIR / "g900_symbolic_prism.png"
+
+
+def try_mirror_to_phone_storage(src_paths: list[Path], subdir: str = "cori/g900") -> None:
+    shared_root = Path.home() / "storage" / "shared"
+    target_dir = shared_root / subdir
+
+    if not shared_root.exists():
+        print("phone storage mirror skipped: Termux shared storage not available")
+        return
+
+    try:
+        target_dir.mkdir(parents=True, exist_ok=True)
+    except Exception as exc:
+        print(f"phone storage mirror skipped: could not create {target_dir} ({exc})")
+        return
+
+    for src in src_paths:
+        if not src.exists():
+            print(f"phone storage mirror skipped missing file: {src}")
+            continue
+
+        dst = target_dir / src.name
+        try:
+            shutil.copy2(src, dst)
+            print(f"mirrored {src} -> {dst}")
+        except Exception as exc:
+            print(f"phone storage mirror failed for {src}: {exc}")
 
 
 def triangle_points(cx: float, cy: float, r: float) -> list[tuple[float, float]]:
@@ -261,11 +289,16 @@ def main() -> None:
     SVG_PATH.write_text(svg, encoding="utf-8")
     print(f"wrote {SVG_PATH}")
 
+    written = [SVG_PATH]
+
     png_ok = build_png(width, height)
     if png_ok:
         print(f"wrote {PNG_PATH}")
+        written.append(PNG_PATH)
     else:
         print("png skipped: Pillow not installed")
+
+    try_mirror_to_phone_storage(written, subdir="cori/g900")
 
 
 if __name__ == "__main__":
