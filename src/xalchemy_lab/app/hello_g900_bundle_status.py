@@ -8,6 +8,8 @@ MODULES = [
     "xalchemy_lab.app.hello_g900_weighted_prism",
     "xalchemy_lab.app.hello_g900_weight_table",
     "xalchemy_lab.app.hello_g900_descent_table",
+    "xalchemy_lab.app.hello_g900_pushforward_probe",
+    "xalchemy_lab.app.hello_g900_centered_prism_lemma",
 ]
 
 
