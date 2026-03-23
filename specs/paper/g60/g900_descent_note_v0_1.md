@@ -173,3 +173,20 @@ A later parity-distinguishing extractor may refine this further, but the current
 (140,145,150)
 \]
 across top, vertical, and bottom edge classes.
+
+## Upstream weighted prism source
+
+The current extracted prism weights are grounded in the upstream artifact:
+
+- `specs/paper/g60/g900_weighted_prism_v0_1.json`
+
+A terminal reader for this artifact is available at:
+
+- `src/xalchemy_lab/app/hello_g900_weighted_prism.py`
+
+This upstream artifact is the present numeric source for the shared prism law:
+- bit0_face = 140
+- macro_rung = 145
+- bit1_face = 150
+
+The downstream even/odd prism support files and the prism weight table currently inherit their extracted weights from this source.
