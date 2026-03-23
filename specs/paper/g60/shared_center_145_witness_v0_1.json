@@ -1,0 +1,16 @@
+{
+  "name": "shared_center_145_witness",
+  "version": "0.1",
+  "value": 145,
+  "status": "placeholder",
+  "interpretation": "shared center through which the two parity families meet",
+  "witness_summary": {
+    "count_defined": false,
+    "count_verified": false,
+    "source_objects": []
+  },
+  "construction_notes": [
+    "Populate with the concrete counting argument or extracted center-support object.",
+    "Record whether 145 counts vertices, chambers, contacts, or another derived carrier."
+  ]
+}

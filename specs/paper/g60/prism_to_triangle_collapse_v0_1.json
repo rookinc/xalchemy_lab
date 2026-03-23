@@ -1,0 +1,29 @@
+{
+  "name": "prism_to_triangle_collapse",
+  "version": "0.1",
+  "source": {
+    "type": "exact weighted triangular prism",
+    "support_refs": [
+      "specs/paper/g60/even_slice_prism_support_v0_1.json",
+      "specs/paper/g60/odd_slice_prism_support_v0_1.json"
+    ]
+  },
+  "target": {
+    "type": "exact weighted triangle"
+  },
+  "status": "placeholder",
+  "collapse_summary": {
+    "map_defined": false,
+    "weight_pushforward_defined": false,
+    "incidence_preserved": null
+  },
+  "vertex_map": {},
+  "edge_map": {},
+  "face_map": {},
+  "weight_pushforward": {},
+  "construction_notes": [
+    "Populate with the concrete quotient map from prism support to weighted triangle.",
+    "State how top and bottom prism data collapse to triangle data.",
+    "Record how edge and face weights are aggregated or identified."
+  ]
+}

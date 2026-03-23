@@ -1,0 +1,18 @@
+{
+  "name": "macro_contact_290_witness",
+  "version": "0.1",
+  "value": 290,
+  "factorization": [2, 145],
+  "status": "placeholder",
+  "interpretation": "doubled macro contact across the two parity sectors",
+  "witness_summary": {
+    "count_defined": false,
+    "count_verified": false,
+    "derived_from_shared_center": true,
+    "source_objects": []
+  },
+  "construction_notes": [
+    "Populate with the concrete contact count witness.",
+    "Record whether 290 is directly counted or derived as 2 x 145 from the shared center law."
+  ]
+}
