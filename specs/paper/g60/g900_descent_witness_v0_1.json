@@ -1,0 +1,32 @@
+{
+  "name": "g900_descent_witness",
+  "version": "0.1",
+  "carrier": {
+    "type": "900-cell order-30 triangular subdivision"
+  },
+  "first_quotient": {
+    "type": "exact weighted triangular prism",
+    "even_slice_support": null,
+    "odd_slice_support": null,
+    "parity_stable": true
+  },
+  "second_quotient": {
+    "type": "exact weighted triangle",
+    "collapse_map": null
+  },
+  "shared_center": {
+    "value": 145,
+    "witness": null
+  },
+  "macro_contact": {
+    "value": 290,
+    "factorization": [2, 145],
+    "witness": null
+  },
+  "status": {
+    "parity_checked": false,
+    "collapse_checked": false,
+    "center_checked": false,
+    "macro_contact_checked": false
+  }
+}
