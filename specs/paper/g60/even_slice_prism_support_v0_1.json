@@ -3,22 +3,45 @@
   "version": "0.1",
   "quotient_type": "exact weighted triangular prism",
   "slice_parity": "even",
-  "status": "placeholder",
+  "status": "provisional-structure",
   "support_summary": {
     "carrier_scope": "G900 even slices",
     "support_detected": true,
     "support_stable": true
   },
   "prism_model": {
-    "vertices": [],
-    "edges": [],
-    "faces": [],
-    "weights": {}
+    "vertices": [
+      "top_a", "top_b", "top_c",
+      "bottom_a", "bottom_b", "bottom_c"
+    ],
+    "edges": [
+      "top_ab", "top_bc", "top_ca",
+      "bottom_ab", "bottom_bc", "bottom_ca",
+      "vertical_a", "vertical_b", "vertical_c"
+    ],
+    "faces": [
+      "top_face",
+      "bottom_face",
+      "side_ab",
+      "side_bc",
+      "side_ca"
+    ],
+    "weights": {
+      "top_ab": "w_even_top_ab",
+      "top_bc": "w_even_top_bc",
+      "top_ca": "w_even_top_ca",
+      "bottom_ab": "w_even_bottom_ab",
+      "bottom_bc": "w_even_bottom_bc",
+      "bottom_ca": "w_even_bottom_ca",
+      "vertical_a": "w_even_vertical_a",
+      "vertical_b": "w_even_vertical_b",
+      "vertical_c": "w_even_vertical_c"
+    }
   },
   "construction_notes": [
-    "Populate with the concrete even-slice support object.",
-    "Use stable vertex and edge names once extracted.",
-    "Record the exact weighting law used by the quotient."
+    "First concrete symbolic prism object for even-slice support.",
+    "Replace symbolic weights with extracted quotient weights when available.",
+    "Keep names aligned with collapse and parity comparison artifacts."
   ],
   "upstream_source": null
 }
