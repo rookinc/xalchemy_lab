@@ -14,6 +14,6 @@ Replace symbolic placeholders with the first extracted concrete value(s), then d
 - only symbolic-shape agreement holds
 
 ## Record
-- even top_ab = 
-- odd top_ab = 
+- even top_ab =
+- odd top_ab =
 - verdict =
