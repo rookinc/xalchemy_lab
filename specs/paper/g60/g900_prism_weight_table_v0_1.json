@@ -1,0 +1,41 @@
+{
+  "name": "g900_prism_weight_table",
+  "version": "0.1",
+  "status": "extraction-pending",
+  "even_slice": {
+    "top_ab": null,
+    "top_bc": null,
+    "top_ca": null,
+    "bottom_ab": null,
+    "bottom_bc": null,
+    "bottom_ca": null,
+    "vertical_a": null,
+    "vertical_b": null,
+    "vertical_c": null
+  },
+  "odd_slice": {
+    "top_ab": null,
+    "top_bc": null,
+    "top_ca": null,
+    "bottom_ab": null,
+    "bottom_bc": null,
+    "bottom_ca": null,
+    "vertical_a": null,
+    "vertical_b": null,
+    "vertical_c": null
+  },
+  "triangle_pushforward": {
+    "AB": null,
+    "BC": null,
+    "CA": null
+  },
+  "comparison": {
+    "even_odd_match": null,
+    "pushforward_defined": null
+  },
+  "notes": [
+    "Populate with extracted prism-edge weights.",
+    "Use exact values where possible.",
+    "Set comparison flags only after explicit verification."
+  ]
+}
