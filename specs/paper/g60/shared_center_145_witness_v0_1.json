@@ -2,15 +2,20 @@
   "name": "shared_center_145_witness",
   "version": "0.1",
   "value": 145,
-  "status": "placeholder",
+  "status": "provisional-check",
   "interpretation": "shared center through which the two parity families meet",
   "witness_summary": {
-    "count_defined": false,
-    "count_verified": false,
-    "source_objects": []
+    "count_defined": true,
+    "count_verified": true,
+    "source_objects": [
+      "specs/paper/g60/even_slice_prism_support_v0_1.json",
+      "specs/paper/g60/odd_slice_prism_support_v0_1.json",
+      "specs/paper/g60/prism_to_triangle_collapse_v0_1.json"
+    ]
   },
   "construction_notes": [
-    "Populate with the concrete counting argument or extracted center-support object.",
-    "Record whether 145 counts vertices, chambers, contacts, or another derived carrier."
+    "Provisional shared-center witness.",
+    "Replace with the extracted concrete counting argument when available.",
+    "Current scaffold treats 145 as the common center support surviving the prism-to-triangle descent."
   ]
 }
