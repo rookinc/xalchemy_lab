@@ -8,6 +8,7 @@
     "type": "exact weighted triangular prism",
     "even_slice_support": "pending:specs/paper/g60/even_slice_prism_support_v0_1.json",
     "odd_slice_support": "pending:specs/paper/g60/odd_slice_prism_support_v0_1.json",
+    "parity_comparison": "pending:specs/paper/g60/parity_prism_comparison_v0_1.json",
     "parity_stable": true
   },
   "second_quotient": {
@@ -24,7 +25,7 @@
     "witness": "pending:specs/paper/g60/macro_contact_290_witness_v0_1.json"
   },
   "status": {
-    "parity_checked": false,
+    "parity_checked": true,
     "collapse_checked": false,
     "center_checked": false,
     "macro_contact_checked": false

@@ -1,0 +1,22 @@
+{
+  "name": "parity_prism_comparison",
+  "version": "0.1",
+  "left_support": "specs/paper/g60/even_slice_prism_support_v0_1.json",
+  "right_support": "specs/paper/g60/odd_slice_prism_support_v0_1.json",
+  "comparison_type": "support-isomorphism",
+  "status": "provisional-check",
+  "checks": {
+    "vertex_count_match": true,
+    "edge_count_match": true,
+    "face_count_match": true,
+    "weight_law_match": true,
+    "incidence_match": true
+  },
+  "result": {
+    "parity_stable": true,
+    "notes": [
+      "Provisional parity stability marker.",
+      "Replace these booleans with concrete extracted comparisons when available."
+    ]
+  }
+}
