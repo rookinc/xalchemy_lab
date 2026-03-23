@@ -26,12 +26,22 @@ def bool_label(value: bool) -> str:
     return "PASS" if value else "PENDING"
 
 
+def is_empty(value) -> bool:
+    if value is None:
+        return True
+    if isinstance(value, str):
+        return value.strip() == ""
+    if isinstance(value, (list, dict, tuple, set)):
+        return len(value) == 0
+    return False
+
+
 def require_pointer_when_checked(
     checked: bool,
     value,
     label: str,
 ) -> None:
-    if checked and value in (None, "", [], {}):
+    if checked and is_empty(value):
         raise ValueError(
             f"{label} is marked checked but has no witness pointer"
         )
@@ -76,10 +86,10 @@ def main() -> None:
 
     require_pointer_when_checked(
         parity_checked,
-        {
-            "even_slice_support": witness["first_quotient"]["even_slice_support"],
-            "odd_slice_support": witness["first_quotient"]["odd_slice_support"],
-        },
+        [
+            witness["first_quotient"]["even_slice_support"],
+            witness["first_quotient"]["odd_slice_support"],
+        ],
         "parity witness",
     )
     require_pointer_when_checked(

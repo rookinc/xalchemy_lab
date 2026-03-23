@@ -1,0 +1,24 @@
+{
+  "name": "even_slice_prism_support",
+  "version": "0.1",
+  "quotient_type": "exact weighted triangular prism",
+  "slice_parity": "even",
+  "status": "placeholder",
+  "support_summary": {
+    "carrier_scope": "G900 even slices",
+    "support_detected": true,
+    "support_stable": true
+  },
+  "prism_model": {
+    "vertices": [],
+    "edges": [],
+    "faces": [],
+    "weights": {}
+  },
+  "construction_notes": [
+    "Populate with the concrete even-slice support object.",
+    "Use stable vertex and edge names once extracted.",
+    "Record the exact weighting law used by the quotient."
+  ],
+  "upstream_source": null
+}
