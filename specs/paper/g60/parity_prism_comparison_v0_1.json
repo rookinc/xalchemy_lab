@@ -4,19 +4,38 @@
   "left_support": "specs/paper/g60/even_slice_prism_support_v0_1.json",
   "right_support": "specs/paper/g60/odd_slice_prism_support_v0_1.json",
   "comparison_type": "support-isomorphism",
-  "status": "provisional-check",
+  "status": "provisional-structure",
+  "shared_symbolic_model": {
+    "vertices": [
+      "top_a", "top_b", "top_c",
+      "bottom_a", "bottom_b", "bottom_c"
+    ],
+    "edges": [
+      "top_ab", "top_bc", "top_ca",
+      "bottom_ab", "bottom_bc", "bottom_ca",
+      "vertical_a", "vertical_b", "vertical_c"
+    ],
+    "faces": [
+      "top_face",
+      "bottom_face",
+      "side_ab",
+      "side_bc",
+      "side_ca"
+    ]
+  },
   "checks": {
     "vertex_count_match": true,
     "edge_count_match": true,
     "face_count_match": true,
     "weight_law_match": true,
-    "incidence_match": true
+    "incidence_match": true,
+    "symbolic_model_match": true
   },
   "result": {
     "parity_stable": true,
     "notes": [
-      "Provisional parity stability marker.",
-      "Replace these booleans with concrete extracted comparisons when available."
+      "Even and odd slice supports now share the same symbolic prism carrier.",
+      "Replace this provisional structural comparison with extracted equality data when available."
     ]
   }
 }
