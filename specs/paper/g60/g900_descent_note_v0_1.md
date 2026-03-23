@@ -16,8 +16,8 @@ The current witness bundle is provisionally checked at the scaffold level:
 - shared center 145: PASS
 - macro contact 290: PASS
 
-These checks currently certify bundle consistency, pointer existence, and provisional witness alignment.
-They do not yet replace the future concrete extracted construction data.
+These checks currently certify bundle consistency, pointer existence, provisional witness alignment, symbolic model consistency, symbolic quotient-law admissibility, and weight-table alignment.
+They do not yet replace a future fully extracted carrier-level construction proof.
 
 ## Descent summary
 - **carrier:** 900-cell order-30 triangular subdivision
@@ -68,34 +68,17 @@ The G900 carrier descends through an exact weighted triangular prism quotient wh
 - shared-center count 145
 - doubled macro-contact count 290
 - provisional witness-bundle consistency across all four promoted checks
+- symbolic prism-model agreement across even, odd, parity, and collapse artifacts
+- symbolic quotient-law domain and codomain checks for the collapse map
+- extracted shared prism edge law from the weighted prism source
 
 ## What remains open
-- explicit construction map for the first quotient
-- explicit weight law on prism edges/faces
-- explicit extracted parity comparison data
-- explicit extracted prism-to-triangle quotient data
-- concrete counting derivation for the 145 center
-- concrete counting derivation for the 290 macro contact
+- explicit carrier-level extraction proving the prism quotient directly from the full 900-cell subdivision
+- explicit parity-distinguished extraction, if it differs from the current shared exported prism
+- explicit extracted prism-to-triangle pushforward values beyond symbolic formulas
+- concrete lower-level derivation of the 145 shared center
+- concrete lower-level derivation of the 290 macro contact
 - interpretation of the shared center in transport / thalion language
-
-
-## Figure artifacts
-
-The current symbolic descent figure is available as:
-
-- `specs/paper/g60/g900_symbolic_prism.svg`
-- `specs/paper/g60/g900_symbolic_prism.png`
-
-The supporting verification and generation artifacts are:
-
-- `specs/paper/g60/g900_descent_witness_v0_1.json`
-- `src/xalchemy_lab/app/hello_g900_descent_table.py`
-- `src/xalchemy_lab/app/render_g900_symbolic_prism.py`
-
-## Figure note
-The current figure is a symbolic structural rendering of the shared prism carrier and its collapse to the weighted triangle target.
-It is not yet an extracted geometric embedding from the full carrier.
-Its present role is to make the verified symbolic quotient law visually inspectable.
 
 ## Figure artifacts
 
@@ -148,48 +131,6 @@ A later parity-distinguishing extractor may refine this further, but the current
 (140,145,150)
 \]
 across top, vertical, and bottom edge classes.
-
-## Extracted prism weight law
-
-The current weighted-prism export gives the first extracted numeric edge law for the symbolic prism carrier:
-
-- top-face edges: 140
-- vertical macro-rung edges: 145
-- bottom-face edges: 150
-
-Equivalently, with center weight 145:
-
-- top-face offset = -5
-- vertical offset = 0
-- bottom-face offset = +5
-
-At the current scaffold level, both even and odd slice support files inherit this same extracted weighted prism law from:
-
-- `specs/paper/g60/g900_weighted_prism_v0_1.json`
-
-This should be read as an extracted shared prism law.
-A later parity-distinguishing extractor may refine this further, but the current checked bundle supports the uniform weighted prism:
-\[
-(140,145,150)
-\]
-across top, vertical, and bottom edge classes.
-
-## Upstream weighted prism source
-
-The current extracted prism weights are grounded in the upstream artifact:
-
-- `specs/paper/g60/g900_weighted_prism_v0_1.json`
-
-A terminal reader for this artifact is available at:
-
-- `src/xalchemy_lab/app/hello_g900_weighted_prism.py`
-
-This upstream artifact is the present numeric source for the shared prism law:
-- bit0_face = 140
-- macro_rung = 145
-- bit1_face = 150
-
-The downstream even/odd prism support files and the prism weight table currently inherit their extracted weights from this source.
 
 ## Upstream weighted prism source
 
