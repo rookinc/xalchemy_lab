@@ -148,3 +148,28 @@ A later parity-distinguishing extractor may refine this further, but the current
 (140,145,150)
 \]
 across top, vertical, and bottom edge classes.
+
+## Extracted prism weight law
+
+The current weighted-prism export gives the first extracted numeric edge law for the symbolic prism carrier:
+
+- top-face edges: 140
+- vertical macro-rung edges: 145
+- bottom-face edges: 150
+
+Equivalently, with center weight 145:
+
+- top-face offset = -5
+- vertical offset = 0
+- bottom-face offset = +5
+
+At the current scaffold level, both even and odd slice support files inherit this same extracted weighted prism law from:
+
+- `specs/paper/g60/g900_weighted_prism_v0_1.json`
+
+This should be read as an extracted shared prism law.
+A later parity-distinguishing extractor may refine this further, but the current checked bundle supports the uniform weighted prism:
+\[
+(140,145,150)
+\]
+across top, vertical, and bottom edge classes.
