@@ -78,3 +78,21 @@ The G900 carrier descends through an exact weighted triangular prism quotient wh
 - concrete counting derivation for the 290 macro contact
 - interpretation of the shared center in transport / thalion language
 
+
+## Figure artifacts
+
+The current symbolic descent figure is available as:
+
+- `specs/paper/g60/g900_symbolic_prism.svg`
+- `specs/paper/g60/g900_symbolic_prism.png`
+
+The supporting verification and generation artifacts are:
+
+- `specs/paper/g60/g900_descent_witness_v0_1.json`
+- `src/xalchemy_lab/app/hello_g900_descent_table.py`
+- `src/xalchemy_lab/app/render_g900_symbolic_prism.py`
+
+## Figure note
+The current figure is a symbolic structural rendering of the shared prism carrier and its collapse to the weighted triangle target.
+It is not yet an extracted geometric embedding from the full carrier.
+Its present role is to make the verified symbolic quotient law visually inspectable.
