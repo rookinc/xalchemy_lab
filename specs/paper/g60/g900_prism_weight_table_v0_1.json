@@ -25,19 +25,20 @@
     "vertical_c": 145
   },
   "triangle_pushforward": {
-    "AB": "140 + 150 + side contribution",
-    "BC": "140 + 150 + side contribution",
-    "CA": "140 + 150 + side contribution"
+    "AB": "290 (base candidate)",
+    "BC": "290 (base candidate)",
+    "CA": "290 (base candidate)"
   },
   "comparison": {
     "even_odd_match": true,
-    "pushforward_defined": true
+    "pushforward_defined": "base-candidate-only"
   },
   "notes": [
     "Extracted from specs/paper/g60/g900_weighted_prism_v0_1.json.",
     "bit0_face edges map to top-face weights 140.",
     "bit1_face edges map to bottom-face weights 150.",
     "macro_rung edges map to vertical weights 145.",
-    "Current even/odd equality reflects the shared exported prism artifact."
+    "Current even/odd equality reflects the shared exported prism artifact.",
+    "Triangle pushforward values currently record the base candidate only; side-contribution semantics remain unresolved."
   ]
 }
