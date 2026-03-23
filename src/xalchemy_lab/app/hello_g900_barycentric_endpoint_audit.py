@@ -97,3 +97,6 @@ def main() -> None:
     print("It does not yet prove that prism top/rung/bottom are literal quotient images of these layers.")
     print("A positive result here would support that next identification step.")
 
+
+if __name__ == "__main__":
+    main()
