@@ -1,11 +1,23 @@
 # G900 Descent Note v0.1
 
+**Status:** provisionally checked bundle
+
 ## Claim
 The G900 carrier admits a two-stage exact quotient descent:
 \[
 G900 \;\to\; \text{weighted triangular prism} \;\to\; \text{weighted triangle},
 \]
 with parity support stable across even and odd slices, a shared center of 145, and macro contact count 290.
+
+## Checked bundle status
+The current witness bundle is provisionally checked at the scaffold level:
+- parity comparison: PASS
+- prism-to-triangle collapse: PASS
+- shared center 145: PASS
+- macro contact 290: PASS
+
+These checks currently certify bundle consistency, pointer existence, and provisional witness alignment.
+They do not yet replace the future concrete extracted construction data.
 
 ## Descent summary
 - **carrier:** 900-cell order-30 triangular subdivision
@@ -55,30 +67,14 @@ The G900 carrier descends through an exact weighted triangular prism quotient wh
 - exact weighted triangle at the second quotient level
 - shared-center count 145
 - doubled macro-contact count 290
+- provisional witness-bundle consistency across all four promoted checks
 
 ## What remains open
 - explicit construction map for the first quotient
 - explicit weight law on prism edges/faces
-- explicit identification map from prism to weighted triangle
+- explicit extracted parity comparison data
+- explicit extracted prism-to-triangle quotient data
+- concrete counting derivation for the 145 center
+- concrete counting derivation for the 290 macro contact
 - interpretation of the shared center in transport / thalion language
-- relation of the 145-center to local paired-cell transport classes
 
-## Suggested next artifacts
-1. `specs/paper/g60/g900_descent_invariants_v0_1.json`
-2. `src/xalchemy_lab/app/hello_g900_descent_table.py`
-
-## Minimal invariant JSON shape
-
-~~~json
-{
-  "name": "g900_descent_invariants",
-  "version": "0.1",
-  "carrier": "900-cell order-30 triangular subdivision",
-  "first_quotient": "exact weighted triangular prism",
-  "parity_refinement": "prism support stable in even and odd slices",
-  "second_quotient": "exact weighted triangle",
-  "shared_center": 145,
-  "macro_contact": 290,
-  "macro_contact_factorization": [2, 145]
-}
-~~~
