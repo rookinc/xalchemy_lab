@@ -22,6 +22,11 @@ def expect_equal(label: str, actual, expected) -> None:
         )
 
 
+def expect_true(label: str, cond: bool) -> None:
+    if not cond:
+        raise ValueError(f"{label} failed")
+
+
 def bool_label(value: bool) -> str:
     return "PASS" if value else "PENDING"
 
@@ -165,6 +170,39 @@ def main() -> None:
     expect_equal("parity shared symbolic prism", even_sig, shared_sig)
     expect_equal("collapse source symbolic prism", even_sig, collapse_sig)
 
+    source_vertices = set(collapse_doc["source"]["symbolic_model"]["vertices"])
+    source_edges = set(collapse_doc["source"]["symbolic_model"]["edges"])
+    source_faces = set(collapse_doc["source"]["symbolic_model"]["faces"])
+
+    target_vertices = set(collapse_doc["target"]["symbolic_model"]["vertices"])
+    target_edges = set(collapse_doc["target"]["symbolic_model"]["edges"])
+    target_faces = set(collapse_doc["target"]["symbolic_model"]["faces"])
+
+    vertex_map = collapse_doc["vertex_map"]
+    edge_map = collapse_doc["edge_map"]
+    face_map = collapse_doc["face_map"]
+
+    expect_equal("vertex_map domain", set(vertex_map.keys()), source_vertices)
+    expect_equal("edge_map domain", set(edge_map.keys()), source_edges)
+    expect_equal("face_map domain", set(face_map.keys()), source_faces)
+
+    expect_true(
+        "vertex_map codomain",
+        set(vertex_map.values()).issubset(target_vertices),
+    )
+    expect_true(
+        "edge_map codomain",
+        set(edge_map.values()).issubset(
+            target_edges | target_vertices | {"edge_AB_support", "edge_BC_support", "edge_CA_support"}
+        ),
+    )
+    expect_true(
+        "face_map codomain",
+        set(face_map.values()).issubset(
+            target_faces | {"edge_AB_support", "edge_BC_support", "edge_CA_support"}
+        ),
+    )
+
     print("\nG900 DESCENT TABLE")
     print("==================")
     print(f"carrier            : {invariants['carrier']}")
@@ -209,6 +247,8 @@ def main() -> None:
     print("even vs odd prism   : PASS")
     print("parity shared model : PASS")
     print("collapse source     : PASS")
+    print("collapse domains    : PASS")
+    print("collapse codomains  : PASS")
 
     print(f"\nread {INVARIANT_PATH}")
     print(f"read {WITNESS_PATH}")
