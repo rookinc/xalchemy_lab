@@ -66,6 +66,15 @@ def require_existing_file_pointer(value: str, label: str) -> None:
         )
 
 
+def prism_signature(prism_doc: dict) -> dict:
+    model = prism_doc["prism_model"]
+    return {
+        "vertices": model["vertices"],
+        "edges": model["edges"],
+        "faces": model["faces"],
+    }
+
+
 def main() -> None:
     invariants = load_json(INVARIANT_PATH)
     witness = load_json(WITNESS_PATH)
@@ -142,6 +151,20 @@ def main() -> None:
     require_existing_file_pointer(center_witness, "center witness")
     require_existing_file_pointer(macro_witness, "macro witness")
 
+    even_doc = load_json(normalize_pointer(even_slice_support))
+    odd_doc = load_json(normalize_pointer(odd_slice_support))
+    parity_doc = load_json(normalize_pointer(parity_comparison))
+    collapse_doc = load_json(normalize_pointer(collapse_map))
+
+    even_sig = prism_signature(even_doc)
+    odd_sig = prism_signature(odd_doc)
+    shared_sig = parity_doc["shared_symbolic_model"]
+    collapse_sig = collapse_doc["source"]["symbolic_model"]
+
+    expect_equal("even vs odd symbolic prism", even_sig, odd_sig)
+    expect_equal("parity shared symbolic prism", even_sig, shared_sig)
+    expect_equal("collapse source symbolic prism", even_sig, collapse_sig)
+
     print("\nG900 DESCENT TABLE")
     print("==================")
     print(f"carrier            : {invariants['carrier']}")
@@ -180,6 +203,12 @@ def main() -> None:
     print(f"collapse file      : {'FOUND' if pointer_exists(collapse_map) else 'MISSING'}")
     print(f"center file        : {'FOUND' if pointer_exists(center_witness) else 'MISSING'}")
     print(f"macro file         : {'FOUND' if pointer_exists(macro_witness) else 'MISSING'}")
+
+    print("\nSYMBOLIC MODEL CHECK")
+    print("====================")
+    print("even vs odd prism   : PASS")
+    print("parity shared model : PASS")
+    print("collapse source     : PASS")
 
     print(f"\nread {INVARIANT_PATH}")
     print(f"read {WITNESS_PATH}")
