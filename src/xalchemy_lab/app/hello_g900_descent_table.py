@@ -36,6 +36,18 @@ def is_empty(value) -> bool:
     return False
 
 
+def normalize_pointer(value: str) -> Path:
+    if value.startswith("pending:"):
+        value = value[len("pending:") :]
+    return Path(value)
+
+
+def pointer_exists(value) -> bool:
+    if not isinstance(value, str) or is_empty(value):
+        return False
+    return normalize_pointer(value).exists()
+
+
 def require_pointer_when_checked(
     checked: bool,
     value,
@@ -44,6 +56,13 @@ def require_pointer_when_checked(
     if checked and is_empty(value):
         raise ValueError(
             f"{label} is marked checked but has no witness pointer"
+        )
+
+
+def require_existing_file_pointer(value: str, label: str) -> None:
+    if not pointer_exists(value):
+        raise FileNotFoundError(
+            f"{label} pointer does not resolve to an existing file: {value!r}"
         )
 
 
@@ -109,6 +128,20 @@ def main() -> None:
         "macro witness",
     )
 
+    even_slice_support = witness["first_quotient"]["even_slice_support"]
+    odd_slice_support = witness["first_quotient"]["odd_slice_support"]
+    parity_comparison = witness["first_quotient"]["parity_comparison"]
+    collapse_map = witness["second_quotient"]["collapse_map"]
+    center_witness = witness["shared_center"]["witness"]
+    macro_witness = witness["macro_contact"]["witness"]
+
+    require_existing_file_pointer(even_slice_support, "even slice support")
+    require_existing_file_pointer(odd_slice_support, "odd slice support")
+    require_existing_file_pointer(parity_comparison, "parity comparison")
+    require_existing_file_pointer(collapse_map, "collapse map")
+    require_existing_file_pointer(center_witness, "center witness")
+    require_existing_file_pointer(macro_witness, "macro witness")
+
     print("\nG900 DESCENT TABLE")
     print("==================")
     print(f"carrier            : {invariants['carrier']}")
@@ -132,24 +165,21 @@ def main() -> None:
 
     print("\nWITNESS POINTERS")
     print("================")
-    print(
-        f"even slice support : "
-        f"{witness['first_quotient']['even_slice_support']}"
-    )
-    print(
-        f"odd slice support  : "
-        f"{witness['first_quotient']['odd_slice_support']}"
-    )
-    print(
-        f"parity comparison  : "
-        f"{witness['first_quotient']['parity_comparison']}"
-    )
-    print(
-        f"collapse map       : "
-        f"{witness['second_quotient']['collapse_map']}"
-    )
-    print(f"center witness     : {witness['shared_center']['witness']}")
-    print(f"macro witness      : {witness['macro_contact']['witness']}")
+    print(f"even slice support : {even_slice_support}")
+    print(f"odd slice support  : {odd_slice_support}")
+    print(f"parity comparison  : {parity_comparison}")
+    print(f"collapse map       : {collapse_map}")
+    print(f"center witness     : {center_witness}")
+    print(f"macro witness      : {macro_witness}")
+
+    print("\nPOINTER STATUS")
+    print("==============")
+    print(f"even slice file    : {'FOUND' if pointer_exists(even_slice_support) else 'MISSING'}")
+    print(f"odd slice file     : {'FOUND' if pointer_exists(odd_slice_support) else 'MISSING'}")
+    print(f"parity file        : {'FOUND' if pointer_exists(parity_comparison) else 'MISSING'}")
+    print(f"collapse file      : {'FOUND' if pointer_exists(collapse_map) else 'MISSING'}")
+    print(f"center file        : {'FOUND' if pointer_exists(center_witness) else 'MISSING'}")
+    print(f"macro file         : {'FOUND' if pointer_exists(macro_witness) else 'MISSING'}")
 
     print(f"\nread {INVARIANT_PATH}")
     print(f"read {WITNESS_PATH}")
