@@ -11,6 +11,8 @@ MODULES = [
     "xalchemy_lab.app.hello_g900_pushforward_probe",
     "xalchemy_lab.app.hello_g900_centered_prism_lemma",
     "xalchemy_lab.app.hello_g900_centered_quotient",
+    "xalchemy_lab.app.hello_g900_offset_law_probe",
+    "xalchemy_lab.app.hello_g900_extension_parameter_probe",
 ]
 
 
