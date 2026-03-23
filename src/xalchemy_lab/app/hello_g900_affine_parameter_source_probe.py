@@ -26,7 +26,7 @@ def main() -> None:
     live_shift = 405.0
     half_gap = (same_macro - live_shift) / 2.0
     target_gap = 5.0
-    scale = half_gap / target_gap   # 49.5
+    scale = half_gap / target_gap  # 49.5
 
     print("\nG900 AFFINE PARAMETER SOURCE PROBE")
     print("==================================")
@@ -60,3 +60,7 @@ def main() -> None:
     else:
         print("The affine scale factor does not match half of any barycentric layer count.")
         print("A different carrier source is needed.")
+
+
+if __name__ == "__main__":
+    main()
