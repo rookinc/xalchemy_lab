@@ -81,24 +81,24 @@ def build_svg(width: int, height: int) -> str:
 
     for (x, y), label in zip(top, labels_top):
         svg_parts.append(circle_svg(x, y))
-        svg_parts.append(text_svg(x, y - 12, label, size=14))
+        svg_parts.append(text_svg(x, y - 14, label, size=14))
     for (x, y), label in zip(bot, labels_bot):
         svg_parts.append(circle_svg(x, y))
         svg_parts.append(text_svg(x, y + 24, label, size=14))
 
-    edge_labels = [
-        ((top[0][0] + top[1][0]) / 2, (top[0][1] + top[1][1]) / 2 - 8, "top_ab"),
-        ((top[1][0] + top[2][0]) / 2 + 18, (top[1][1] + top[2][1]) / 2 + 4, "top_bc"),
-        ((top[2][0] + top[0][0]) / 2 - 18, (top[2][1] + top[0][1]) / 2 + 4, "top_ca"),
-        ((bot[0][0] + bot[1][0]) / 2, (bot[0][1] + bot[1][1]) / 2 - 8, "bottom_ab"),
-        ((bot[1][0] + bot[2][0]) / 2 + 28, (bot[1][1] + bot[2][1]) / 2 + 4, "bottom_bc"),
-        ((bot[2][0] + bot[0][0]) / 2 - 28, (bot[2][1] + bot[0][1]) / 2 + 4, "bottom_ca"),
-        ((top[0][0] + bot[0][0]) / 2 - 34, (top[0][1] + bot[0][1]) / 2, "vertical_a"),
-        ((top[1][0] + bot[1][0]) / 2 + 36, (top[1][1] + bot[1][1]) / 2, "vertical_b"),
-        ((top[2][0] + bot[2][0]) / 2 - 52, (top[2][1] + bot[2][1]) / 2, "vertical_c"),
+    numeric_labels = [
+        ((top[0][0] + top[1][0]) / 2, (top[0][1] + top[1][1]) / 2 - 10, "140"),
+        ((top[1][0] + top[2][0]) / 2 + 18, (top[1][1] + top[2][1]) / 2 + 2, "140"),
+        ((top[2][0] + top[0][0]) / 2 - 18, (top[2][1] + top[0][1]) / 2 + 2, "140"),
+        ((bot[0][0] + bot[1][0]) / 2, (bot[0][1] + bot[1][1]) / 2 - 10, "150"),
+        ((bot[1][0] + bot[2][0]) / 2 + 18, (bot[1][1] + bot[2][1]) / 2 + 2, "150"),
+        ((bot[2][0] + bot[0][0]) / 2 - 18, (bot[2][1] + bot[0][1]) / 2 + 2, "150"),
+        ((top[0][0] + bot[0][0]) / 2 - 18, (top[0][1] + bot[0][1]) / 2, "145"),
+        ((top[1][0] + bot[1][0]) / 2 + 18, (top[1][1] + bot[1][1]) / 2, "145"),
+        ((top[2][0] + bot[2][0]) / 2 - 18, (top[2][1] + bot[2][1]) / 2, "145"),
     ]
-    for x, y, s in edge_labels:
-        svg_parts.append(text_svg(x, y, s, size=13))
+    for x, y, s in numeric_labels:
+        svg_parts.append(text_svg(x, y, s, size=16, weight="bold"))
 
     for i in range(3):
         x1, y1 = tgt[i]
@@ -134,16 +134,27 @@ def build_svg(width: int, height: int) -> str:
         )
 
     legend_x = 560
-    legend_y = 585
-    svg_parts.append(text_svg(legend_x, legend_y, "Vertex collapse:", size=16, anchor="start", weight="bold"))
-    for i, label in enumerate(labels_top + labels_bot):
+    legend_y = 560
+    legend = [
+        "Extracted prism law:",
+        "top face = 140",
+        "vertical = 145",
+        "bottom face = 150",
+        "",
+        "offset form around center 145:",
+        "top = -5",
+        "vertical = 0",
+        "bottom = +5",
+    ]
+    for i, s in enumerate(legend):
         svg_parts.append(
             text_svg(
                 legend_x,
-                legend_y + 28 + i * 22,
-                f"{label} -> {triangle_vertex_targets[label]}",
-                size=14,
+                legend_y + i * 22,
+                s,
+                size=15 if i not in (0, 5) else 16,
                 anchor="start",
+                weight="bold" if i in (0, 5) else "normal",
             )
         )
 
@@ -183,60 +194,45 @@ def build_png(width: int, height: int) -> bool:
 
     draw_poly_edges(top)
     draw_poly_edges(bot)
-
     for i in range(3):
         draw.line((top[i][0], top[i][1], bot[i][0], bot[i][1]), fill="black", width=2)
 
     draw_nodes(top, labels_top, bottom=False)
     draw_nodes(bot, labels_bot, bottom=True)
 
-    edge_labels = [
-        ((top[0][0] + top[1][0]) / 2, (top[0][1] + top[1][1]) / 2 - 8, "top_ab"),
-        ((top[1][0] + top[2][0]) / 2 + 18, (top[1][1] + top[2][1]) / 2 + 4, "top_bc"),
-        ((top[2][0] + top[0][0]) / 2 - 18, (top[2][1] + top[0][1]) / 2 + 4, "top_ca"),
-        ((bot[0][0] + bot[1][0]) / 2, (bot[0][1] + bot[1][1]) / 2 - 8, "bottom_ab"),
-        ((bot[1][0] + bot[2][0]) / 2 + 28, (bot[1][1] + bot[2][1]) / 2 + 4, "bottom_bc"),
-        ((bot[2][0] + bot[0][0]) / 2 - 28, (bot[2][1] + bot[0][1]) / 2 + 4, "bottom_ca"),
-        ((top[0][0] + bot[0][0]) / 2 - 34, (top[0][1] + bot[0][1]) / 2, "vertical_a"),
-        ((top[1][0] + bot[1][0]) / 2 + 36, (top[1][1] + bot[1][1]) / 2, "vertical_b"),
-        ((top[2][0] + bot[2][0]) / 2 - 52, (top[2][1] + bot[2][1]) / 2, "vertical_c"),
+    numeric_labels = [
+        ((top[0][0] + top[1][0]) / 2, (top[0][1] + top[1][1]) / 2 - 10, "140"),
+        ((top[1][0] + top[2][0]) / 2 + 18, (top[1][1] + top[2][1]) / 2 + 2, "140"),
+        ((top[2][0] + top[0][0]) / 2 - 18, (top[2][1] + top[0][1]) / 2 + 2, "140"),
+        ((bot[0][0] + bot[1][0]) / 2, (bot[0][1] + bot[1][1]) / 2 - 10, "150"),
+        ((bot[1][0] + bot[2][0]) / 2 + 18, (bot[1][1] + bot[2][1]) / 2 + 2, "150"),
+        ((bot[2][0] + bot[0][0]) / 2 - 18, (bot[2][1] + bot[0][1]) / 2 + 2, "150"),
+        ((top[0][0] + bot[0][0]) / 2 - 18, (top[0][1] + bot[0][1]) / 2, "145"),
+        ((top[1][0] + bot[1][0]) / 2 + 18, (top[1][1] + bot[1][1]) / 2, "145"),
+        ((top[2][0] + bot[2][0]) / 2 - 18, (top[2][1] + bot[2][1]) / 2, "145"),
     ]
-    for x, y, s in edge_labels:
-        draw.text((x - 18, y - 8), s, fill="black")
+    for x, y, s in numeric_labels:
+        draw.text((x - 10, y - 8), s, fill="black")
 
     draw_poly_edges(tgt)
     for (x, y), label in zip(tgt, ["A", "B", "C"]):
         draw.ellipse((x - 6, y - 6, x + 6, y + 6), outline="black", fill="white", width=2)
         draw.text((x - 6, y - 24), label, fill="black")
 
-    tgt_edge_labels = [
-        ((tgt[0][0] + tgt[1][0]) / 2, (tgt[0][1] + tgt[1][1]) / 2 - 10, "AB"),
-        ((tgt[1][0] + tgt[2][0]) / 2 + 20, (tgt[1][1] + tgt[2][1]) / 2 + 6, "BC"),
-        ((tgt[2][0] + tgt[0][0]) / 2 - 20, (tgt[2][1] + tgt[0][1]) / 2 + 6, "CA"),
-    ]
-    for x, y, s in tgt_edge_labels:
-        draw.text((x - 8, y - 8), s, fill="black")
-
-    draw.text((720, 515), "triangle_face", fill="black")
-
-    arrow_targets = {
-        "top_a": tgt[0],
-        "top_b": tgt[1],
-        "top_c": tgt[2],
-        "bottom_a": tgt[0],
-        "bottom_b": tgt[1],
-        "bottom_c": tgt[2],
-    }
     for (x, y), label in list(zip(top, labels_top)) + list(zip(bot, labels_bot)):
-        tx, ty = arrow_targets[label]
+        tx, ty = {"top_a": tgt[0], "top_b": tgt[1], "top_c": tgt[2],
+                  "bottom_a": tgt[0], "bottom_b": tgt[1], "bottom_c": tgt[2]}[label]
         draw.line((x, y, tx, ty), fill="gray", width=1)
 
-    legend_x = 560
-    legend_y = 585
-    draw.text((legend_x, legend_y), "Vertex collapse:", fill="black")
-    for i, label in enumerate(labels_top + labels_bot):
-        target = "ABCABC"[i]
-        draw.text((legend_x, legend_y + 28 + i * 18), f"{label} -> {target}", fill="black")
+    legend = [
+        "Extracted prism law:",
+        "top face = 140",
+        "vertical = 145",
+        "bottom face = 150",
+        "offsets around 145: -5, 0, +5",
+    ]
+    for i, s in enumerate(legend):
+        draw.text((560, 560 + i * 22), s, fill="black")
 
     img.save(PNG_PATH)
     return True
@@ -245,7 +241,7 @@ def build_png(width: int, height: int) -> bool:
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     width = 1000
-    height = 700
+    height = 760
 
     svg = build_svg(width, height)
     SVG_PATH.write_text(svg, encoding="utf-8")
