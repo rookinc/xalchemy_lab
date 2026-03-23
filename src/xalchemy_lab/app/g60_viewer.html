@@ -1,0 +1,770 @@
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Html, Line, PerspectiveCamera, Stars } from "@react-three/drei";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
+import { Switch } from "@/components/ui/switch";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { motion } from "framer-motion";
+import { Upload, RotateCcw, Eye, EyeOff, Network, Box, Sparkles, Layers3, Info, Copy } from "lucide-react";
+
+type Vec3 = [number, number, number];
+
+type NodeRecord = {
+  id: string;
+  position: Vec3;
+  layer?: "G60" | "G30" | "G15" | string;
+  label?: string;
+  color?: string;
+  size?: number;
+  meta?: Record<string, unknown>;
+};
+
+type EdgeRecord = {
+  source: string;
+  target: string;
+  layer?: "G60" | "G30" | "G15" | string;
+  color?: string;
+  weight?: number;
+};
+
+type GraphData = {
+  name?: string;
+  description?: string;
+  nodes: NodeRecord[];
+  edges: EdgeRecord[];
+};
+
+type SelectedInfo = {
+  node: NodeRecord;
+  degree: number;
+  neighbors: string[];
+};
+
+const DEFAULT_COLORS = {
+  G60: "#60a5fa",
+  G30: "#f59e0b",
+  G15: "#f472b6",
+  other: "#94a3b8",
+  edge: "#cbd5e1",
+  selected: "#ffffff",
+};
+
+function clamp(n: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, n));
+}
+
+function sphericalPoint(theta: number, phi: number, r: number): Vec3 {
+  return [
+    r * Math.sin(phi) * Math.cos(theta),
+    r * Math.cos(phi),
+    r * Math.sin(phi) * Math.sin(theta),
+  ];
+}
+
+function createSyntheticG60(): GraphData {
+  const nodes: NodeRecord[] = [];
+  const edges: EdgeRecord[] = [];
+
+  const rings = [
+    { count: 12, radius: 4.0, y: 2.6, layer: "G60" as const },
+    { count: 18, radius: 5.8, y: 0.9, layer: "G60" as const },
+    { count: 18, radius: 5.8, y: -0.9, layer: "G60" as const },
+    { count: 12, radius: 4.0, y: -2.6, layer: "G60" as const },
+  ];
+
+  let index = 0;
+  rings.forEach((ring, ringIndex) => {
+    for (let i = 0; i < ring.count; i += 1) {
+      const theta = (i / ring.count) * Math.PI * 2 + (ringIndex % 2) * 0.15;
+      nodes.push({
+        id: `v${index}`,
+        position: [Math.cos(theta) * ring.radius, ring.y, Math.sin(theta) * ring.radius],
+        layer: ring.layer,
+        label: `v${index}`,
+        meta: { ring: ringIndex, ringIndex: i },
+      });
+      index += 1;
+    }
+  });
+
+  const ringOffsets: number[] = [];
+  let running = 0;
+  for (const ring of rings) {
+    ringOffsets.push(running);
+    running += ring.count;
+  }
+
+  rings.forEach((ring, ringIndex) => {
+    const offset = ringOffsets[ringIndex];
+    for (let i = 0; i < ring.count; i += 1) {
+      const a = `v${offset + i}`;
+      const b = `v${offset + ((i + 1) % ring.count)}`;
+      edges.push({ source: a, target: b, layer: "G60" });
+    }
+  });
+
+  for (let r = 0; r < rings.length - 1; r += 1) {
+    const aCount = rings[r].count;
+    const bCount = rings[r + 1].count;
+    for (let i = 0; i < aCount; i += 1) {
+      const a = `v${ringOffsets[r] + i}`;
+      const b1 = `v${ringOffsets[r + 1] + Math.floor((i / aCount) * bCount)}`;
+      const b2 = `v${ringOffsets[r + 1] + ((Math.floor((i / aCount) * bCount) + 1) % bCount)}`;
+      edges.push({ source: a, target: b1, layer: "G60" });
+      if (r === 1 || r === 0) {
+        edges.push({ source: a, target: b2, layer: "G60" });
+      }
+    }
+  }
+
+  const g15Indices = [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56];
+  const g30Indices = Array.from({ length: 30 }, (_, i) => i * 2);
+
+  g30Indices.forEach((idx) => {
+    if (nodes[idx]) nodes[idx].layer = "G30";
+  });
+  g15Indices.forEach((idx) => {
+    if (nodes[idx]) nodes[idx].layer = "G15";
+  });
+
+  const unique = new Set<string>();
+  const deduped: EdgeRecord[] = [];
+  for (const e of edges) {
+    const key = [e.source, e.target].sort().join("|");
+    if (!unique.has(key)) {
+      unique.add(key);
+      deduped.push(e);
+    }
+  }
+
+  return {
+    name: "Synthetic G60 scaffold",
+    description: "Phone-ready placeholder graph for stage testing. Replace with authoritative JSON whenever ready.",
+    nodes,
+    edges: deduped,
+  };
+}
+
+function normalizeGraph(input: GraphData): GraphData {
+  const nodes = input.nodes.map((node, i) => ({
+    id: String(node.id ?? `v${i}`),
+    position: [
+      Number(node.position?.[0] ?? 0),
+      Number(node.position?.[1] ?? 0),
+      Number(node.position?.[2] ?? 0),
+    ] as Vec3,
+    layer: node.layer ?? "G60",
+    label: node.label ?? String(node.id ?? `v${i}`),
+    color: node.color,
+    size: node.size,
+    meta: node.meta ?? {},
+  }));
+
+  const nodeIds = new Set(nodes.map((n) => n.id));
+  const edges = input.edges
+    .map((edge) => ({
+      source: String(edge.source),
+      target: String(edge.target),
+      layer: edge.layer ?? "G60",
+      color: edge.color,
+      weight: edge.weight,
+    }))
+    .filter((edge) => nodeIds.has(edge.source) && nodeIds.has(edge.target));
+
+  return {
+    name: input.name ?? "Imported graph",
+    description: input.description ?? "",
+    nodes,
+    edges,
+  };
+}
+
+function fitPositions(nodes: NodeRecord[], scale = 6): NodeRecord[] {
+  if (nodes.length === 0) return nodes;
+  const xs = nodes.map((n) => n.position[0]);
+  const ys = nodes.map((n) => n.position[1]);
+  const zs = nodes.map((n) => n.position[2]);
+  const min = [Math.min(...xs), Math.min(...ys), Math.min(...zs)];
+  const max = [Math.max(...xs), Math.max(...ys), Math.max(...zs)];
+  const center: Vec3 = [
+    (min[0] + max[0]) / 2,
+    (min[1] + max[1]) / 2,
+    (min[2] + max[2]) / 2,
+  ];
+  const span = Math.max(max[0] - min[0], max[1] - min[1], max[2] - min[2], 1);
+  const factor = scale / span;
+
+  return nodes.map((node) => ({
+    ...node,
+    position: [
+      (node.position[0] - center[0]) * factor,
+      (node.position[1] - center[1]) * factor,
+      (node.position[2] - center[2]) * factor,
+    ],
+  }));
+}
+
+function GraphNode({
+  node,
+  selected,
+  showLabels,
+  nodeScale,
+  onSelect,
+}: {
+  node: NodeRecord;
+  selected: boolean;
+  showLabels: boolean;
+  nodeScale: number;
+  onSelect: (node: NodeRecord) => void;
+}) {
+  const ref = useRef<any>(null);
+  const pulse = useRef(Math.random() * Math.PI * 2);
+
+  useFrame((state) => {
+    if (!ref.current) return;
+    pulse.current += state.clock.getDelta() * 1.4;
+    const base = 1 + Math.sin(pulse.current) * 0.04;
+    const selectedBoost = selected ? 1.22 : 1;
+    ref.current.scale.setScalar(base * selectedBoost);
+  });
+
+  const color = selected
+    ? DEFAULT_COLORS.selected
+    : node.color ??
+      (node.layer === "G15"
+        ? DEFAULT_COLORS.G15
+        : node.layer === "G30"
+          ? DEFAULT_COLORS.G30
+          : node.layer === "G60"
+            ? DEFAULT_COLORS.G60
+            : DEFAULT_COLORS.other);
+
+  return (
+    <group position={node.position}>
+      <mesh ref={ref} onClick={() => onSelect(node)}>
+        <sphereGeometry args={[Math.max(0.04, (node.size ?? 0.12) * nodeScale), 24, 24]} />
+        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={selected ? 0.65 : 0.18} />
+      </mesh>
+      {showLabels && (
+        <Html distanceFactor={12} center>
+          <div className="rounded-md border border-white/20 bg-black/70 px-2 py-1 text-[10px] text-white shadow-lg backdrop-blur-sm">
+            {node.label ?? node.id}
+          </div>
+        </Html>
+      )}
+    </group>
+  );
+}
+
+function AutoSpin({ enabled, speed }: { enabled: boolean; speed: number }) {
+  const ref = useRef<any>(null);
+  useFrame((_, delta) => {
+    if (enabled && ref.current) ref.current.rotation.y += delta * speed;
+  });
+  return <group ref={ref} />;
+}
+
+function GraphScene({
+  data,
+  selectedId,
+  onSelect,
+  showLabels,
+  showStars,
+  nodeScale,
+  edgeOpacity,
+  lineWidth,
+  visibleLayers,
+  autoRotate,
+  autoRotateSpeed,
+  fov,
+}: {
+  data: GraphData;
+  selectedId: string | null;
+  onSelect: (node: NodeRecord) => void;
+  showLabels: boolean;
+  showStars: boolean;
+  nodeScale: number;
+  edgeOpacity: number;
+  lineWidth: number;
+  visibleLayers: Record<string, boolean>;
+  autoRotate: boolean;
+  autoRotateSpeed: number;
+  fov: number;
+}) {
+  const nodeMap = useMemo(() => new Map(data.nodes.map((n) => [n.id, n])), [data.nodes]);
+
+  const visibleNodes = useMemo(
+    () => data.nodes.filter((n) => visibleLayers[n.layer ?? "G60"] ?? true),
+    [data.nodes, visibleLayers],
+  );
+  const visibleSet = useMemo(() => new Set(visibleNodes.map((n) => n.id)), [visibleNodes]);
+
+  const visibleEdges = useMemo(
+    () =>
+      data.edges.filter((e) => {
+        const layerVisible = visibleLayers[e.layer ?? "G60"] ?? true;
+        return layerVisible && visibleSet.has(e.source) && visibleSet.has(e.target);
+      }),
+    [data.edges, visibleLayers, visibleSet],
+  );
+
+  return (
+    <Canvas className="h-full w-full rounded-2xl" gl={{ antialias: true }}>
+      <PerspectiveCamera makeDefault position={[0, 4.5, 12]} fov={fov} />
+      <color attach="background" args={["#030712"]} />
+      {showStars && <Stars radius={90} depth={40} count={2500} factor={4} fade />}
+      <ambientLight intensity={0.75} />
+      <directionalLight position={[8, 10, 6]} intensity={1.2} />
+      <directionalLight position={[-7, -4, -6]} intensity={0.35} />
+
+      <group>
+        {visibleEdges.map((edge, i) => {
+          const a = nodeMap.get(edge.source);
+          const b = nodeMap.get(edge.target);
+          if (!a || !b) return null;
+          const selected = selectedId && (edge.source === selectedId || edge.target === selectedId);
+          const edgeColor = selected
+            ? DEFAULT_COLORS.selected
+            : edge.color ??
+              (edge.layer === "G15"
+                ? DEFAULT_COLORS.G15
+                : edge.layer === "G30"
+                  ? DEFAULT_COLORS.G30
+                  : DEFAULT_COLORS.edge);
+          return (
+            <Line
+              key={`${edge.source}-${edge.target}-${i}`}
+              points={[a.position, b.position]}
+              color={edgeColor}
+              transparent
+              opacity={selected ? 1 : edgeOpacity}
+              lineWidth={selected ? Math.max(lineWidth * 1.6, 1.2) : lineWidth}
+            />
+          );
+        })}
+
+        {visibleNodes.map((node) => (
+          <GraphNode
+            key={node.id}
+            node={node}
+            selected={node.id === selectedId}
+            showLabels={showLabels}
+            nodeScale={nodeScale}
+            onSelect={onSelect}
+          />
+        ))}
+      </group>
+
+      <AutoSpin enabled={autoRotate} speed={autoRotateSpeed} />
+      <OrbitControls enablePan enableZoom enableRotate makeDefault />
+    </Canvas>
+  );
+}
+
+function buildSelection(data: GraphData, nodeId: string | null): SelectedInfo | null {
+  if (!nodeId) return null;
+  const node = data.nodes.find((n) => n.id === nodeId);
+  if (!node) return null;
+
+  const neighbors = data.edges.flatMap((e) => {
+    if (e.source === nodeId) return [e.target];
+    if (e.target === nodeId) return [e.source];
+    return [] as string[];
+  });
+
+  return {
+    node,
+    degree: neighbors.length,
+    neighbors,
+  };
+}
+
+function parseJsonText(raw: string): GraphData {
+  const parsed = JSON.parse(raw);
+  if (!parsed || !Array.isArray(parsed.nodes) || !Array.isArray(parsed.edges)) {
+    throw new Error("Expected an object with { nodes: [...], edges: [...] }.");
+  }
+  return normalizeGraph({
+    name: parsed.name,
+    description: parsed.description,
+    nodes: fitPositions(parsed.nodes),
+    edges: parsed.edges,
+  });
+}
+
+const starterJson = `{
+  "name": "G60 authoritative graph",
+  "description": "Drop your real G60 node positions and edges here.",
+  "nodes": [
+    { "id": "v0", "position": [0, 0, 0], "layer": "G60", "label": "v0" },
+    { "id": "v1", "position": [1, 0, 0], "layer": "G60", "label": "v1" }
+  ],
+  "edges": [
+    { "source": "v0", "target": "v1", "layer": "G60" }
+  ]
+}`;
+
+export default function G60Viewer() {
+  const [graph, setGraph] = useState<GraphData>(() => {
+    const seed = createSyntheticG60();
+    return { ...seed, nodes: fitPositions(seed.nodes) };
+  });
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [jsonText, setJsonText] = useState<string>(starterJson);
+  const [error, setError] = useState<string>("");
+  const [showLabels, setShowLabels] = useState(false);
+  const [showStars, setShowStars] = useState(true);
+  const [nodeScale, setNodeScale] = useState(1);
+  const [edgeOpacity, setEdgeOpacity] = useState(0.45);
+  const [lineWidth, setLineWidth] = useState(1.1);
+  const [fov, setFov] = useState(55);
+  const [autoRotate, setAutoRotate] = useState(false);
+  const [autoRotateSpeed, setAutoRotateSpeed] = useState(0.3);
+  const [visibleLayers, setVisibleLayers] = useState<Record<string, boolean>>({
+    G60: true,
+    G30: true,
+    G15: true,
+  });
+
+  const selection = useMemo(() => buildSelection(graph, selectedId), [graph, selectedId]);
+
+  const counts = useMemo(() => {
+    const nodeCounts: Record<string, number> = {};
+    const edgeCounts: Record<string, number> = {};
+    for (const n of graph.nodes) nodeCounts[n.layer ?? "G60"] = (nodeCounts[n.layer ?? "G60"] ?? 0) + 1;
+    for (const e of graph.edges) edgeCounts[e.layer ?? "G60"] = (edgeCounts[e.layer ?? "G60"] ?? 0) + 1;
+    return { nodeCounts, edgeCounts };
+  }, [graph]);
+
+  const layerKeys = useMemo(() => {
+    const keys = new Set<string>([...graph.nodes.map((n) => n.layer ?? "G60"), ...graph.edges.map((e) => e.layer ?? "G60")]);
+    return Array.from(keys);
+  }, [graph]);
+
+  useEffect(() => {
+    setVisibleLayers((prev) => {
+      const next = { ...prev };
+      for (const key of layerKeys) {
+        if (!(key in next)) next[key] = true;
+      }
+      return next;
+    });
+  }, [layerKeys]);
+
+  function loadSynthetic() {
+    const seed = createSyntheticG60();
+    setGraph({ ...seed, nodes: fitPositions(seed.nodes) });
+    setSelectedId(null);
+    setError("");
+  }
+
+  function importFromTextarea() {
+    try {
+      const normalized = parseJsonText(jsonText);
+      setGraph(normalized);
+      setSelectedId(null);
+      setError("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not parse JSON.");
+    }
+  }
+
+  async function importFromFile(file: File) {
+    const text = await file.text();
+    setJsonText(text);
+    try {
+      const normalized = parseJsonText(text);
+      setGraph(normalized);
+      setSelectedId(null);
+      setError("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not parse uploaded JSON.");
+    }
+  }
+
+  async function copyTemplate() {
+    await navigator.clipboard.writeText(jsonText);
+  }
+
+  return (
+    <div className="min-h-screen w-full bg-slate-950 text-slate-100">
+      <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-4 p-3 md:p-4 lg:grid-cols-[360px_1fr]">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
+          <Card className="h-full rounded-3xl border-white/10 bg-slate-900/95 shadow-2xl">
+            <CardHeader className="pb-3">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <CardTitle className="flex items-center gap-2 text-xl">
+                    <Box className="h-5 w-5" />
+                    G60 Viewer
+                  </CardTitle>
+                  <p className="mt-1 text-sm text-slate-400">
+                    3D stage with perspective controls, layer visibility, selection, and JSON import.
+                  </p>
+                </div>
+                <Badge variant="secondary" className="rounded-full bg-white/10 text-white">
+                  mobile ready
+                </Badge>
+              </div>
+            </CardHeader>
+
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-2 gap-2">
+                <Button onClick={loadSynthetic} className="rounded-2xl">
+                  <RotateCcw className="mr-2 h-4 w-4" />
+                  Reset demo
+                </Button>
+                <label className="inline-flex cursor-pointer items-center justify-center rounded-2xl border border-white/10 bg-slate-800 px-3 py-2 text-sm font-medium text-slate-100 transition hover:bg-slate-700">
+                  <Upload className="mr-2 h-4 w-4" />
+                  Upload JSON
+                  <input
+                    type="file"
+                    accept="application/json"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) importFromFile(file);
+                    }}
+                  />
+                </label>
+              </div>
+
+              <Tabs defaultValue="view" className="w-full">
+                <TabsList className="grid w-full grid-cols-3 rounded-2xl bg-slate-800/80">
+                  <TabsTrigger value="view" className="rounded-2xl">View</TabsTrigger>
+                  <TabsTrigger value="layers" className="rounded-2xl">Layers</TabsTrigger>
+                  <TabsTrigger value="data" className="rounded-2xl">Data</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="view" className="mt-4 space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-800/60 px-3 py-2">
+                      <div>
+                        <Label>Labels</Label>
+                        <p className="text-xs text-slate-400">Show node ids on stage</p>
+                      </div>
+                      <Switch checked={showLabels} onCheckedChange={setShowLabels} />
+                    </div>
+                    <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-800/60 px-3 py-2">
+                      <div>
+                        <Label>Stars</Label>
+                        <p className="text-xs text-slate-400">Background depth cue</p>
+                      </div>
+                      <Switch checked={showStars} onCheckedChange={setShowStars} />
+                    </div>
+                    <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-800/60 px-3 py-2">
+                      <div>
+                        <Label>Auto rotate</Label>
+                        <p className="text-xs text-slate-400">Slow turn for stage inspection</p>
+                      </div>
+                      <Switch checked={autoRotate} onCheckedChange={setAutoRotate} />
+                    </div>
+                  </div>
+
+                  <ControlSlider label="Field of view" value={fov} min={20} max={95} step={1} onChange={setFov} />
+                  <ControlSlider label="Node scale" value={nodeScale} min={0.4} max={2.4} step={0.05} onChange={setNodeScale} />
+                  <ControlSlider label="Edge opacity" value={edgeOpacity} min={0.05} max={1} step={0.01} onChange={setEdgeOpacity} />
+                  <ControlSlider label="Line width" value={lineWidth} min={0.4} max={3} step={0.1} onChange={setLineWidth} />
+                  <ControlSlider
+                    label="Rotation speed"
+                    value={autoRotateSpeed}
+                    min={0.05}
+                    max={1.2}
+                    step={0.01}
+                    onChange={setAutoRotateSpeed}
+                  />
+                </TabsContent>
+
+                <TabsContent value="layers" className="mt-4 space-y-3">
+                  {layerKeys.map((layer) => {
+                    const shown = visibleLayers[layer] ?? true;
+                    return (
+                      <div key={layer} className="rounded-2xl border border-white/10 bg-slate-800/60 p-3">
+                        <div className="flex items-center justify-between gap-3">
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <Layers3 className="h-4 w-4" />
+                              <span className="font-medium">{layer}</span>
+                            </div>
+                            <p className="mt-1 text-xs text-slate-400">
+                              Nodes: {counts.nodeCounts[layer] ?? 0} · Edges: {counts.edgeCounts[layer] ?? 0}
+                            </p>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="rounded-xl"
+                            onClick={() => setVisibleLayers((prev) => ({ ...prev, [layer]: !shown }))}
+                          >
+                            {shown ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+                          </Button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </TabsContent>
+
+                <TabsContent value="data" className="mt-4 space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <Label>Graph JSON</Label>
+                    <Button variant="outline" size="sm" className="rounded-xl" onClick={copyTemplate}>
+                      <Copy className="mr-2 h-4 w-4" />
+                      Copy
+                    </Button>
+                  </div>
+                  <textarea
+                    value={jsonText}
+                    onChange={(e) => setJsonText(e.target.value)}
+                    className="min-h-[220px] w-full rounded-2xl border border-white/10 bg-slate-950 p-3 font-mono text-xs text-slate-100 outline-none ring-0"
+                    spellCheck={false}
+                  />
+                  <Button onClick={importFromTextarea} className="w-full rounded-2xl">
+                    <Network className="mr-2 h-4 w-4" />
+                    Load from text
+                  </Button>
+                  {error && <div className="rounded-2xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200">{error}</div>}
+                </TabsContent>
+              </Tabs>
+
+              <Separator className="bg-white/10" />
+
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <StatCard title="Nodes" value={String(graph.nodes.length)} />
+                <StatCard title="Edges" value={String(graph.edges.length)} />
+              </div>
+
+              <ScrollArea className="h-[240px] rounded-2xl border border-white/10 bg-slate-800/40 p-3">
+                <div className="space-y-3">
+                  <div>
+                    <div className="flex items-center gap-2 text-sm font-medium">
+                      <Info className="h-4 w-4" />
+                      Active graph
+                    </div>
+                    <p className="mt-1 text-sm text-slate-200">{graph.name ?? "Untitled graph"}</p>
+                    {graph.description && <p className="mt-1 text-xs text-slate-400">{graph.description}</p>}
+                  </div>
+
+                  <Separator className="bg-white/10" />
+
+                  {selection ? (
+                    <div className="space-y-2">
+                      <div className="text-sm font-medium">Selected node</div>
+                      <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-3">
+                        <div className="text-base font-semibold">{selection.node.label ?? selection.node.id}</div>
+                        <div className="mt-1 text-xs text-slate-400">id: {selection.node.id}</div>
+                        <div className="mt-1 text-xs text-slate-400">layer: {selection.node.layer ?? "G60"}</div>
+                        <div className="mt-1 text-xs text-slate-400">degree: {selection.degree}</div>
+                        <div className="mt-1 text-xs text-slate-400">
+                          position: [{selection.node.position.map((n) => n.toFixed(2)).join(", ")}]
+                        </div>
+                        {selection.neighbors.length > 0 && (
+                          <div className="mt-2">
+                            <div className="text-xs font-medium text-slate-300">neighbors</div>
+                            <div className="mt-1 flex flex-wrap gap-1">
+                              {selection.neighbors.slice(0, 16).map((n) => (
+                                <Badge key={n} variant="secondary" className="rounded-full bg-white/10 text-white">
+                                  {n}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="rounded-2xl border border-dashed border-white/10 p-4 text-sm text-slate-400">
+                      Tap a node in the stage to inspect it.
+                    </div>
+                  )}
+                </div>
+              </ScrollArea>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.05 }}>
+          <Card className="overflow-hidden rounded-3xl border-white/10 bg-slate-900/95 shadow-2xl">
+            <CardContent className="p-0">
+              <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+                <div>
+                  <div className="text-sm font-medium">3D stage</div>
+                  <div className="text-xs text-slate-400">Drag to orbit · pinch or wheel to zoom · right drag to pan</div>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-slate-400">
+                  <Sparkles className="h-4 w-4" />
+                  perspective live
+                </div>
+              </div>
+              <div className="h-[72vh] min-h-[480px] w-full">
+                <GraphScene
+                  data={graph}
+                  selectedId={selectedId}
+                  onSelect={(node) => setSelectedId(node.id)}
+                  showLabels={showLabels}
+                  showStars={showStars}
+                  nodeScale={nodeScale}
+                  edgeOpacity={edgeOpacity}
+                  lineWidth={lineWidth}
+                  visibleLayers={visibleLayers}
+                  autoRotate={autoRotate}
+                  autoRotateSpeed={autoRotateSpeed}
+                  fov={fov}
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function ControlSlider({
+  label,
+  value,
+  min,
+  max,
+  step,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  step: number;
+  onChange: (value: number) => void;
+}) {
+  return (
+    <div className="space-y-2 rounded-2xl border border-white/10 bg-slate-800/60 p-3">
+      <div className="flex items-center justify-between gap-3">
+        <Label>{label}</Label>
+        <Input
+          value={String(Number(value.toFixed(2)))}
+          onChange={(e) => {
+            const next = Number(e.target.value);
+            if (!Number.isNaN(next)) onChange(clamp(next, min, max));
+          }}
+          className="h-8 w-24 rounded-xl border-white/10 bg-slate-950 text-right"
+        />
+      </div>
+      <Slider value={[value]} min={min} max={max} step={step} onValueChange={(vals) => onChange(vals[0])} />
+    </div>
+  );
+}
+
+function StatCard({ title, value }: { title: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-slate-800/60 p-3">
+      <div className="text-xs uppercase tracking-wide text-slate-400">{title}</div>
+      <div className="mt-1 text-xl font-semibold text-white">{value}</div>
+    </div>
+  );
+}
+

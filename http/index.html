@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>xyzti renderer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      padding: 24px;
+    }
+
+    h1 {
+      margin: 0 0 16px 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    #stage {
+      width: 800px;
+      max-width: 100%;
+      border: 1px solid #444;
+      background: #000;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>xyzti renderer</h1>
+
+  <div id="stage">
+    <svg id="view" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
