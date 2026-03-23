@@ -1,41 +1,41 @@
 {
   "name": "g900_prism_weight_table",
   "version": "0.1",
-  "status": "extraction-pending",
+  "status": "symbolic-prefill",
   "even_slice": {
-    "top_ab": null,
-    "top_bc": null,
-    "top_ca": null,
-    "bottom_ab": null,
-    "bottom_bc": null,
-    "bottom_ca": null,
-    "vertical_a": null,
-    "vertical_b": null,
-    "vertical_c": null
+    "top_ab": "w_even_top_ab",
+    "top_bc": "w_even_top_bc",
+    "top_ca": "w_even_top_ca",
+    "bottom_ab": "w_even_bottom_ab",
+    "bottom_bc": "w_even_bottom_bc",
+    "bottom_ca": "w_even_bottom_ca",
+    "vertical_a": "w_even_vertical_a",
+    "vertical_b": "w_even_vertical_b",
+    "vertical_c": "w_even_vertical_c"
   },
   "odd_slice": {
-    "top_ab": null,
-    "top_bc": null,
-    "top_ca": null,
-    "bottom_ab": null,
-    "bottom_bc": null,
-    "bottom_ca": null,
-    "vertical_a": null,
-    "vertical_b": null,
-    "vertical_c": null
+    "top_ab": "w_odd_top_ab",
+    "top_bc": "w_odd_top_bc",
+    "top_ca": "w_odd_top_ca",
+    "bottom_ab": "w_odd_bottom_ab",
+    "bottom_bc": "w_odd_bottom_bc",
+    "bottom_ca": "w_odd_bottom_ca",
+    "vertical_a": "w_odd_vertical_a",
+    "vertical_b": "w_odd_vertical_b",
+    "vertical_c": "w_odd_vertical_c"
   },
   "triangle_pushforward": {
-    "AB": null,
-    "BC": null,
-    "CA": null
+    "AB": "w(top_ab) + w(bottom_ab) + side contribution",
+    "BC": "w(top_bc) + w(bottom_bc) + side contribution",
+    "CA": "w(top_ca) + w(bottom_ca) + side contribution"
   },
   "comparison": {
-    "even_odd_match": null,
-    "pushforward_defined": null
+    "even_odd_match": "pending-symbolic-comparison",
+    "pushforward_defined": true
   },
   "notes": [
-    "Populate with extracted prism-edge weights.",
-    "Use exact values where possible.",
-    "Set comparison flags only after explicit verification."
+    "Prefilled from the current even and odd symbolic prism support files.",
+    "Replace symbolic names with extracted exact values when available.",
+    "Set even_odd_match to true only after explicit verification."
   ]
 }
