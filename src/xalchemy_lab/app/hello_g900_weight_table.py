@@ -34,6 +34,10 @@ def expect_equal(label: str, actual, expected) -> None:
         )
 
 
+def symbolic_shape(weights: dict) -> dict:
+    return {k: ("set" if v is not None else None) for k, v in weights.items()}
+
+
 def main() -> None:
     weights = load_json(WEIGHT_PATH)
     even_doc = load_json(EVEN_PATH)
@@ -44,6 +48,10 @@ def main() -> None:
 
     expect_equal("even weights", weights["even_slice"], even_expected)
     expect_equal("odd weights", weights["odd_slice"], odd_expected)
+
+    even_shape = symbolic_shape(weights["even_slice"])
+    odd_shape = symbolic_shape(weights["odd_slice"])
+    expect_equal("even/odd symbolic weight shape", even_shape, odd_shape)
 
     print("\nG900 PRISM WEIGHT TABLE")
     print("=======================")
@@ -60,6 +68,7 @@ def main() -> None:
     print("============")
     print("even slice source : PASS")
     print("odd slice source  : PASS")
+    print("even/odd shape    : PASS")
 
     print(f"\nread {WEIGHT_PATH}")
     print(f"read {EVEN_PATH}")

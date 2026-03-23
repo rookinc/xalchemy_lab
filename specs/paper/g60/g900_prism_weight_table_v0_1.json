@@ -30,12 +30,12 @@
     "CA": "w(top_ca) + w(bottom_ca) + side contribution"
   },
   "comparison": {
-    "even_odd_match": "pending-symbolic-comparison",
+    "even_odd_match": "symbolic-shape-pass",
     "pushforward_defined": true
   },
   "notes": [
     "Prefilled from the current even and odd symbolic prism support files.",
     "Replace symbolic names with extracted exact values when available.",
-    "Set even_odd_match to true only after explicit verification."
+    "Current even_odd_match certifies symbolic shape agreement, not numeric equality."
   ]
 }
