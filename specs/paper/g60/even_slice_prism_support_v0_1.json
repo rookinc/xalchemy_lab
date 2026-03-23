@@ -3,7 +3,7 @@
   "version": "0.1",
   "quotient_type": "exact weighted triangular prism",
   "slice_parity": "even",
-  "status": "provisional-structure",
+  "status": "extracted-weights",
   "support_summary": {
     "carrier_scope": "G900 even slices",
     "support_detected": true,
@@ -27,21 +27,22 @@
       "side_ca"
     ],
     "weights": {
-      "top_ab": "w_even_top_ab",
-      "top_bc": "w_even_top_bc",
-      "top_ca": "w_even_top_ca",
-      "bottom_ab": "w_even_bottom_ab",
-      "bottom_bc": "w_even_bottom_bc",
-      "bottom_ca": "w_even_bottom_ca",
-      "vertical_a": "w_even_vertical_a",
-      "vertical_b": "w_even_vertical_b",
-      "vertical_c": "w_even_vertical_c"
+      "top_ab": 140,
+      "top_bc": 140,
+      "top_ca": 140,
+      "bottom_ab": 150,
+      "bottom_bc": 150,
+      "bottom_ca": 150,
+      "vertical_a": 145,
+      "vertical_b": 145,
+      "vertical_c": 145
     }
   },
   "construction_notes": [
-    "First concrete symbolic prism object for even-slice support.",
-    "Replace symbolic weights with extracted quotient weights when available.",
-    "Keep names aligned with collapse and parity comparison artifacts."
+    "Weights extracted from specs/paper/g60/g900_weighted_prism_v0_1.json.",
+    "Top face identified with bit0_face edges of weight 140.",
+    "Bottom face identified with bit1_face edges of weight 150.",
+    "Vertical edges identified with macro_rung edges of weight 145."
   ],
-  "upstream_source": null
+  "upstream_source": "specs/paper/g60/g900_weighted_prism_v0_1.json"
 }

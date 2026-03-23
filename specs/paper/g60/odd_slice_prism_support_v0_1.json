@@ -3,7 +3,7 @@
   "version": "0.1",
   "quotient_type": "exact weighted triangular prism",
   "slice_parity": "odd",
-  "status": "provisional-structure",
+  "status": "extracted-weights",
   "support_summary": {
     "carrier_scope": "G900 odd slices",
     "support_detected": true,
@@ -27,21 +27,21 @@
       "side_ca"
     ],
     "weights": {
-      "top_ab": "w_odd_top_ab",
-      "top_bc": "w_odd_top_bc",
-      "top_ca": "w_odd_top_ca",
-      "bottom_ab": "w_odd_bottom_ab",
-      "bottom_bc": "w_odd_bottom_bc",
-      "bottom_ca": "w_odd_bottom_ca",
-      "vertical_a": "w_odd_vertical_a",
-      "vertical_b": "w_odd_vertical_b",
-      "vertical_c": "w_odd_vertical_c"
+      "top_ab": 140,
+      "top_bc": 140,
+      "top_ca": 140,
+      "bottom_ab": 150,
+      "bottom_bc": 150,
+      "bottom_ca": 150,
+      "vertical_a": 145,
+      "vertical_b": 145,
+      "vertical_c": 145
     }
   },
   "construction_notes": [
-    "First concrete symbolic prism object for odd-slice support.",
-    "Replace symbolic weights with extracted quotient weights when available.",
-    "Keep names aligned with even-slice, collapse, and parity comparison artifacts."
+    "Weights extracted from specs/paper/g60/g900_weighted_prism_v0_1.json.",
+    "Current odd-slice scaffold inherits the same exported prism weights as the even slice.",
+    "Replace with parity-distinguished values only if a later extractor separates them."
   ],
-  "upstream_source": null
+  "upstream_source": "specs/paper/g60/g900_weighted_prism_v0_1.json"
 }

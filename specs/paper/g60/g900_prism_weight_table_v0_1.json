@@ -1,41 +1,43 @@
 {
   "name": "g900_prism_weight_table",
   "version": "0.1",
-  "status": "symbolic-prefill",
+  "status": "extracted-from-weighted-prism",
   "even_slice": {
-    "top_ab": "w_even_top_ab",
-    "top_bc": "w_even_top_bc",
-    "top_ca": "w_even_top_ca",
-    "bottom_ab": "w_even_bottom_ab",
-    "bottom_bc": "w_even_bottom_bc",
-    "bottom_ca": "w_even_bottom_ca",
-    "vertical_a": "w_even_vertical_a",
-    "vertical_b": "w_even_vertical_b",
-    "vertical_c": "w_even_vertical_c"
+    "top_ab": 140,
+    "top_bc": 140,
+    "top_ca": 140,
+    "bottom_ab": 150,
+    "bottom_bc": 150,
+    "bottom_ca": 150,
+    "vertical_a": 145,
+    "vertical_b": 145,
+    "vertical_c": 145
   },
   "odd_slice": {
-    "top_ab": "w_odd_top_ab",
-    "top_bc": "w_odd_top_bc",
-    "top_ca": "w_odd_top_ca",
-    "bottom_ab": "w_odd_bottom_ab",
-    "bottom_bc": "w_odd_bottom_bc",
-    "bottom_ca": "w_odd_bottom_ca",
-    "vertical_a": "w_odd_vertical_a",
-    "vertical_b": "w_odd_vertical_b",
-    "vertical_c": "w_odd_vertical_c"
+    "top_ab": 140,
+    "top_bc": 140,
+    "top_ca": 140,
+    "bottom_ab": 150,
+    "bottom_bc": 150,
+    "bottom_ca": 150,
+    "vertical_a": 145,
+    "vertical_b": 145,
+    "vertical_c": 145
   },
   "triangle_pushforward": {
-    "AB": "w(top_ab) + w(bottom_ab) + side contribution",
-    "BC": "w(top_bc) + w(bottom_bc) + side contribution",
-    "CA": "w(top_ca) + w(bottom_ca) + side contribution"
+    "AB": "140 + 150 + side contribution",
+    "BC": "140 + 150 + side contribution",
+    "CA": "140 + 150 + side contribution"
   },
   "comparison": {
-    "even_odd_match": "symbolic-shape-pass",
+    "even_odd_match": true,
     "pushforward_defined": true
   },
   "notes": [
-    "Prefilled from the current even and odd symbolic prism support files.",
-    "Replace symbolic names with extracted exact values when available.",
-    "Current even_odd_match certifies symbolic shape agreement, not numeric equality."
+    "Extracted from specs/paper/g60/g900_weighted_prism_v0_1.json.",
+    "bit0_face edges map to top-face weights 140.",
+    "bit1_face edges map to bottom-face weights 150.",
+    "macro_rung edges map to vertical weights 145.",
+    "Current even/odd equality reflects the shared exported prism artifact."
   ]
 }
