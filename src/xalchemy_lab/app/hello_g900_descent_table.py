@@ -89,6 +89,7 @@ def main() -> None:
         [
             witness["first_quotient"]["even_slice_support"],
             witness["first_quotient"]["odd_slice_support"],
+            witness["first_quotient"]["parity_comparison"],
         ],
         "parity witness",
     )
@@ -138,6 +139,10 @@ def main() -> None:
     print(
         f"odd slice support  : "
         f"{witness['first_quotient']['odd_slice_support']}"
+    )
+    print(
+        f"parity comparison  : "
+        f"{witness['first_quotient']['parity_comparison']}"
     )
     print(
         f"collapse map       : "
