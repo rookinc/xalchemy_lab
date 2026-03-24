@@ -31,7 +31,7 @@
       "lift_representative_type": null,
       "lift_representative": null,
       "actual_cocycle": 0,
-      "status": "repaired_actual_edge_square_representative"
+      "status": "computed_from_tree_gauge_representative_v1"
     },
     {
       "name": "global_twist",
@@ -48,7 +48,7 @@
       "lift_representative_type": null,
       "lift_representative": null,
       "actual_cocycle": 1,
-      "status": "actual_odd_four_cycle_representative",
+      "status": "computed_from_tree_gauge_representative_v1",
       "base_walk": [
         "e00",
         "e04",
