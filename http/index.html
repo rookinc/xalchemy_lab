@@ -3,25 +3,147 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>xyzti renderer</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Alchemy Lab Viewer Index</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #eaeaea;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 12px 8px 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin: 0 0 12px 0;
+      font-size: 2.5rem;
+    }
+
+    .panel {
+      border: 1px solid #333;
+      background: #0a0a0a;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .toggle-btn {
+      background: #161616;
+      color: #eaeaea;
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .toggle-btn.active {
+      border-color: #7aa2ff;
+      box-shadow: 0 0 0 1px #7aa2ff inset;
+    }
+
+    .viewer-frame {
+      width: 100%;
+      height: 82vh;
+      border: 1px solid #444;
+      background: #000;
+      display: block;
+    }
+
+    .caption {
+      line-height: 1.5;
+      color: #cfcfcf;
+    }
+
+    code {
+      color: #f0d36c;
+    }
+  </style>
 </head>
 <body>
-  <main>
-    <h1>xyzti renderer</h1>
-    <div id="app"></div>
+  <main class="page">
+    <h1>alchemy lab viewer index</h1>
 
-    <section id="caption">
+    <section class="panel controls">
+      <button id="btn-xyzti" class="toggle-btn active" type="button">xyzti view</button>
+      <button id="btn-g900" class="toggle-btn" type="button">g900 view</button>
+      <button id="btn-proof" class="toggle-btn" type="button">proof page</button>
+    </section>
+
+    <section class="panel">
+      <iframe
+        id="viewer-frame"
+        class="viewer-frame"
+        src="./xyzti.html"
+        title="Alchemy Lab Viewer">
+      </iframe>
+    </section>
+
+    <section class="panel">
       <h2>caption</h2>
-      <p>
-        Local xyzti sketch with origin-centered loop structure. The center <b>0</b>
-        is the common origin. <b>z</b> is fixed on the positive axis, <b>I</b> on the
-        negative axis, <b>x</b> and <b>y</b> spread symmetrically from center, and
-        <b>r</b> gives the 45° continuation ray. The parameter <b>T</b> drives the
-        loop itself rather than a separate witness axis.
+      <p id="caption" class="caption">
+        Local xyzti sketch with origin-centered loop structure. Switch to the G900 viewer or open the proof page directly.
+      </p>
+      <p class="caption">
+        Expected files:
+        <code>xyzti.html</code>,
+        <code>g900.html</code>,
+        and <code>proof.html</code>.
       </p>
     </section>
   </main>
-  <script type="module" src="app.js"></script>
+
+  <script>
+    const frame = document.getElementById("viewer-frame");
+    const caption = document.getElementById("caption");
+    const btnXyzti = document.getElementById("btn-xyzti");
+    const btnG900 = document.getElementById("btn-g900");
+    const btnProof = document.getElementById("btn-proof");
+
+    const views = {
+      xyzti: {
+        src: "./xyzti.html",
+        caption: "Local xyzti sketch with origin-centered loop structure. Switch to the G900 viewer or open the proof page directly."
+      },
+      g900: {
+        src: "./g900.html",
+        caption: "G900 viewer showing the centered prism, parity-distinguished prism views, and the prism-to-triangle collapse."
+      }
+    };
+
+    function setActive(which) {
+      btnXyzti.classList.toggle("active", which === "xyzti");
+      btnG900.classList.toggle("active", which === "g900");
+      btnProof.classList.remove("active");
+      caption.textContent = views[which].caption;
+
+      frame.onload = () => {
+        try {
+          frame.contentWindow.scrollTo(0, 0);
+        } catch (e) {}
+      };
+
+      frame.src = views[which].src;
+    }
+
+    btnXyzti.addEventListener("click", () => setActive("xyzti"));
+    btnG900.addEventListener("click", () => setActive("g900"));
+    btnProof.addEventListener("click", () => {
+      window.location.href = "./proof.html";
+    });
+  </script>
 </body>
 </html>

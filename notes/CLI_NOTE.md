@@ -32,3 +32,7 @@ Future version:
 - pass config values directly into renderers
 - allow CLI overrides such as --kernel, --outdir, --state
 
+
+## Zenodo archive
+DOI: 10.5281/zenodo.19199788
+
