@@ -1,9 +1,9 @@
 {
   "name": "odd_slice_prism_support",
-  "version": "0.1",
+  "version": "0.3",
   "quotient_type": "exact weighted triangular prism",
   "slice_parity": "odd",
-  "status": "extracted-weights",
+  "status": "extracted-parity-distinguished-kind-totals",
   "support_summary": {
     "carrier_scope": "G900 odd slices",
     "support_detected": true,
@@ -11,13 +11,23 @@
   },
   "prism_model": {
     "vertices": [
-      "top_a", "top_b", "top_c",
-      "bottom_a", "bottom_b", "bottom_c"
+      "top_a",
+      "top_b",
+      "top_c",
+      "bottom_a",
+      "bottom_b",
+      "bottom_c"
     ],
     "edges": [
-      "top_ab", "top_bc", "top_ca",
-      "bottom_ab", "bottom_bc", "bottom_ca",
-      "vertical_a", "vertical_b", "vertical_c"
+      "top_ab",
+      "top_bc",
+      "top_ca",
+      "bottom_ab",
+      "bottom_bc",
+      "bottom_ca",
+      "vertical_a",
+      "vertical_b",
+      "vertical_c"
     ],
     "faces": [
       "top_face",
@@ -27,21 +37,30 @@
       "side_ca"
     ],
     "weights": {
-      "top_ab": 140,
-      "top_bc": 140,
-      "top_ca": 140,
-      "bottom_ab": 150,
-      "bottom_bc": 150,
-      "bottom_ca": 150,
-      "vertical_a": 145,
-      "vertical_b": 145,
-      "vertical_c": 145
+      "top_ab": "260/3",
+      "top_bc": "260/3",
+      "top_ca": "260/3",
+      "bottom_ab": "130/3",
+      "bottom_bc": "130/3",
+      "bottom_ca": "130/3",
+      "vertical_a": "195/3",
+      "vertical_b": "195/3",
+      "vertical_c": "195/3"
     }
   },
-  "construction_notes": [
-    "Weights extracted from specs/paper/g60/g900_weighted_prism_v0_1.json.",
-    "Current odd-slice scaffold inherits the same exported prism weights as the even slice.",
-    "Replace with parity-distinguished values only if a later extractor separates them."
-  ],
-  "upstream_source": "specs/paper/g60/g900_weighted_prism_v0_1.json"
+  "kind_totals": {
+    "bit0_face": 260,
+    "macro_rung": 195,
+    "bit1_face": 130
+  },
+  "support_check": {
+    "observed_edge_count": 9,
+    "expected_edge_count": 9,
+    "exact_match": true
+  },
+  "artifact_notes": [
+    "Kind totals are exact extracted parity-distinguished counts on the fixed prism support.",
+    "Per-edge prism_model.weights are symbolic equal-share placeholders only.",
+    "Do not treat the /3 expressions as exact extracted edge weights unless a later extractor resolves edge-level parity weights directly."
+  ]
 }
