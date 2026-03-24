@@ -7,12 +7,25 @@ Both endgame routes have now been run:
 - Path B: admissible-rival uniqueness
 
 ## Convergence judgment
-[fill after Path B result]
-
-## Promotion consequence
-If both paths terminate at the same law
+The two paths converge to the same terminal law:
 
 - d = 5
 
-with the same structural reading, then the offset step is effectively closed from both sides and the full centered prism law is promoted from qualified theorem to theorem-grade uniqueness statement.
+with the same structural reading:
+
+- midpoint regime supplies center
+- predecessor-shell privilege supplies first branch scale
+- half-layer magnitude gives the unique admissible prism offset
+
+Path A shows that d = 5 is the only structurally meaningful direct source currently visible in the carrier.
+Path B shows that no admissible rival centered prism law survives with d != 5.
+
+## Promotion consequence
+Because both paths terminate at the same law, the offset step is effectively closed from both sides.
+
+So the full centered prism law
+
+- (140,145,150)
+
+is promoted from qualified theorem to theorem-grade uniqueness statement at the present checkpoint.
 
