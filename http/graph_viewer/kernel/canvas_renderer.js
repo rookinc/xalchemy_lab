@@ -54,6 +54,7 @@ export class CanvasGraphRenderer {
   onPointerDown(event) {
     const p = this.pointerPos(event);
     this.dragged = this.nearestNode(p.x, p.y);
+
     if (this.dragged) {
       this.dragged.vx = 0;
       this.dragged.vy = 0;
@@ -62,6 +63,7 @@ export class CanvasGraphRenderer {
 
   onPointerMove(event) {
     if (!this.dragged) return;
+
     const p = this.pointerPos(event);
     this.dragged.x = p.x;
     this.dragged.y = p.y;
@@ -79,12 +81,14 @@ export class CanvasGraphRenderer {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.strokeStyle = "#6aa9ff";
-    ctx.lineWidth = 2;
+    for (const edge of this.edges) {
+      const a = this.nodes[edge.source];
+      const b = this.nodes[edge.target];
+      const style = edge.style || {};
 
-    for (const [i, j] of this.edges) {
-      const a = this.nodes[i];
-      const b = this.nodes[j];
+      ctx.strokeStyle = style.stroke || "#6aa9ff";
+      ctx.lineWidth = style.lineWidth || 2;
+
       ctx.beginPath();
       ctx.moveTo(a.x, a.y);
       ctx.lineTo(b.x, b.y);
@@ -104,7 +108,7 @@ export class CanvasGraphRenderer {
       ctx.font = "12px sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText(String(n.id), n.x, n.y);
+      ctx.fillText(String(n.label ?? n.node_key ?? n.id), n.x, n.y);
     }
   }
 }

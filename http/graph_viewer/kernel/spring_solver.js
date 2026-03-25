@@ -59,9 +59,10 @@ export class SpringSolver {
       }
     }
 
-    for (const [i, j] of edges) {
-      const a = nodes[i];
-      const b = nodes[j];
+    for (const edge of edges) {
+      const a = nodes[edge.source];
+      const b = nodes[edge.target];
+
       const dx = b.x - a.x;
       const dy = b.y - a.y;
       const d = Math.sqrt(dx * dx + dy * dy) || 0.0001;
@@ -85,7 +86,7 @@ export class SpringSolver {
     }
 
     for (const n of nodes) {
-      if (n === this.dragged) continue;
+      if (n === this.dragged || n.pinned) continue;
 
       n.vx = (n.vx + n.fx) * params.damping;
       n.vy = (n.vy + n.fy) * params.damping;
