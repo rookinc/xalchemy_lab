@@ -46,6 +46,7 @@ env/
 ENV/
 env.bak/
 venv.bak/
+.env
 
 # Termux users sometimes keep project-local venvs in odd spots
 .pythonenv/
