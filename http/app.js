@@ -1,3 +1,5 @@
+import { mountCubeView, unmountCubeView } from "./cube_view.js";
+
 const state = {
   settings: [],
   workspaces: [],
@@ -262,6 +264,8 @@ function handleToolClick(itemKey) {
 }
 
 function renderContentModule(workspace) {
+  unmountCubeView();
+
   const entry = state.activeEntryKey
     ? getContentEntry(workspace.id, state.activeEntryKey)
     : getDefaultContentEntryForWorkspace(workspace.id);
@@ -285,25 +289,21 @@ function renderContentModule(workspace) {
 }
 
 function renderCubeModule() {
+  unmountCubeView();
+
   el.moduleHost.innerHTML = `
     <section class="content-module">
-      <h2>Cube View</h2>
-      <div class="cube-stage">
-        <div class="cube">
-          <div class="face front">1</div>
-          <div class="face back">2</div>
-          <div class="face right">3</div>
-          <div class="face left">4</div>
-          <div class="face top">5</div>
-          <div class="face bottom">6</div>
-        </div>
-      </div>
-      <p>Placeholder CSS cube. Later this becomes a real 3D renderer.</p>
+      <div id="cube-react-mount"></div>
     </section>
   `;
+
+  const mountNode = document.getElementById("cube-react-mount");
+  mountCubeView(mountNode);
 }
 
 function renderDashboardModule() {
+  unmountCubeView();
+
   el.moduleHost.innerHTML = `
     <section class="module-header">
       <div>

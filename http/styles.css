@@ -183,48 +183,39 @@ textarea {
   color: var(--muted);
 }
 
-.cube-stage {
-  margin: 1rem 0 1.25rem;
-  height: 260px;
+.content-module h2 {
+  margin-top: 0;
+}
+
+.cube-react-shell {
   display: grid;
-  place-items: center;
-  perspective: 800px;
-  overflow: hidden;
+  gap: 1rem;
+}
+
+.cube-react-head h2 {
+  margin: 0 0 0.35rem 0;
+}
+
+.cube-react-head p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.cube-canvas-shell {
+  height: 520px;
   border-radius: 0.85rem;
   border: 1px solid var(--line);
+  overflow: hidden;
   background:
-    radial-gradient(circle at center, rgba(77, 163, 255, 0.12), transparent 55%),
+    radial-gradient(circle at center, rgba(77, 163, 255, 0.14), transparent 55%),
     #11161d;
 }
 
-.cube {
-  position: relative;
-  width: 110px;
-  height: 110px;
-  transform-style: preserve-3d;
-  transform: rotateX(-24deg) rotateY(32deg);
-  transition: transform 0.2s ease;
+.cube-canvas-shell canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
-
-.face {
-  position: absolute;
-  width: 110px;
-  height: 110px;
-  display: grid;
-  place-items: center;
-  font-size: 1.25rem;
-  font-weight: bold;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(77, 163, 255, 0.18);
-  backdrop-filter: blur(2px);
-}
-
-.front  { transform: translateZ(55px); }
-.back   { transform: rotateY(180deg) translateZ(55px); }
-.right  { transform: rotateY(90deg) translateZ(55px); }
-.left   { transform: rotateY(-90deg) translateZ(55px); }
-.top    { transform: rotateX(90deg) translateZ(55px); }
-.bottom { transform: rotateX(-90deg) translateZ(55px); }
 
 .module-header {
   display: grid;
