@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Graph Viewer</title>
+  <style>
+    :root {
+      --bg: #0f1318;
+      --panel: #161c24;
+      --line: #2a3442;
+      --text: #e8edf2;
+      --muted: #9aa7b8;
+      --accent: #7cc4ff;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 0.75rem;
+      align-items: end;
+      flex-wrap: wrap;
+      padding: 0.85rem 1rem;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .control {
+      display: grid;
+      gap: 0.35rem;
+      min-width: 180px;
+    }
+
+    .control label {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .control select,
+    .control button {
+      font: inherit;
+      padding: 0.6rem 0.75rem;
+      border-radius: 0.6rem;
+      border: 1px solid var(--line);
+      background: #202734;
+      color: var(--text);
+    }
+
+    .control button {
+      cursor: pointer;
+    }
+
+    .control button:hover {
+      border-color: var(--accent);
+    }
+
+    .status {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: calc(100vh - 78px);
+      background: var(--bg);
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <div class="control">
+      <label for="graph-select">Graph</label>
+      <select id="graph-select">
+        <option value="petersen">Petersen</option>
+        <option value="g15_core">G15 Core</option>
+      </select>
+    </div>
+
+    <div class="control">
+      <label for="view-select">View</label>
+      <select id="view-select">
+        <option value="spring_debug">Spring Debug</option>
+      </select>
+    </div>
+
+    <div class="control">
+      <label>&nbsp;</label>
+      <button id="reload-btn" type="button">Reload</button>
+    </div>
+
+    <div class="control">
+      <label>&nbsp;</label>
+      <button id="reset-btn" type="button">Reset Seed</button>
+    </div>
+
+    <div class="status" id="status">Ready.</div>
+  </div>
+
+  <canvas id="c"></canvas>
+
+  <script type="module">
+    import { SpringSolver } from "./kernel/spring_solver.js";
+    import { CanvasGraphRenderer } from "./kernel/canvas_renderer.js";
+
+    const canvas = document.getElementById("c");
+    const graphSelect = document.getElementById("graph-select");
+    const viewSelect = document.getElementById("view-select");
+    const reloadBtn = document.getElementById("reload-btn");
+    const resetBtn = document.getElementById("reset-btn");
+    const statusEl = document.getElementById("status");
+
+    let solver = null;
+    let renderer = null;
+    let graph = null;
+    let payload = null;
+    let seededPositions = new Map();
+    let animationHandle = null;
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+    }
+
+    function stopLoop() {
+      if (animationHandle !== null) {
+        cancelAnimationFrame(animationHandle);
+        animationHandle = null;
+      }
+    }
+
+    function buildGraphFromApi(payload) {
+      const viewNodeMap = new Map(
+        payload.view_nodes.map((vn) => [vn.graph_node_id, vn])
+      );
+
+      const nodes = payload.nodes.map((n) => {
+        const vn = viewNodeMap.get(n.id);
+
+        return {
+          id: n.id,
+          node_key: n.node_key,
+          label: n.label,
+          x: (vn?.x ?? 0) + window.innerWidth / 2,
+          y: (vn?.y ?? 0) + (window.innerHeight - 78) / 2,
+          vx: 0,
+          vy: 0,
+          fx: 0,
+          fy: 0,
+          pinned: Boolean(vn?.pinned),
+        };
+      });
+
+      const nodeIndexById = new Map(nodes.map((n, i) => [n.id, i]));
+
+      const edges = payload.edges.map((e) => ({
+        id: e.id,
+        edge_key: e.edge_key,
+        edge_class: e.edge_class,
+        source: nodeIndexById.get(e.source_node_id),
+        target: nodeIndexById.get(e.target_node_id),
+      }));
+
+      const viewEdgeMap = new Map(
+        payload.view_edges.map((ve) => [ve.graph_edge_id, ve])
+      );
+
+      for (const edge of edges) {
+        edge.style = viewEdgeMap.get(edge.id)?.style_json ?? null;
+      }
+
+      return { nodes, edges };
+    }
+
+    function captureSeededPositions() {
+      seededPositions = new Map(
+        graph.nodes.map((n) => [
+          n.id,
+          { x: n.x, y: n.y }
+        ])
+      );
+    }
+
+    function resetToSeed() {
+      if (!graph || !seededPositions.size) return;
+
+      for (const node of graph.nodes) {
+        const seed = seededPositions.get(node.id);
+        if (!seed) continue;
+        node.x = seed.x;
+        node.y = seed.y;
+        node.vx = 0;
+        node.vy = 0;
+        node.fx = 0;
+        node.fy = 0;
+      }
+
+      renderer.draw();
+      setStatus(`Reset ${payload.graph.graph_key} / ${payload.view.view_key} to seed.`);
+    }
+
+    async function loadGraph() {
+      stopLoop();
+
+      const graphKey = graphSelect.value;
+      const viewKey = viewSelect.value;
+
+      setStatus(`Loading ${graphKey} / ${viewKey}...`);
+
+      const response = await fetch(`/api/graphs/${graphKey}/views/${viewKey}`);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      payload = await response.json();
+      graph = buildGraphFromApi(payload);
+      captureSeededPositions();
+
+      solver = new SpringSolver(graph, payload.view.params_json || {});
+      renderer = new CanvasGraphRenderer(canvas, graph, {
+        nodeRadius: payload.view.params_json?.nodeRadius ?? 10,
+      });
+
+      function frame() {
+        solver.step(canvas.width, canvas.height);
+        renderer.draw();
+        animationHandle = requestAnimationFrame(frame);
+      }
+
+      frame();
+
+      setStatus(
+        `Loaded ${payload.graph.label} / ${payload.view.label} · `
+        + `${payload.nodes.length} nodes · ${payload.edges.length} edges`
+      );
+    }
+
+    reloadBtn.addEventListener("click", () => {
+      loadGraph().catch((error) => {
+        console.error(error);
+        setStatus(`Load failed: ${error.message}`);
+      });
+    });
+
+    resetBtn.addEventListener("click", () => {
+      resetToSeed();
+    });
+
+    graphSelect.addEventListener("change", () => {
+      loadGraph().catch((error) => {
+        console.error(error);
+        setStatus(`Load failed: ${error.message}`);
+      });
+    });
+
+    viewSelect.addEventListener("change", () => {
+      loadGraph().catch((error) => {
+        console.error(error);
+        setStatus(`Load failed: ${error.message}`);
+      });
+    });
+
+    loadGraph().catch((error) => {
+      console.error(error);
+      setStatus(`Initial load failed: ${error.message}`);
+    });
+  </script>
+</body>
+</html>
