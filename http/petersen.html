@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Petersen Spring Graph</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #0f1318;
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      background: #0f1318;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="c"></canvas>
+  <script type="module">
+    import { makePetersenGraph } from "./graphs/petersen.js";
+    import { SpringSolver } from "./kernel/spring_solver.js";
+    import { CanvasGraphRenderer } from "./kernel/canvas_renderer.js";
+
+    const canvas = document.getElementById("c");
+    const graph = makePetersenGraph();
+    const solver = new SpringSolver(graph, {
+      repulsion: 9000,
+      springK: 0.01,
+      springLength: 120,
+      centering: 0.002,
+      damping: 0.85,
+      maxSpeed: 12,
+    });
+    const renderer = new CanvasGraphRenderer(canvas, graph, {
+      nodeRadius: 10,
+    });
+
+    function frame() {
+      solver.step(canvas.width, canvas.height);
+      renderer.draw();
+      requestAnimationFrame(frame);
+    }
+
+    frame();
+  </script>
+</body>
+</html>

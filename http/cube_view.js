@@ -29,7 +29,7 @@ function setupThreeCanvas(host) {
   const height = host.clientHeight || 520;
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x11161d);
+  scene.background = new THREE.Color(0x1b2430);
 
   const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
   camera.position.set(3.2, 2.6, 3.8);
@@ -40,16 +40,19 @@ function setupThreeCanvas(host) {
   renderer.setSize(width, height);
   host.appendChild(renderer.domElement);
 
-  const ambient = new THREE.AmbientLight(0xffffff, 1.2);
+  const ambient = new THREE.AmbientLight(0xffffff, 1.0);
   scene.add(ambient);
 
-  const dir1 = new THREE.DirectionalLight(0xffffff, 1.2);
+  const dir1 = new THREE.DirectionalLight(0xffffff, 1.0);
   dir1.position.set(3, 4, 5);
   scene.add(dir1);
 
-  const dir2 = new THREE.DirectionalLight(0xffffff, 0.45);
+  const dir2 = new THREE.DirectionalLight(0xffffff, 0.5);
   dir2.position.set(-3, -2, -4);
   scene.add(dir2);
+
+  const axes = new THREE.AxesHelper(3);
+  scene.add(axes);
 
   const floorGeo = new THREE.PlaneGeometry(12, 12);
   const floorMat = new THREE.MeshStandardMaterial({
@@ -63,36 +66,36 @@ function setupThreeCanvas(host) {
   scene.add(floor);
 
   const cubeGeo = new THREE.BoxGeometry(1.6, 1.6, 1.6);
-  const cubeMat = new THREE.MeshStandardMaterial({
-    color: 0x4da3ff,
-    roughness: 0.3,
-    metalness: 0.2,
-  });
+  const cubeMat = new THREE.MeshNormalMaterial();
   const cube = new THREE.Mesh(cubeGeo, cubeMat);
   cube.rotation.set(0.45, 0.65, 0);
   scene.add(cube);
+
+  const edgesGeo = new THREE.EdgesGeometry(cubeGeo);
+  const edgesMat = new THREE.LineBasicMaterial({ color: 0xffffff });
+  const edges = new THREE.LineSegments(edgesGeo, edgesMat);
+  edges.rotation.copy(cube.rotation);
+  scene.add(edges);
 
   let isDragging = false;
 
   function onPointerDown() {
     isDragging = true;
-    cube.material.color.set(0x8ec5ff);
   }
 
   function onPointerUp() {
     isDragging = false;
-    cube.material.color.set(0x4da3ff);
   }
 
   function onPointerLeave() {
     isDragging = false;
-    cube.material.color.set(0x4da3ff);
   }
 
   function onPointerMove(event) {
     if (!isDragging) return;
     cube.rotation.x += (event.movementY || 0) * 0.01;
     cube.rotation.y += (event.movementX || 0) * 0.01;
+    edges.rotation.copy(cube.rotation);
   }
 
   function onResize() {
@@ -113,6 +116,7 @@ function setupThreeCanvas(host) {
 
   function animate() {
     frameId = requestAnimationFrame(animate);
+    edges.rotation.copy(cube.rotation);
     renderer.render(scene, camera);
   }
 
@@ -129,6 +133,8 @@ function setupThreeCanvas(host) {
 
     cubeGeo.dispose();
     cubeMat.dispose();
+    edgesGeo.dispose();
+    edgesMat.dispose();
     floorGeo.dispose();
     floorMat.dispose();
     renderer.dispose();
