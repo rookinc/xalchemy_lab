@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Extruder POC</title>
+  <link rel="stylesheet" href="/extruder_poc/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Extruder POC</h1>
+    <div class="subtitle">vertices in · grammar through · shape out</div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel controls">
+      <h2>Controls</h2>
+
+      <label for="vertexCount">Vertex count</label>
+      <input id="vertexCount" type="number" min="1" max="60" value="10" />
+
+      <label for="grammarKey">Grammar</label>
+      <select id="grammarKey"></select>
+
+      <label for="walkerKey">Walker</label>
+      <select id="walkerKey"></select>
+
+      <label for="layoutKey">Layout</label>
+      <select id="layoutKey"></select>
+
+      <div class="buttonRow">
+        <button id="generateBtn">Generate</button>
+        <button id="animateBtn">Animate</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+
+      <section class="meta">
+        <h3>Meta</h3>
+        <pre id="metaBox">No graph loaded.</pre>
+      </section>
+    </aside>
+
+    <section class="panel stage">
+      <svg id="graphSvg" viewBox="0 0 840 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </section>
+
+    <aside class="panel logPanel">
+      <h2>Derivation Log</h2>
+      <div id="logBox" class="logBox"></div>
+    </aside>
+  </main>
+
+  <script type="module" src="/extruder_poc/app.js"></script>
+</body>
+</html>

@@ -1,14 +1,56 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from server.graph.routes import router as graph_router
 from server.dictionary.routes import router as dictionary_router
+from server.graph.routes import router as graph_router
+from server.extruder.routes import router as extruder_router
+
+
+BASE_DIR = Path(__file__).resolve().parent
 
 app = FastAPI()
 
-app.include_router(graph_router, prefix="/api")
-app.include_router(dictionary_router, prefix="/api")
+# API routers
+app.include_router(dictionary_router)
+app.include_router(graph_router)
+app.include_router(extruder_router)
 
-app.mount("/", StaticFiles(directory=".", html=True), name="static")
+# Static mounts
+app.mount("/shared", StaticFiles(directory=BASE_DIR / "shared"), name="shared")
+app.mount("/graph_viewer", StaticFiles(directory=BASE_DIR / "graph_viewer"), name="graph_viewer")
+app.mount("/extruder_poc", StaticFiles(directory=BASE_DIR / "extruder_poc"), name="extruder_poc")
+
+
+@app.get("/")
+def root_index():
+    return FileResponse(BASE_DIR / "index.html")
+
+
+@app.get("/lab")
+def lab_index():
+    return FileResponse(BASE_DIR / "lab" / "index.html")
+
+
+@app.get("/notes")
+def notes_index():
+    return FileResponse(BASE_DIR / "notes" / "index.html")
+
+
+@app.get("/concepts")
+def concepts_index():
+    return FileResponse(BASE_DIR / "concepts" / "index.html")
+
+
+@app.get("/structures")
+def structures_index():
+    return FileResponse(BASE_DIR / "structures" / "index.html")
+
+
+@app.get("/extruder")
+def extruder_index():
+    return FileResponse(BASE_DIR / "extruder_poc" / "index.html")
