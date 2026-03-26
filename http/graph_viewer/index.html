@@ -12,7 +12,9 @@
       --text: #e8edf2;
       --muted: #9aa7b8;
       --accent: #6aa9ff;
-      --danger: #ff7b72;
+      --accent-soft: rgba(106, 169, 255, 0.15);
+      --walker: #ffd166;
+      --walker-soft: rgba(255, 209, 102, 0.16);
       --control-bg: #11161d;
     }
 
@@ -59,6 +61,15 @@
       align-items: center;
       gap: 0.75rem;
       min-width: 0;
+      flex-wrap: wrap;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-width: 0;
+      margin-right: 0.25rem;
     }
 
     .toolbar-title {
@@ -67,6 +78,15 @@
       letter-spacing: 0.02em;
       color: var(--text);
       white-space: nowrap;
+    }
+
+    .scene-meta {
+      font-size: 0.76rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 18rem;
     }
 
     .control {
@@ -106,14 +126,46 @@
       border-color: var(--accent);
     }
 
+    .kind-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 5.5rem;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid #344255;
+      background: #151b23;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .kind-pill[data-kind="lens"] {
+      color: var(--accent);
+      border-color: rgba(106, 169, 255, 0.45);
+      background: var(--accent-soft);
+    }
+
+    .kind-pill[data-kind="walker"] {
+      color: var(--walker);
+      border-color: rgba(255, 209, 102, 0.45);
+      background: var(--walker-soft);
+    }
+
     .status {
       font-size: 0.85rem;
       color: var(--muted);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 40vw;
+      max-width: 42vw;
       text-align: right;
+    }
+
+    .hidden {
+      display: none !important;
     }
 
     .error-shell {
@@ -144,11 +196,7 @@
       white-space: pre-wrap;
     }
 
-    .hidden {
-      display: none !important;
-    }
-
-    @media (max-width: 860px) {
+    @media (max-width: 1080px) {
       .toolbar {
         flex-direction: column;
         align-items: stretch;
@@ -157,7 +205,6 @@
       .toolbar-left,
       .toolbar-right {
         width: 100%;
-        flex-wrap: wrap;
       }
 
       .status {
@@ -169,13 +216,20 @@
         min-width: 0;
         width: 100%;
       }
+
+      .scene-meta {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="toolbar" id="toolbar">
     <div class="toolbar-left">
-      <div class="toolbar-title">Graph Viewer</div>
+      <div class="title-block">
+        <div class="toolbar-title">Graph Viewer</div>
+        <div class="scene-meta" id="scene-meta">Loading scene…</div>
+      </div>
 
       <div class="control">
         <label for="graph-select">Graph</label>
@@ -186,6 +240,18 @@
         <label for="lens-select">Lens</label>
         <select id="lens-select"></select>
       </div>
+
+      <div class="control">
+        <label for="walker-select">Walker</label>
+        <select id="walker-select"></select>
+      </div>
+
+      <div class="control hidden" id="anchor-control">
+        <label for="anchor-select">Anchor</label>
+        <select id="anchor-select"></select>
+      </div>
+
+      <div class="kind-pill" id="kind-pill" data-kind="lens">Lens</div>
 
       <div class="control">
         <button id="reset-view-btn" type="button">Reset view</button>
@@ -206,15 +272,22 @@
     const canvas = document.getElementById("c");
     const graphSelect = document.getElementById("graph-select");
     const lensSelect = document.getElementById("lens-select");
+    const walkerSelect = document.getElementById("walker-select");
+    const anchorControl = document.getElementById("anchor-control");
+    const anchorSelect = document.getElementById("anchor-select");
+    const kindPill = document.getElementById("kind-pill");
+    const sceneMetaEl = document.getElementById("scene-meta");
     const statusEl = document.getElementById("status");
     const resetViewBtn = document.getElementById("reset-view-btn");
 
-    let activePayload = null;
-    let activeGraph = null;
     let activeSolver = null;
     let activeRenderer = null;
+    let activeLensItems = [];
+    let activeWalkerItems = [];
+    let activeGraphItems = [];
     let frameHandle = null;
     let loadToken = 0;
+    let currentSelection = { kind: "lens", graph: "petersen", key: "identity", anchor: "" };
 
     function showError(message) {
       document.body.innerHTML = `
@@ -238,40 +311,82 @@
 
     function getQueryState() {
       const params = new URLSearchParams(window.location.search);
-      return {
-        graph: params.get("graph") || "petersen",
-        lens: params.get("lens") || "identity",
-      };
+      const graph = params.get("graph") || "petersen";
+      const walker = params.get("walker");
+      const lens = params.get("lens") || "identity";
+      const anchor = params.get("anchor") || "";
+
+      if (walker) {
+        return { graph, kind: "walker", key: walker, anchor };
+      }
+
+      return { graph, kind: "lens", key: lens, anchor };
     }
 
-    function setQueryState(graphKey, lensKey) {
+    function setQueryState(state) {
       const params = new URLSearchParams(window.location.search);
-      params.set("graph", graphKey);
-      params.set("lens", lensKey);
+      params.set("graph", state.graph);
+
+      if (state.kind === "walker") {
+        params.set("walker", state.key);
+        params.delete("lens");
+        if (state.anchor) {
+          params.set("anchor", state.anchor);
+        } else {
+          params.delete("anchor");
+        }
+      } else {
+        params.set("lens", state.key);
+        params.delete("walker");
+        params.delete("anchor");
+      }
+
       const nextUrl = `${window.location.pathname}?${params.toString()}`;
       window.history.replaceState({}, "", nextUrl);
-    }
-
-    function normalizeGraphItems(payload) {
-      if (Array.isArray(payload)) return payload;
-      if (Array.isArray(payload?.items)) return payload.items;
-      if (Array.isArray(payload?.graphs)) return payload.graphs;
-      return [];
-    }
-
-    function normalizeLensItems(payload) {
-      if (Array.isArray(payload)) return payload;
-      if (Array.isArray(payload?.items)) return payload.items;
-      if (Array.isArray(payload?.lenses)) return payload.lenses;
-      return [];
     }
 
     function setStatus(message) {
       statusEl.textContent = message;
     }
 
-    function setSelectOptions(selectEl, items, valueKey, labelKey, selectedValue) {
+    function setSceneMeta(message) {
+      sceneMetaEl.textContent = message;
+    }
+
+    function setKindPill(kind) {
+      const safeKind = kind === "walker" ? "walker" : "lens";
+      kindPill.dataset.kind = safeKind;
+      kindPill.textContent = safeKind === "walker" ? "Walker" : "Lens";
+    }
+
+    function normalizeGraphItems(payload) {
+      if (Array.isArray(payload)) return payload;
+      if (Array.isArray(payload?.items)) return payload.items;
+      return [];
+    }
+
+    function normalizeLensItems(payload) {
+      if (Array.isArray(payload)) return payload;
+      if (Array.isArray(payload?.items)) return payload.items;
+      return [];
+    }
+
+    function normalizeWalkerItems(payload) {
+      if (Array.isArray(payload)) return payload;
+      if (Array.isArray(payload?.items)) return payload.items;
+      return [];
+    }
+
+    function setSelectOptions(selectEl, items, valueKey, labelKey, selectedValue, emptyLabel = "") {
       selectEl.innerHTML = "";
+
+      if (emptyLabel) {
+        const emptyOption = document.createElement("option");
+        emptyOption.value = "";
+        emptyOption.textContent = emptyLabel;
+        if (!selectedValue) emptyOption.selected = true;
+        selectEl.appendChild(emptyOption);
+      }
 
       for (const item of items) {
         const option = document.createElement("option");
@@ -306,6 +421,7 @@
           fx: 0,
           fy: 0,
           pinned: Boolean(vn?.pinned),
+          style: vn?.style_json ?? null,
         };
       });
 
@@ -346,6 +462,7 @@
     async function loadGraphOptions(selectedGraphKey) {
       const payload = await fetchJson("/api/graphs");
       const graphs = normalizeGraphItems(payload);
+      activeGraphItems = graphs;
 
       if (!graphs.length) {
         throw new Error("No graphs were returned by /api/graphs");
@@ -355,22 +472,64 @@
       const nextGraphKey = hasSelected ? selectedGraphKey : graphs[0].graph_key;
 
       setSelectOptions(graphSelect, graphs, "graph_key", "label", nextGraphKey);
-      return { graphs, graphKey: nextGraphKey };
+      return nextGraphKey;
     }
 
     async function loadLensOptions(graphKey, selectedLensKey) {
       const payload = await fetchJson(`/api/graphs/${encodeURIComponent(graphKey)}/lenses`);
-      const lenses = normalizeLensItems(payload);
+      const items = normalizeLensItems(payload);
+      activeLensItems = items;
 
-      if (!lenses.length) {
+      if (!items.length) {
         throw new Error(`No lenses were returned for graph '${graphKey}'`);
       }
 
-      const hasSelected = lenses.some((l) => l.lens_key === selectedLensKey);
-      const nextLensKey = hasSelected ? selectedLensKey : lenses[0].lens_key;
+      const hasSelected = items.some((item) => item.lens_key === selectedLensKey);
+      const nextKey = hasSelected ? selectedLensKey : items[0].lens_key;
 
-      setSelectOptions(lensSelect, lenses, "lens_key", "label", nextLensKey);
-      return { lenses, lensKey: nextLensKey };
+      setSelectOptions(lensSelect, items, "lens_key", "label", nextKey);
+      return nextKey;
+    }
+
+    async function loadWalkerOptions(graphKey, selectedWalkerKey) {
+      const payload = await fetchJson(`/api/graphs/${encodeURIComponent(graphKey)}/walkers`);
+      const items = normalizeWalkerItems(payload);
+      activeWalkerItems = items;
+
+      setSelectOptions(
+        walkerSelect,
+        items,
+        "walker_key",
+        "label",
+        selectedWalkerKey,
+        "None"
+      );
+
+      if (!items.length) {
+        walkerSelect.value = "";
+        return "";
+      }
+
+      const hasSelected = items.some((item) => item.walker_key === selectedWalkerKey);
+      const nextKey = hasSelected ? selectedWalkerKey : "";
+      walkerSelect.value = nextKey;
+      return nextKey;
+    }
+
+    async function loadAnchorOptions(graphKey, selectedAnchor) {
+      const payload = await fetchJson(`/api/graphs/${encodeURIComponent(graphKey)}`);
+      const nodes = payload.nodes || [];
+      const options = nodes.map((node) => ({
+        node_key: String(node.node_key),
+        label: node.label || String(node.node_key),
+      }));
+
+      const nextAnchor = options.some((opt) => opt.node_key === selectedAnchor)
+        ? selectedAnchor
+        : (options[0]?.node_key || "");
+
+      setSelectOptions(anchorSelect, options, "node_key", "label", nextAnchor);
+      return nextAnchor;
     }
 
     function stopAnimation() {
@@ -394,60 +553,103 @@
       frame();
     }
 
-    async function loadScene(graphKey, lensKey) {
+    async function loadScene(selection) {
       const myToken = ++loadToken;
-      setStatus(`Loading ${graphKey} / ${lensKey}…`);
+      setKindPill(selection.kind);
 
-      const payload = await fetchJson(
-        `/api/graphs/${encodeURIComponent(graphKey)}/lenses/${encodeURIComponent(lensKey)}/derive`
-      );
+      if (selection.kind === "walker") {
+        setSceneMeta(`${selection.graph} · walker:${selection.key} · anchor:${selection.anchor || "auto"}`);
+        setStatus(`Loading ${selection.graph} / walker ${selection.key}…`);
+      } else {
+        setSceneMeta(`${selection.graph} · lens:${selection.key}`);
+        setStatus(`Loading ${selection.graph} / lens ${selection.key}…`);
+      }
 
+      let url;
+      if (selection.kind === "walker") {
+        const params = new URLSearchParams();
+        if (selection.anchor) params.set("anchor", selection.anchor);
+        const suffix = params.toString() ? `?${params.toString()}` : "";
+        url = `/api/graphs/${encodeURIComponent(selection.graph)}/walkers/${encodeURIComponent(selection.key)}/realize${suffix}`;
+      } else {
+        url = `/api/graphs/${encodeURIComponent(selection.graph)}/lenses/${encodeURIComponent(selection.key)}/derive`;
+      }
+
+      const payload = await fetchJson(url);
       if (myToken !== loadToken) return;
 
-      activePayload = payload;
-      activeGraph = buildGraphFromApi(payload);
-      activeSolver = new SpringSolver(activeGraph, payload.view?.params_json || {});
-      activeRenderer = new CanvasGraphRenderer(canvas, activeGraph, {
+      const graph = buildGraphFromApi(payload);
+
+      if (activeRenderer && typeof activeRenderer.destroy === "function") {
+        activeRenderer.destroy();
+      }
+
+      activeSolver = new SpringSolver(graph, payload.view?.params_json || {});
+      activeRenderer = new CanvasGraphRenderer(canvas, graph, {
         nodeRadius: payload.view?.params_json?.nodeRadius ?? 10,
       });
 
       startAnimation();
 
-      const nodeCount = activeGraph.nodes.length;
-      const edgeCount = activeGraph.edges.length;
-      const derivedKey = payload.graph?.graph_key || graphKey;
-      const viewLabel = payload.view?.label || payload.view?.view_key || lensKey;
+      const nodeCount = graph.nodes.length;
+      const edgeCount = graph.edges.length;
+      const derivedKey = payload.graph?.graph_key || selection.graph;
+      const sourceKey = payload.source_graph?.graph_key || selection.graph;
 
-      setStatus(`${derivedKey} · ${viewLabel} · ${nodeCount} nodes · ${edgeCount} edges`);
+      if (selection.kind === "walker") {
+        const walkerLabel = payload.walker?.label || selection.key;
+        const anchorLabel = payload.walker?.anchor_node_key || selection.anchor || "auto";
+        setSceneMeta(`${sourceKey} → ${derivedKey}`);
+        setStatus(`${derivedKey} · ${walkerLabel} · anchor ${anchorLabel} · ${nodeCount} nodes · ${edgeCount} edges`);
+      } else {
+        const viewLabel = payload.view?.label || payload.view?.view_key || selection.key;
+        setSceneMeta(`${sourceKey} → ${derivedKey}`);
+        setStatus(`${derivedKey} · ${viewLabel} · ${nodeCount} nodes · ${edgeCount} edges`);
+      }
     }
 
-    async function syncAndLoad({ preferredGraph, preferredLens } = {}) {
+    async function syncAndLoad() {
       const query = getQueryState();
-      let graphKey = preferredGraph || query.graph;
-      let lensKey = preferredLens || query.lens;
 
-      const graphInfo = await loadGraphOptions(graphKey);
-      graphKey = graphInfo.graphKey;
+      const graphKey = await loadGraphOptions(query.graph);
+      const lensKey = await loadLensOptions(graphKey, query.kind === "lens" ? query.key : "identity");
+      const walkerKey = await loadWalkerOptions(graphKey, query.kind === "walker" ? query.key : "");
+      const anchor = walkerKey ? await loadAnchorOptions(graphKey, query.anchor) : "";
 
-      const lensInfo = await loadLensOptions(graphKey, lensKey);
-      lensKey = lensInfo.lensKey;
+      const isWalker = query.kind === "walker" && walkerKey;
+      const selection = isWalker
+        ? { kind: "walker", graph: graphKey, key: walkerKey, anchor }
+        : { kind: "lens", graph: graphKey, key: lensKey, anchor: "" };
 
+      anchorControl.classList.toggle("hidden", selection.kind !== "walker");
       graphSelect.value = graphKey;
-      lensSelect.value = lensKey;
-      setQueryState(graphKey, lensKey);
+      lensSelect.value = selection.kind === "lens" ? selection.key : lensKey;
+      walkerSelect.value = selection.kind === "walker" ? selection.key : "";
+      anchorSelect.value = selection.kind === "walker" ? selection.anchor : "";
 
-      await loadScene(graphKey, lensKey);
+      currentSelection = selection;
+      setQueryState(selection);
+      await loadScene(selection);
     }
 
     graphSelect.addEventListener("change", async () => {
       try {
-        const graphKey = graphSelect.value;
-        const lensPayload = await loadLensOptions(graphKey, "identity");
-        const lensKey = lensPayload.lensKey;
+        const graph = graphSelect.value;
+        const lensKey = await loadLensOptions(graph, "identity");
+        const walkerKey = await loadWalkerOptions(graph, "");
+        let selection;
 
-        lensSelect.value = lensKey;
-        setQueryState(graphKey, lensKey);
-        await loadScene(graphKey, lensKey);
+        if (walkerKey) {
+          const anchor = await loadAnchorOptions(graph, "");
+          selection = { kind: "walker", graph, key: walkerKey, anchor };
+        } else {
+          selection = { kind: "lens", graph, key: lensKey, anchor: "" };
+        }
+
+        anchorControl.classList.toggle("hidden", selection.kind !== "walker");
+        currentSelection = selection;
+        setQueryState(selection);
+        await loadScene(selection);
       } catch (error) {
         console.error(error);
         showError(error.message || "Failed to change graph.");
@@ -456,19 +658,79 @@
 
     lensSelect.addEventListener("change", async () => {
       try {
-        const graphKey = graphSelect.value;
-        const lensKey = lensSelect.value;
-        setQueryState(graphKey, lensKey);
-        await loadScene(graphKey, lensKey);
+        if (!lensSelect.value) return;
+        const selection = {
+          kind: "lens",
+          graph: graphSelect.value,
+          key: lensSelect.value,
+          anchor: "",
+        };
+        anchorControl.classList.add("hidden");
+        currentSelection = selection;
+        setQueryState(selection);
+        await loadScene(selection);
       } catch (error) {
         console.error(error);
         showError(error.message || "Failed to change lens.");
       }
     });
 
+    walkerSelect.addEventListener("change", async () => {
+      try {
+        if (!walkerSelect.value) {
+          const selection = {
+            kind: "lens",
+            graph: graphSelect.value,
+            key: lensSelect.value || "identity",
+            anchor: "",
+          };
+          anchorControl.classList.add("hidden");
+          currentSelection = selection;
+          setQueryState(selection);
+          await loadScene(selection);
+          return;
+        }
+
+        const anchor = await loadAnchorOptions(graphSelect.value, anchorSelect.value || "");
+        anchorControl.classList.remove("hidden");
+
+        const selection = {
+          kind: "walker",
+          graph: graphSelect.value,
+          key: walkerSelect.value,
+          anchor,
+        };
+        currentSelection = selection;
+        setQueryState(selection);
+        await loadScene(selection);
+      } catch (error) {
+        console.error(error);
+        showError(error.message || "Failed to change walker.");
+      }
+    });
+
+    anchorSelect.addEventListener("change", async () => {
+      try {
+        if (!walkerSelect.value) return;
+
+        const selection = {
+          kind: "walker",
+          graph: graphSelect.value,
+          key: walkerSelect.value,
+          anchor: anchorSelect.value,
+        };
+        currentSelection = selection;
+        setQueryState(selection);
+        await loadScene(selection);
+      } catch (error) {
+        console.error(error);
+        showError(error.message || "Failed to change anchor.");
+      }
+    });
+
     resetViewBtn.addEventListener("click", async () => {
       try {
-        await loadScene(graphSelect.value, lensSelect.value);
+        await loadScene(currentSelection);
       } catch (error) {
         console.error(error);
         showError(error.message || "Failed to reset view.");

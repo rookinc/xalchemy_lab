@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+from collections import deque
 from typing import Any
 
 
@@ -148,7 +149,7 @@ def derive_line_graph(
             }
         )
 
-    view = {
+    derived_view = {
         "id": None,
         "graph_id": graph["id"],
         "view_key": "derived_line_graph",
@@ -180,7 +181,7 @@ def derive_line_graph(
     return {
         "graph": derived_graph,
         "source_graph": graph,
-        "view": view,
+        "view": derived_view,
         "nodes": derived_nodes,
         "edges": derived_edges,
         "view_nodes": derived_view_nodes,
@@ -311,7 +312,7 @@ def derive_incidence_graph(
             }
         )
 
-    view = {
+    derived_view = {
         "id": None,
         "graph_id": graph["id"],
         "view_key": "derived_incidence",
@@ -343,9 +344,296 @@ def derive_incidence_graph(
     return {
         "graph": derived_graph,
         "source_graph": graph,
-        "view": view,
+        "view": derived_view,
         "nodes": derived_nodes,
         "edges": derived_edges,
         "view_nodes": derived_view_nodes,
         "view_edges": derived_view_edges,
+    }
+
+
+def realize_petersen_shell(
+    base_graph: dict[str, Any],
+    nodes: list[dict[str, Any]],
+    edges: list[dict[str, Any]],
+    view: dict[str, Any],
+    view_nodes: list[dict[str, Any]],
+    view_edges: list[dict[str, Any]],
+    *,
+    anchor_node_key: str | None = None,
+) -> dict[str, Any]:
+    if not nodes:
+        raise ValueError("Petersen shell walker requires source nodes.")
+
+    node_by_key = {str(node["node_key"]): node for node in nodes}
+    sorted_nodes = sorted(nodes, key=lambda node: (node.get("sort_order", 0), node["id"]))
+
+    if anchor_node_key is None:
+        anchor = sorted_nodes[0]
+    else:
+        anchor = node_by_key.get(str(anchor_node_key))
+        if anchor is None:
+            raise ValueError(f"Unknown Petersen anchor node_key: {anchor_node_key}")
+
+    adjacency: dict[int, set[int]] = {node["id"]: set() for node in nodes}
+    for edge in edges:
+        adjacency.setdefault(edge["source_node_id"], set()).add(edge["target_node_id"])
+        adjacency.setdefault(edge["target_node_id"], set()).add(edge["source_node_id"])
+
+    distance_by_id: dict[int, int] = {anchor["id"]: 0}
+    parent_by_id: dict[int, int | None] = {anchor["id"]: None}
+    order: list[int] = []
+    queue: deque[int] = deque([anchor["id"]])
+
+    while queue:
+        current = queue.popleft()
+        order.append(current)
+        neighbors = sorted(
+            adjacency.get(current, set()),
+            key=lambda node_id: (
+                node_by_key[str(next(node["node_key"] for node in nodes if node["id"] == node_id))]
+                if False else node_id
+            ),
+        )
+        for nxt in sorted(adjacency.get(current, set())):
+            if nxt in distance_by_id:
+                continue
+            distance_by_id[nxt] = distance_by_id[current] + 1
+            parent_by_id[nxt] = current
+            queue.append(nxt)
+
+    order_index = {node_id: index for index, node_id in enumerate(order)}
+
+    shell_groups: dict[int, list[int]] = {}
+    for node_id, dist in distance_by_id.items():
+        shell_groups.setdefault(dist, []).append(node_id)
+
+    for group in shell_groups.values():
+        group.sort(key=lambda node_id: order_index.get(node_id, 9999))
+
+    def role_for_distance(dist: int) -> str:
+        if dist == 0:
+            return "anchor"
+        if dist == 1:
+            return "ring_1"
+        return "ring_2"
+
+    derived_nodes: list[dict[str, Any]] = []
+    for idx, node in enumerate(
+        sorted(nodes, key=lambda item: (distance_by_id.get(item["id"], 999), order_index.get(item["id"], 9999)))
+    ):
+        dist = distance_by_id.get(node["id"], 999)
+        role = role_for_distance(dist)
+
+        if role == "anchor":
+            style = {"fill": "#ffd166", "stroke": "#3b2f08", "radius": 14, "lineWidth": 3}
+        elif role == "ring_1":
+            style = {"fill": "#6aa9ff", "stroke": "#10253f", "radius": 11, "lineWidth": 2}
+        else:
+            style = {"fill": "#c792ea", "stroke": "#2c163b", "radius": 10, "lineWidth": 2}
+
+        derived_nodes.append(
+            {
+                "id": node["id"],
+                "graph_id": graph["id"],
+                "node_key": node["node_key"],
+                "label": node["label"] or node["node_key"],
+                "payload_json": {
+                    "source_kind": "walker",
+                    "walker_key": "petersen_shell",
+                    "anchor_node_key": anchor["node_key"],
+                    "role": role,
+                    "shell": dist,
+                    "visit_order": order_index.get(node["id"], None),
+                    "parent_node_id": parent_by_id.get(node["id"]),
+                    "receipt": (
+                        "selected_as_anchor"
+                        if dist == 0
+                        else "adjacent_to_anchor"
+                        if dist == 1
+                        else "distance_2_from_anchor"
+                    ),
+                },
+                "sort_order": idx,
+            }
+        )
+
+    derived_edges: list[dict[str, Any]] = []
+    for idx, edge in enumerate(edges):
+        a_shell = distance_by_id.get(edge["source_node_id"], 999)
+        b_shell = distance_by_id.get(edge["target_node_id"], 999)
+        crosses_shell = a_shell != b_shell
+        shell_signature = tuple(sorted((a_shell, b_shell)))
+
+        if shell_signature == (0, 1):
+            edge_style = {"stroke": "#ffd166", "lineWidth": 3.2}
+            edge_role = "anchor_registration"
+        elif shell_signature == (1, 2):
+            edge_style = {"stroke": "#6aa9ff", "lineWidth": 2.6}
+            edge_role = "outer_registration"
+        else:
+            edge_style = {"stroke": "#6b7280", "lineWidth": 1.5, "lineDash": [6, 4]}
+            edge_role = "intra_shell_relation"
+
+        derived_edges.append(
+            {
+                "id": edge["id"],
+                "graph_id": graph["id"],
+                "source_node_id": edge["source_node_id"],
+                "target_node_id": edge["target_node_id"],
+                "edge_key": edge["edge_key"],
+                "edge_class": edge_role,
+                "payload_json": {
+                    "source_kind": "walker",
+                    "walker_key": "petersen_shell",
+                    "anchor_node_key": anchor["node_key"],
+                    "source_shell": a_shell,
+                    "target_shell": b_shell,
+                    "crosses_shell": crosses_shell,
+                    "receipt": edge_role,
+                },
+                "sort_order": idx,
+                "_style_json": edge_style,
+            }
+        )
+
+    anchor_y = -170.0
+    ring_1_radius = 115.0
+    ring_2_radius = 245.0
+    ring_1_center_y = -20.0
+    ring_2_center_y = 60.0
+
+    positions: dict[int, tuple[float, float]] = {
+        anchor["id"]: (0.0, anchor_y),
+    }
+
+    ring_1 = shell_groups.get(1, [])
+    ring_2 = shell_groups.get(2, [])
+
+    for i, node_id in enumerate(ring_1):
+        if len(ring_1) == 1:
+            angle = -math.pi / 2.0
+        else:
+            angle = -math.pi / 2.0 + (2.0 * math.pi * i) / len(ring_1)
+        positions[node_id] = (
+            math.cos(angle) * ring_1_radius,
+            ring_1_center_y + math.sin(angle) * ring_1_radius * 0.5,
+        )
+
+    for i, node_id in enumerate(ring_2):
+        angle = -math.pi / 2.0 + (2.0 * math.pi * i) / max(len(ring_2), 1)
+        positions[node_id] = (
+            math.cos(angle) * ring_2_radius,
+            ring_2_center_y + math.sin(angle) * ring_2_radius * 0.7,
+        )
+
+    derived_view_nodes: list[dict[str, Any]] = []
+    for idx, node in enumerate(derived_nodes):
+        x, y = positions.get(node["id"], (0.0, 0.0))
+        derived_view_nodes.append(
+            {
+                "id": idx + 1,
+                "graph_view_id": None,
+                "graph_node_id": node["id"],
+                "x": x,
+                "y": y,
+                "z": 0.0,
+                "pinned": 1,
+                "style_json": node["payload_json"] and {
+                    "fill": (
+                        "#ffd166"
+                        if node["payload_json"]["role"] == "anchor"
+                        else "#6aa9ff"
+                        if node["payload_json"]["role"] == "ring_1"
+                        else "#c792ea"
+                    ),
+                    "stroke": (
+                        "#3b2f08"
+                        if node["payload_json"]["role"] == "anchor"
+                        else "#10253f"
+                        if node["payload_json"]["role"] == "ring_1"
+                        else "#2c163b"
+                    ),
+                    "radius": 14 if node["payload_json"]["role"] == "anchor" else 11 if node["payload_json"]["role"] == "ring_1" else 10,
+                    "lineWidth": 3 if node["payload_json"]["role"] == "anchor" else 2,
+                    "fontSize": 12,
+                    "text": "#0f1318",
+                },
+            }
+        )
+
+    derived_view_edges: list[dict[str, Any]] = []
+    for idx, edge in enumerate(derived_edges):
+        derived_view_edges.append(
+            {
+                "id": idx + 1,
+                "graph_view_id": None,
+                "graph_edge_id": edge["id"],
+                "style_json": edge["_style_json"],
+                "is_visible": 1,
+            }
+        )
+        del edge["_style_json"]
+
+    derived_view = {
+        "id": None,
+        "graph_id": graph["id"],
+        "view_key": "walker_petersen_shell",
+        "label": f"{graph['label']} through Petersen Shell Walker",
+        "view_kind": "walker_2d",
+        "renderer_key": "canvas_2d",
+        "params_json": {
+            "repulsion": 4000,
+            "springK": 0.005,
+            "springLength": 90,
+            "centering": 0.001,
+            "damping": 0.88,
+            "maxSpeed": 10,
+            "nodeRadius": 10,
+        },
+        "is_default": 0,
+        "status": "derived",
+    }
+
+    derived_graph = {
+        "id": graph["id"],
+        "graph_key": f"{graph['graph_key']}__petersen_shell",
+        "label": f"{graph['label']} :: Petersen Shell Walker",
+        "description": f"Anchor-shell registration walk on '{graph['graph_key']}' from anchor '{anchor['node_key']}'.",
+        "graph_kind": "walker_petersen_shell",
+        "status": "derived",
+    }
+
+    receipts = [
+        {
+            "step": order_index[node_id],
+            "node_id": node_id,
+            "node_key": next(node["node_key"] for node in nodes if node["id"] == node_id),
+            "shell": distance_by_id[node_id],
+            "reason": (
+                "selected_as_anchor"
+                if distance_by_id[node_id] == 0
+                else "adjacent_to_anchor"
+                if distance_by_id[node_id] == 1
+                else "distance_2_from_anchor"
+            ),
+        }
+        for node_id in order
+    ]
+
+    return {
+        "graph": derived_graph,
+        "source_graph": graph,
+        "view": derived_view,
+        "nodes": derived_nodes,
+        "edges": derived_edges,
+        "view_nodes": derived_view_nodes,
+        "view_edges": derived_view_edges,
+        "walker": {
+            "walker_key": "petersen_shell",
+            "label": "Petersen Shell Walker",
+            "walker_kind": "registration",
+            "anchor_node_key": anchor["node_key"],
+        },
+        "receipts": receipts,
     }
