@@ -6,6 +6,8 @@ const layoutSelect = document.getElementById("layoutKey");
 const generateBtn = document.getElementById("generateBtn");
 const animateBtn = document.getElementById("animateBtn");
 const resetBtn = document.getElementById("resetBtn");
+const decrementBtn = document.getElementById("decrementBtn");
+const incrementBtn = document.getElementById("incrementBtn");
 const logBox = document.getElementById("logBox");
 const metaBox = document.getElementById("metaBox");
 
@@ -213,6 +215,18 @@ async function generate() {
   }
 }
 
+function clampVertexCount(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return 1;
+  return Math.max(1, Math.min(60, Math.round(n)));
+}
+
+async function nudgeVertexCount(delta) {
+  const next = clampVertexCount((vertexCountInput.value || "1") * 1 + delta);
+  vertexCountInput.value = String(next);
+  await generate();
+}
+
 async function init() {
   resetView();
   const registry = await fetchRegistry();
@@ -229,6 +243,18 @@ async function init() {
     if (currentGraph) replayDerivation(currentGraph);
   });
   resetBtn.addEventListener("click", resetView);
+
+  incrementBtn.addEventListener("click", async () => {
+    await nudgeVertexCount(1);
+  });
+
+  decrementBtn.addEventListener("click", async () => {
+    await nudgeVertexCount(-1);
+  });
+
+  vertexCountInput.addEventListener("change", () => {
+    vertexCountInput.value = String(clampVertexCount(vertexCountInput.value));
+  });
 }
 
 init().catch((err) => {

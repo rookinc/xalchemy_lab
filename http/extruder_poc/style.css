@@ -225,3 +225,17 @@ body {
     max-height: 320px;
   }
 }
+
+.vertexControlRow {
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  gap: 10px;
+  align-items: center;
+}
+
+.vertexControlRow button {
+  height: 44px;
+  font-size: 22px;
+  line-height: 1;
+  padding: 0;
+}

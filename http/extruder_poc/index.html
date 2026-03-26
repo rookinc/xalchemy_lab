@@ -17,7 +17,11 @@
       <h2>Controls</h2>
 
       <label for="vertexCount">Vertex count</label>
-      <input id="vertexCount" type="number" min="1" max="60" value="10" />
+      <div class="vertexControlRow">
+        <button id="decrementBtn" type="button">−</button>
+        <input id="vertexCount" type="number" min="1" max="60" value="10" />
+        <button id="incrementBtn" type="button">+</button>
+      </div>
 
       <label for="grammarKey">Grammar</label>
       <select id="grammarKey"></select>
