@@ -3,114 +3,58 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Graph Viewer</title>
+  <title>Graph View</title>
   <style>
-    :root {
-      --bg: #0f1318;
-      --panel: #161c24;
-      --line: #2a3442;
-      --text: #e8edf2;
-      --muted: #9aa7b8;
-      --accent: #7cc4ff;
-    }
-
     html, body {
       margin: 0;
       height: 100%;
-      background: var(--bg);
-      color: var(--text);
+      background: #0f1318;
+      color: #e8edf2;
       font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
       display: grid;
-      grid-template-rows: auto 1fr;
-    }
-
-    .toolbar {
-      display: flex;
-      gap: 0.75rem;
-      align-items: end;
-      flex-wrap: wrap;
-      padding: 0.85rem 1rem;
-      background: var(--panel);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .control {
-      display: grid;
-      gap: 0.35rem;
-      min-width: 180px;
-    }
-
-    .control label {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .control select,
-    .control button {
-      font: inherit;
-      padding: 0.6rem 0.75rem;
-      border-radius: 0.6rem;
-      border: 1px solid var(--line);
-      background: #202734;
-      color: var(--text);
-    }
-
-    .control button {
-      cursor: pointer;
-    }
-
-    .control button:hover {
-      border-color: var(--accent);
-    }
-
-    .status {
-      margin-left: auto;
-      color: var(--muted);
-      font-size: 0.95rem;
-      white-space: nowrap;
+      grid-template-rows: 1fr;
     }
 
     canvas {
       display: block;
       width: 100vw;
-      height: calc(100vh - 78px);
-      background: var(--bg);
+      height: 100vh;
+      background: #0f1318;
+    }
+
+    .error-shell {
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      padding: 2rem;
+    }
+
+    .error-card {
+      max-width: 720px;
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border: 1px solid #2a3442;
+      border-radius: 0.85rem;
+      background: #161c24;
+    }
+
+    .error-card h1 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.35rem;
+    }
+
+    .error-card p {
+      margin: 0;
+      color: #9aa7b8;
+      line-height: 1.45;
+      white-space: pre-wrap;
     }
   </style>
 </head>
 <body>
-  <div class="toolbar">
-    <div class="control">
-      <label for="graph-select">Graph</label>
-      <select id="graph-select">
-        <option value="petersen">Petersen</option>
-        <option value="g15_core">G15 Core</option>
-      </select>
-    </div>
-
-    <div class="control">
-      <label for="view-select">View</label>
-      <select id="view-select">
-        <option value="spring_debug">Spring Debug</option>
-      </select>
-    </div>
-
-    <div class="control">
-      <label>&nbsp;</label>
-      <button id="reload-btn" type="button">Reload</button>
-    </div>
-
-    <div class="control">
-      <label>&nbsp;</label>
-      <button id="reset-btn" type="button">Reset Seed</button>
-    </div>
-
-    <div class="status" id="status">Ready.</div>
-  </div>
-
   <canvas id="c"></canvas>
 
   <script type="module">
@@ -118,36 +62,33 @@
     import { CanvasGraphRenderer } from "./kernel/canvas_renderer.js";
 
     const canvas = document.getElementById("c");
-    const graphSelect = document.getElementById("graph-select");
-    const viewSelect = document.getElementById("view-select");
-    const reloadBtn = document.getElementById("reload-btn");
-    const resetBtn = document.getElementById("reset-btn");
-    const statusEl = document.getElementById("status");
 
-    let solver = null;
-    let renderer = null;
-    let graph = null;
-    let payload = null;
-    let seededPositions = new Map();
-    let animationHandle = null;
-
-    function setStatus(message) {
-      statusEl.textContent = message;
+    function showError(message) {
+      document.body.innerHTML = `
+        <div class="error-shell">
+          <div class="error-card">
+            <h1>Graph View Error</h1>
+            <p>${escapeHtml(message)}</p>
+          </div>
+        </div>
+      `;
     }
 
-    function stopLoop() {
-      if (animationHandle !== null) {
-        cancelAnimationFrame(animationHandle);
-        animationHandle = null;
-      }
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
     }
 
     function buildGraphFromApi(payload) {
       const viewNodeMap = new Map(
-        payload.view_nodes.map((vn) => [vn.graph_node_id, vn])
+        (payload.view_nodes || []).map((vn) => [vn.graph_node_id, vn])
       );
 
-      const nodes = payload.nodes.map((n) => {
+      const nodes = (payload.nodes || []).map((n) => {
         const vn = viewNodeMap.get(n.id);
 
         return {
@@ -155,7 +96,7 @@
           node_key: n.node_key,
           label: n.label,
           x: (vn?.x ?? 0) + window.innerWidth / 2,
-          y: (vn?.y ?? 0) + (window.innerHeight - 78) / 2,
+          y: (vn?.y ?? 0) + window.innerHeight / 2,
           vx: 0,
           vy: 0,
           fx: 0,
@@ -166,7 +107,7 @@
 
       const nodeIndexById = new Map(nodes.map((n, i) => [n.id, i]));
 
-      const edges = payload.edges.map((e) => ({
+      const edges = (payload.edges || []).map((e) => ({
         id: e.id,
         edge_key: e.edge_key,
         edge_class: e.edge_class,
@@ -175,7 +116,7 @@
       }));
 
       const viewEdgeMap = new Map(
-        payload.view_edges.map((ve) => [ve.graph_edge_id, ve])
+        (payload.view_edges || []).map((ve) => [ve.graph_edge_id, ve])
       );
 
       for (const edge of edges) {
@@ -185,97 +126,40 @@
       return { nodes, edges };
     }
 
-    function captureSeededPositions() {
-      seededPositions = new Map(
-        graph.nodes.map((n) => [
-          n.id,
-          { x: n.x, y: n.y }
-        ])
+    async function main() {
+      const params = new URLSearchParams(window.location.search);
+      const graphKey = params.get("graph") || "petersen";
+      const lensKey = params.get("lens") || "identity";
+
+      const response = await fetch(
+        `/api/graphs/${encodeURIComponent(graphKey)}/lenses/${encodeURIComponent(lensKey)}/derive`
       );
-    }
 
-    function resetToSeed() {
-      if (!graph || !seededPositions.size) return;
-
-      for (const node of graph.nodes) {
-        const seed = seededPositions.get(node.id);
-        if (!seed) continue;
-        node.x = seed.x;
-        node.y = seed.y;
-        node.vx = 0;
-        node.vy = 0;
-        node.fx = 0;
-        node.fy = 0;
-      }
-
-      renderer.draw();
-      setStatus(`Reset ${payload.graph.graph_key} / ${payload.view.view_key} to seed.`);
-    }
-
-    async function loadGraph() {
-      stopLoop();
-
-      const graphKey = graphSelect.value;
-      const viewKey = viewSelect.value;
-
-      setStatus(`Loading ${graphKey} / ${viewKey}...`);
-
-      const response = await fetch(`/api/graphs/${graphKey}/views/${viewKey}`);
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        const text = await response.text();
+        throw new Error(`HTTP ${response.status}\n${text}`);
       }
 
-      payload = await response.json();
-      graph = buildGraphFromApi(payload);
-      captureSeededPositions();
+      const payload = await response.json();
+      const graph = buildGraphFromApi(payload);
 
-      solver = new SpringSolver(graph, payload.view.params_json || {});
-      renderer = new CanvasGraphRenderer(canvas, graph, {
-        nodeRadius: payload.view.params_json?.nodeRadius ?? 10,
+      const solver = new SpringSolver(graph, payload.view?.params_json || {});
+      const renderer = new CanvasGraphRenderer(canvas, graph, {
+        nodeRadius: payload.view?.params_json?.nodeRadius ?? 10,
       });
 
       function frame() {
         solver.step(canvas.width, canvas.height);
         renderer.draw();
-        animationHandle = requestAnimationFrame(frame);
+        requestAnimationFrame(frame);
       }
 
       frame();
-
-      setStatus(
-        `Loaded ${payload.graph.label} / ${payload.view.label} · `
-        + `${payload.nodes.length} nodes · ${payload.edges.length} edges`
-      );
     }
 
-    reloadBtn.addEventListener("click", () => {
-      loadGraph().catch((error) => {
-        console.error(error);
-        setStatus(`Load failed: ${error.message}`);
-      });
-    });
-
-    resetBtn.addEventListener("click", () => {
-      resetToSeed();
-    });
-
-    graphSelect.addEventListener("change", () => {
-      loadGraph().catch((error) => {
-        console.error(error);
-        setStatus(`Load failed: ${error.message}`);
-      });
-    });
-
-    viewSelect.addEventListener("change", () => {
-      loadGraph().catch((error) => {
-        console.error(error);
-        setStatus(`Load failed: ${error.message}`);
-      });
-    });
-
-    loadGraph().catch((error) => {
+    main().catch((error) => {
       console.error(error);
-      setStatus(`Initial load failed: ${error.message}`);
+      showError(error.message || "Unknown graph view error.");
     });
   </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Petersen Spring Graph</title>
+  <title>Graph View</title>
   <style>
     html, body {
       margin: 0;
@@ -71,7 +71,11 @@
       return { nodes, edges };
     }
 
-    const response = await fetch("/api/graphs/petersen/views/spring_debug");
+    const params = new URLSearchParams(window.location.search);
+    const graphKey = params.get("graph") || "petersen";
+    const viewKey = params.get("view") || "spring_debug";
+
+    const response = await fetch(`/api/graphs/${graphKey}/views/${viewKey}`);
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }

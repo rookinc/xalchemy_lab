@@ -4,11 +4,12 @@ Browser-side graph rendering module.
 
 ## Role in the pipeline
 
-This folder is the final render stage for graph views.
+This folder is the browser render stage for graph views.
 
 Pipeline:
 
 MySQL graph tables
+-> FastAPI `/api/graph-views`
 -> FastAPI `/api/graphs/{graph_key}/views/{view_key}`
 -> browser fetch
 -> in-memory graph build
@@ -32,8 +33,11 @@ This folder does not define canonical graph content. It consumes API payloads an
 
 ## Current contents
 
-- `petersen.html`
-  Standalone debug harness for the Petersen graph view.
+- `index.html`
+  Database-driven graph/view selector and launcher.
+
+- `view.html`
+  Generic graph render surface. Accepts `graph` and `view` as URL query parameters.
 
 - `kernel/spring_solver.js`
   Force-directed layout computation.
@@ -46,6 +50,13 @@ This folder does not define canonical graph content. It consumes API payloads an
 Validate the graph pipeline end to end:
 
 - DB-backed graph definition
+- DB-backed graph/view discovery
 - API-backed view retrieval
 - browser-side computation
 - browser-side rendering
+
+## Current status
+
+Petersen is seeded and renders cleanly.
+
+`g15_core` currently exists as a scaffolded graph/view/action entry, but it does not yet have nodes, edges, or view coordinates.
