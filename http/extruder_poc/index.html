@@ -8,13 +8,20 @@
 </head>
 <body>
   <header class="topbar">
-    <h1>Extruder POC</h1>
-    <div class="subtitle">vertices in · grammar through · shape out</div>
+    <div class="topbarRow">
+      <div class="titleBlock">
+        <h1>Extruder POC</h1>
+        <div class="subtitle">vertices in · grammar through · shape out</div>
+      </div>
+      <a class="homeButton" href="/">Back to Front End</a>
+    </div>
   </header>
 
-  <main class="layout">
-    <aside class="panel controls">
-      <h2>Controls</h2>
+  <main class="workspace">
+    <aside class="panel controlsPanel">
+      <div class="panelHeader">
+        <h2>Controls</h2>
+      </div>
 
       <label for="vertexCount">Vertex count</label>
       <div class="vertexControlRow">
@@ -39,17 +46,22 @@
       </div>
 
       <section class="meta">
-        <h3>Meta</h3>
+        <div class="panelSubhead">Meta</div>
         <pre id="metaBox">No graph loaded.</pre>
       </section>
     </aside>
 
-    <section class="panel stage">
+    <section class="panel stagePanel">
+      <div class="panelHeader">
+        <h2>Stage</h2>
+      </div>
       <svg id="graphSvg" viewBox="0 0 840 600" preserveAspectRatio="xMidYMid meet"></svg>
     </section>
 
     <aside class="panel logPanel">
-      <h2>Derivation Log</h2>
+      <div class="panelHeader">
+        <h2>Derivation Log</h2>
+      </div>
       <div id="logBox" class="logBox"></div>
     </aside>
   </main>

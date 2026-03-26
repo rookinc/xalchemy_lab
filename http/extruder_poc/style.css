@@ -1,13 +1,12 @@
 :root {
-  --bg: #0f1115;
-  --panel: #171a21;
-  --panel-2: #1d2230;
+  --bg: #0b0f16;
+  --panel: #121722;
+  --panel-2: #1a2130;
   --text: #e7ecf3;
   --muted: #9aa7b8;
   --line: #2a3142;
   --accent: #7cc4ff;
   --accent-2: #9bffb0;
-  --danger: #ff8e8e;
 }
 
 * {
@@ -24,64 +23,107 @@ html, body {
 }
 
 body {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 .topbar {
-  padding: 16px 20px;
+  padding: 10px 14px;
   border-bottom: 1px solid var(--line);
-  background: #0c0f14;
+  background: #09101a;
 }
 
-.topbar h1 {
-  margin: 0 0 4px 0;
-  font-size: 24px;
+.topbarRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.titleBlock h1 {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.15;
 }
 
 .subtitle {
+  margin-top: 4px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 12px;
 }
 
-.layout {
+.homeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel-2);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.homeButton:hover {
+  border-color: var(--accent);
+}
+
+.workspace {
+  flex: 1;
   display: grid;
-  grid-template-columns: 280px 1fr 320px;
-  gap: 14px;
-  padding: 14px;
-  min-height: calc(100vh - 74px);
+  grid-template-columns: 280px minmax(0, 1fr) 300px;
+  gap: 12px;
+  padding: 12px;
+  min-height: 0;
 }
 
 .panel {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
+  min-height: 0;
 }
 
-.controls,
-.logPanel {
-  padding: 16px;
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
 }
 
-.controls h2,
-.logPanel h2 {
-  margin-top: 0;
-  font-size: 18px;
+.panelHeader h2 {
+  margin: 0;
+  font-size: 15px;
 }
 
-.controls label {
+.controlsPanel {
+  padding: 14px;
+  overflow: auto;
+}
+
+.controlsPanel .panelHeader {
+  margin: -14px -14px 12px -14px;
+}
+
+.controlsPanel label {
   display: block;
-  margin: 14px 0 6px;
+  margin: 12px 0 6px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
 }
 
-.controls input,
-.controls select,
-.controls button {
+.controlsPanel input,
+.controlsPanel select,
+.controlsPanel button {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--line);
   background: var(--panel-2);
   color: var(--text);
@@ -89,63 +131,85 @@ body {
   font-size: 14px;
 }
 
-.buttonRow {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.controls button {
+.controlsPanel button {
   cursor: pointer;
 }
 
-.controls button:hover {
+.controlsPanel button:hover {
   border-color: var(--accent);
 }
 
+.vertexControlRow {
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  gap: 8px;
+  align-items: center;
+}
+
+.vertexControlRow button {
+  height: 44px;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+}
+
+.buttonRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+
 .meta {
-  margin-top: 18px;
-  padding-top: 14px;
+  margin-top: 14px;
+  padding-top: 12px;
   border-top: 1px solid var(--line);
 }
 
-.meta h3 {
-  margin: 0 0 10px 0;
-  font-size: 15px;
+.panelSubhead {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 700;
 }
 
 #metaBox {
   margin: 0;
   white-space: pre-wrap;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 1.35;
 }
 
-.stage {
+.stagePanel {
   display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  padding: 0;
+  flex-direction: column;
+  min-width: 0;
 }
 
 #graphSvg {
   width: 100%;
   height: 100%;
-  min-height: 640px;
+  min-height: 720px;
   display: block;
   background:
     radial-gradient(circle at center, rgba(124,196,255,0.05), transparent 38%),
-    linear-gradient(180deg, #121722, #0f1115);
+    linear-gradient(180deg, #0d1630, #09101a);
+}
+
+.logPanel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .logBox {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-height: calc(100vh - 150px);
+  gap: 8px;
   overflow: auto;
-  padding-right: 4px;
+  padding: 12px;
+  min-height: 0;
 }
 
 .logEntry {
@@ -163,7 +227,7 @@ body {
 .logStep {
   font-size: 12px;
   color: var(--accent);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .logRule {
@@ -173,7 +237,7 @@ body {
 }
 
 .logNote {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--muted);
 }
 
@@ -212,30 +276,44 @@ body {
   text-anchor: middle;
 }
 
-@media (max-width: 1200px) {
-  .layout {
-    grid-template-columns: 1fr;
+@media (max-width: 1180px) {
+  .workspace {
+    grid-template-columns: 260px minmax(0, 1fr);
+  }
+
+  .logPanel {
+    grid-column: 1 / -1;
+    max-height: 240px;
   }
 
   #graphSvg {
-    min-height: 480px;
-  }
-
-  .logBox {
-    max-height: 320px;
+    min-height: 560px;
   }
 }
 
-.vertexControlRow {
-  display: grid;
-  grid-template-columns: 56px 1fr 56px;
-  gap: 10px;
-  align-items: center;
-}
+@media (max-width: 760px) {
+  .topbarRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.vertexControlRow button {
-  height: 44px;
-  font-size: 22px;
-  line-height: 1;
-  padding: 0;
+  .homeButton {
+    width: 100%;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .buttonRow {
+    grid-template-columns: 1fr;
+  }
+
+  .logPanel {
+    max-height: none;
+  }
+
+  #graphSvg {
+    min-height: 420px;
+  }
 }

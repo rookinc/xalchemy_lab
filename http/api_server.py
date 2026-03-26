@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 from server.dictionary.routes import router as dictionary_router
@@ -22,7 +22,7 @@ app.include_router(extruder_router)
 
 # Static mounts
 app.mount("/shared", StaticFiles(directory=BASE_DIR / "shared"), name="shared")
-app.mount("/graph_viewer", StaticFiles(directory=BASE_DIR / "graph_viewer"), name="graph_viewer")
+app.mount("/graph_viewer_assets", StaticFiles(directory=BASE_DIR / "graph_viewer"), name="graph_viewer_assets")
 app.mount("/extruder_poc", StaticFiles(directory=BASE_DIR / "extruder_poc"), name="extruder_poc")
 
 
@@ -49,6 +49,21 @@ def concepts_index():
 @app.get("/structures")
 def structures_index():
     return FileResponse(BASE_DIR / "structures" / "index.html")
+
+
+@app.get("/graph_viewer")
+def graph_viewer_index():
+    return FileResponse(BASE_DIR / "extruder_poc" / "index.html")
+
+
+@app.get("/graph_viewer/index.html")
+def graph_viewer_index_html():
+    return RedirectResponse(url="/graph_viewer", status_code=307)
+
+
+@app.get("/graph_viewer_legacy")
+def graph_viewer_legacy_index():
+    return FileResponse(BASE_DIR / "graph_viewer" / "index.html")
 
 
 @app.get("/extruder")
