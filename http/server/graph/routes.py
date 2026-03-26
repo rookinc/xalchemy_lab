@@ -5,7 +5,7 @@ from typing import Any
 from fastapi import APIRouter, HTTPException
 
 from server.db import fetch_all
-from .graph_derivations import (
+from .derivations import (
     derive_identity_graph,
     derive_incidence_graph,
     derive_line_graph,
