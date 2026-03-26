@@ -117,3 +117,30 @@ def translate_concept(concept_key: str):
         return ok_list(items)
     finally:
         conn.close()
+
+
+@router.get("/concept-page/{concept_key}")
+def get_concept_page(concept_key: str):
+    conn = get_db_connection()
+    try:
+        concept = repo.get_concept_by_key(conn, concept_key)
+        if not concept:
+            raise HTTPException(status_code=404, detail="Concept not found")
+
+        terms = repo.get_terms_for_concept(conn, concept_key)
+        aliases = repo.get_aliases_for_concept(conn, concept_key)
+        examples = repo.get_examples_for_concept(conn, concept_key)
+        relations = repo.get_relations_for_concept(conn, concept_key)
+
+        return {
+            "ok": True,
+            "data": {
+                "concept": concept,
+                "terms": terms,
+                "aliases": aliases,
+                "examples": examples,
+                "relations": relations,
+            },
+        }
+    finally:
+        conn.close()

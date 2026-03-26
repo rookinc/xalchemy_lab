@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Aletheos Dictionary Concept</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: #f7f7f7;
+      color: #222;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+    .muted {
+      color: #666;
+    }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border: 1px solid #ccc;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      background: #fafafa;
+    }
+    .term-group {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .term-group:last-child {
+      border-bottom: none;
+    }
+    .row {
+      margin-bottom: 10px;
+    }
+    code {
+      background: #f2f2f2;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    ul {
+      margin: 8px 0 0 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1 id="title">Loading…</h1>
+      <div class="muted" id="concept-key"></div>
+      <p id="definition"></p>
+      <div id="meta"></div>
+    </div>
+
+    <div class="card">
+      <h2>Lexicon terms</h2>
+      <div id="terms"></div>
+    </div>
+
+    <div class="card">
+      <h2>Aliases</h2>
+      <div id="aliases"></div>
+    </div>
+
+    <div class="card">
+      <h2>Examples</h2>
+      <div id="examples"></div>
+    </div>
+
+    <div class="card">
+      <h2>Relations</h2>
+      <div id="relations"></div>
+    </div>
+  </div>
+
+  <script>
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function groupBy(items, key) {
+      const map = new Map();
+      for (const item of items) {
+        const k = item[key] ?? "__none__";
+        if (!map.has(k)) map.set(k, []);
+        map.get(k).push(item);
+      }
+      return map;
+    }
+
+    async function loadPage() {
+      const params = new URLSearchParams(window.location.search);
+      const concept = params.get("concept") || "closure";
+
+      const res = await fetch(`/api/concept-page/${encodeURIComponent(concept)}`);
+      const payload = await res.json();
+
+      if (!payload.ok) {
+        document.body.innerHTML = "<pre>Failed to load concept page.</pre>";
+        return;
+      }
+
+      const data = payload.data;
+      const conceptData = data.concept;
+
+      document.getElementById("title").textContent = conceptData.native_term || conceptData.concept_key;
+      document.getElementById("concept-key").innerHTML = `<code>${escapeHtml(conceptData.concept_key)}</code>`;
+      document.getElementById("definition").textContent = conceptData.native_definition || "";
+      document.getElementById("meta").innerHTML = `
+        <span class="pill">status: ${escapeHtml(conceptData.status || "")}</span>
+        <span class="pill">sort: ${escapeHtml(conceptData.sort_order ?? "")}</span>
+      `;
+
+      const termsEl = document.getElementById("terms");
+      const groupedTerms = groupBy(data.terms, "lexicon_name");
+      let termsHtml = "";
+      for (const [lexiconName, items] of groupedTerms.entries()) {
+        termsHtml += `<div class="term-group"><h3>${escapeHtml(lexiconName === "__none__" ? "Unscoped" : lexiconName)}</h3>`;
+        for (const item of items) {
+          termsHtml += `
+            <div class="row">
+              <strong>${escapeHtml(item.term_label)}</strong>
+              ${item.preferred_flag ? '<span class="pill">preferred</span>' : ''}
+              ${item.analogy_strength ? `<span class="pill">${escapeHtml(item.analogy_strength)}</span>` : ''}
+              <div class="muted">${escapeHtml(item.short_definition || "")}</div>
+            </div>
+          `;
+        }
+        termsHtml += `</div>`;
+      }
+      termsEl.innerHTML = termsHtml || "<div class='muted'>No terms.</div>";
+
+      const aliasesEl = document.getElementById("aliases");
+      aliasesEl.innerHTML = data.aliases.length
+        ? `<ul>${data.aliases.map(a => `<li><strong>${escapeHtml(a.alias_label)}</strong>${a.lexicon_name ? ` <span class="muted">(${escapeHtml(a.lexicon_name)})</span>` : ""}</li>`).join("")}</ul>`
+        : "<div class='muted'>No aliases.</div>";
+
+      const examplesEl = document.getElementById("examples");
+      examplesEl.innerHTML = data.examples.length
+        ? data.examples.map(e => `
+            <div class="row">
+              <strong>${escapeHtml(e.title || "Untitled example")}</strong>
+              ${e.lexicon_name ? `<span class="pill">${escapeHtml(e.lexicon_name)}</span>` : ""}
+              <div>${escapeHtml(e.example_text || "")}</div>
+            </div>
+          `).join("")
+        : "<div class='muted'>No examples.</div>";
+
+      const relationsEl = document.getElementById("relations");
+      relationsEl.innerHTML = data.relations.length
+        ? `<ul>${data.relations.map(r => `
+            <li>
+              <code>${escapeHtml(r.subject_key)}</code>
+              — <strong>${escapeHtml(r.relation_key)}</strong> →
+              <code>${escapeHtml(r.object_key)}</code>
+            </li>
+          `).join("")}</ul>`
+        : "<div class='muted'>No relations.</div>";
+    }
+
+    loadPage().catch(err => {
+      document.body.innerHTML = `<pre>${escapeHtml(err.message)}</pre>`;
+    });
+  </script>
+</body>
+</html>
