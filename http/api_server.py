@@ -3,7 +3,7 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from server.graph_routes import router as graph_router
+from server.graph.graph_routes import router as graph_router
 from server.dictionary.routes import router as dictionary_router
 
 app = FastAPI()

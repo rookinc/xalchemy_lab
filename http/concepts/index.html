@@ -6,10 +6,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/shared/theme.css" />
   <script defer src="/shared/shell.js"></script>
+  <style>
+    .search-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-row input {
+      flex: 1;
+      min-width: 260px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font: inherit;
+      background: white;
+    }
+
+    .search-row button {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: white;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .search-row button:hover {
+      background: #f8fafc;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .quick-links a {
+      display: inline-block;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fafbfc;
+    }
+
+    .result-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .result-item {
+      padding: 14px 0;
+      border-bottom: 1px solid #eef1f4;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .result-meta {
+      margin-bottom: 6px;
+    }
+
+    .empty {
+      color: var(--muted);
+    }
+  </style>
 </head>
 <body>
   <div data-site-shell>
     <div data-site-header></div>
+
     <main class="page-wrap">
       <section class="card hero">
         <p class="kicker">Concepts</p>
@@ -18,13 +93,127 @@
       </section>
 
       <section class="card">
-        <h2>Quick entry</h2>
-        <p><a href="/concepts/concept.html?concept=closure">Closure</a></p>
-        <p><a href="/concepts/concept.html?concept=movement_word">Movement word</a></p>
-        <p><a href="/concepts/concept.html?concept=llr">LLR</a></p>
+        <h2 class="section-title">Search concepts and terms</h2>
+        <div class="search-row">
+          <input id="search-input" type="text" placeholder="Search by concept, term, or alias" />
+          <button id="search-button" type="button">Search</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title">Quick entry</h2>
+        <div class="quick-links">
+          <a href="/concepts/concept.html?concept=closure">closure</a>
+          <a href="/concepts/concept.html?concept=movement_word">movement_word</a>
+          <a href="/concepts/concept.html?concept=llr">llr</a>
+          <a href="/concepts/concept.html?concept=line_graph">line_graph</a>
+          <a href="/concepts/concept.html?concept=adjacency">adjacency</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title">Results</h2>
+        <div id="results" class="empty">Enter a search above, or use one of the quick-entry concepts.</div>
       </section>
     </main>
+
     <div data-site-footer></div>
   </div>
+
+  <script>
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function conceptUrl(conceptKey) {
+      return `/concepts/concept.html?concept=${encodeURIComponent(conceptKey)}`;
+    }
+
+    function renderResults(items, q) {
+      const mount = document.getElementById("results");
+
+      if (!items.length) {
+        mount.innerHTML = `<div class="empty">No results for <strong>${escapeHtml(q)}</strong>.</div>`;
+        return;
+      }
+
+      mount.innerHTML = `
+        <ul class="result-list">
+          ${items.map(item => `
+            <li class="result-item">
+              <div class="result-title">
+                <a href="${conceptUrl(item.concept_key)}">${escapeHtml(item.term_label)}</a>
+              </div>
+              <div class="result-meta">
+                <span class="pill">${escapeHtml(item.lexicon_name || item.lexicon_key || "Unscoped")}</span>
+                <span class="pill">${escapeHtml(item.concept_key)}</span>
+                ${item.preferred_flag ? '<span class="pill">preferred</span>' : ''}
+                ${item.match_rank === 1 ? '<span class="pill">alias match</span>' : ''}
+              </div>
+              <div><strong>Native:</strong> ${escapeHtml(item.native_term || "")}</div>
+              <div class="muted" style="margin-top: 4px;">${escapeHtml(item.short_definition || "")}</div>
+            </li>
+          `).join("")}
+        </ul>
+      `;
+    }
+
+    async function runSearch(q) {
+      const mount = document.getElementById("results");
+      mount.innerHTML = `<div class="empty">Searching for <strong>${escapeHtml(q)}</strong>…</div>`;
+
+      const res = await fetch(`/api/term-search?q=${encodeURIComponent(q)}`);
+      const payload = await res.json();
+
+      if (!payload.ok) {
+        throw new Error("Search failed");
+      }
+
+      renderResults(payload.items || [], q);
+    }
+
+    function initSearch() {
+      const params = new URLSearchParams(window.location.search);
+      const input = document.getElementById("search-input");
+      const button = document.getElementById("search-button");
+
+      async function go() {
+        const q = input.value.trim();
+        if (!q) return;
+        const nextUrl = `/concepts/?q=${encodeURIComponent(q)}`;
+        window.history.replaceState({}, "", nextUrl);
+        await runSearch(q);
+      }
+
+      button.addEventListener("click", () => {
+        go().catch(err => {
+          document.getElementById("results").innerHTML = `<div class="empty">${escapeHtml(err.message)}</div>`;
+        });
+      });
+
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          go().catch(err => {
+            document.getElementById("results").innerHTML = `<div class="empty">${escapeHtml(err.message)}</div>`;
+          });
+        }
+      });
+
+      const initialQ = params.get("q");
+      if (initialQ) {
+        input.value = initialQ;
+        runSearch(initialQ).catch(err => {
+          document.getElementById("results").innerHTML = `<div class="empty">${escapeHtml(err.message)}</div>`;
+        });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", initSearch);
+  </script>
 </body>
 </html>

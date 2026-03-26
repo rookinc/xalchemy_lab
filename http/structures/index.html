@@ -6,6 +6,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/shared/theme.css" />
   <script defer src="/shared/shell.js"></script>
+  <style>
+    .search-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-row input {
+      flex: 1;
+      min-width: 260px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font: inherit;
+      background: white;
+    }
+
+    .search-row button {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: white;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .search-row button:hover,
+    .graph-link:hover {
+      background: #f8fafc;
+    }
+
+    .graph-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .graph-link {
+      display: block;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+    }
+
+    .graph-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .graph-meta {
+      margin-bottom: 6px;
+    }
+
+    .empty {
+      color: var(--muted);
+    }
+  </style>
 </head>
 <body>
   <div data-site-shell>
@@ -18,13 +77,98 @@
       </section>
 
       <section class="card">
-        <h2>Current state</h2>
-        <p class="muted">
-          The public structures layer is emerging. Current active visualization work remains available through Lab.
-        </p>
+        <h2 class="section-title">Open a graph</h2>
+        <div class="search-row">
+          <input id="graph-input" type="text" placeholder="Enter graph key, e.g. petersen" />
+          <button id="graph-open-button" type="button">Open graph</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title">Available graphs</h2>
+        <div id="graph-list" class="empty">Loading graphs…</div>
       </section>
     </main>
     <div data-site-footer></div>
   </div>
+
+  <script>
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function graphUrl(graphKey) {
+      return `/structures/graph.html?graph=${encodeURIComponent(graphKey)}`;
+    }
+
+    async function loadGraphs() {
+      const mount = document.getElementById("graph-list");
+      const res = await fetch("/api/graphs");
+      const payload = await res.json();
+
+      if (!payload.ok) {
+        throw new Error("Failed to load graphs");
+      }
+
+      const items = payload.items || [];
+      if (!items.length) {
+        mount.innerHTML = `<div class="empty">No graphs found.</div>`;
+        return;
+      }
+
+      mount.innerHTML = `
+        <div class="graph-list">
+          ${items.map(item => `
+            <a class="graph-link" href="${graphUrl(item.graph_key)}">
+              <div class="graph-title">${escapeHtml(item.label || item.graph_key)}</div>
+              <div class="graph-meta">
+                <span class="pill">${escapeHtml(item.graph_key)}</span>
+                <span class="pill">${escapeHtml(item.graph_kind || "graph")}</span>
+                ${item.status ? `<span class="pill">status: ${escapeHtml(item.status)}</span>` : ""}
+              </div>
+              <div class="muted">
+                ${escapeHtml(item.description || "No description.")}
+              </div>
+              <div style="margin-top: 8px;">
+                <span class="pill">nodes: ${escapeHtml(item.node_count)}</span>
+                <span class="pill">edges: ${escapeHtml(item.edge_count)}</span>
+              </div>
+            </a>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function initJump() {
+      const input = document.getElementById("graph-input");
+      const button = document.getElementById("graph-open-button");
+
+      function go() {
+        const value = input.value.trim();
+        if (!value) return;
+        window.location.href = graphUrl(value);
+      }
+
+      button.addEventListener("click", go);
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") go();
+      });
+
+      input.value = "petersen";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initJump();
+      loadGraphs().catch(err => {
+        document.getElementById("graph-list").innerHTML =
+          `<div class="empty">${escapeHtml(err.message)}</div>`;
+      });
+    });
+  </script>
 </body>
 </html>

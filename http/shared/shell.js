@@ -5,8 +5,8 @@
     return prefixes.some(prefix => path === prefix || path.startsWith(prefix));
   }
 
-  function navLink(label, href, active) {
-    return `<a class="nav-link${active ? " active" : ""}" href="${href}">${label}</a>`;
+  function navLink(label, href, active, extraClass = "") {
+    return `<a class="nav-link${active ? " active" : ""}${extraClass ? " " + extraClass : ""}" href="${href}">${label}</a>`;
   }
 
   function headerHtml() {
@@ -15,7 +15,7 @@
         <div class="site-header-inner">
           <a class="brand-block" href="/">
             <div class="brand-title">CoRI / Aletheos</div>
-            <div class="brand-subtitle">Recursive inquiry, structural translation, and graph-native knowledge</div>
+            <div class="brand-subtitle">Recursive inquiry and graph-native knowledge</div>
           </a>
 
           <nav class="main-nav" aria-label="Primary">
@@ -27,8 +27,8 @@
           </nav>
 
           <nav class="utility-nav" aria-label="Utility">
-            ${navLink("Search", "/concepts/", false)}
-            ${navLink("Workspace", "/lab/", false)}
+            ${navLink("Search", "/concepts/", false, "utility-link")}
+            ${navLink("Workspace", "/lab/", false, "utility-link")}
           </nav>
         </div>
       </header>

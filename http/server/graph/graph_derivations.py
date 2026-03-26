@@ -36,6 +36,9 @@ def derive_line_graph(
     graph: dict[str, Any],
     base_nodes: list[dict[str, Any]],
     base_edges: list[dict[str, Any]],
+    view: dict[str, Any],
+    view_nodes: list[dict[str, Any]],
+    view_edges: list[dict[str, Any]],
 ) -> dict[str, Any]:
     node_id_to_key = {row["id"]: row["node_key"] for row in base_nodes}
 
@@ -189,6 +192,9 @@ def derive_incidence_graph(
     graph: dict[str, Any],
     base_nodes: list[dict[str, Any]],
     base_edges: list[dict[str, Any]],
+    view: dict[str, Any],
+    view_nodes: list[dict[str, Any]],
+    view_edges: list[dict[str, Any]],
 ) -> dict[str, Any]:
     source_vertex_nodes: list[dict[str, Any]] = []
     source_edge_nodes: list[dict[str, Any]] = []

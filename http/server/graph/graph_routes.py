@@ -4,7 +4,7 @@ from typing import Any
 
 from fastapi import APIRouter, HTTPException
 
-from .db import fetch_all
+from server.db import fetch_all
 from .graph_derivations import (
     derive_identity_graph,
     derive_incidence_graph,
@@ -14,7 +14,7 @@ from .graph_derivations import (
 router = APIRouter()
 
 
-@router.get("/api/bootstrap")
+@router.get("/bootstrap")
 def api_bootstrap() -> dict[str, Any]:
     return {
         "app_settings": fetch_all(
@@ -58,13 +58,117 @@ def api_bootstrap() -> dict[str, Any]:
             SELECT id, workspace_module_id, entry_key, title, body_html, body_json,
                    is_default, status, sort_order, created_at, updated_at
             FROM content_entries
-            ORDER BY workspace_module_id, sort_order, id
+            ORDER BY workspace_modules_id, sort_order, id
             """
         ),
     }
 
 
-@router.get("/api/graphs/{graph_key}/views/{view_key}")
+@router.get("/graphs")
+def api_graphs() -> dict[str, Any]:
+    graphs = fetch_all(
+        """
+        SELECT
+          g.id,
+          g.graph_key,
+          g.label,
+          g.description,
+          g.graph_kind,
+          g.status,
+          COUNT(DISTINCT n.id) AS node_count,
+          COUNT(DISTINCT e.id) AS edge_count
+        FROM graphs g
+        LEFT JOIN graph_nodes n
+          ON n.graph_id = g.id
+        LEFT JOIN graph_edges e
+          ON e.graph_id = g.id
+        GROUP BY
+          g.id, g.graph_key, g.label, g.description, g.graph_kind, g.status
+        ORDER BY g.graph_key
+        """
+    )
+    return {"ok": True, "items": graphs, "count": len(graphs)}
+
+
+@router.get("/graphs/{graph_key}")
+def api_graph(graph_key: str) -> dict[str, Any]:
+    graph_rows = fetch_all(
+        """
+        SELECT id, graph_key, label, description, graph_kind, status, created_at, updated_at
+        FROM graphs
+        WHERE graph_key = %s
+        LIMIT 1
+        """,
+        (graph_key,),
+    )
+    if not graph_rows:
+        raise HTTPException(status_code=404, detail=f"Graph not found: {graph_key}")
+
+    graph = graph_rows[0]
+
+    nodes = fetch_all(
+        """
+        SELECT id, graph_id, node_key, label, payload_json, sort_order
+        FROM graph_nodes
+        WHERE graph_id = %s
+        ORDER BY sort_order, id
+        """,
+        (graph["id"],),
+    )
+
+    edges = fetch_all(
+        """
+        SELECT id, graph_id, source_node_id, target_node_id, edge_key, edge_class,
+               payload_json, sort_order
+        FROM graph_edges
+        WHERE graph_id = %s
+        ORDER BY sort_order, id
+        """,
+        (graph["id"],),
+    )
+
+    return {"ok": True, "graph": graph, "nodes": nodes, "edges": edges}
+
+
+@router.get("/graphs/{graph_key}/views")
+def api_graph_views_for_graph(graph_key: str) -> dict[str, Any]:
+    graph_rows = fetch_all(
+        """
+        SELECT id, graph_key, label, description, graph_kind, status
+        FROM graphs
+        WHERE graph_key = %s
+        LIMIT 1
+        """,
+        (graph_key,),
+    )
+    if not graph_rows:
+        raise HTTPException(status_code=404, detail=f"Graph not found: {graph_key}")
+
+    graph = graph_rows[0]
+
+    views = fetch_all(
+        """
+        SELECT
+          id,
+          graph_id,
+          view_key,
+          label,
+          view_kind,
+          renderer_key,
+          params_json,
+          is_default,
+          status
+        FROM graph_views
+        WHERE graph_id = %s
+        ORDER BY is_default DESC, view_key
+        """,
+        (graph["id"],),
+    )
+
+    return {"ok": True, "graph": graph, "items": views, "count": len(views)}
+
+
+@router.get("/graphs/{graph_key}/views/{view_key}")
 def api_graph_view(graph_key: str, view_key: str) -> dict[str, Any]:
     graph_rows = fetch_all(
         """
@@ -173,7 +277,7 @@ def api_graph_view(graph_key: str, view_key: str) -> dict[str, Any]:
     }
 
 
-@router.get("/api/graph-views")
+@router.get("/graph-views")
 def api_graph_views() -> list[dict[str, Any]]:
     return fetch_all(
         """
@@ -195,7 +299,7 @@ def api_graph_views() -> list[dict[str, Any]]:
     )
 
 
-@router.get("/api/graphs/{graph_key}/lenses")
+@router.get("/graphs/{graph_key}/lenses")
 def api_graph_lenses(graph_key: str) -> list[dict[str, Any]]:
     graph_rows = fetch_all(
         """
@@ -236,7 +340,7 @@ def api_graph_lenses(graph_key: str) -> list[dict[str, Any]]:
     )
 
 
-@router.get("/api/graphs/{graph_key}/lenses/{lens_key}")
+@router.get("/graphs/{graph_key}/lenses/{lens_key}")
 def api_graph_lens(graph_key: str, lens_key: str) -> dict[str, Any]:
     graph_rows = fetch_all(
         """
@@ -277,43 +381,13 @@ def api_graph_lens(graph_key: str, lens_key: str) -> dict[str, Any]:
     if not lens_rows:
         raise HTTPException(
             status_code=404,
-            detail=f"Lens not bound to graph '{graph_key}': {lens_key}",
+            detail=f"Lens not found for graph '{graph_key}': {lens_key}",
         )
 
-    lens = lens_rows[0]
-
-    actions = fetch_all(
-        """
-        SELECT
-          ga.id,
-          ga.action_key,
-          ga.label,
-          ga.action_kind,
-          ga.handler_key,
-          ga.description,
-          ga.params_json,
-          ga.status,
-          gla.is_enabled,
-          gla.sort_order,
-          gla.constraints_json
-        FROM graph_lens_actions gla
-        JOIN graph_actions ga
-          ON ga.id = gla.graph_action_id
-        WHERE gla.graph_lens_id = %s
-          AND gla.is_enabled = 1
-        ORDER BY gla.sort_order, ga.id
-        """,
-        (lens["id"],),
-    )
-
-    return {
-        "graph": graph,
-        "lens": lens,
-        "actions": actions,
-    }
+    return {"graph": graph, "lens": lens_rows[0]}
 
 
-@router.get("/api/graphs/{graph_key}/lenses/{lens_key}/derive")
+@router.get("/graphs/{graph_key}/lenses/{lens_key}/derive")
 def api_graph_lens_derive(graph_key: str, lens_key: str) -> dict[str, Any]:
     graph_rows = fetch_all(
         """
@@ -327,73 +401,19 @@ def api_graph_lens_derive(graph_key: str, lens_key: str) -> dict[str, Any]:
     if not graph_rows:
         raise HTTPException(status_code=404, detail=f"Graph not found: {graph_key}")
 
-    graph = graph_rows[0]
+    base_graph = graph_rows[0]
 
-    lens_rows = fetch_all(
-        """
-        SELECT
-          gl.id,
-          gl.lens_key,
-          gl.label,
-          gl.lens_kind,
-          gl.description,
-          gl.params_json,
-          gl.status,
-          glb.is_enabled,
-          glb.sort_order,
-          glb.params_json AS binding_params_json
-        FROM graph_lens_bindings glb
-        JOIN graph_lenses gl
-          ON gl.id = glb.graph_lens_id
-        WHERE glb.graph_id = %s
-          AND gl.lens_key = %s
-        LIMIT 1
-        """,
-        (graph["id"], lens_key),
-    )
-    if not lens_rows:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Lens not bound to graph '{graph_key}': {lens_key}",
-        )
-
-    lens = lens_rows[0]
-
-    actions = fetch_all(
-        """
-        SELECT
-          ga.id,
-          ga.action_key,
-          ga.label,
-          ga.action_kind,
-          ga.handler_key,
-          ga.description,
-          ga.params_json,
-          ga.status,
-          gla.is_enabled,
-          gla.sort_order,
-          gla.constraints_json
-        FROM graph_lens_actions gla
-        JOIN graph_actions ga
-          ON ga.id = gla.graph_action_id
-        WHERE gla.graph_lens_id = %s
-          AND gla.is_enabled = 1
-        ORDER BY gla.sort_order, ga.id
-        """,
-        (lens["id"],),
-    )
-
-    base_nodes = fetch_all(
+    nodes = fetch_all(
         """
         SELECT id, graph_id, node_key, label, payload_json, sort_order
         FROM graph_nodes
         WHERE graph_id = %s
         ORDER BY sort_order, id
         """,
-        (graph["id"],),
+        (base_graph["id"],),
     )
 
-    base_edges = fetch_all(
+    edges = fetch_all(
         """
         SELECT id, graph_id, source_node_id, target_node_id, edge_key, edge_class,
                payload_json, sort_order
@@ -401,88 +421,59 @@ def api_graph_lens_derive(graph_key: str, lens_key: str) -> dict[str, Any]:
         WHERE graph_id = %s
         ORDER BY sort_order, id
         """,
-        (graph["id"],),
+        (base_graph["id"],),
     )
 
-    if lens["lens_key"] == "identity":
-        default_view_rows = fetch_all(
-            """
-            SELECT id, graph_id, view_key, label, view_kind, renderer_key, params_json,
-                   is_default, status
-            FROM graph_views
-            WHERE graph_id = %s
-            ORDER BY is_default DESC, id
-            LIMIT 1
-            """,
-            (graph["id"],),
-        )
-        if not default_view_rows:
-            raise HTTPException(
-                status_code=404,
-                detail=f"No stored view found for graph '{graph_key}'",
-            )
-
-        view = default_view_rows[0]
-
-        view_nodes = fetch_all(
-            """
-            SELECT id, graph_view_id, graph_node_id, x, y, z, pinned, style_json
-            FROM graph_view_nodes
-            WHERE graph_view_id = %s
-            ORDER BY id
-            """,
-            (view["id"],),
-        )
-
-        view_edges = fetch_all(
-            """
-            SELECT id, graph_view_id, graph_edge_id, style_json, is_visible
-            FROM graph_view_edges
-            WHERE graph_view_id = %s
-            ORDER BY id
-            """,
-            (view["id"],),
-        )
-
-        derived = derive_identity_graph(
-            graph=graph,
-            base_nodes=base_nodes,
-            base_edges=base_edges,
-            view=view,
-            view_nodes=view_nodes,
-            view_edges=view_edges,
-        )
-        derived["lens"] = lens
-        derived["actions"] = actions
-        return derived
-
-    if lens["lens_key"] == "line_graph":
-        if graph["graph_key"] != "petersen":
-            raise HTTPException(
-                status_code=400,
-                detail=f"Line-graph derivation not yet implemented for graph '{graph_key}'",
-            )
-
-        derived = derive_line_graph(
-            graph=graph,
-            base_nodes=base_nodes,
-            base_edges=base_edges,
-        )
-        derived["lens"] = lens
-        derived["actions"] = actions
-        return derived
-
-    if lens["lens_key"] == "incidence":
-        derived = derive_incidence_graph(
-            graph=graph,
-            base_nodes=base_nodes,
-            base_edges=base_edges,
-        )
-        derived["lens"] = lens
-        derived["actions"] = actions
-        return derived
-
-    raise HTTPException(
-        status_code=400,
-        detail=f"Lens derivation not yet implemented for lens '{lens_key}'",
+    view_rows = fetch_all(
+        """
+        SELECT id, graph_id, view_key, label, view_kind, renderer_key, params_json,
+               is_default, status
+        FROM graph_views
+        WHERE graph_id = %s
+        ORDER BY is_default DESC, id
+        LIMIT 1
+        """,
+        (base_graph["id"],),
     )
+    if not view_rows:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No graph view found for graph '{graph_key}'",
+        )
+
+    view = view_rows[0]
+
+    view_nodes = fetch_all(
+        """
+        SELECT id, graph_view_id, graph_node_id, x, y, z, pinned, style_json
+        FROM graph_view_nodes
+        WHERE graph_view_id = %s
+        ORDER BY id
+        """,
+        (view["id"],),
+    )
+
+    view_edges = fetch_all(
+        """
+        SELECT id, graph_view_id, graph_edge_id, style_json, is_visible
+        FROM graph_view_edges
+        WHERE graph_view_id = %s
+        ORDER BY id
+        """,
+        (view["id"],),
+    )
+
+    if lens_key == "identity":
+        derived = derive_identity_graph(base_graph, nodes, edges, view, view_nodes, view_edges)
+    elif lens_key == "line_graph":
+        derived = derive_line_graph(base_graph, nodes, edges, view, view_nodes, view_edges)
+    elif lens_key == "incidence":
+        derived = derive_incidence_graph(base_graph, nodes, edges, view, view_nodes, view_edges)
+    else:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Unsupported derivation lens for graph '{graph_key}': {lens_key}",
+        )
+
+    return derived
+
