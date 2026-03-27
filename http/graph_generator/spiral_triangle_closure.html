@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spiral Triangle Closure — Extended</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0d1b31;
+      --panel2: #102544;
+      --line: #87b7ff;
+      --muted: #86a1c7;
+      --text: #e6f0ff;
+      --gold: #f2d37a;
+      --pink: #e8a1c2;
+      --green: #9fe2bf;
+      --ab: #8fd3ff;
+      --bc: #f0b6d8;
+      --ca: #b8f0c9;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-bottom: 1px solid rgba(135,183,255,0.16);
+      background: linear-gradient(180deg, rgba(7,17,31,0.98), rgba(7,17,31,0.92));
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    button, select, input[type="range"] {
+      appearance: none;
+      border: 1px solid rgba(135,183,255,0.22);
+      background: linear-gradient(180deg, rgba(21,41,72,0.95), rgba(11,27,49,0.95));
+      color: var(--text);
+      border-radius: 16px;
+      min-height: 56px;
+      padding: 0 18px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    input[type="range"] {
+      min-height: auto;
+      height: 12px;
+      padding: 0;
+      border-radius: 999px;
+      background: rgba(135,183,255,0.15);
+      border: none;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .slider-wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      min-width: 280px;
+    }
+
+    .slider-readout {
+      font-size: 14px;
+      color: var(--muted);
+      min-width: 86px;
+      text-align: right;
+    }
+
+    .status {
+      justify-self: end;
+      text-align: right;
+      line-height: 1.2;
+    }
+
+    .status .big {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .status .small {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .wrap {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 14px;
+      padding: 14px;
+      min-height: 0;
+    }
+
+    .stage {
+      position: relative;
+      border: 1px solid rgba(135,183,255,0.15);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at center, rgba(15,35,62,0.8), rgba(6,12,22,1) 70%);
+      min-height: calc(100vh - 100px);
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .panel {
+      border: 1px solid rgba(135,183,255,0.15);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(13,27,49,0.92), rgba(9,18,34,0.96));
+      padding: 16px;
+      overflow: auto;
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .kv {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 10px;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .kv .k { color: var(--muted); }
+    .kv .v { color: var(--text); font-weight: 700; }
+
+    .note {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: var(--muted);
+    }
+
+    .swatch {
+      width: 20px;
+      height: 8px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+    }
+
+    .overlay {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      background: rgba(7,17,31,0.72);
+      border: 1px solid rgba(135,183,255,0.12);
+      border-radius: 16px;
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--muted);
+      backdrop-filter: blur(4px);
+    }
+
+    .caption {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: rgba(7,17,31,0.72);
+      border: 1px solid rgba(135,183,255,0.12);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--text);
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
+      max-width: calc(100% - 32px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .checkrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .checkrow input {
+      width: 16px;
+      height: 16px;
+    }
+
+    @media (max-width: 1180px) {
+      .toolbar {
+        grid-template-columns: 1fr 1fr;
+      }
+      .status {
+        grid-column: 1 / -1;
+        justify-self: start;
+        text-align: left;
+      }
+      .slider-wrap {
+        grid-column: 1 / -1;
+      }
+      .wrap {
+        grid-template-columns: 1fr;
+      }
+      .stage {
+        min-height: 72vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button id="playBtn">Play</button>
+    <button id="resetBtn">Reset</button>
+    <button id="modeBtn">Mode: Spiral Out</button>
+    <button id="stepBackBtn">◀</button>
+    <button id="stepFwdBtn">▶</button>
+
+    <div class="status">
+      <div class="big" id="phaseLabel">phase: seed</div>
+      <div class="small" id="stepLabel">triangle 0 / 12</div>
+    </div>
+
+    <div class="slider-wrap">
+      <input id="scrubber" type="range" min="0" max="12" step="0.01" value="0" />
+      <div class="slider-readout" id="scrubReadout">0.00 / 12</div>
+    </div>
+
+    <select id="speedSel">
+      <option value="0.5">0.5×</option>
+      <option value="1" selected>1×</option>
+      <option value="1.5">1.5×</option>
+      <option value="2">2×</option>
+      <option value="3">3×</option>
+    </select>
+  </div>
+
+  <div class="wrap">
+    <div class="stage">
+      <canvas id="canvas"></canvas>
+      <div class="overlay">
+        spiral shelling + reverse closure + tetra lift<br />
+        boundary classes: AB, BC, CA<br />
+        face 1 remains the kernel
+      </div>
+      <div class="caption" id="caption">
+        one axial continuation + two lateral supports
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>state</h3>
+      <div class="kv">
+        <div class="k">mode</div><div class="v" id="kvMode">spiral out</div>
+        <div class="k">triangles shown</div><div class="v" id="kvCount">0</div>
+        <div class="k">closure</div><div class="v" id="kvClosure">0%</div>
+        <div class="k">kernel</div><div class="v">face 1</div>
+        <div class="k">direction</div><div class="v" id="kvDirection">forward shelling</div>
+        <div class="k">active face</div><div class="v" id="kvActive">1</div>
+        <div class="k">edge law</div><div class="v">AB = BC = CA = 290</div>
+      </div>
+
+      <h3>display</h3>
+      <label class="checkrow"><input type="checkbox" id="toggleLabels" checked /> show face labels</label>
+      <label class="checkrow"><input type="checkbox" id="toggleBoundary" checked /> show boundary chains</label>
+      <label class="checkrow"><input type="checkbox" id="toggleTransport" checked /> show transport spine</label>
+      <label class="checkrow"><input type="checkbox" id="toggleCoarse" checked /> show coarse closure triangle</label>
+      <label class="checkrow"><input type="checkbox" id="toggleLiftGuides" checked /> show tetra lift guides</label>
+
+      <h3>boundary classes</h3>
+      <div class="legend-row"><span class="swatch" style="background:var(--ab)"></span>AB top chain</div>
+      <div class="legend-row"><span class="swatch" style="background:var(--bc)"></span>BC right chain</div>
+      <div class="legend-row"><span class="swatch" style="background:var(--ca)"></span>CA left chain</div>
+
+      <h3>legend</h3>
+      <div class="legend-row"><span class="swatch" style="background:#f2d37a"></span>kernel / transport spine</div>
+      <div class="legend-row"><span class="swatch" style="background:#87b7ff"></span>stabilized edges</div>
+      <div class="legend-row"><span class="swatch" style="background:#e8a1c2"></span>current active triangle</div>
+      <div class="legend-row"><span class="swatch" style="background:#9fe2bf"></span>coarse closure / tetra lift</div>
+
+      <div class="note">
+        Modes:<br />
+        <strong>Spiral Out</strong> emits the triangulated patch.<br />
+        <strong>Fold In</strong> reverses the shelling order.<br />
+        <strong>Tetra Lift</strong> lifts faces 1–3 toward an apex and folds the rest toward the base closure triangle.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const playBtn = document.getElementById("playBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const modeBtn = document.getElementById("modeBtn");
+    const stepBackBtn = document.getElementById("stepBackBtn");
+    const stepFwdBtn = document.getElementById("stepFwdBtn");
+    const speedSel = document.getElementById("speedSel");
+    const scrubber = document.getElementById("scrubber");
+
+    const phaseLabel = document.getElementById("phaseLabel");
+    const stepLabel = document.getElementById("stepLabel");
+    const caption = document.getElementById("caption");
+    const scrubReadout = document.getElementById("scrubReadout");
+
+    const kvMode = document.getElementById("kvMode");
+    const kvCount = document.getElementById("kvCount");
+    const kvClosure = document.getElementById("kvClosure");
+    const kvDirection = document.getElementById("kvDirection");
+    const kvActive = document.getElementById("kvActive");
+
+    const toggleLabels = document.getElementById("toggleLabels");
+    const toggleBoundary = document.getElementById("toggleBoundary");
+    const toggleTransport = document.getElementById("toggleTransport");
+    const toggleCoarse = document.getElementById("toggleCoarse");
+    const toggleLiftGuides = document.getElementById("toggleLiftGuides");
+
+    let W = 0;
+    let H = 0;
+    let CX = 0;
+    let CY = 0;
+    let SCALE = 1;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.floor(rect.width * devicePixelRatio);
+      canvas.height = Math.floor(rect.height * devicePixelRatio);
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+      W = rect.width;
+      H = rect.height;
+      CX = W * 0.5;
+      CY = H * 0.56;
+      SCALE = Math.min(W, H) * 0.31;
+      draw();
+    }
+    window.addEventListener("resize", resize);
+
+    const coarse = [
+      { x: 0, y: -1.06 },      // A
+      { x: 0.95, y: 0.56 },    // B
+      { x: -0.95, y: 0.56 }    // C
+    ];
+
+    const apex3d = { x: 0, y: -1.62 };
+
+    const centers = [
+      { x: 0.00, y: -0.02 },
+      { x: 0.12, y: 0.10 },
+      { x: -0.16, y: 0.12 },
+      { x: -0.22, y: 0.34 },
+      { x: -0.12, y: -0.36 },
+      { x: 0.08, y: -0.22 },
+      { x: 0.28, y: -0.02 },
+      { x: 0.42, y: 0.18 },
+      { x: 0.18, y: 0.38 },
+      { x: -0.10, y: 0.46 },
+      { x: -0.46, y: 0.18 },
+      { x: 0.02, y: 0.72 }
+    ];
+
+    const boundaryClassByFace = [
+      "AB", "AB", "CA", "CA", "CA", "AB",
+      "AB", "BC", "BC", "BC", "BC", "CA"
+    ];
+
+    function speed() {
+      return Number(speedSel.value);
+    }
+
+    function worldToScreen(p) {
+      return {
+        x: CX + p.x * SCALE,
+        y: CY + p.y * SCALE
+      };
+    }
+
+    function mix(a, b, t) {
+      return { x: a.x * (1 - t) + b.x * t, y: a.y * (1 - t) + b.y * t };
+    }
+
+    function nearestCoarseIndex(p) {
+      let best = 0;
+      let bestD = Infinity;
+      coarse.forEach((q, i) => {
+        const dx = p.x - q.x;
+        const dy = p.y - q.y;
+        const d = dx * dx + dy * dy;
+        if (d < bestD) {
+          bestD = d;
+          best = i;
+        }
+      });
+      return best;
+    }
+
+    function coarseTargetTriForFace(i) {
+      if (i === 0) {
+        return [coarse[0], coarse[1], coarse[2]];
+      }
+      if (i === 1) {
+        return [apex3d, coarse[0], coarse[1]];
+      }
+      if (i === 2) {
+        return [apex3d, coarse[2], coarse[0]];
+      }
+      const klass = boundaryClassByFace[i];
+      if (klass === "AB") {
+        return [coarse[0], mix(coarse[0], coarse[1], 0.55), mix(coarse[0], coarse[1], 0.18)];
+      }
+      if (klass === "BC") {
+        return [coarse[1], mix(coarse[1], coarse[2], 0.55), mix(coarse[1], coarse[2], 0.18)];
+      }
+      return [coarse[2], mix(coarse[2], coarse[0], 0.55), mix(coarse[2], coarse[0], 0.18)];
+    }
+
+    function localTriForFace(i) {
+      const c = centers[i];
+      const localR = 0.16 + i * 0.006;
+      return [
+        { x: c.x + localR * Math.cos(i * 0.72 + 0.2),  y: c.y + localR * Math.sin(i * 0.72 + 0.2) },
+        { x: c.x + localR * Math.cos(i * 0.72 + 2.35), y: c.y + localR * Math.sin(i * 0.72 + 2.35) },
+        { x: c.x + localR * Math.cos(i * 0.72 + 4.40), y: c.y + localR * Math.sin(i * 0.72 + 4.40) }
+      ];
+    }
+
+    function triForFace(i, closureT, mode) {
+      const local = localTriForFace(i);
+      let target;
+
+      if (mode === "tetra") {
+        target = coarseTargetTriForFace(i);
+      } else {
+        const c = centers[i];
+        const base = coarse[nearestCoarseIndex(c)];
+        const left = coarse[(nearestCoarseIndex(c) + 1) % 3];
+        const right = coarse[(nearestCoarseIndex(c) + 2) % 3];
+
+        const targetA = base;
+        const targetB = mix(base, left, 0.36 + (i % 3) * 0.08);
+        const targetC = mix(base, right, 0.32 + ((i + 1) % 3) * 0.08);
+        target = [targetA, targetB, targetC];
+      }
+
+      return [
+        mix(local[0], target[0], closureT),
+        mix(local[1], target[1], closureT),
+        mix(local[2], target[2], closureT)
+      ];
+    }
+
+    function pathTriangle(tri) {
+      const p0 = worldToScreen(tri[0]);
+      const p1 = worldToScreen(tri[1]);
+      const p2 = worldToScreen(tri[2]);
+      ctx.beginPath();
+      ctx.moveTo(p0.x, p0.y);
+      ctx.lineTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.closePath();
+    }
+
+    function drawSpiralGuides() {
+      ctx.save();
+      ctx.strokeStyle = "rgba(135,183,255,0.10)";
+      ctx.lineWidth = 1.4;
+      for (let i = 0; i < 5; i++) {
+        const r = (0.18 + i * 0.18) * SCALE;
+        ctx.beginPath();
+        ctx.arc(CX, CY, r, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawTransportSpine() {
+      if (!toggleTransport.checked) return;
+      ctx.save();
+      ctx.strokeStyle = "rgba(242,211,122,0.55)";
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      centers.forEach((p, i) => {
+        const s = worldToScreen(p);
+        if (i === 0) ctx.moveTo(s.x, s.y);
+        else ctx.lineTo(s.x, s.y);
+      });
+      ctx.stroke();
+
+      centers.forEach((p, i) => {
+        const s = worldToScreen(p);
+        ctx.beginPath();
+        ctx.fillStyle = i === 0 ? "rgba(242,211,122,1)" : "rgba(242,211,122,0.7)";
+        ctx.arc(s.x, s.y, i === 0 ? 5 : 3, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.restore();
+    }
+
+    function drawCoarseTriangle(alpha, mode) {
+      if (!toggleCoarse.checked) return;
+      ctx.save();
+
+      if (mode === "tetra" && toggleLiftGuides.checked) {
+        const A = worldToScreen(coarse[0]);
+        const B = worldToScreen(coarse[1]);
+        const C = worldToScreen(coarse[2]);
+        const O = worldToScreen(apex3d);
+
+        ctx.strokeStyle = `rgba(159,226,191,${0.24 + alpha * 0.45})`;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.lineTo(C.x, C.y); ctx.closePath();
+        ctx.stroke();
+
+        ctx.setLineDash([10, 8]);
+        ctx.beginPath();
+        ctx.moveTo(O.x, O.y); ctx.lineTo(A.x, A.y);
+        ctx.moveTo(O.x, O.y); ctx.lineTo(B.x, B.y);
+        ctx.moveTo(O.x, O.y); ctx.lineTo(C.x, C.y);
+        ctx.stroke();
+
+        ctx.setLineDash([]);
+        ctx.fillStyle = "rgba(159,226,191,0.9)";
+        ctx.font = "13px Inter, system-ui, sans-serif";
+        ctx.fillText("O", O.x + 8, O.y - 8);
+        ctx.fillText("A", A.x + 8, A.y - 8);
+        ctx.fillText("B", B.x + 8, B.y - 8);
+        ctx.fillText("C", C.x + 8, C.y - 8);
+      } else {
+        const p0 = worldToScreen(coarse[0]);
+        const p1 = worldToScreen(coarse[1]);
+        const p2 = worldToScreen(coarse[2]);
+
+        ctx.strokeStyle = `rgba(159,226,191,${0.15 + alpha * 0.5})`;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.lineTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.closePath();
+        ctx.stroke();
+
+        if (toggleBoundary.checked) {
+          drawBoundaryChain(coarse[0], coarse[1], getCss("--ab"), "AB");
+          drawBoundaryChain(coarse[1], coarse[2], getCss("--bc"), "BC");
+          drawBoundaryChain(coarse[2], coarse[0], getCss("--ca"), "CA");
+        }
+      }
+
+      ctx.restore();
+    }
+
+    function drawBoundaryChain(a, b, color, label) {
+      const p0 = worldToScreen(a);
+      const p1 = worldToScreen(b);
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 4.5;
+      ctx.beginPath();
+      ctx.moveTo(p0.x, p0.y);
+      ctx.lineTo(p1.x, p1.y);
+      ctx.stroke();
+
+      const mx = (p0.x + p1.x) * 0.5;
+      const my = (p0.y + p1.y) * 0.5;
+      ctx.fillStyle = color;
+      ctx.font = "12px Inter, system-ui, sans-serif";
+      ctx.fillText(label, mx + 8, my - 8);
+      ctx.restore();
+    }
+
+    function getCss(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    let playing = false;
+    let mode = "grow"; // grow | fold | tetra
+    let progress = 0;
+    let last = 0;
+
+    function visibleCount() {
+      return Math.max(0, Math.min(12, Math.floor(progress)));
+    }
+
+    function closureValue() {
+      if (mode === "grow") return Math.min(1, progress / 12);
+      if (mode === "fold") return Math.max(0, 1 - progress / 12);
+      return Math.min(1, progress / 12);
+    }
+
+    function activeFaceIndex() {
+      if (mode === "grow" || mode === "tetra") {
+        return Math.min(12, Math.max(1, Math.floor(progress) + 1));
+      }
+      return Math.min(12, Math.max(1, 12 - Math.floor(progress)));
+    }
+
+    function faceBorderColor(i, active) {
+      if (active) return "rgba(232,161,194,0.95)";
+      if (i === 0) return "rgba(242,211,122,0.95)";
+      return "rgba(135,183,255,0.75)";
+    }
+
+    function faceFillColor(i, active) {
+      if (active) return "rgba(232,161,194,0.20)";
+      if (i === 0) return "rgba(242,211,122,0.22)";
+      return "rgba(135,183,255,0.14)";
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      const count = visibleCount();
+      const closeT = closureValue();
+      const activeIndex = Math.min(11, Math.max(0, activeFaceIndex() - 1));
+
+      drawSpiralGuides();
+      drawCoarseTriangle(closeT, mode);
+      drawTransportSpine();
+
+      const drawnFaces = mode === "fold" ? Math.max(0, 12 - count) : count;
+
+      for (let i = 0; i < drawnFaces; i++) {
+        const tri = triForFace(i, closeT, mode);
+        const active = i === activeIndex && playing;
+
+        ctx.save();
+        pathTriangle(tri);
+        ctx.fillStyle = faceFillColor(i, active);
+        ctx.fill();
+
+        pathTriangle(tri);
+        ctx.strokeStyle = faceBorderColor(i, active);
+        ctx.lineWidth = active ? 2.8 : (i === 0 ? 2.7 : 2);
+        ctx.stroke();
+
+        if (toggleBoundary.checked) {
+          const klass = boundaryClassByFace[i];
+          let edgeColor = null;
+          if (klass === "AB") edgeColor = getCss("--ab");
+          if (klass === "BC") edgeColor = getCss("--bc");
+          if (klass === "CA") edgeColor = getCss("--ca");
+          if (edgeColor) {
+            const pA = worldToScreen(tri[1]);
+            const pB = worldToScreen(tri[2]);
+            ctx.strokeStyle = edgeColor;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(pA.x, pA.y);
+            ctx.lineTo(pB.x, pB.y);
+            ctx.stroke();
+          }
+        }
+
+        if (toggleLabels.checked) {
+          const c = worldToScreen(centers[i]);
+          ctx.fillStyle = "rgba(230,240,255,0.9)";
+          ctx.font = "12px Inter, system-ui, sans-serif";
+          ctx.fillText(String(i + 1), c.x + 8, c.y - 8);
+        }
+
+        ctx.restore();
+      }
+
+      if (mode !== "fold" && drawnFaces < 12) {
+        const tri = triForFace(drawnFaces, closeT, mode);
+        ctx.save();
+        pathTriangle(tri);
+        ctx.fillStyle = "rgba(232,161,194,0.20)";
+        ctx.fill();
+        pathTriangle(tri);
+        ctx.strokeStyle = "rgba(232,161,194,0.95)";
+        ctx.lineWidth = 2.6;
+        ctx.setLineDash([8, 6]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+      }
+    }
+
+    function updateUI() {
+      const count = visibleCount();
+      const closePct = Math.round(closureValue() * 100);
+      const active = activeFaceIndex();
+
+      if (mode === "grow") {
+        phaseLabel.textContent = count === 0 ? "phase: seed" : "phase: spiral shelling";
+        stepLabel.textContent = `triangle ${count} / 12`;
+        caption.textContent = count < 12
+          ? "spiral out through transport-shell continuation"
+          : "patch emitted — coarse closure visible";
+        kvMode.textContent = "spiral out";
+        kvDirection.textContent = "forward shelling";
+        modeBtn.textContent = "Mode: Spiral Out";
+      } else if (mode === "fold") {
+        phaseLabel.textContent = count === 12 ? "phase: reverse closure" : "phase: fold in";
+        stepLabel.textContent = `${Math.max(0, 12 - count)} folded / 12`;
+        caption.textContent = count > 0
+          ? "fold inward in reverse shelling order"
+          : "coarse triangle remains as closure target";
+        kvMode.textContent = "fold in";
+        kvDirection.textContent = "reverse shelling";
+        modeBtn.textContent = "Mode: Fold In";
+      } else {
+        phaseLabel.textContent = count === 0 ? "phase: tetra lift seed" : "phase: tetra lift";
+        stepLabel.textContent = `triangle ${count} / 12`;
+        caption.textContent = "faces 1–3 lift toward apex; remainder folds toward base";
+        kvMode.textContent = "tetra lift";
+        kvDirection.textContent = "apical lift + base refinement";
+        modeBtn.textContent = "Mode: Tetra Lift";
+      }
+
+      kvCount.textContent = mode === "fold" ? String(Math.max(0, 12 - count)) : String(count);
+      kvClosure.textContent = `${closePct}%`;
+      kvActive.textContent = String(active);
+      playBtn.textContent = playing ? "Pause" : "Play";
+      scrubReadout.textContent = `${progress.toFixed(2)} / 12`;
+      scrubber.value = String(progress);
+    }
+
+    function tick(ts) {
+      if (!last) last = ts;
+      const dt = (ts - last) / 1000;
+      last = ts;
+
+      if (playing) {
+        progress += dt * 2.2 * speed();
+        if (progress > 12) {
+          progress = 12;
+          playing = false;
+        }
+        updateUI();
+        draw();
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    function resetProgress() {
+      progress = 0;
+      updateUI();
+      draw();
+    }
+
+    playBtn.addEventListener("click", () => {
+      playing = !playing;
+      updateUI();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      playing = false;
+      resetProgress();
+    });
+
+    modeBtn.addEventListener("click", () => {
+      if (mode === "grow") mode = "fold";
+      else if (mode === "fold") mode = "tetra";
+      else mode = "grow";
+      playing = false;
+      resetProgress();
+    });
+
+    stepBackBtn.addEventListener("click", () => {
+      playing = false;
+      progress = Math.max(0, progress - 1);
+      updateUI();
+      draw();
+    });
+
+    stepFwdBtn.addEventListener("click", () => {
+      playing = false;
+      progress = Math.min(12, progress + 1);
+      updateUI();
+      draw();
+    });
+
+    scrubber.addEventListener("input", (e) => {
+      playing = false;
+      progress = Number(e.target.value);
+      updateUI();
+      draw();
+    });
+
+    speedSel.addEventListener("change", updateUI);
+
+    [toggleLabels, toggleBoundary, toggleTransport, toggleCoarse, toggleLiftGuides].forEach(el => {
+      el.addEventListener("change", draw);
+    });
+
+    progress = 0;
+    resize();
+    updateUI();
+    requestAnimationFrame(tick);
+  </script>
+</body>
+</html>
