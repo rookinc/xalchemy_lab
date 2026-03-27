@@ -53,7 +53,12 @@ def structures_index():
 
 @app.get("/graph_viewer")
 def graph_viewer_index():
-    return FileResponse(BASE_DIR / "extruder_poc" / "index.html")
+    return FileResponse(BASE_DIR / "graph_viewer" / "lab.html")
+
+
+@app.get("/graph_viewer/")
+def graph_viewer_index_slash():
+    return RedirectResponse(url="/graph_viewer", status_code=307)
 
 
 @app.get("/graph_viewer/index.html")
