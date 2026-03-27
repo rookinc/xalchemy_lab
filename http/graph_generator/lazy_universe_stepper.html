@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lazy Universe — Modular Stepper</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0f14;
+      --panel: #111821;
+      --line: #2a3948;
+      --text: #d7e3ee;
+      --muted: #8ea0b3;
+      --locked: #7cc4ff;
+      --pillOn: #24415f;
+      --pillOff: #162230;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      flex-wrap: wrap;
+    }
+
+    .toolbar button,
+    .toolbar select {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: #162230;
+      color: var(--text);
+      padding: 10px 18px;
+      border-radius: 14px;
+      font-size: 18px;
+      font-weight: 700;
+      min-width: 88px;
+    }
+
+    .toolbar button { cursor: pointer; }
+    .toolbar button:hover,
+    .toolbar select:hover { border-color: var(--locked); }
+
+    .layer-toggle {
+      min-width: 0 !important;
+      padding: 8px 12px !important;
+      font-size: 14px !important;
+      border-radius: 999px !important;
+      background: var(--pillOff) !important;
+    }
+
+    .layer-toggle.on {
+      background: var(--pillOn) !important;
+      border-color: var(--locked) !important;
+    }
+
+    .status {
+      margin-left: auto;
+      text-align: right;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .canvas-wrap {
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+
+    svg {
+      width: min(100vw - 40px, 1180px);
+      height: min(74vh, 780px);
+      background: radial-gradient(circle at 50% 42%, #0f1620 0%, #0b0f14 72%);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+    }
+
+    .footer {
+      padding: 12px 16px 18px;
+      border-top: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 13px;
+      white-space: pre-wrap;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="toolbar">
+      <button id="stepBtn">+</button>
+      <button id="playPauseBtn">Play</button>
+      <select id="frequencySelect" title="Playback frequency">
+        <option value="4">4 Hz</option>
+        <option value="8">8 Hz" selected>8 Hz</option>
+        <option value="12">12 Hz</option>
+        <option value="20">20 Hz</option>
+        <option value="30">30 Hz</option>
+      </select>
+      <button id="resetBtn">Reset</button>
+      <select id="lensSelect" title="Lens selector">
+        <option value="petersen">Petersen</option>
+        <option value="flat_sheet">Flat Sheet</option>
+      </select>
+
+      <button class="layer-toggle on" data-layer="scaffold">scaffold</button>
+      <button class="layer-toggle on" data-layer="cells">cells</button>
+      <button class="layer-toggle on" data-layer="nodes">nodes</button>
+      <button class="layer-toggle on" data-layer="frontier">frontier</button>
+      <button class="layer-toggle on" data-layer="labels">labels</button>
+      <button class="layer-toggle on" data-layer="signs">signs</button>
+
+      <div class="status">
+        <div id="stageLine">stage: 0</div>
+        <div id="nodeLine">node: 0</div>
+        <div id="tickLine">tick: 0</div>
+        <div id="playLine">paused</div>
+      </div>
+    </div>
+
+    <div class="canvas-wrap">
+      <svg id="viz" viewBox="0 0 1180 780" aria-label="Lazy universe modular stepper"></svg>
+    </div>
+
+    <div class="footer mono" id="log"></div>
+  </div>
+
+  <script type="module">
+    import { STAGES, makeAppState, resetAppState, toggleLayer } from "./stepper/state.js";
+    import * as petersenLens from "./stepper/petersen_lens.js";
+    import * as flatSheetLens from "./stepper/flat_sheet_lens.js";
+    import { text } from "./stepper/render.js";
+
+    const lenses = {
+      petersen: petersenLens,
+      flat_sheet: flatSheetLens,
+    };
+
+    const VIEW_W = 1180;
+    const VIEW_H = 780;
+    const CAMERA_MARGIN = 36;
+
+    let state = makeAppState();
+    let isPlaying = false;
+    let playTimer = null;
+    let frequencyHz = 8;
+
+    normalizeState(state);
+
+    function normalizeState(s) {
+      if (typeof s.ticks !== "number") s.ticks = 0;
+    }
+
+    function currentLens() {
+      return lenses[state.lens];
+    }
+
+    function syncLayerButtons() {
+      document.querySelectorAll(".layer-toggle").forEach((btn) => {
+        const layer = btn.dataset.layer;
+        btn.classList.toggle("on", !!state.layers[layer]);
+      });
+    }
+
+    function stepForward() {
+      state.ticks += 1;
+      currentLens().step(state, STAGES);
+      render();
+    }
+
+    function stopPlayback() {
+      if (playTimer !== null) {
+        clearInterval(playTimer);
+        playTimer = null;
+      }
+      isPlaying = false;
+      syncPlaybackUi();
+    }
+
+    function startPlayback() {
+      if (playTimer !== null) clearInterval(playTimer);
+      const intervalMs = Math.max(16, Math.round(1000 / frequencyHz));
+      playTimer = setInterval(stepForward, intervalMs);
+      isPlaying = true;
+      syncPlaybackUi();
+    }
+
+    function togglePlayback() {
+      if (isPlaying) {
+        stopPlayback();
+      } else {
+        startPlayback();
+      }
+    }
+
+    function syncPlaybackUi() {
+      document.getElementById("playPauseBtn").textContent = isPlaying ? "Pause" : "Play";
+      document.getElementById("playLine").textContent = isPlaying ? `${frequencyHz} Hz` : "paused";
+      document.getElementById("frequencySelect").value = String(frequencyHz);
+    }
+
+    function renderLegend(parent) {
+      const x = 70, y = 95;
+      text(parent, x, y - 26, `${state.lens} lens`, 16, "#8ea0b3", "start");
+      text(parent, x, y + 0, "filled dot = locked local vertex", 14, "#d7e3ee", "start");
+      text(parent, x, y + 24, "dashed circle = open shell node", 14, "#d7e3ee", "start");
+      text(parent, x, y + 48, "stage 5 closes, next press continues", 14, "#d7e3ee", "start");
+      text(parent, x, y + 72, "class: K_R_2_top", 14, "#8ea0b3", "start");
+      text(parent, x, y + 96, "signs: +=1  -=2", 14, "#8ea0b3", "start");
+    }
+
+    function renderStatus(parent) {
+      const boxX = 840, boxY = 504;
+      const box = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      box.setAttribute("x", boxX);
+      box.setAttribute("y", boxY);
+      box.setAttribute("width", 280);
+      box.setAttribute("height", 176);
+      box.setAttribute("rx", 16);
+      box.setAttribute("fill", "#111821");
+      box.setAttribute("stroke", "#2a3948");
+      parent.appendChild(box);
+
+      const s = currentLens().status(state, STAGES);
+      text(parent, boxX + 16, boxY + 28, `lens: ${state.lens}`, 14, "#d7e3ee", "start", "600");
+      text(parent, boxX + 16, boxY + 54, s.line1, 14, "#d7e3ee", "start", "600");
+      text(parent, boxX + 16, boxY + 80, s.line2, 14, "#8ea0b3", "start");
+      text(parent, boxX + 16, boxY + 106, `tick: ${state.ticks}`, 14, "#8ea0b3", "start");
+      text(parent, boxX + 16, boxY + 132, isPlaying ? `playback: ${frequencyHz} Hz` : "playback: paused", 14, "#8ea0b3", "start");
+      text(parent, boxX + 16, boxY + 158, state.stage >= 5 ? "closed; next step continues" : "building", 14, "#8ea0b3", "start");
+    }
+
+    function fitCamera(cameraGroup, sceneGroup) {
+      if (!sceneGroup.childNodes.length) {
+        cameraGroup.setAttribute("transform", "");
+        return;
+      }
+
+      let bbox;
+      try {
+        bbox = sceneGroup.getBBox();
+      } catch {
+        cameraGroup.setAttribute("transform", "");
+        return;
+      }
+
+      if (!isFinite(bbox.x) || !isFinite(bbox.y) || bbox.width <= 0 || bbox.height <= 0) {
+        cameraGroup.setAttribute("transform", "");
+        return;
+      }
+
+      const availW = VIEW_W - CAMERA_MARGIN * 2;
+      const availH = VIEW_H - CAMERA_MARGIN * 2;
+      const scale = Math.min(availW / bbox.width, availH / bbox.height, 1.6);
+
+      const bboxCx = bbox.x + bbox.width / 2;
+      const bboxCy = bbox.y + bbox.height / 2;
+      const viewCx = VIEW_W / 2;
+      const viewCy = VIEW_H / 2 + 8;
+
+      const tx = viewCx - bboxCx * scale;
+      const ty = viewCy - bboxCy * scale;
+
+      cameraGroup.setAttribute("transform", `translate(${tx} ${ty}) scale(${scale})`);
+    }
+
+    function render() {
+      const svg = document.getElementById("viz");
+      svg.innerHTML = "";
+
+      const cameraGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      const sceneGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      const uiGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+      cameraGroup.appendChild(sceneGroup);
+      svg.appendChild(cameraGroup);
+      svg.appendChild(uiGroup);
+
+      currentLens().render(sceneGroup, state);
+      fitCamera(cameraGroup, sceneGroup);
+
+      if (state.layers.labels) {
+        renderLegend(uiGroup);
+        renderStatus(uiGroup);
+      }
+
+      const s = currentLens().status(state, STAGES);
+      document.getElementById("stageLine").textContent = s.line2;
+      document.getElementById("nodeLine").textContent = s.line1;
+      document.getElementById("tickLine").textContent = `tick: ${state.ticks}`;
+
+      const lastLines = state.history.slice(-12);
+      document.getElementById("log").textContent =
+        `lens: ${state.lens}\n` +
+        `${s.line1}\n` +
+        `${s.line2}\n` +
+        `tick: ${state.ticks}\n` +
+        `playback: ${isPlaying ? `${frequencyHz} Hz` : "paused"}\n` +
+        `layers: ${Object.entries(state.layers).filter(([, v]) => v).map(([k]) => k).join(", ")}\n` +
+        `history:\n- ${lastLines.join("\n- ")}`;
+
+      syncLayerButtons();
+      syncPlaybackUi();
+      document.getElementById("lensSelect").value = state.lens;
+    }
+
+    document.getElementById("stepBtn").addEventListener("click", () => {
+      stepForward();
+    });
+
+    document.getElementById("playPauseBtn").addEventListener("click", () => {
+      togglePlayback();
+    });
+
+    document.getElementById("frequencySelect").addEventListener("change", (e) => {
+      frequencyHz = Number(e.target.value) || 8;
+      if (isPlaying) startPlayback();
+      else syncPlaybackUi();
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      stopPlayback();
+      state = resetAppState(state);
+      normalizeState(state);
+      render();
+    });
+
+    document.getElementById("lensSelect").addEventListener("change", (e) => {
+      const lens = e.target.value;
+      const layers = { ...state.layers };
+      stopPlayback();
+      state = makeAppState();
+      state.lens = lens;
+      state.layers = layers;
+      normalizeState(state);
+      render();
+    });
+
+    document.querySelectorAll(".layer-toggle").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        toggleLayer(state, btn.dataset.layer);
+        render();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>
