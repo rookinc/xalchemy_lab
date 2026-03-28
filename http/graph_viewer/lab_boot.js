@@ -33,6 +33,9 @@ import {
 import { buildScaffoldPoints, renderScaffold } from "./kernel/d4_render_scaffold.js";
 import { renderPrimeScene } from "./kernel/d4_render_prime.js";
 import { renderCompositeOverlay } from "./kernel/d4_render_composite.js";
+import { exportCentroids, exportTetrahedra, exportSceneState } from "./kernel/d4_export.js";
+import { classifyPolarizedRoles, filterSnapshotByPolarizedRole } from "./kernel/d4_polarized_g15.js";
+import { renderCubicScene } from "./kernel/d4_render_cubic.js";
 
 const engine = new D4GrowthEngine();
 const ui = createUIState();
@@ -42,6 +45,8 @@ ui.display.showEdges = true;
 ui.display.showColorEdges = true;
 ui.display.leftFaceOpacity = 0.8;
 ui.display.rightFaceOpacity = 0.8;
+ui.display.polarizedRoleFilter = "all";
+ui.display.cubicStyle = "full";
 
 const canvas = document.getElementById("stage-canvas");
 const ctx = canvas.getContext("2d");
@@ -66,6 +71,10 @@ const els = {
   playBtn: document.getElementById("play-btn"),
   presetJunctionBtn: document.getElementById("preset-junction-btn"),
   presetTopBtn: document.getElementById("preset-top-btn"),
+  cubicStyleSelect: document.getElementById("cubic-style-select"),
+  cubicFrontBtn: document.getElementById("cubic-front-btn"),
+  cubicTopBtn: document.getElementById("cubic-top-btn"),
+  cubicSideBtn: document.getElementById("cubic-side-btn"),
   statusText: document.getElementById("status-text"),
   currentReadout: document.getElementById("current-readout"),
   residueReadout: document.getElementById("residue-readout"),
@@ -97,7 +106,8 @@ const els = {
   mobilePhase: document.getElementById("mobile-phase"),
   mobileResidue: document.getElementById("mobile-residue"),
   mobileRegime: document.getElementById("mobile-regime"),
-  mobileActiveTetra: document.getElementById("mobile-active-tetra")
+  mobileActiveTetra: document.getElementById("mobile-active-tetra"),
+  polarizedRoleFilter: document.getElementById("polarized-role-filter")
 };
 
 let snapshot = engine.snapshot();
@@ -166,6 +176,13 @@ function updateReadouts() {
   els.mobileResidue.textContent = String(readout.cycleResidue);
   els.mobileRegime.textContent = readout.regime;
   els.mobileActiveTetra.textContent = readout.activeTetraId ?? "-";
+
+  const polarized = classifyPolarizedRoles(snapshot);
+  const filterName = ui.display.polarizedRoleFilter || "all";
+  const filteredCounts = filterSnapshotByPolarizedRole(snapshot, filterName);
+  if (els.statusText && filterName !== "all") {
+    els.statusText.textContent = `${readout.statusText} · ${filterName} ${filteredCounts.filteredCount}`;
+  }
 }
 
 function draw() {
@@ -182,6 +199,9 @@ function draw() {
 
   const mode = ui.display.mode;
   const scaffoldPoints = buildScaffoldPoints(snapshot.currentD4s);
+  const roleFilter = ui.display.polarizedRoleFilter || "all";
+  const filtered = filterSnapshotByPolarizedRole(snapshot, roleFilter);
+  const displaySnapshot = filtered.snapshot;
 
   if (ui.display.showTrurtle && (mode === "scaffold" || mode === "hybrid")) {
     renderScaffold(ctx, scaffoldPoints, projector, {
@@ -192,7 +212,7 @@ function draw() {
   }
 
   if (mode === "prime" || mode === "prime_plus_composite" || mode === "hybrid") {
-    renderPrimeScene(ctx, snapshot, projector, {
+    renderPrimeScene(ctx, displaySnapshot, projector, {
       showFaces: ui.display.showFaces,
       showEdges: ui.display.showEdges,
       showColorEdges: ui.display.showColorEdges,
@@ -203,8 +223,20 @@ function draw() {
     });
   }
 
+  if (mode === "cubic") {
+    ui.camera.projectionMode = "orthographic";
+    renderCubicScene(ctx, snapshot, projector, {
+      showLabels: ui.display.showLabels,
+      showSites: true,
+      pointAlpha: 0.22,
+      style: ui.display.cubicStyle || "full"
+    });
+  } else {
+    ui.camera.projectionMode = "perspective";
+  }
+
   if (mode === "prime_plus_composite" || mode === "hybrid") {
-    renderCompositeOverlay(ctx, snapshot, projector, {
+    renderCompositeOverlay(ctx, displaySnapshot, projector, {
       showLabels: ui.display.showLabels,
       activeOnly: true
     });
@@ -303,6 +335,36 @@ els.toggleColorEdges.addEventListener("change", draw);
 els.toggleLabels.addEventListener("change", draw);
 els.toggleTrurtle.addEventListener("change", draw);
 
+els.cubicStyleSelect?.addEventListener("change", () => {
+  ui.display.cubicStyle = els.cubicStyleSelect.value;
+  setStatus(ui, `cubic style: ${ui.display.cubicStyle}`);
+  draw();
+});
+
+els.cubicFrontBtn?.addEventListener("click", () => {
+  applyCubicCameraPreset("cubic_front");
+  setStatus(ui, "camera preset: cubic front");
+  draw();
+});
+
+els.cubicTopBtn?.addEventListener("click", () => {
+  applyCubicCameraPreset("cubic_top");
+  setStatus(ui, "camera preset: cubic top");
+  draw();
+});
+
+els.cubicSideBtn?.addEventListener("click", () => {
+  applyCubicCameraPreset("cubic_side");
+  setStatus(ui, "camera preset: cubic side");
+  draw();
+});
+
+els.polarizedRoleFilter?.addEventListener("change", () => {
+  ui.display.polarizedRoleFilter = els.polarizedRoleFilter.value;
+  setStatus(ui, `filter: ${ui.display.polarizedRoleFilter}`);
+  draw();
+});
+
 els.orbitBtn.addEventListener("click", () => {
   const enabled = toggleOrbit(ui.camera);
   setStatus(ui, enabled ? "orbit on" : "orbit off");
@@ -397,3 +459,101 @@ setDisplayMode(ui, "prime");
 syncZoomSlider();
 draw();
 ensureOrbitLoop();
+
+function wireExportButtons(runtime, uiStateGetter = () => ({})) {
+  const centroidsBtn = document.getElementById("export-centroids-btn");
+  const tetraBtn = document.getElementById("export-tetrahedra-btn");
+  const sceneBtn = document.getElementById("export-scene-btn");
+  const statusEl = document.getElementById("export-status");
+
+  const setStatus = (msg) => {
+    if (statusEl) statusEl.textContent = msg;
+    console.log(msg);
+  };
+
+  if (centroidsBtn) {
+    centroidsBtn.addEventListener("click", () => {
+      try {
+        const result = exportCentroids(runtime);
+        setStatus(`centroids ${result.count}`);
+      } catch (err) {
+        setStatus("export failed");
+        console.error(err);
+      }
+    });
+  }
+
+  if (tetraBtn) {
+    tetraBtn.addEventListener("click", () => {
+      try {
+        const result = exportTetrahedra(runtime);
+        setStatus(`tetrahedra ${result.count}`);
+      } catch (err) {
+        setStatus("export failed");
+        console.error(err);
+      }
+    });
+  }
+
+  if (sceneBtn) {
+    sceneBtn.addEventListener("click", () => {
+      try {
+        exportSceneState(runtime, uiStateGetter());
+        setStatus("scene exported");
+      } catch (err) {
+        setStatus("export failed");
+        console.error(err);
+      }
+    });
+  }
+}
+
+window.__D4_RUNTIME__ = {
+  get engine() { return engine; },
+  get ui() { return ui; },
+  get snapshot() { return snapshot; },
+  get camera() { return ui.camera; },
+  get metrics() {
+    return {
+      currentD4s: snapshot.currentD4s,
+      turnIndex: snapshot.turnIndex,
+      phase: snapshot.phase,
+      residue: snapshot.residue,
+    };
+  },
+  get playback() { return ui.playback; },
+  get tetrahedra() {
+    return snapshot?.tetrahedra
+      ?? snapshot?.tetras
+      ?? snapshot?.primes
+      ?? snapshot?.cells
+      ?? [];
+  }
+};
+
+wireExportButtons(window.__D4_RUNTIME__, () => ({
+  camera: ui.camera,
+  display: ui.display,
+  playback: ui.playback,
+}));
+
+function applyCubicCameraPreset(name) {
+  ui.camera.projectionMode = "orthographic";
+  ui.camera.panX = 0;
+  ui.camera.panY = 0;
+  ui.display.cameraPreset = name;
+
+  if (name === "cubic_front") {
+    ui.camera.yaw = 0;
+    ui.camera.pitch = 0;
+    ui.camera.distance = 8.5;
+  } else if (name === "cubic_top") {
+    ui.camera.yaw = 0;
+    ui.camera.pitch = Math.PI / 2;
+    ui.camera.distance = 8.5;
+  } else if (name === "cubic_side") {
+    ui.camera.yaw = Math.PI / 2;
+    ui.camera.pitch = 0;
+    ui.camera.distance = 8.5;
+  }
+}

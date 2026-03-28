@@ -30,6 +30,7 @@
               <option value="prime" selected>Prime</option>
               <option value="prime_plus_composite">Prime+Composite</option>
               <option value="hybrid">Hybrid</option>
+              <option value="cubic">Cubic</option>
             </select>
           </div>
 
@@ -76,6 +77,23 @@
             <label for="right-face-opacity-slider">Right opacity (CMY %)</label>
             <input id="right-face-opacity-slider" type="range" min="0" max="100" step="1" value="80" />
           </div>
+
+          <div class="field-col">
+            <label for="cubic-style-select">Cubic style</label>
+            <select id="cubic-style-select">
+              <option value="full" selected>Full</option>
+              <option value="sites_only">Sites only</option>
+              <option value="frame">Frame only</option>
+              <option value="center">Center</option>
+              <option value="poles">Poles</option>
+              <option value="equator">Equator</option>
+              <option value="corners">Corners</option>
+            </select>
+          </div>
+
+          <button id="cubic-front-btn" class="btn-compact" type="button">Cubic front</button>
+          <button id="cubic-top-btn" class="btn-compact" type="button">Cubic top</button>
+          <button id="cubic-side-btn" class="btn-compact" type="button">Cubic side</button>
 
           <div class="status-inline"><span id="status-text">ready</span></div>
         </div>
@@ -173,5 +191,36 @@
   </div>
 
   <script type="module" src="/graph_viewer_assets/lab_boot.js"></script>
+
+    <div class="export-strip">
+      <button id="export-centroids-btn" type="button">Export centroids</button>
+      <button id="export-tetrahedra-btn" type="button">Export tetrahedra</button>
+      <button id="export-scene-btn" type="button">Export scene</button>
+      <label for="polarized-role-filter">Filter</label>
+      <select id="polarized-role-filter">
+        <option value="all">all</option>
+        <option value="center">center</option>
+        <option value="poles">poles</option>
+        <option value="equator">equator</option>
+        <option value="corners">corners</option>
+        <option value="C">C</option>
+        <option value="Fp">Fp</option>
+        <option value="Fm">Fm</option>
+        <option value="E0">E0</option>
+        <option value="E1">E1</option>
+        <option value="E2">E2</option>
+        <option value="E3">E3</option>
+        <option value="K0">K0</option>
+        <option value="K1">K1</option>
+        <option value="K2">K2</option>
+        <option value="K3">K3</option>
+        <option value="K4">K4</option>
+        <option value="K5">K5</option>
+        <option value="K6">K6</option>
+        <option value="K7">K7</option>
+      </select>
+      <span id="export-status" aria-live="polite"></span>
+    </div>
+
 </body>
 </html>

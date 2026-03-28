@@ -368,3 +368,57 @@ canvas.panning { cursor: grabbing; }
     height: 48vh;
   }
 }
+
+
+.export-strip {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid rgba(120, 160, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(8, 14, 24, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.export-strip button {
+  appearance: none;
+  border: 1px solid rgba(120, 160, 255, 0.45);
+  background: rgba(20, 32, 56, 0.92);
+  color: #dfe8ff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.export-strip button:hover {
+  background: rgba(30, 48, 82, 0.96);
+}
+
+#export-status {
+  color: #b9c9ff;
+  font-size: 0.92rem;
+  min-width: 10ch;
+}
+
+
+.export-strip label {
+  color: #b9c9ff;
+  font-size: 0.92rem;
+}
+
+.export-strip select {
+  appearance: none;
+  border: 1px solid rgba(120, 160, 255, 0.45);
+  background: rgba(20, 32, 56, 0.92);
+  color: #dfe8ff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font: inherit;
+}

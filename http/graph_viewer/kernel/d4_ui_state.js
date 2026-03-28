@@ -49,6 +49,10 @@ export function setDisplayMode(uiState, mode) {
     uiState.display.showScaffold = true;
     uiState.display.showPrime = true;
     uiState.display.showComposite = true;
+  } else if (mode === "cubic") {
+    uiState.display.showScaffold = false;
+    uiState.display.showPrime = false;
+    uiState.display.showComposite = false;
   }
 
   return uiState.display.mode;
