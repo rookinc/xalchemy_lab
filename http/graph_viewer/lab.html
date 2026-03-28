@@ -18,7 +18,10 @@
         <div class="controls-row">
           <label class="check"><input type="checkbox" id="toggle-grid" checked /> <span>Show stage grid</span></label>
           <label class="check"><input type="checkbox" id="toggle-faces" checked /> <span>Show faces</span></label>
+          <label class="check"><input type="checkbox" id="toggle-edges" checked /> <span>Show edges</span></label>
+          <label class="check"><input type="checkbox" id="toggle-color-edges" checked /> <span>Show color edges</span></label>
           <label class="check"><input type="checkbox" id="toggle-labels" /> <span>Show labels</span></label>
+          <label class="check"><input type="checkbox" id="toggle-trurtle" checked /> <span>Show trurtle</span></label>
 
           <div class="field-col">
             <label for="display-mode-select">Display mode</label>
@@ -62,6 +65,16 @@
           <div class="field-col wide">
             <label for="zoom-slider">Zoom</label>
             <input id="zoom-slider" type="range" min="4.5" max="60" step="0.1" value="14" />
+          </div>
+
+          <div class="field-col wide">
+            <label for="left-face-opacity-slider">Left opacity (RGB %)</label>
+            <input id="left-face-opacity-slider" type="range" min="0" max="100" step="1" value="80" />
+          </div>
+
+          <div class="field-col wide">
+            <label for="right-face-opacity-slider">Right opacity (CMY %)</label>
+            <input id="right-face-opacity-slider" type="range" min="0" max="100" step="1" value="80" />
           </div>
 
           <div class="status-inline"><span id="status-text">ready</span></div>
@@ -113,6 +126,17 @@
           </div>
 
           <div class="metrics-section">
+            <div class="metrics-section-title">Render</div>
+            <div class="metric-grid">
+              <strong>Trurtle</strong><span id="metric-trurtle">on</span>
+              <strong>Edges</strong><span id="metric-edges">on</span>
+              <strong>Color edges</strong><span id="metric-color-edges">on</span>
+              <strong>Left faces</strong><span id="metric-left-opacity">80%</span>
+              <strong>Right faces</strong><span id="metric-right-opacity">80%</span>
+            </div>
+          </div>
+
+          <div class="metrics-section">
             <div class="metrics-section-title">Camera</div>
             <div class="metric-grid">
               <strong>Distance</strong><span id="metric-camera-distance">14.00</span>
@@ -123,7 +147,7 @@
           </div>
 
           <div class="hint">
-            Left drag rotates. Shift+drag or right drag pans. Wheel zooms. Prime+Composite shows the carrier face and pleat map.
+            Left chirality uses RGB on faces 1/2/3. Right chirality uses CMY on faces 1/2/3. White structural edges stay at 50%.
           </div>
         </div>
       </aside>

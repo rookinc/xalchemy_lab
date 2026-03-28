@@ -37,6 +37,11 @@ import { renderCompositeOverlay } from "./kernel/d4_render_composite.js";
 const engine = new D4GrowthEngine();
 const ui = createUIState();
 ui.camera = createDefaultCamera();
+ui.display.showTrurtle = true;
+ui.display.showEdges = true;
+ui.display.showColorEdges = true;
+ui.display.leftFaceOpacity = 0.8;
+ui.display.rightFaceOpacity = 0.8;
 
 const canvas = document.getElementById("stage-canvas");
 const ctx = canvas.getContext("2d");
@@ -45,11 +50,16 @@ const els = {
   homeBtn: document.getElementById("home-btn"),
   toggleGrid: document.getElementById("toggle-grid"),
   toggleFaces: document.getElementById("toggle-faces"),
+  toggleEdges: document.getElementById("toggle-edges"),
+  toggleColorEdges: document.getElementById("toggle-color-edges"),
   toggleLabels: document.getElementById("toggle-labels"),
+  toggleTrurtle: document.getElementById("toggle-trurtle"),
   displayModeSelect: document.getElementById("display-mode-select"),
   pauseAtInput: document.getElementById("pause-at-input"),
   hzSelect: document.getElementById("hz-select"),
   zoomSlider: document.getElementById("zoom-slider"),
+  leftFaceOpacitySlider: document.getElementById("left-face-opacity-slider"),
+  rightFaceOpacitySlider: document.getElementById("right-face-opacity-slider"),
   orbitBtn: document.getElementById("orbit-btn"),
   resetBtn: document.getElementById("reset-btn"),
   stepBtn: document.getElementById("step-btn"),
@@ -73,6 +83,11 @@ const els = {
   metricActiveTetra: document.getElementById("metric-active-tetra"),
   metricActiveFace: document.getElementById("metric-active-face"),
   metricActiveChirality: document.getElementById("metric-active-chirality"),
+  metricTrurtle: document.getElementById("metric-trurtle"),
+  metricEdges: document.getElementById("metric-edges"),
+  metricColorEdges: document.getElementById("metric-color-edges"),
+  metricLeftOpacity: document.getElementById("metric-left-opacity"),
+  metricRightOpacity: document.getElementById("metric-right-opacity"),
   metricCameraDistance: document.getElementById("metric-camera-distance"),
   metricCameraYaw: document.getElementById("metric-camera-yaw"),
   metricCameraPitch: document.getElementById("metric-camera-pitch"),
@@ -90,10 +105,19 @@ let projector = createProjector(canvas, ui.camera);
 let orbitFrame = null;
 let playTimer = null;
 
+function sliderPctToAlpha(value) {
+  return clamp(Number(value) / 100, 0, 1);
+}
+
 function syncUIFlags() {
   ui.display.showStageGrid = els.toggleGrid.checked;
   ui.display.showFaces = els.toggleFaces.checked;
+  ui.display.showEdges = els.toggleEdges.checked;
+  ui.display.showColorEdges = els.toggleColorEdges.checked;
   ui.display.showLabels = els.toggleLabels.checked;
+  ui.display.showTrurtle = els.toggleTrurtle.checked;
+  ui.display.leftFaceOpacity = sliderPctToAlpha(els.leftFaceOpacitySlider.value);
+  ui.display.rightFaceOpacity = sliderPctToAlpha(els.rightFaceOpacitySlider.value);
 }
 
 function syncZoomSlider() {
@@ -125,6 +149,12 @@ function updateReadouts() {
   els.metricActiveFace.textContent = readout.activeFaceLabel ?? "-";
   els.metricActiveChirality.textContent = readout.activeChirality ?? "-";
 
+  els.metricTrurtle.textContent = ui.display.showTrurtle ? "on" : "off";
+  els.metricEdges.textContent = ui.display.showEdges ? "on" : "off";
+  els.metricColorEdges.textContent = ui.display.showColorEdges ? "on" : "off";
+  els.metricLeftOpacity.textContent = `${Math.round(ui.display.leftFaceOpacity * 100)}%`;
+  els.metricRightOpacity.textContent = `${Math.round(ui.display.rightFaceOpacity * 100)}%`;
+
   els.metricCameraDistance.textContent = readout.camera.distance;
   els.metricCameraYaw.textContent = readout.camera.yaw;
   els.metricCameraPitch.textContent = readout.camera.pitch;
@@ -153,7 +183,7 @@ function draw() {
   const mode = ui.display.mode;
   const scaffoldPoints = buildScaffoldPoints(snapshot.currentD4s);
 
-  if (mode === "scaffold" || mode === "hybrid") {
+  if (ui.display.showTrurtle && (mode === "scaffold" || mode === "hybrid")) {
     renderScaffold(ctx, scaffoldPoints, projector, {
       showFaces: ui.display.showFaces,
       showLabels: ui.display.showLabels,
@@ -164,8 +194,12 @@ function draw() {
   if (mode === "prime" || mode === "prime_plus_composite" || mode === "hybrid") {
     renderPrimeScene(ctx, snapshot, projector, {
       showFaces: ui.display.showFaces,
+      showEdges: ui.display.showEdges,
+      showColorEdges: ui.display.showColorEdges,
       showLabels: ui.display.showLabels,
-      highlightActive: true
+      highlightActive: true,
+      leftFaceOpacity: ui.display.leftFaceOpacity,
+      rightFaceOpacity: ui.display.rightFaceOpacity
     });
   }
 
@@ -252,9 +286,22 @@ els.zoomSlider.addEventListener("input", () => {
   draw();
 });
 
+els.leftFaceOpacitySlider.addEventListener("input", () => {
+  setStatus(ui, `left opacity set to ${els.leftFaceOpacitySlider.value}%`);
+  draw();
+});
+
+els.rightFaceOpacitySlider.addEventListener("input", () => {
+  setStatus(ui, `right opacity set to ${els.rightFaceOpacitySlider.value}%`);
+  draw();
+});
+
 els.toggleGrid.addEventListener("change", draw);
 els.toggleFaces.addEventListener("change", draw);
+els.toggleEdges.addEventListener("change", draw);
+els.toggleColorEdges.addEventListener("change", draw);
 els.toggleLabels.addEventListener("change", draw);
+els.toggleTrurtle.addEventListener("change", draw);
 
 els.orbitBtn.addEventListener("click", () => {
   const enabled = toggleOrbit(ui.camera);

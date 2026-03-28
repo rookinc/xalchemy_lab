@@ -1,6 +1,16 @@
 import { D4_MODEL_SCALE } from "./d4_spec.js";
 
-function armColor(arm, alpha = 0.74) {
+function paletteColor(palette, arm, alpha = 0.74) {
+  const p = (palette || "cmy").toLowerCase();
+
+  if (p === "rob") {
+    return arm === 0
+      ? `rgba(255, 120, 120, ${alpha})`
+      : arm === 1
+      ? `rgba(255, 176, 96, ${alpha})`
+      : `rgba(120, 170, 255, ${alpha})`;
+  }
+
   return arm === 0
     ? `rgba(255, 196, 230, ${alpha})`
     : arm === 1
@@ -85,7 +95,9 @@ export function renderScaffold(ctx, points, project3D, options = {}) {
   const {
     showFaces = true,
     showLabels = false,
-    alphaScale = 1
+    alphaScale = 1,
+    palette = "cmy",
+    faceOpacity = 0.8
   } = options;
 
   if (!showFaces || points.length < 12) return;
@@ -97,9 +109,11 @@ export function renderScaffold(ctx, points, project3D, options = {}) {
   ctx.save();
   ctx.lineWidth = 1.15;
 
+  const opacity = Math.max(0.05, Math.min(1, faceOpacity));
+
   for (let arm = 0; arm < 3; arm += 1) {
     const arr = byArm[arm];
-    const color = armColor(arm, 0.72 * alphaScale);
+    const color = paletteColor(palette, arm, 0.72 * alphaScale * opacity);
 
     for (let n = 0; n + ringSize * 2 <= arr.length; n += ringSize) {
       for (let k = 0; k < ringSize; k += 1) {
