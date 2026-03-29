@@ -33,53 +33,56 @@ import {
 import { buildScaffoldPoints, renderScaffold } from "./kernel/d4_render_scaffold.js";
 import { renderPrimeScene } from "./kernel/d4_render_prime.js";
 import { renderCompositeOverlay } from "./kernel/d4_render_composite.js";
-import { exportCentroids, exportTetrahedra, exportSceneState } from "./kernel/d4_export.js";
-import { classifyPolarizedRoles, filterSnapshotByPolarizedRole } from "./kernel/d4_polarized_g15.js";
 import { renderCubicScene } from "./kernel/d4_render_cubic.js";
 
 const engine = new D4GrowthEngine();
 const ui = createUIState();
 ui.camera = createDefaultCamera();
+
 ui.display.showTrurtle = true;
 ui.display.showEdges = true;
 ui.display.showColorEdges = true;
 ui.display.leftFaceOpacity = 0.8;
 ui.display.rightFaceOpacity = 0.8;
-ui.display.polarizedRoleFilter = "all";
-ui.display.cubicStyle = "full";
+ui.display.showAxes = false;
+ui.display.cameraPreset = "junction";
 
 const canvas = document.getElementById("stage-canvas");
 const ctx = canvas.getContext("2d");
 
 const els = {
-  homeBtn: document.getElementById("home-btn"),
-  toggleGrid: document.getElementById("toggle-grid"),
+  // top bar
   toggleFaces: document.getElementById("toggle-faces"),
   toggleEdges: document.getElementById("toggle-edges"),
-  toggleColorEdges: document.getElementById("toggle-color-edges"),
-  toggleLabels: document.getElementById("toggle-labels"),
-  toggleTrurtle: document.getElementById("toggle-trurtle"),
-  displayModeSelect: document.getElementById("display-mode-select"),
-  pauseAtInput: document.getElementById("pause-at-input"),
-  hzSelect: document.getElementById("hz-select"),
-  zoomSlider: document.getElementById("zoom-slider"),
   leftFaceOpacitySlider: document.getElementById("left-face-opacity-slider"),
   rightFaceOpacitySlider: document.getElementById("right-face-opacity-slider"),
-  orbitBtn: document.getElementById("orbit-btn"),
   resetBtn: document.getElementById("reset-btn"),
+  stepBackBtn: document.getElementById("step-back-btn"),
   stepBtn: document.getElementById("step-btn"),
   playBtn: document.getElementById("play-btn"),
-  presetJunctionBtn: document.getElementById("preset-junction-btn"),
-  presetTopBtn: document.getElementById("preset-top-btn"),
-  cubicStyleSelect: document.getElementById("cubic-style-select"),
-  cubicFrontBtn: document.getElementById("cubic-front-btn"),
-  cubicTopBtn: document.getElementById("cubic-top-btn"),
-  cubicSideBtn: document.getElementById("cubic-side-btn"),
+
+  // rail
+  displayModeSelect: document.getElementById("display-mode-select"),
+  toggleColorEdges: document.getElementById("toggle-color-edges"),
+  toggleTrurtle: document.getElementById("toggle-trurtle"),
+  toggleSpindles: document.getElementById("toggle-spindles"),
+  pauseAtInput: document.getElementById("pause-at-input"),
+  hzInput: document.getElementById("hz-input"),
+  cameraPresetSelect: document.getElementById("camera-preset-select"),
+  toggleGrid: document.getElementById("toggle-grid"),
+  toggleAxes: document.getElementById("toggle-axes"),
+  toggleLabels: document.getElementById("toggle-labels"),
+  zoomSlider: document.getElementById("zoom-slider"),
+
+  // stage footer
   statusText: document.getElementById("status-text"),
-  currentReadout: document.getElementById("current-readout"),
-  residueReadout: document.getElementById("residue-readout"),
-  metricCurrent: document.getElementById("metric-current"),
   metricTurn: document.getElementById("metric-turn"),
+  metricCameraDistance: document.getElementById("metric-camera-distance"),
+  metricCameraYaw: document.getElementById("metric-camera-yaw"),
+  metricCameraPitch: document.getElementById("metric-camera-pitch"),
+
+  // hidden bindings + console
+  metricCurrent: document.getElementById("metric-current"),
   metricCells: document.getElementById("metric-cells"),
   metricFaces: document.getElementById("metric-faces"),
   metricOpenVertices: document.getElementById("metric-open-vertices"),
@@ -97,21 +100,17 @@ const els = {
   metricColorEdges: document.getElementById("metric-color-edges"),
   metricLeftOpacity: document.getElementById("metric-left-opacity"),
   metricRightOpacity: document.getElementById("metric-right-opacity"),
-  metricCameraDistance: document.getElementById("metric-camera-distance"),
-  metricCameraYaw: document.getElementById("metric-camera-yaw"),
-  metricCameraPitch: document.getElementById("metric-camera-pitch"),
   metricCameraPreset: document.getElementById("metric-camera-preset"),
   mobileCurrent: document.getElementById("mobile-current"),
-  mobileTurn: document.getElementById("mobile-turn"),
   mobilePhase: document.getElementById("mobile-phase"),
   mobileResidue: document.getElementById("mobile-residue"),
   mobileRegime: document.getElementById("mobile-regime"),
   mobileActiveTetra: document.getElementById("mobile-active-tetra"),
-  polarizedRoleFilter: document.getElementById("polarized-role-filter")
+  metricsConsole: document.getElementById("metrics-console")
 };
 
 let snapshot = engine.snapshot();
-let projector = createProjector(canvas, ui.camera);
+let projector = null;
 let orbitFrame = null;
 let playTimer = null;
 
@@ -120,88 +119,115 @@ function sliderPctToAlpha(value) {
 }
 
 function syncUIFlags() {
-  ui.display.showStageGrid = els.toggleGrid.checked;
-  ui.display.showFaces = els.toggleFaces.checked;
-  ui.display.showEdges = els.toggleEdges.checked;
-  ui.display.showColorEdges = els.toggleColorEdges.checked;
-  ui.display.showLabels = els.toggleLabels.checked;
-  ui.display.showTrurtle = els.toggleTrurtle.checked;
-  ui.display.leftFaceOpacity = sliderPctToAlpha(els.leftFaceOpacitySlider.value);
-  ui.display.rightFaceOpacity = sliderPctToAlpha(els.rightFaceOpacitySlider.value);
+  ui.display.showFaces = els.toggleFaces?.checked ?? true;
+  ui.display.showEdges = els.toggleEdges?.checked ?? true;
+  ui.display.showColorEdges = els.toggleColorEdges?.checked ?? true;
+  ui.display.showTrurtle = els.toggleTrurtle?.checked ?? true;
+  ui.display.showLabels = els.toggleLabels?.checked ?? false;
+  ui.display.showStageGrid = els.toggleGrid?.checked ?? true;
+  ui.display.showAxes = els.toggleAxes?.checked ?? false;
+  ui.display.leftFaceOpacity = sliderPctToAlpha(els.leftFaceOpacitySlider?.value ?? 80);
+  ui.display.rightFaceOpacity = sliderPctToAlpha(els.rightFaceOpacitySlider?.value ?? 80);
 }
 
 function syncZoomSlider() {
-  els.zoomSlider.value = String(ui.camera.distance);
+  if (els.zoomSlider) {
+    els.zoomSlider.value = String(ui.camera.distance);
+  }
+}
+
+function syncDisplayModeControl() {
+  if (els.displayModeSelect) {
+    els.displayModeSelect.value = ui.display.mode;
+  }
+}
+
+function formatConsole(readout) {
+  return [
+    `current_d4s      : ${readout.currentD4s}`,
+    `turn             : ${readout.turnIndex}`,
+    `cells            : ${readout.topology.cells}`,
+    `exposed_faces    : ${readout.topology.exposedFaces}`,
+    `open_vertices    : ${readout.topology.openVertices}`,
+    `phase            : ${readout.cyclePhase}`,
+    `residue          : ${readout.cycleResidue}`,
+    `increment_target : ${readout.incrementTarget}`,
+    `regime           : ${readout.regime}`,
+    `rung             : ${readout.rungValue}`,
+    `aggregation      : ${readout.display.aggregationMode}`,
+    `active_tetra     : ${readout.activeTetraId ?? "-"}`,
+    `active_face      : ${readout.activeFaceLabel ?? "-"}`,
+    `active_chirality : ${readout.activeChirality ?? "-"}`,
+    `trurtle          : ${ui.display.showTrurtle ? "on" : "off"}`,
+    `edges            : ${ui.display.showEdges ? "on" : "off"}`,
+    `color_edges      : ${ui.display.showColorEdges ? "on" : "off"}`,
+    `left_opacity     : ${Math.round(ui.display.leftFaceOpacity * 100)}%`,
+    `right_opacity    : ${Math.round(ui.display.rightFaceOpacity * 100)}%`,
+    `camera_distance  : ${readout.camera.distance}`,
+    `camera_yaw       : ${readout.camera.yaw}`,
+    `camera_pitch     : ${readout.camera.pitch}`,
+    `camera_preset    : ${ui.display.cameraPreset}`
+  ].join("\n");
 }
 
 function updateReadouts() {
   const readout = buildUIReadout(ui, snapshot);
 
-  els.statusText.textContent = readout.statusText;
-  els.currentReadout.textContent = String(readout.currentD4s);
-  els.residueReadout.textContent = String(readout.cycleResidue);
+  if (els.statusText) els.statusText.textContent = readout.statusText;
+  if (els.metricTurn) els.metricTurn.textContent = String(readout.turnIndex);
+  if (els.metricCameraDistance) els.metricCameraDistance.textContent = readout.camera.distance;
+  if (els.metricCameraYaw) els.metricCameraYaw.textContent = readout.camera.yaw;
+  if (els.metricCameraPitch) els.metricCameraPitch.textContent = readout.camera.pitch;
 
-  els.metricCurrent.textContent = String(readout.currentD4s);
-  els.metricTurn.textContent = String(readout.turnIndex);
-  els.metricCells.textContent = String(readout.topology.cells);
-  els.metricFaces.textContent = String(readout.topology.exposedFaces);
-  els.metricOpenVertices.textContent = String(readout.topology.openVertices);
+  if (els.metricCurrent) els.metricCurrent.textContent = String(readout.currentD4s);
+  if (els.metricCells) els.metricCells.textContent = String(readout.topology.cells);
+  if (els.metricFaces) els.metricFaces.textContent = String(readout.topology.exposedFaces);
+  if (els.metricOpenVertices) els.metricOpenVertices.textContent = String(readout.topology.openVertices);
+  if (els.metricPhase) els.metricPhase.textContent = readout.cyclePhase;
+  if (els.metricResidue) els.metricResidue.textContent = String(readout.cycleResidue);
+  if (els.metricIncrement) els.metricIncrement.textContent = String(readout.incrementTarget);
+  if (els.metricRegime) els.metricRegime.textContent = readout.regime;
+  if (els.metricRung) els.metricRung.textContent = String(readout.rungValue);
+  if (els.metricAggregation) els.metricAggregation.textContent = readout.display.aggregationMode;
+  if (els.metricActiveTetra) els.metricActiveTetra.textContent = readout.activeTetraId ?? "-";
+  if (els.metricActiveFace) els.metricActiveFace.textContent = readout.activeFaceLabel ?? "-";
+  if (els.metricActiveChirality) els.metricActiveChirality.textContent = readout.activeChirality ?? "-";
+  if (els.metricTrurtle) els.metricTrurtle.textContent = ui.display.showTrurtle ? "on" : "off";
+  if (els.metricEdges) els.metricEdges.textContent = ui.display.showEdges ? "on" : "off";
+  if (els.metricColorEdges) els.metricColorEdges.textContent = ui.display.showColorEdges ? "on" : "off";
+  if (els.metricLeftOpacity) els.metricLeftOpacity.textContent = `${Math.round(ui.display.leftFaceOpacity * 100)}%`;
+  if (els.metricRightOpacity) els.metricRightOpacity.textContent = `${Math.round(ui.display.rightFaceOpacity * 100)}%`;
+  if (els.metricCameraPreset) els.metricCameraPreset.textContent = ui.display.cameraPreset;
 
-  els.metricPhase.textContent = readout.cyclePhase;
-  els.metricResidue.textContent = String(readout.cycleResidue);
-  els.metricIncrement.textContent = String(readout.incrementTarget);
+  if (els.mobileCurrent) els.mobileCurrent.textContent = String(readout.currentD4s);
+  if (els.mobilePhase) els.mobilePhase.textContent = readout.cyclePhase;
+  if (els.mobileResidue) els.mobileResidue.textContent = String(readout.cycleResidue);
+  if (els.mobileRegime) els.mobileRegime.textContent = readout.regime;
+  if (els.mobileActiveTetra) els.mobileActiveTetra.textContent = readout.activeTetraId ?? "-";
 
-  els.metricRegime.textContent = readout.regime;
-  els.metricRung.textContent = String(readout.rungValue);
-  els.metricAggregation.textContent = readout.display.aggregationMode;
-
-  els.metricActiveTetra.textContent = readout.activeTetraId ?? "-";
-  els.metricActiveFace.textContent = readout.activeFaceLabel ?? "-";
-  els.metricActiveChirality.textContent = readout.activeChirality ?? "-";
-
-  els.metricTrurtle.textContent = ui.display.showTrurtle ? "on" : "off";
-  els.metricEdges.textContent = ui.display.showEdges ? "on" : "off";
-  els.metricColorEdges.textContent = ui.display.showColorEdges ? "on" : "off";
-  els.metricLeftOpacity.textContent = `${Math.round(ui.display.leftFaceOpacity * 100)}%`;
-  els.metricRightOpacity.textContent = `${Math.round(ui.display.rightFaceOpacity * 100)}%`;
-
-  els.metricCameraDistance.textContent = readout.camera.distance;
-  els.metricCameraYaw.textContent = readout.camera.yaw;
-  els.metricCameraPitch.textContent = readout.camera.pitch;
-  els.metricCameraPreset.textContent = ui.display.cameraPreset;
-
-  els.mobileCurrent.textContent = String(readout.currentD4s);
-  els.mobileTurn.textContent = String(readout.turnIndex);
-  els.mobilePhase.textContent = readout.cyclePhase;
-  els.mobileResidue.textContent = String(readout.cycleResidue);
-  els.mobileRegime.textContent = readout.regime;
-  els.mobileActiveTetra.textContent = readout.activeTetraId ?? "-";
-
-  const polarized = classifyPolarizedRoles(snapshot);
-  const filterName = ui.display.polarizedRoleFilter || "all";
-  const filteredCounts = filterSnapshotByPolarizedRole(snapshot, filterName);
-  if (els.statusText && filterName !== "all") {
-    els.statusText.textContent = `${readout.statusText} · ${filterName} ${filteredCounts.filteredCount}`;
+  if (els.metricsConsole) {
+    els.metricsConsole.textContent = formatConsole(readout);
   }
 }
 
 function draw() {
   resizeCanvasToDisplaySize(canvas, ctx);
-  projector = createProjector(canvas, ui.camera);
   syncUIFlags();
+
+  applyLadderDefaults(ui, snapshot.currentD4s);
+
+  const mode = ui.display.mode;
+  ui.camera.projectionMode = mode === "cubic" ? "orthographic" : "perspective";
+  projector = createProjector(canvas, ui.camera);
+
   syncZoomSlider();
+  syncDisplayModeControl();
 
   clearStage(ctx, canvas);
   drawStageGrid(ctx, canvas, ui.display.showStageGrid);
   drawCenterGuides(ctx, canvas);
 
-  applyLadderDefaults(ui, snapshot.currentD4s);
-
-  const mode = ui.display.mode;
   const scaffoldPoints = buildScaffoldPoints(snapshot.currentD4s);
-  const roleFilter = ui.display.polarizedRoleFilter || "all";
-  const filtered = filterSnapshotByPolarizedRole(snapshot, roleFilter);
-  const displaySnapshot = filtered.snapshot;
 
   if (ui.display.showTrurtle && (mode === "scaffold" || mode === "hybrid")) {
     renderScaffold(ctx, scaffoldPoints, projector, {
@@ -212,7 +238,7 @@ function draw() {
   }
 
   if (mode === "prime" || mode === "prime_plus_composite" || mode === "hybrid") {
-    renderPrimeScene(ctx, displaySnapshot, projector, {
+    renderPrimeScene(ctx, snapshot, projector, {
       showFaces: ui.display.showFaces,
       showEdges: ui.display.showEdges,
       showColorEdges: ui.display.showColorEdges,
@@ -224,19 +250,16 @@ function draw() {
   }
 
   if (mode === "cubic") {
-    ui.camera.projectionMode = "orthographic";
     renderCubicScene(ctx, snapshot, projector, {
       showLabels: ui.display.showLabels,
       showSites: true,
       pointAlpha: 0.22,
-      style: ui.display.cubicStyle || "full"
+      style: "full"
     });
-  } else {
-    ui.camera.projectionMode = "perspective";
   }
 
   if (mode === "prime_plus_composite" || mode === "hybrid") {
-    renderCompositeOverlay(ctx, displaySnapshot, projector, {
+    renderCompositeOverlay(ctx, snapshot, projector, {
       showLabels: ui.display.showLabels,
       activeOnly: true
     });
@@ -254,13 +277,14 @@ function stopPlayTimer() {
     playTimer = null;
   }
   ui.playback.isPlaying = false;
-  els.playBtn.textContent = "▶";
+  if (els.playBtn) els.playBtn.textContent = "▶";
 }
 
 function startPlayTimer() {
   stopPlayTimer();
   ui.playback.isPlaying = true;
-  els.playBtn.textContent = "❚❚";
+  if (els.playBtn) els.playBtn.textContent = "❚❚";
+
   const delay = Math.max(16, Math.round(1000 / Math.max(1, ui.playback.hz)));
   playTimer = setInterval(() => {
     snapshot = engine.step();
@@ -289,89 +313,97 @@ function pointerPos(event) {
   return { x: event.clientX - rect.left, y: event.clientY - rect.top };
 }
 
-els.homeBtn.addEventListener("click", () => {
-  window.location.href = "/";
-});
+function applyPreset(name) {
+  if (!name) return;
 
-els.displayModeSelect.addEventListener("change", () => {
+  if (name === "cubic_front" || name === "cubic_top" || name === "cubic_side") {
+    ui.display.mode = "cubic";
+    if (els.displayModeSelect) {
+      els.displayModeSelect.value = "cubic";
+    }
+  }
+
+  if (name === "cubic_front") {
+    ui.camera.projectionMode = "orthographic";
+    ui.camera.panX = 0;
+    ui.camera.panY = 0;
+    ui.camera.yaw = 0;
+    ui.camera.pitch = 0;
+    ui.camera.distance = 8.5;
+  } else if (name === "cubic_top") {
+    ui.camera.projectionMode = "orthographic";
+    ui.camera.panX = 0;
+    ui.camera.panY = 0;
+    ui.camera.yaw = 0;
+    ui.camera.pitch = Math.PI / 2;
+    ui.camera.distance = 8.5;
+  } else if (name === "cubic_side") {
+    ui.camera.projectionMode = "orthographic";
+    ui.camera.panX = 0;
+    ui.camera.panY = 0;
+    ui.camera.yaw = Math.PI / 2;
+    ui.camera.pitch = 0;
+    ui.camera.distance = 8.5;
+  } else {
+    applyCameraPreset(ui.camera, name);
+  }
+
+  ui.display.cameraPreset = name;
+  setStatus(ui, `camera preset: ${name}`);
+}
+
+els.displayModeSelect?.addEventListener("change", () => {
   setDisplayMode(ui, els.displayModeSelect.value);
   setStatus(ui, `display mode: ${ui.display.mode}`);
   draw();
 });
 
-els.pauseAtInput.addEventListener("change", () => {
+els.pauseAtInput?.addEventListener("change", () => {
   setPauseAt(ui, els.pauseAtInput.value);
   setStatus(ui, `pause threshold set to ${ui.playback.pauseAtD4s}`);
   draw();
 });
 
-els.hzSelect.addEventListener("change", () => {
-  setHz(ui, els.hzSelect.value);
+els.hzInput?.addEventListener("change", () => {
+  setHz(ui, els.hzInput.value);
   if (ui.playback.isPlaying) startPlayTimer();
   setStatus(ui, `rate set to ${ui.playback.hz} hz`);
   draw();
 });
 
-els.zoomSlider.addEventListener("input", () => {
+els.cameraPresetSelect?.addEventListener("change", () => {
+  applyPreset(els.cameraPresetSelect.value);
+  draw();
+});
+
+els.zoomSlider?.addEventListener("input", () => {
   ui.camera.distance = clamp(Number(els.zoomSlider.value), 4.5, 60);
   setStatus(ui, `zoom set to ${ui.camera.distance.toFixed(1)}`);
   draw();
 });
 
-els.leftFaceOpacitySlider.addEventListener("input", () => {
+els.leftFaceOpacitySlider?.addEventListener("input", () => {
   setStatus(ui, `left opacity set to ${els.leftFaceOpacitySlider.value}%`);
   draw();
 });
 
-els.rightFaceOpacitySlider.addEventListener("input", () => {
+els.rightFaceOpacitySlider?.addEventListener("input", () => {
   setStatus(ui, `right opacity set to ${els.rightFaceOpacitySlider.value}%`);
   draw();
 });
 
-els.toggleGrid.addEventListener("change", draw);
-els.toggleFaces.addEventListener("change", draw);
-els.toggleEdges.addEventListener("change", draw);
-els.toggleColorEdges.addEventListener("change", draw);
-els.toggleLabels.addEventListener("change", draw);
-els.toggleTrurtle.addEventListener("change", draw);
+[
+  els.toggleFaces,
+  els.toggleEdges,
+  els.toggleColorEdges,
+  els.toggleTrurtle,
+  els.toggleSpindles,
+  els.toggleGrid,
+  els.toggleAxes,
+  els.toggleLabels
+].forEach((el) => el?.addEventListener("change", draw));
 
-els.cubicStyleSelect?.addEventListener("change", () => {
-  ui.display.cubicStyle = els.cubicStyleSelect.value;
-  setStatus(ui, `cubic style: ${ui.display.cubicStyle}`);
-  draw();
-});
-
-els.cubicFrontBtn?.addEventListener("click", () => {
-  applyCubicCameraPreset("cubic_front");
-  setStatus(ui, "camera preset: cubic front");
-  draw();
-});
-
-els.cubicTopBtn?.addEventListener("click", () => {
-  applyCubicCameraPreset("cubic_top");
-  setStatus(ui, "camera preset: cubic top");
-  draw();
-});
-
-els.cubicSideBtn?.addEventListener("click", () => {
-  applyCubicCameraPreset("cubic_side");
-  setStatus(ui, "camera preset: cubic side");
-  draw();
-});
-
-els.polarizedRoleFilter?.addEventListener("change", () => {
-  ui.display.polarizedRoleFilter = els.polarizedRoleFilter.value;
-  setStatus(ui, `filter: ${ui.display.polarizedRoleFilter}`);
-  draw();
-});
-
-els.orbitBtn.addEventListener("click", () => {
-  const enabled = toggleOrbit(ui.camera);
-  setStatus(ui, enabled ? "orbit on" : "orbit off");
-  draw();
-});
-
-els.resetBtn.addEventListener("click", () => {
+els.resetBtn?.addEventListener("click", () => {
   engine.reset();
   snapshot = engine.snapshot();
   stopPlayTimer();
@@ -379,14 +411,22 @@ els.resetBtn.addEventListener("click", () => {
   draw();
 });
 
-els.stepBtn.addEventListener("click", () => {
+els.stepBackBtn?.addEventListener("click", () => {
+  stopPlayTimer();
+  engine.reset();
+  snapshot = engine.snapshot();
+  setStatus(ui, "step back not yet implemented");
+  draw();
+});
+
+els.stepBtn?.addEventListener("click", () => {
   stopPlayTimer();
   snapshot = engine.step();
   setStatus(ui, "stepped");
   draw();
 });
 
-els.playBtn.addEventListener("click", () => {
+els.playBtn?.addEventListener("click", () => {
   if (ui.playback.isPlaying) {
     stopPlayTimer();
     setStatus(ui, "paused");
@@ -394,20 +434,6 @@ els.playBtn.addEventListener("click", () => {
     startPlayTimer();
     setStatus(ui, `running at ${ui.playback.hz} hz`);
   }
-  draw();
-});
-
-els.presetJunctionBtn.addEventListener("click", () => {
-  applyCameraPreset(ui.camera, "junction");
-  ui.display.cameraPreset = "junction";
-  setStatus(ui, "camera preset: junction");
-  draw();
-});
-
-els.presetTopBtn.addEventListener("click", () => {
-  applyCameraPreset(ui.camera, "top");
-  ui.display.cameraPreset = "top";
-  setStatus(ui, "camera preset: top");
   draw();
 });
 
@@ -447,113 +473,22 @@ window.addEventListener("pointerup", () => {
   canvas.classList.remove("panning");
 });
 
-canvas.addEventListener("wheel", (event) => {
-  event.preventDefault();
-  zoomCamera(ui.camera, event.deltaY);
-  draw();
-}, { passive: false });
+canvas.addEventListener(
+  "wheel",
+  (event) => {
+    event.preventDefault();
+    zoomCamera(ui.camera, event.deltaY);
+    draw();
+  },
+  { passive: false }
+);
 
 window.addEventListener("resize", draw);
 
-setDisplayMode(ui, "prime");
-syncZoomSlider();
+setDisplayMode(ui, els.displayModeSelect?.value || "prime");
+setPauseAt(ui, els.pauseAtInput?.value || 900);
+setHz(ui, els.hzInput?.value || 30);
+applyPreset(els.cameraPresetSelect?.value || "junction");
+
 draw();
 ensureOrbitLoop();
-
-function wireExportButtons(runtime, uiStateGetter = () => ({})) {
-  const centroidsBtn = document.getElementById("export-centroids-btn");
-  const tetraBtn = document.getElementById("export-tetrahedra-btn");
-  const sceneBtn = document.getElementById("export-scene-btn");
-  const statusEl = document.getElementById("export-status");
-
-  const setStatus = (msg) => {
-    if (statusEl) statusEl.textContent = msg;
-    console.log(msg);
-  };
-
-  if (centroidsBtn) {
-    centroidsBtn.addEventListener("click", () => {
-      try {
-        const result = exportCentroids(runtime);
-        setStatus(`centroids ${result.count}`);
-      } catch (err) {
-        setStatus("export failed");
-        console.error(err);
-      }
-    });
-  }
-
-  if (tetraBtn) {
-    tetraBtn.addEventListener("click", () => {
-      try {
-        const result = exportTetrahedra(runtime);
-        setStatus(`tetrahedra ${result.count}`);
-      } catch (err) {
-        setStatus("export failed");
-        console.error(err);
-      }
-    });
-  }
-
-  if (sceneBtn) {
-    sceneBtn.addEventListener("click", () => {
-      try {
-        exportSceneState(runtime, uiStateGetter());
-        setStatus("scene exported");
-      } catch (err) {
-        setStatus("export failed");
-        console.error(err);
-      }
-    });
-  }
-}
-
-window.__D4_RUNTIME__ = {
-  get engine() { return engine; },
-  get ui() { return ui; },
-  get snapshot() { return snapshot; },
-  get camera() { return ui.camera; },
-  get metrics() {
-    return {
-      currentD4s: snapshot.currentD4s,
-      turnIndex: snapshot.turnIndex,
-      phase: snapshot.phase,
-      residue: snapshot.residue,
-    };
-  },
-  get playback() { return ui.playback; },
-  get tetrahedra() {
-    return snapshot?.tetrahedra
-      ?? snapshot?.tetras
-      ?? snapshot?.primes
-      ?? snapshot?.cells
-      ?? [];
-  }
-};
-
-wireExportButtons(window.__D4_RUNTIME__, () => ({
-  camera: ui.camera,
-  display: ui.display,
-  playback: ui.playback,
-}));
-
-function applyCubicCameraPreset(name) {
-  ui.camera.projectionMode = "orthographic";
-  ui.camera.panX = 0;
-  ui.camera.panY = 0;
-  ui.display.cameraPreset = name;
-
-  if (name === "cubic_front") {
-    ui.camera.yaw = 0;
-    ui.camera.pitch = 0;
-    ui.camera.distance = 8.5;
-  } else if (name === "cubic_top") {
-    ui.camera.yaw = 0;
-    ui.camera.pitch = Math.PI / 2;
-    ui.camera.distance = 8.5;
-  } else if (name === "cubic_side") {
-    ui.camera.yaw = Math.PI / 2;
-    ui.camera.pitch = 0;
-    ui.camera.distance = 8.5;
-  }
-}
