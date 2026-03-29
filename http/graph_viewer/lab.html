@@ -3,224 +3,223 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>d4 Lab</title>
+  <title>D4 Lab</title>
   <link rel="stylesheet" href="/graph_viewer_assets/lab.css" />
 </head>
 <body>
-  <div class="app">
-    <header class="topbar">
-      <div class="brand-panel">
-        <div class="logo-box">D4 LAB</div>
-        <button id="home-btn" class="btn-compact" type="button">Home</button>
+  <div class="lab-shell">
+    <header class="site-header">
+      <div class="site-header__logo">
+        <div class="logo-box">LOGO</div>
       </div>
 
-      <div class="controls-panel">
-        <div class="controls-row">
-          <label class="check"><input type="checkbox" id="toggle-grid" checked /> <span>Show stage grid</span></label>
-          <label class="check"><input type="checkbox" id="toggle-faces" checked /> <span>Show faces</span></label>
-          <label class="check"><input type="checkbox" id="toggle-edges" checked /> <span>Show edges</span></label>
-          <label class="check"><input type="checkbox" id="toggle-color-edges" checked /> <span>Show color edges</span></label>
-          <label class="check"><input type="checkbox" id="toggle-labels" /> <span>Show labels</span></label>
-          <label class="check"><input type="checkbox" id="toggle-trurtle" checked /> <span>Show trurtle</span></label>
+      <div class="site-header__main">
+        <nav class="site-nav" aria-label="Site navigation">
+          <a href="/" class="site-nav__item site-nav__item--home">Home</a>
+          <a href="#" class="site-nav__item">Site Nav</a>
+          <a href="#" class="site-nav__item">Site Nav</a>
+          <a href="#" class="site-nav__item">Site Nav</a>
+          <div class="site-nav__lab">LAB</div>
+        </nav>
 
-          <div class="field-col">
-            <label for="display-mode-select">Display mode</label>
+        <button id="settings-btn" class="icon-btn settings-btn" type="button" aria-label="Settings">
+          ⚙
+        </button>
+      </div>
+    </header>
+
+    <section class="lab-bar" aria-label="Lab controls">
+      <div class="lab-bar__group lab-bar__group--opacity">
+        <div class="inline-field inline-field--slider">
+          <label for="left-face-opacity-slider">L</label>
+          <input id="left-face-opacity-slider" type="range" min="0" max="100" step="1" value="80" />
+        </div>
+
+        <div class="inline-field inline-field--slider">
+          <label for="right-face-opacity-slider">R</label>
+          <input id="right-face-opacity-slider" type="range" min="0" max="100" step="1" value="80" />
+        </div>
+      </div>
+
+      <div class="lab-bar__group lab-bar__group--toggles">
+        <label class="inline-check">
+          <input type="checkbox" id="toggle-faces" checked />
+          <span>Faces</span>
+        </label>
+
+        <label class="inline-check">
+          <input type="checkbox" id="toggle-edges" checked />
+          <span>Edges</span>
+        </label>
+      </div>
+
+      <div class="lab-bar__group lab-bar__group--transport">
+        <button id="reset-btn" class="icon-btn" type="button" aria-label="Reset">↺</button>
+        <button id="step-back-btn" class="icon-btn" type="button" aria-label="Step back">|◀</button>
+        <button id="step-btn" class="icon-btn" type="button" aria-label="Step forward">▶|</button>
+        <button id="play-btn" class="play-btn" type="button" aria-label="Play or pause">▶ / ❚❚</button>
+      </div>
+    </section>
+
+    <main class="workspace">
+      <section class="stage-column">
+        <div class="stage-frame">
+          <canvas id="stage-canvas"></canvas>
+
+          <aside class="zoom-rail zoom-rail--mobile-only" aria-label="Zoom">
+            <label for="zoom-slider">Zoom</label>
+            <input id="zoom-slider" type="range" min="4.5" max="60" step="0.1" value="14" />
+          </aside>
+        </div>
+
+        <div class="stage-readout">
+          <div class="stage-readout__item"><span>Tick</span><strong id="metric-turn">343</strong></div>
+          <div class="stage-readout__item"><span>Dist</span><strong id="metric-camera-distance">14.00</strong></div>
+          <div class="stage-readout__item"><span>Yaw</span><strong id="metric-camera-yaw">0.00</strong></div>
+          <div class="stage-readout__item"><span>Pitch</span><strong id="metric-camera-pitch">0.00</strong></div>
+          <div class="stage-readout__item stage-readout__status"><span>Status</span><strong id="status-text">ready</strong></div>
+        </div>
+      </section>
+
+      <aside class="left-rail">
+        <section class="rail-card">
+          <div class="rail-card__title">Render</div>
+
+          <div class="field">
+            <label for="display-mode-select">Render mode</label>
             <select id="display-mode-select">
-              <option value="scaffold">Scaffold</option>
               <option value="prime" selected>Prime</option>
-              <option value="prime_plus_composite">Prime+Composite</option>
+              <option value="scaffold">Scaffold</option>
+              <option value="prime_plus_composite">Prime + Composite</option>
               <option value="hybrid">Hybrid</option>
               <option value="cubic">Cubic</option>
             </select>
           </div>
 
-          <div class="field-col">
-            <label for="pause-at-input">Pause at d4s</label>
+          <label class="stack-check">
+            <input type="checkbox" id="toggle-color-edges" checked />
+            <span>Show color edges</span>
+          </label>
+
+          <label class="stack-check">
+            <input type="checkbox" id="toggle-trurtle" checked />
+            <span>Show trurtle</span>
+          </label>
+
+          <label class="stack-check">
+            <input type="checkbox" id="toggle-spindles" />
+            <span>Show spindles</span>
+          </label>
+        </section>
+
+        <section class="rail-card">
+          <div class="rail-card__title">Ticks</div>
+
+          <div class="field">
+            <label for="pause-at-input">Pause at</label>
             <input id="pause-at-input" type="number" min="0" step="1" value="900" />
           </div>
 
-          <div class="readout"><strong>Current</strong><span id="current-readout">0</span></div>
-          <div class="readout"><strong>Residue</strong><span id="residue-readout">0</span></div>
-        </div>
+          <div class="field">
+            <label for="hz-input">Rate (Hz)</label>
+            <input id="hz-input" type="number" min="1" step="1" value="30" />
+          </div>
+        </section>
 
-        <div class="controls-row">
-          <button id="preset-junction-btn" class="btn-compact" type="button">Junction</button>
-          <button id="preset-top-btn" class="btn-compact" type="button">Top</button>
-          <button id="orbit-btn" class="btn-compact" type="button">Orbit</button>
-          <button id="reset-btn" class="btn-compact" type="button">Reset</button>
-          <button id="step-btn" class="btn-compact" type="button">Step</button>
+        <section class="rail-card">
+          <div class="rail-card__title">Camera</div>
 
-          <div class="field-col">
-            <label for="hz-select">Rate</label>
-            <select id="hz-select">
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="30" selected>30</option>
-              <option value="60">60</option>
+          <div class="field">
+            <label for="camera-preset-select">Preset</label>
+            <select id="camera-preset-select">
+              <option value="junction" selected>Junction</option>
+              <option value="top">Top</option>
+              <option value="cubic_front">Cubic front</option>
+              <option value="cubic_top">Cubic top</option>
+              <option value="cubic_side">Cubic side</option>
             </select>
           </div>
+        </section>
 
-          <button id="play-btn" class="play-btn" type="button">▶</button>
+        <section class="rail-card">
+          <div class="rail-card__title">Stage</div>
 
-          <div class="field-col wide">
-            <label for="zoom-slider">Zoom</label>
-            <input id="zoom-slider" type="range" min="4.5" max="60" step="0.1" value="14" />
-          </div>
+          <label class="stack-check">
+            <input type="checkbox" id="toggle-grid" checked />
+            <span>Stage grid</span>
+          </label>
 
-          <div class="field-col wide">
-            <label for="left-face-opacity-slider">Left opacity (RGB %)</label>
-            <input id="left-face-opacity-slider" type="range" min="0" max="100" step="1" value="80" />
-          </div>
+          <label class="stack-check">
+            <input type="checkbox" id="toggle-axes" />
+            <span>XYZ axes</span>
+          </label>
 
-          <div class="field-col wide">
-            <label for="right-face-opacity-slider">Right opacity (CMY %)</label>
-            <input id="right-face-opacity-slider" type="range" min="0" max="100" step="1" value="80" />
-          </div>
-
-          <div class="field-col">
-            <label for="cubic-style-select">Cubic style</label>
-            <select id="cubic-style-select">
-              <option value="full" selected>Full</option>
-              <option value="sites_only">Sites only</option>
-              <option value="frame">Frame only</option>
-              <option value="center">Center</option>
-              <option value="poles">Poles</option>
-              <option value="equator">Equator</option>
-              <option value="corners">Corners</option>
-            </select>
-          </div>
-
-          <button id="cubic-front-btn" class="btn-compact" type="button">Cubic front</button>
-          <button id="cubic-top-btn" class="btn-compact" type="button">Cubic top</button>
-          <button id="cubic-side-btn" class="btn-compact" type="button">Cubic side</button>
-
-          <div class="status-inline"><span id="status-text">ready</span></div>
-        </div>
-      </div>
-    </header>
-
-    <main class="main">
-      <aside class="sidebar">
-        <div class="metrics-card">
-          <h2>Metrics</h2>
-
-          <div class="metrics-section">
-            <div class="metrics-section-title">Counts</div>
-            <div class="metric-grid">
-              <strong>Current d4s</strong><span id="metric-current">0</span>
-              <strong>Turn</strong><span id="metric-turn">0</span>
-              <strong>Cells</strong><span id="metric-cells">0</span>
-              <strong>Exposed faces</strong><span id="metric-faces">0</span>
-              <strong>Open vertices</strong><span id="metric-open-vertices">0</span>
-            </div>
-          </div>
-
-          <div class="metrics-section">
-            <div class="metrics-section-title">Cycle</div>
-            <div class="metric-grid">
-              <strong>Phase</strong><span id="metric-phase">A</span>
-              <strong>Residue</strong><span id="metric-residue">0</span>
-              <strong>Increment target</strong><span id="metric-increment">3</span>
-            </div>
-          </div>
-
-          <div class="metrics-section">
-            <div class="metrics-section-title">Regime</div>
-            <div class="metric-grid">
-              <strong>Regime</strong><span id="metric-regime">Seed / mediator</span>
-              <strong>Rung</strong><span id="metric-rung">1.5</span>
-              <strong>Aggregation</strong><span id="metric-aggregation">none</span>
-            </div>
-          </div>
-
-          <div class="metrics-section">
-            <div class="metrics-section-title">Active</div>
-            <div class="metric-grid">
-              <strong>Tetra</strong><span id="metric-active-tetra">-</span>
-              <strong>Face</strong><span id="metric-active-face">-</span>
-              <strong>Chirality</strong><span id="metric-active-chirality">-</span>
-            </div>
-          </div>
-
-          <div class="metrics-section">
-            <div class="metrics-section-title">Render</div>
-            <div class="metric-grid">
-              <strong>Trurtle</strong><span id="metric-trurtle">on</span>
-              <strong>Edges</strong><span id="metric-edges">on</span>
-              <strong>Color edges</strong><span id="metric-color-edges">on</span>
-              <strong>Left faces</strong><span id="metric-left-opacity">80%</span>
-              <strong>Right faces</strong><span id="metric-right-opacity">80%</span>
-            </div>
-          </div>
-
-          <div class="metrics-section">
-            <div class="metrics-section-title">Camera</div>
-            <div class="metric-grid">
-              <strong>Distance</strong><span id="metric-camera-distance">14.00</span>
-              <strong>Yaw</strong><span id="metric-camera-yaw">0.00</span>
-              <strong>Pitch</strong><span id="metric-camera-pitch">0.00</span>
-              <strong>Preset</strong><span id="metric-camera-preset">junction</span>
-            </div>
-          </div>
-
-          <div class="hint">
-            Left chirality uses RGB on faces 1/2/3. Right chirality uses CMY on faces 1/2/3. White structural edges stay at 50%.
-          </div>
-        </div>
+          <label class="stack-check">
+            <input type="checkbox" id="toggle-labels" />
+            <span>Labels</span>
+          </label>
+        </section>
       </aside>
-
-      <section class="stage-wrap">
-        <canvas id="stage-canvas"></canvas>
-      </section>
     </main>
 
-    <section class="mobile-metrics">
-      <div class="metrics-card">
-        <h2>Metrics</h2>
-        <div class="metric-grid">
-          <strong>Current d4s</strong><span id="mobile-current">0</span>
-          <strong>Turn</strong><span id="mobile-turn">0</span>
-          <strong>Phase</strong><span id="mobile-phase">A</span>
-          <strong>Residue</strong><span id="mobile-residue">0</span>
-          <strong>Regime</strong><span id="mobile-regime">Seed / mediator</span>
-          <strong>Active tetra</strong><span id="mobile-active-tetra">-</span>
-        </div>
+    <section class="metrics-panel">
+      <div class="metrics-panel__header">
+        <div class="metrics-panel__title">Console</div>
+      </div>
+
+      <pre class="metrics-console" id="metrics-console">current_d4s      : 0
+turn             : 0
+cells            : 0
+exposed_faces    : 0
+open_vertices    : 0
+phase            : A
+residue          : 0
+increment_target : 3
+regime           : Seed / mediator
+rung             : 1.5
+aggregation      : none
+active_tetra     : -
+active_face      : -
+active_chirality : -
+trurtle          : on
+edges            : on
+color_edges      : on
+left_opacity     : 80%
+right_opacity    : 80%
+camera_distance  : 14.00
+camera_yaw       : 0.00
+camera_pitch     : 0.00
+camera_preset    : junction</pre>
+
+      <div class="metrics-hidden-bindings" aria-hidden="true">
+        <span id="metric-current">0</span>
+        <span id="metric-cells">0</span>
+        <span id="metric-faces">0</span>
+        <span id="metric-open-vertices">0</span>
+        <span id="metric-phase">A</span>
+        <span id="metric-residue">0</span>
+        <span id="metric-increment">3</span>
+        <span id="metric-regime">Seed / mediator</span>
+        <span id="metric-rung">1.5</span>
+        <span id="metric-aggregation">none</span>
+        <span id="metric-active-tetra">-</span>
+        <span id="metric-active-face">-</span>
+        <span id="metric-active-chirality">-</span>
+        <span id="metric-trurtle">on</span>
+        <span id="metric-edges">on</span>
+        <span id="metric-color-edges">on</span>
+        <span id="metric-left-opacity">80%</span>
+        <span id="metric-right-opacity">80%</span>
+        <span id="metric-camera-preset">junction</span>
+        <span id="mobile-current">0</span>
+        <span id="mobile-phase">A</span>
+        <span id="mobile-residue">0</span>
+        <span id="mobile-regime">Seed / mediator</span>
+        <span id="mobile-active-tetra">-</span>
       </div>
     </section>
   </div>
 
   <script type="module" src="/graph_viewer_assets/lab_boot.js"></script>
-
-    <div class="export-strip">
-      <button id="export-centroids-btn" type="button">Export centroids</button>
-      <button id="export-tetrahedra-btn" type="button">Export tetrahedra</button>
-      <button id="export-scene-btn" type="button">Export scene</button>
-      <label for="polarized-role-filter">Filter</label>
-      <select id="polarized-role-filter">
-        <option value="all">all</option>
-        <option value="center">center</option>
-        <option value="poles">poles</option>
-        <option value="equator">equator</option>
-        <option value="corners">corners</option>
-        <option value="C">C</option>
-        <option value="Fp">Fp</option>
-        <option value="Fm">Fm</option>
-        <option value="E0">E0</option>
-        <option value="E1">E1</option>
-        <option value="E2">E2</option>
-        <option value="E3">E3</option>
-        <option value="K0">K0</option>
-        <option value="K1">K1</option>
-        <option value="K2">K2</option>
-        <option value="K3">K3</option>
-        <option value="K4">K4</option>
-        <option value="K5">K5</option>
-        <option value="K6">K6</option>
-        <option value="K7">K7</option>
-      </select>
-      <span id="export-status" aria-live="polite"></span>
-    </div>
-
 </body>
 </html>
