@@ -14,8 +14,6 @@
   --shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
   --radius-lg: 16px;
   --radius-md: 12px;
-  --header-h: 88px;
-  --labbar-h: 72px;
   --left-rail-w: 250px;
 }
 
@@ -123,10 +121,10 @@ select {
 /* controls */
 
 .lab-bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(240px, 420px) 140px max-content;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 20px;
   padding: 12px 18px;
   padding-left: calc(var(--left-rail-w) + 18px);
   border-bottom: 1px solid var(--line);
@@ -134,27 +132,37 @@ select {
 }
 
 .lab-bar__group {
-  display: flex;
-  align-items: center;
-  gap: 14px;
   min-width: 0;
-  flex-wrap: wrap;
+}
+
+.lab-bar__group--opacity {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
 .inline-field {
-  display: flex;
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .inline-field label {
   color: var(--muted);
   font-size: 0.88rem;
-  min-width: 14px;
+  min-width: 0;
 }
 
 .inline-field--slider input[type="range"] {
-  width: 150px;
+  width: 100%;
+}
+
+.lab-bar__group--toggles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  justify-items: start;
 }
 
 .inline-check {
@@ -162,7 +170,7 @@ select {
   align-items: center;
   gap: 8px;
   min-height: 40px;
-  padding: 0 10px;
+  padding: 0 12px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--panel);
@@ -174,10 +182,18 @@ select {
   accent-color: var(--accent);
 }
 
+.lab-bar__group--transport {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
 .icon-btn,
 .play-btn,
 select,
-input[type="number"] {
+input[type="number"],
+input[type="range"] {
   appearance: none;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -187,19 +203,22 @@ input[type="number"] {
 
 .icon-btn,
 .play-btn {
-  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
   padding: 0 12px;
   cursor: pointer;
+}
+
+.icon-btn {
+  min-width: 40px;
+  background: var(--panel);
 }
 
 .play-btn {
   min-width: 92px;
   font-weight: 700;
-}
-
-.icon-btn {
-  min-width: 42px;
-  background: var(--panel);
 }
 
 select,
@@ -362,6 +381,14 @@ input[type="number"]:hover {
   margin-bottom: 8px;
 }
 
+.spinor-opacity-field {
+  margin: 4px 0 10px 24px;
+}
+
+.spinor-opacity-field.is-hidden {
+  display: none;
+}
+
 /* console */
 
 .metrics-panel {
@@ -415,8 +442,13 @@ input[type="number"]:hover {
   }
 
   .lab-bar {
+    grid-template-columns: 1fr;
     padding-left: 18px;
-    justify-content: flex-start;
+    align-items: start;
+  }
+
+  .lab-bar__group--transport {
+    flex-wrap: wrap;
   }
 
   .workspace {
@@ -460,5 +492,9 @@ input[type="number"]:hover {
   .stage-frame {
     height: 48vh;
     min-height: 300px;
+  }
+
+  .metrics-console {
+    font-size: 12px;
   }
 }

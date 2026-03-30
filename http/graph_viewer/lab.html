@@ -57,7 +57,7 @@
         <button id="reset-btn" class="icon-btn" type="button" aria-label="Reset">↺</button>
         <button id="step-back-btn" class="icon-btn" type="button" aria-label="Step back">|◀</button>
         <button id="step-btn" class="icon-btn" type="button" aria-label="Step forward">▶|</button>
-        <button id="play-btn" class="play-btn" type="button" aria-label="Play or pause">▶ / ❚❚</button>
+        <button id="play-btn" class="play-btn" type="button" aria-label="Play or pause">▶</button>
       </div>
     </section>
 
@@ -68,13 +68,13 @@
 
           <aside class="zoom-rail zoom-rail--mobile-only" aria-label="Zoom">
             <label for="zoom-slider">Zoom</label>
-            <input id="zoom-slider" type="range" min="4.5" max="60" step="0.1" value="14" />
+            <input id="zoom-slider" type="range" min="4.5" max="60" step="0.1" value="15" />
           </aside>
         </div>
 
         <div class="stage-readout">
-          <div class="stage-readout__item"><span>Tick</span><strong id="metric-turn">343</strong></div>
-          <div class="stage-readout__item"><span>Dist</span><strong id="metric-camera-distance">14.00</strong></div>
+          <div class="stage-readout__item"><span>Tick</span><strong id="metric-turn">0</strong></div>
+          <div class="stage-readout__item"><span>Dist</span><strong id="metric-camera-distance">15.00</strong></div>
           <div class="stage-readout__item"><span>Yaw</span><strong id="metric-camera-yaw">0.00</strong></div>
           <div class="stage-readout__item"><span>Pitch</span><strong id="metric-camera-pitch">0.00</strong></div>
           <div class="stage-readout__item stage-readout__status"><span>Status</span><strong id="status-text">ready</strong></div>
@@ -89,17 +89,18 @@
             <label for="display-mode-select">Render mode</label>
             <select id="display-mode-select">
               <option value="prime" selected>Prime</option>
-              <option value="scaffold">Scaffold</option>
-              <option value="prime_plus_composite">Prime + Composite</option>
-              <option value="hybrid">Hybrid</option>
-              <option value="cubic">Cubic</option>
             </select>
           </div>
 
           <label class="stack-check">
-            <input type="checkbox" id="toggle-color-edges" checked />
-            <span>Show color edges</span>
+            <input type="checkbox" id="toggle-spinors" checked />
+            <span>Show spinors</span>
           </label>
+
+          <div class="field spinor-opacity-field" id="spinor-opacity-field">
+            <label for="spinor-opacity-slider">Spinor opacity</label>
+            <input id="spinor-opacity-slider" type="range" min="0" max="100" step="1" value="28" />
+          </div>
 
           <label class="stack-check">
             <input type="checkbox" id="toggle-trurtle" checked />
@@ -107,8 +108,8 @@
           </label>
 
           <label class="stack-check">
-            <input type="checkbox" id="toggle-spindles" />
-            <span>Show spindles</span>
+            <input type="checkbox" id="toggle-color-edges" checked />
+            <span>Show color edges</span>
           </label>
         </section>
 
@@ -130,13 +131,11 @@
           <div class="rail-card__title">Camera</div>
 
           <div class="field">
-            <label for="camera-preset-select">Preset</label>
+            <label for="camera-preset-select">Perspective</label>
             <select id="camera-preset-select">
-              <option value="junction" selected>Junction</option>
+              <option value="perspective_default" selected>Perspective</option>
+              <option value="perspective_15_0_0">Perspective 15,0,0</option>
               <option value="top">Top</option>
-              <option value="cubic_front">Cubic front</option>
-              <option value="cubic_top">Cubic top</option>
-              <option value="cubic_side">Cubic side</option>
             </select>
           </div>
         </section>
@@ -181,15 +180,17 @@ aggregation      : none
 active_tetra     : -
 active_face      : -
 active_chirality : -
+spinors          : on
+spinor_opacity   : 28%
 trurtle          : on
 edges            : on
 color_edges      : on
 left_opacity     : 80%
 right_opacity    : 80%
-camera_distance  : 14.00
+camera_distance  : 15.00
 camera_yaw       : 0.00
 camera_pitch     : 0.00
-camera_preset    : junction</pre>
+camera_preset    : perspective_default</pre>
 
       <div class="metrics-hidden-bindings" aria-hidden="true">
         <span id="metric-current">0</span>
@@ -210,7 +211,7 @@ camera_preset    : junction</pre>
         <span id="metric-color-edges">on</span>
         <span id="metric-left-opacity">80%</span>
         <span id="metric-right-opacity">80%</span>
-        <span id="metric-camera-preset">junction</span>
+        <span id="metric-camera-preset">perspective_default</span>
         <span id="mobile-current">0</span>
         <span id="mobile-phase">A</span>
         <span id="mobile-residue">0</span>

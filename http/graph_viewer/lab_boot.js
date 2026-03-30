@@ -32,20 +32,25 @@ import {
 } from "./kernel/d4_projector.js";
 import { buildScaffoldPoints, renderScaffold } from "./kernel/d4_render_scaffold.js";
 import { renderPrimeScene } from "./kernel/d4_render_prime.js";
-import { renderCompositeOverlay } from "./kernel/d4_render_composite.js";
-import { renderCubicScene } from "./kernel/d4_render_cubic.js";
 
 const engine = new D4GrowthEngine();
 const ui = createUIState();
 ui.camera = createDefaultCamera();
 
+<<<<<<< HEAD
 ui.display.showTrurtle = true;
+=======
+ui.display.showSpinors = true;
+ui.display.showTrurtle = true;
+ui.display.showFaces = true;
+>>>>>>> b198ef2 (ui stable)
 ui.display.showEdges = true;
 ui.display.showColorEdges = true;
+ui.display.spinorOpacity = 0.28;
 ui.display.leftFaceOpacity = 0.8;
 ui.display.rightFaceOpacity = 0.8;
 ui.display.showAxes = false;
-ui.display.cameraPreset = "junction";
+ui.display.cameraPreset = "perspective_default";
 
 const canvas = document.getElementById("stage-canvas");
 const ctx = canvas.getContext("2d");
@@ -71,7 +76,9 @@ const els = {
   displayModeSelect: document.getElementById("display-mode-select"),
   toggleColorEdges: document.getElementById("toggle-color-edges"),
   toggleTrurtle: document.getElementById("toggle-trurtle"),
-  toggleSpindles: document.getElementById("toggle-spindles"),
+  toggleSpinors: document.getElementById("toggle-spinors"),
+  spinorOpacityField: document.getElementById("spinor-opacity-field"),
+  spinorOpacitySlider: document.getElementById("spinor-opacity-slider"),
   pauseAtInput: document.getElementById("pause-at-input"),
   hzInput: document.getElementById("hz-input"),
   cameraPresetSelect: document.getElementById("camera-preset-select"),
@@ -135,9 +142,14 @@ function syncUIFlags() {
   ui.display.showEdges = els.toggleEdges?.checked ?? true;
   ui.display.showColorEdges = els.toggleColorEdges?.checked ?? true;
   ui.display.showTrurtle = els.toggleTrurtle?.checked ?? true;
+<<<<<<< HEAD
+=======
+  ui.display.showSpinors = els.toggleSpinors?.checked ?? true;
+>>>>>>> b198ef2 (ui stable)
   ui.display.showLabels = els.toggleLabels?.checked ?? false;
   ui.display.showStageGrid = els.toggleGrid?.checked ?? true;
   ui.display.showAxes = els.toggleAxes?.checked ?? false;
+  ui.display.spinorOpacity = sliderPctToAlpha(els.spinorOpacitySlider?.value ?? 28);
   ui.display.leftFaceOpacity = sliderPctToAlpha(els.leftFaceOpacitySlider?.value ?? 80);
   ui.display.rightFaceOpacity = sliderPctToAlpha(els.rightFaceOpacitySlider?.value ?? 80);
 }
@@ -150,7 +162,11 @@ function syncZoomSlider() {
 
 function syncDisplayModeControl() {
   if (els.displayModeSelect) {
+<<<<<<< HEAD
     els.displayModeSelect.value = ui.display.mode;
+=======
+    els.displayModeSelect.value = "prime";
+>>>>>>> b198ef2 (ui stable)
   }
 }
 
@@ -167,7 +183,20 @@ function syncPauseAtInput() {
   }
 }
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+function syncSpinorOpacityVisibility() {
+  if (!els.spinorOpacityField) return;
+  els.spinorOpacityField.classList.toggle("is-hidden", !ui.display.showSpinors);
+}
+
+function syncSpinorOpacitySlider() {
+  if (!els.spinorOpacitySlider) return;
+  els.spinorOpacitySlider.value = String(Math.round((ui.display.spinorOpacity ?? 0.28) * 100));
+}
+
+>>>>>>> b198ef2 (ui stable)
 function formatConsole(readout) {
   return [
     `current_d4s      : ${readout.currentD4s}`,
@@ -184,6 +213,11 @@ function formatConsole(readout) {
     `active_tetra     : ${readout.activeTetraId ?? "-"}`,
     `active_face      : ${readout.activeFaceLabel ?? "-"}`,
     `active_chirality : ${readout.activeChirality ?? "-"}`,
+<<<<<<< HEAD
+=======
+    `spinors          : ${ui.display.showSpinors ? "on" : "off"}`,
+    `spinor_opacity   : ${Math.round((ui.display.spinorOpacity ?? 0.28) * 100)}%`,
+>>>>>>> b198ef2 (ui stable)
     `trurtle          : ${ui.display.showTrurtle ? "on" : "off"}`,
     `edges            : ${ui.display.showEdges ? "on" : "off"}`,
     `color_edges      : ${ui.display.showColorEdges ? "on" : "off"}`,
@@ -241,9 +275,14 @@ function draw() {
   syncUIFlags();
 
   applyLadderDefaults(ui, snapshot.currentD4s);
+<<<<<<< HEAD
 
   const mode = ui.display.mode;
   ui.camera.projectionMode = mode === "cubic" ? "orthographic" : "perspective";
+=======
+  setDisplayMode(ui, "prime");
+  ui.camera.projectionMode = "perspective";
+>>>>>>> b198ef2 (ui stable)
   projector = createProjector(canvas, ui.camera);
 
   syncZoomSlider();
@@ -251,49 +290,41 @@ function draw() {
 <<<<<<< Updated upstream
 =======
   syncPauseAtInput();
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+  syncSpinorOpacitySlider();
+  syncSpinorOpacityVisibility();
+>>>>>>> b198ef2 (ui stable)
 
   clearStage(ctx, canvas);
   drawStageGrid(ctx, canvas, ui.display.showStageGrid);
   drawCenterGuides(ctx, canvas);
 
-  const scaffoldPoints = buildScaffoldPoints(snapshot.currentD4s);
+  const spinorPoints = buildScaffoldPoints(snapshot.currentD4s);
 
+<<<<<<< HEAD
   if (ui.display.showTrurtle && (mode === "scaffold" || mode === "hybrid")) {
     renderScaffold(ctx, scaffoldPoints, projector, {
+=======
+  if (ui.display.showSpinors) {
+    renderScaffold(ctx, spinorPoints, projector, {
+>>>>>>> b198ef2 (ui stable)
       showFaces: ui.display.showFaces,
       showLabels: ui.display.showLabels,
-      alphaScale: mode === "hybrid" ? 0.34 : 1
+      alphaScale: ui.display.spinorOpacity ?? 0.28
     });
   }
 
-  if (mode === "prime" || mode === "prime_plus_composite" || mode === "hybrid") {
-    renderPrimeScene(ctx, snapshot, projector, {
-      showFaces: ui.display.showFaces,
-      showEdges: ui.display.showEdges,
-      showColorEdges: ui.display.showColorEdges,
-      showLabels: ui.display.showLabels,
-      highlightActive: true,
-      leftFaceOpacity: ui.display.leftFaceOpacity,
-      rightFaceOpacity: ui.display.rightFaceOpacity
-    });
-  }
-
-  if (mode === "cubic") {
-    renderCubicScene(ctx, snapshot, projector, {
-      showLabels: ui.display.showLabels,
-      showSites: true,
-      pointAlpha: 0.22,
-      style: "full"
-    });
-  }
-
-  if (mode === "prime_plus_composite" || mode === "hybrid") {
-    renderCompositeOverlay(ctx, snapshot, projector, {
-      showLabels: ui.display.showLabels,
-      activeOnly: true
-    });
-  }
+  renderPrimeScene(ctx, snapshot, projector, {
+    showFaces: ui.display.showFaces,
+    showEdges: ui.display.showEdges,
+    showColorEdges: ui.display.showColorEdges,
+    showLabels: ui.display.showLabels,
+    highlightActive: true,
+    leftFaceOpacity: ui.display.leftFaceOpacity,
+    rightFaceOpacity: ui.display.rightFaceOpacity
+  });
 
   drawStageFrame(ctx, canvas);
   drawStageLabel(ctx, canvas, stageLabelText(snapshot), snapshot.currentD4s > 0);
@@ -362,34 +393,20 @@ function pointerPos(event) {
 function applyPreset(name) {
   if (!name) return;
 
-  if (name === "cubic_front" || name === "cubic_top" || name === "cubic_side") {
-    ui.display.mode = "cubic";
-    if (els.displayModeSelect) {
-      els.displayModeSelect.value = "cubic";
-    }
-  }
-
-  if (name === "cubic_front") {
-    ui.camera.projectionMode = "orthographic";
+  if (name === "perspective_default") {
+    ui.camera.projectionMode = "perspective";
     ui.camera.panX = 0;
     ui.camera.panY = 0;
+    ui.camera.distance = 15;
     ui.camera.yaw = 0;
     ui.camera.pitch = 0;
-    ui.camera.distance = 8.5;
-  } else if (name === "cubic_top") {
-    ui.camera.projectionMode = "orthographic";
+  } else if (name === "perspective_15_0_0") {
+    ui.camera.projectionMode = "perspective";
     ui.camera.panX = 0;
     ui.camera.panY = 0;
+    ui.camera.distance = 15;
     ui.camera.yaw = 0;
-    ui.camera.pitch = Math.PI / 2;
-    ui.camera.distance = 8.5;
-  } else if (name === "cubic_side") {
-    ui.camera.projectionMode = "orthographic";
-    ui.camera.panX = 0;
-    ui.camera.panY = 0;
-    ui.camera.yaw = Math.PI / 2;
     ui.camera.pitch = 0;
-    ui.camera.distance = 8.5;
   } else {
     applyCameraPreset(ui.camera, name);
   }
@@ -399,8 +416,16 @@ function applyPreset(name) {
 }
 
 els.displayModeSelect?.addEventListener("change", () => {
+<<<<<<< HEAD
   setDisplayMode(ui, els.displayModeSelect.value);
   setStatus(ui, `display mode: ${ui.display.mode}`);
+=======
+  setDisplayMode(ui, "prime");
+  if (els.displayModeSelect) {
+    els.displayModeSelect.value = "prime";
+  }
+  setStatus(ui, "render mode: prime");
+>>>>>>> b198ef2 (ui stable)
   draw();
 });
 
@@ -442,6 +467,12 @@ els.zoomSlider?.addEventListener("input", () => {
   draw();
 });
 
+els.spinorOpacitySlider?.addEventListener("input", () => {
+  ui.display.spinorOpacity = sliderPctToAlpha(els.spinorOpacitySlider.value);
+  setStatus(ui, `spinor opacity set to ${els.spinorOpacitySlider.value}%`);
+  draw();
+});
+
 els.leftFaceOpacitySlider?.addEventListener("input", () => {
   setStatus(ui, `left opacity set to ${els.leftFaceOpacitySlider.value}%`);
   draw();
@@ -457,7 +488,7 @@ els.rightFaceOpacitySlider?.addEventListener("input", () => {
   els.toggleEdges,
   els.toggleColorEdges,
   els.toggleTrurtle,
-  els.toggleSpindles,
+  els.toggleSpinors,
   els.toggleGrid,
   els.toggleAxes,
   els.toggleLabels
@@ -545,10 +576,17 @@ canvas.addEventListener(
 
 window.addEventListener("resize", draw);
 
+<<<<<<< HEAD
 setDisplayMode(ui, els.displayModeSelect?.value || "prime");
 <<<<<<< Updated upstream
 setPauseAt(ui, els.pauseAtInput?.value || 900);
 =======
+=======
+setDisplayMode(ui, "prime");
+if (els.displayModeSelect) {
+  els.displayModeSelect.value = "prime";
+}
+>>>>>>> b198ef2 (ui stable)
 
 const initialPause = String(els.pauseAtInput?.value ?? "").trim();
 if (initialPause) {
@@ -559,7 +597,7 @@ if (initialPause) {
 
 >>>>>>> Stashed changes
 setHz(ui, els.hzInput?.value || 30);
-applyPreset(els.cameraPresetSelect?.value || "junction");
+applyPreset(els.cameraPresetSelect?.value || "perspective_default");
 
 draw();
 ensureOrbitLoop();
