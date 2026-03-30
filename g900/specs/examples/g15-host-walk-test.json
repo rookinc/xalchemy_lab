@@ -1,0 +1,72 @@
+{
+  "artifact": "g15-host-walk-test",
+  "status": "working-example",
+  "host": "G15",
+  "purpose": "Minimal executable witness for the anchor path on a deterministic oriented state grammar.",
+  "state_model": {
+    "state_fields": ["vertex", "layer", "heading"],
+    "vertices": ["v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9", "v10", "v11", "v12", "v13", "v14"],
+    "layers": [0, 1, 2],
+    "headings": [0, 1, 2, 3],
+    "heading_meaning": {
+      "0": "forward",
+      "1": "right",
+      "2": "back",
+      "3": "left"
+    }
+  },
+  "operators": {
+    "L": "turn left: h -> (h + 3) mod 4",
+    "R": "turn right: h -> (h + 1) mod 4",
+    "U": "lift: layer -> layer + 1 when layer < 2",
+    "M": "move: apply transition table entry for (layer, vertex, heading)"
+  },
+  "start_state": {
+    "vertex": "v0",
+    "layer": 0,
+    "heading": 0
+  },
+  "anchor_word": [
+    "U",
+    "U",
+    "L", "M", "R", "M",
+    "R", "M", "M",
+    "R", "M", "M",
+    "R", "M", "M",
+    "R", "M", "L", "M",
+    "R", "M", "M",
+    "M", "M",
+    "M", "M",
+    "R", "M", "L", "M",
+    "M", "M",
+    "M", "M",
+    "M", "M",
+    "M", "L", "M"
+  ],
+  "expected_result": {
+    "type": "exact_state_equality",
+    "equals": "start_state"
+  },
+  "notes": [
+    "This example fixes the path word first and leaves the full move law open.",
+    "The move_transition_subset below is only a provisional witness table for the states touched by the anchor path.",
+    "Replace the subset with a full host transition law once G15 chamber motion is specified."
+  ],
+  "move_transition_subset": [
+    { "layer": 2, "from_vertex": "v0",  "heading": 3, "to_vertex": "v1"  },
+    { "layer": 2, "from_vertex": "v1",  "heading": 3, "to_vertex": "v2"  },
+    { "layer": 2, "from_vertex": "v2",  "heading": 0, "to_vertex": "v3"  },
+    { "layer": 2, "from_vertex": "v3",  "heading": 1, "to_vertex": "v4"  },
+    { "layer": 2, "from_vertex": "v4",  "heading": 1, "to_vertex": "v5"  },
+    { "layer": 2, "from_vertex": "v5",  "heading": 1, "to_vertex": "v6"  },
+    { "layer": 2, "from_vertex": "v6",  "heading": 1, "to_vertex": "v7"  },
+    { "layer": 2, "from_vertex": "v7",  "heading": 0, "to_vertex": "v8"  },
+    { "layer": 2, "from_vertex": "v8",  "heading": 1, "to_vertex": "v9"  },
+    { "layer": 2, "from_vertex": "v9",  "heading": 1, "to_vertex": "v10" },
+    { "layer": 2, "from_vertex": "v10", "heading": 1, "to_vertex": "v11" },
+    { "layer": 2, "from_vertex": "v11", "heading": 0, "to_vertex": "v12" },
+    { "layer": 2, "from_vertex": "v12", "heading": 0, "to_vertex": "v13" },
+    { "layer": 2, "from_vertex": "v13", "heading": 0, "to_vertex": "v14" },
+    { "layer": 2, "from_vertex": "v14", "heading": 0, "to_vertex": "v0"  }
+  ]
+}

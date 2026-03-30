@@ -1,0 +1,302 @@
+{
+  "prototype_version": "cube_host_v0",
+  "seed_results": [
+    {
+      "word": "FXFXFX",
+      "initial_state": {
+        "face": "U",
+        "heading": 0,
+        "sheet": 0
+      },
+      "final_state": {
+        "face": "B",
+        "heading": 0,
+        "sheet": 1
+      },
+      "base_closed": false,
+      "full_closed": false,
+      "parity": 1,
+      "raw_trace": [
+        "UB",
+        "UB",
+        "UF",
+        "UB",
+        "DF",
+        "UF",
+        "UB"
+      ],
+      "reduced_edges": [
+        [
+          "DF",
+          "UB"
+        ],
+        [
+          "DF",
+          "UF"
+        ],
+        [
+          "UB",
+          "UF"
+        ]
+      ],
+      "support_type": "cycle",
+      "refined_nodes": [
+        "A_FB",
+        "A_V",
+        "DF",
+        "UB",
+        "UF"
+      ],
+      "refined_edges": [
+        [
+          "A_FB",
+          "UB"
+        ],
+        [
+          "A_FB",
+          "UF"
+        ],
+        [
+          "A_V",
+          "DF"
+        ],
+        [
+          "A_V",
+          "UB"
+        ],
+        [
+          "A_V",
+          "UF"
+        ],
+        [
+          "DF",
+          "UB"
+        ],
+        [
+          "DF",
+          "UF"
+        ],
+        [
+          "UB",
+          "UF"
+        ]
+      ]
+    },
+    {
+      "word": "FRXFLXFX",
+      "initial_state": {
+        "face": "U",
+        "heading": 0,
+        "sheet": 0
+      },
+      "final_state": {
+        "face": "U",
+        "heading": 2,
+        "sheet": 1
+      },
+      "base_closed": false,
+      "full_closed": false,
+      "parity": 1,
+      "raw_trace": [
+        "UB",
+        "UB",
+        "BR",
+        "FR",
+        "BR",
+        "DR",
+        "DL",
+        "DB",
+        "UF"
+      ],
+      "reduced_edges": [
+        [
+          "BR",
+          "DR"
+        ],
+        [
+          "BR",
+          "UB"
+        ],
+        [
+          "DB",
+          "DL"
+        ],
+        [
+          "DB",
+          "UF"
+        ],
+        [
+          "DL",
+          "DR"
+        ]
+      ],
+      "support_type": "path",
+      "refined_nodes": [
+        "A_FB",
+        "A_V",
+        "BR",
+        "DB",
+        "DL",
+        "DR",
+        "FR",
+        "UB",
+        "UF"
+      ],
+      "refined_edges": [
+        [
+          "A_FB",
+          "BR"
+        ],
+        [
+          "A_FB",
+          "FR"
+        ],
+        [
+          "A_V",
+          "DB"
+        ],
+        [
+          "A_V",
+          "DL"
+        ],
+        [
+          "A_V",
+          "UB"
+        ],
+        [
+          "A_V",
+          "UF"
+        ],
+        [
+          "BR",
+          "DR"
+        ],
+        [
+          "BR",
+          "UB"
+        ],
+        [
+          "DB",
+          "DL"
+        ],
+        [
+          "DB",
+          "UF"
+        ],
+        [
+          "DL",
+          "DR"
+        ]
+      ]
+    }
+  ],
+  "search_result": {
+    "initial_state": {
+      "face": "U",
+      "heading": 0,
+      "sheet": 0
+    },
+    "max_length": 8,
+    "shortest_length": 3,
+    "support_histogram": {
+      "empty": 1,
+      "cycle": 1
+    },
+    "hits": [
+      {
+        "word": "FXF",
+        "final_state": {
+          "face": "U",
+          "heading": 0,
+          "sheet": 1
+        },
+        "parity": 1,
+        "raw_trace": [
+          "UB",
+          "UB",
+          "UF",
+          "UB"
+        ],
+        "reduced_edges": [],
+        "support_type": "empty",
+        "refined_nodes": [
+          "A_V",
+          "UB",
+          "UF"
+        ],
+        "refined_edges": [
+          [
+            "A_V",
+            "UB"
+          ],
+          [
+            "A_V",
+            "UF"
+          ]
+        ]
+      },
+      {
+        "word": "XFF",
+        "final_state": {
+          "face": "U",
+          "heading": 0,
+          "sheet": 1
+        },
+        "parity": 1,
+        "raw_trace": [
+          "UB",
+          "DF",
+          "UF",
+          "UB"
+        ],
+        "reduced_edges": [
+          [
+            "DF",
+            "UB"
+          ],
+          [
+            "DF",
+            "UF"
+          ],
+          [
+            "UB",
+            "UF"
+          ]
+        ],
+        "support_type": "cycle",
+        "refined_nodes": [
+          "A_V",
+          "DF",
+          "UB",
+          "UF"
+        ],
+        "refined_edges": [
+          [
+            "A_V",
+            "DF"
+          ],
+          [
+            "A_V",
+            "UB"
+          ],
+          [
+            "A_V",
+            "UF"
+          ],
+          [
+            "DF",
+            "UB"
+          ],
+          [
+            "DF",
+            "UF"
+          ],
+          [
+            "UB",
+            "UF"
+          ]
+        ]
+      }
+    ]
+  }
+}

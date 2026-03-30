@@ -1,0 +1,14 @@
+{
+  "syndrome": "0000000000000000",
+  "solution_count": 1,
+  "solutions": [
+    {
+      "weight": 0,
+      "edge_labels": [],
+      "closed": true,
+      "connected": false,
+      "support_type": "empty",
+      "boundary_vertices": []
+    }
+  ]
+}

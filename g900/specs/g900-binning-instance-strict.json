@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rook.ca/schemas/g900-binning-instance.strict.json",
+  "title": "G900 Binning Instance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "model_id",
+    "root_id",
+    "shell_bins",
+    "generation_bins",
+    "pair_distance_bins",
+    "transport_role_bins"
+  ],
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "root_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "shell_bins": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/shell_bin"
+      }
+    },
+    "generation_bins": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/generation_bin"
+      }
+    },
+    "pair_distance_bins": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pair_distance_bin"
+      }
+    },
+    "transport_role_bins": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/transport_role_bin"
+      }
+    }
+  },
+  "$defs": {
+    "shell_bin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shell_index",
+        "vertex_count",
+        "edge_count_internal",
+        "edge_count_to_next_shell",
+        "mean_degree",
+        "closure_score"
+      ],
+      "properties": {
+        "shell_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "vertex_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "edge_count_internal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "edge_count_to_next_shell": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mean_degree": {
+          "type": "number",
+          "minimum": 0
+        },
+        "closure_score": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "generation_bin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generation_bin",
+        "vertex_count",
+        "edge_count",
+        "closure_events",
+        "repair_events"
+      ],
+      "properties": {
+        "generation_bin": {
+          "type": "string",
+          "pattern": "^\\d+-\\d+$"
+        },
+        "vertex_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "edge_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "closure_events": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "repair_events": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "pair_distance_bin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "distance_class",
+        "pair_count",
+        "mean_common_neighbor_count",
+        "mean_overlap"
+      ],
+      "properties": {
+        "distance_class": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pair_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mean_common_neighbor_count": {
+          "type": "number",
+          "minimum": 0
+        },
+        "mean_overlap": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "shell_distribution": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^\\d+$"
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "transport_role_bin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_key",
+        "count",
+        "shell_distribution"
+      ],
+      "properties": {
+        "role_key": {
+          "type": "string",
+          "enum": [
+            "primary_carrier",
+            "side_attachment",
+            "coupling_bridge",
+            "chamber_closer",
+            "mirror_mate",
+            "parity_twist_participant",
+            "repair_site",
+            "frontier_site"
+          ]
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "shell_distribution": {
+          "$ref": "#/$defs/shell_distribution"
+        }
+      }
+    }
+  }
+}

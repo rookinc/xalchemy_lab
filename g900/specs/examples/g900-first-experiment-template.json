@@ -1,0 +1,22 @@
+{
+  "experiment_id": "g900-shell-bulk-v1",
+  "model_id": "G900",
+  "run_id": "RUN_001",
+  "root_id": "ROOT_001",
+  "index_mode": "shell",
+  "shell_scale_definition": "S_k = estimated local shell capacity at shell k",
+  "bulk_scale_definition": "C_k = cumulative reachable capacity through shell k",
+  "rows": [
+    {
+      "index": 0,
+      "occupancy": 0,
+      "shell_capacity": 0,
+      "bulk_capacity": 0,
+      "shell_density": 0.0,
+      "bulk_density": 0.0,
+      "density_difference": 0.0,
+      "density_ratio": null,
+      "notes": "template row"
+    }
+  ]
+}

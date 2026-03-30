@@ -1,0 +1,676 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rook.ca/schemas/g900-binning-schema.strict.json",
+  "title": "G900 Binning Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "model_id",
+    "metadata",
+    "bin_families",
+    "indices",
+    "observables",
+    "storage_layout",
+    "example_defaults"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    },
+    "bin_families": {
+      "$ref": "#/$defs/bin_families"
+    },
+    "indices": {
+      "$ref": "#/$defs/indices"
+    },
+    "observables": {
+      "$ref": "#/$defs/observables"
+    },
+    "storage_layout": {
+      "$ref": "#/$defs/storage_layout"
+    },
+    "example_defaults": {
+      "$ref": "#/$defs/example_defaults"
+    }
+  },
+  "$defs": {
+    "string_array": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "root_selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "alternate_modes"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "single_root",
+            "multi_root",
+            "centroid_proxy",
+            "seed_cell",
+            "seed_tetra",
+            "seed_chamber"
+          ]
+        },
+        "root_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "alternate_modes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "single_root",
+              "multi_root",
+              "centroid_proxy",
+              "seed_cell",
+              "seed_tetra",
+              "seed_chamber"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "embedding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "dimension",
+        "coordinate_system"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "dimension": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "coordinate_system": {
+          "type": "string",
+          "enum": [
+            "cartesian",
+            "spherical",
+            "cylindrical",
+            "abstract"
+          ]
+        }
+      }
+    },
+    "quotienting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "levels"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "levels": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "spectral_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "operator_targets"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "operator_targets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "adjacency",
+              "laplacian",
+              "transport_overlap",
+              "normalized_transport_overlap"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root_selection",
+        "distance_metric",
+        "embedding",
+        "quotienting",
+        "spectral"
+      ],
+      "properties": {
+        "root_selection": {
+          "$ref": "#/$defs/root_selection"
+        },
+        "distance_metric": {
+          "type": "string",
+          "enum": [
+            "graph_distance"
+          ]
+        },
+        "embedding": {
+          "$ref": "#/$defs/embedding"
+        },
+        "quotienting": {
+          "$ref": "#/$defs/quotienting"
+        },
+        "spectral": {
+          "$ref": "#/$defs/spectral_metadata"
+        }
+      }
+    },
+    "bin_family_base": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "description",
+        "index_key",
+        "object_type",
+        "fields"
+      ],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "index_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "object_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fields": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "bin_family_with_allowed_roles": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/bin_family_base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "description",
+            "index_key",
+            "object_type",
+            "fields",
+            "allowed_roles"
+          ],
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "index_key": {
+              "type": "string",
+              "minLength": 1
+            },
+            "object_type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "fields": {
+              "$ref": "#/$defs/string_array"
+            },
+            "allowed_roles": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "primary_carrier",
+                  "side_attachment",
+                  "coupling_bridge",
+                  "chamber_closer",
+                  "mirror_mate",
+                  "parity_twist_participant",
+                  "repair_site",
+                  "frontier_site"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "bin_family_with_allowed_classes": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/bin_family_base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "description",
+            "index_key",
+            "object_type",
+            "fields",
+            "allowed_classes"
+          ],
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "index_key": {
+              "type": "string",
+              "minLength": 1
+            },
+            "object_type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "fields": {
+              "$ref": "#/$defs/string_array"
+            },
+            "allowed_classes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "exact",
+                  "low",
+                  "medium",
+                  "high",
+                  "anomalous"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "bin_family_with_allowed_bands": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/bin_family_base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "description",
+            "index_key",
+            "object_type",
+            "fields",
+            "allowed_bands"
+          ],
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "index_key": {
+              "type": "string",
+              "minLength": 1
+            },
+            "object_type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "fields": {
+              "$ref": "#/$defs/string_array"
+            },
+            "allowed_bands": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "low_global",
+                  "mid_transport",
+                  "high_defect",
+                  "quotient_stable",
+                  "quotient_fragile",
+                  "cocycle_sensitive"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "bin_families": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "radial_shells",
+        "shell_transitions",
+        "intra_shell_structure",
+        "growth_generation",
+        "transport_roles",
+        "pair_distance",
+        "angular_sectors",
+        "residue_classes",
+        "quotient_fibers",
+        "spectral_bands"
+      ],
+      "properties": {
+        "radial_shells": {
+          "$ref": "#/$defs/bin_family_base"
+        },
+        "shell_transitions": {
+          "$ref": "#/$defs/bin_family_base"
+        },
+        "intra_shell_structure": {
+          "$ref": "#/$defs/bin_family_base"
+        },
+        "growth_generation": {
+          "$ref": "#/$defs/bin_family_base"
+        },
+        "transport_roles": {
+          "$ref": "#/$defs/bin_family_with_allowed_roles"
+        },
+        "pair_distance": {
+          "$ref": "#/$defs/bin_family_base"
+        },
+        "angular_sectors": {
+          "$ref": "#/$defs/bin_family_base"
+        },
+        "residue_classes": {
+          "$ref": "#/$defs/bin_family_with_allowed_classes"
+        },
+        "quotient_fibers": {
+          "$ref": "#/$defs/bin_family_base"
+        },
+        "spectral_bands": {
+          "$ref": "#/$defs/bin_family_with_allowed_bands"
+        }
+      }
+    },
+    "indices": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vertices",
+        "edges",
+        "cells",
+        "shells",
+        "modes",
+        "quotient_maps"
+      ],
+      "properties": {
+        "vertices": {
+          "$ref": "#/$defs/string_array"
+        },
+        "edges": {
+          "$ref": "#/$defs/string_array"
+        },
+        "cells": {
+          "$ref": "#/$defs/string_array"
+        },
+        "shells": {
+          "$ref": "#/$defs/string_array"
+        },
+        "modes": {
+          "$ref": "#/$defs/string_array"
+        },
+        "quotient_maps": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "observables": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vertex_observables",
+        "edge_observables",
+        "pair_observables"
+      ],
+      "properties": {
+        "vertex_observables": {
+          "$ref": "#/$defs/string_array"
+        },
+        "edge_observables": {
+          "$ref": "#/$defs/string_array"
+        },
+        "pair_observables": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "storage_layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vertex_table",
+        "edge_table",
+        "cell_table",
+        "shell_bin_table",
+        "transition_bin_table",
+        "structure_bin_table",
+        "generation_bin_table",
+        "role_bin_table",
+        "pair_distance_table",
+        "angular_bin_table",
+        "residue_bin_table",
+        "quotient_fiber_table",
+        "spectral_band_table"
+      ],
+      "properties": {
+        "vertex_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "edge_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cell_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shell_bin_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transition_bin_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "structure_bin_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generation_bin_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role_bin_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pair_distance_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "angular_bin_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "residue_bin_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quotient_fiber_table": {
+          "type": "string",
+          "minLength": 1
+        },
+        "spectral_band_table": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "residue_thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exact",
+        "low",
+        "medium",
+        "high"
+      ],
+      "properties": {
+        "exact": {
+          "type": "number",
+          "minimum": 0
+        },
+        "low": {
+          "type": "number",
+          "minimum": 0
+        },
+        "medium": {
+          "type": "number",
+          "minimum": 0
+        },
+        "high": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "example_defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "radial_shells",
+        "angular_sectors",
+        "growth_generation",
+        "pair_distance",
+        "residue_classes",
+        "spectral_bands"
+      ],
+      "properties": {
+        "radial_shells": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "max_shell_depth"
+          ],
+          "properties": {
+            "max_shell_depth": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "angular_sectors": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "polar_bin_count",
+            "azimuth_bin_count"
+          ],
+          "properties": {
+            "polar_bin_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "azimuth_bin_count": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "growth_generation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tick_bin_size"
+          ],
+          "properties": {
+            "tick_bin_size": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "pair_distance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "max_distance_class"
+          ],
+          "properties": {
+            "max_distance_class": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "residue_classes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "thresholds"
+          ],
+          "properties": {
+            "thresholds": {
+              "$ref": "#/$defs/residue_thresholds"
+            }
+          }
+        },
+        "spectral_bands": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "band_count"
+          ],
+          "properties": {
+            "band_count": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -51,7 +51,10 @@ const canvas = document.getElementById("stage-canvas");
 const ctx = canvas.getContext("2d");
 
 const els = {
+<<<<<<< Updated upstream
   // top bar
+=======
+>>>>>>> Stashed changes
   toggleFaces: document.getElementById("toggle-faces"),
   toggleEdges: document.getElementById("toggle-edges"),
   leftFaceOpacitySlider: document.getElementById("left-face-opacity-slider"),
@@ -61,7 +64,10 @@ const els = {
   stepBtn: document.getElementById("step-btn"),
   playBtn: document.getElementById("play-btn"),
 
+<<<<<<< Updated upstream
   // rail
+=======
+>>>>>>> Stashed changes
   displayModeSelect: document.getElementById("display-mode-select"),
   toggleColorEdges: document.getElementById("toggle-color-edges"),
   toggleTrurtle: document.getElementById("toggle-trurtle"),
@@ -74,14 +80,20 @@ const els = {
   toggleLabels: document.getElementById("toggle-labels"),
   zoomSlider: document.getElementById("zoom-slider"),
 
+<<<<<<< Updated upstream
   // stage footer
+=======
+>>>>>>> Stashed changes
   statusText: document.getElementById("status-text"),
   metricTurn: document.getElementById("metric-turn"),
   metricCameraDistance: document.getElementById("metric-camera-distance"),
   metricCameraYaw: document.getElementById("metric-camera-yaw"),
   metricCameraPitch: document.getElementById("metric-camera-pitch"),
 
+<<<<<<< Updated upstream
   // hidden bindings + console
+=======
+>>>>>>> Stashed changes
   metricCurrent: document.getElementById("metric-current"),
   metricCells: document.getElementById("metric-cells"),
   metricFaces: document.getElementById("metric-faces"),
@@ -142,6 +154,20 @@ function syncDisplayModeControl() {
   }
 }
 
+<<<<<<< Updated upstream
+=======
+function syncPauseAtInput() {
+  if (!els.pauseAtInput) return;
+  if (Number.isFinite(ui.playback.pauseAtD4s) && ui.playback.pauseAtD4s > 0) {
+    els.pauseAtInput.value = String(ui.playback.pauseAtD4s);
+    els.pauseAtInput.placeholder = "";
+  } else {
+    els.pauseAtInput.value = "";
+    els.pauseAtInput.placeholder = "off";
+  }
+}
+
+>>>>>>> Stashed changes
 function formatConsole(readout) {
   return [
     `current_d4s      : ${readout.currentD4s}`,
@@ -222,6 +248,10 @@ function draw() {
 
   syncZoomSlider();
   syncDisplayModeControl();
+<<<<<<< Updated upstream
+=======
+  syncPauseAtInput();
+>>>>>>> Stashed changes
 
   clearStage(ctx, canvas);
   drawStageGrid(ctx, canvas, ui.display.showStageGrid);
@@ -288,10 +318,26 @@ function startPlayTimer() {
   const delay = Math.max(16, Math.round(1000 / Math.max(1, ui.playback.hz)));
   playTimer = setInterval(() => {
     snapshot = engine.step();
-    if (snapshot.currentD4s >= ui.playback.pauseAtD4s) {
+
+    if (
+      Number.isFinite(ui.playback.pauseAtD4s) &&
+      ui.playback.pauseAtD4s > 0 &&
+      snapshot.currentD4s >= ui.playback.pauseAtD4s
+    ) {
+      const hit = ui.playback.pauseAtD4s;
       stopPlayTimer();
-      setStatus(ui, `auto-paused at ${snapshot.currentD4s}`);
+      ui.playback.pauseAtD4s = Infinity;
+
+      if (els.pauseAtInput) {
+        els.pauseAtInput.value = "";
+        els.pauseAtInput.placeholder = "off";
+      }
+
+      setStatus(ui, `auto-paused at ${snapshot.currentD4s}; threshold ${hit} cleared`);
+      draw();
+      return;
     }
+
     draw();
   }, delay);
 }
@@ -359,8 +405,22 @@ els.displayModeSelect?.addEventListener("change", () => {
 });
 
 els.pauseAtInput?.addEventListener("change", () => {
+<<<<<<< Updated upstream
   setPauseAt(ui, els.pauseAtInput.value);
   setStatus(ui, `pause threshold set to ${ui.playback.pauseAtD4s}`);
+=======
+  const raw = String(els.pauseAtInput.value ?? "").trim();
+
+  if (!raw) {
+    ui.playback.pauseAtD4s = Infinity;
+    els.pauseAtInput.placeholder = "off";
+    setStatus(ui, "auto-pause off");
+  } else {
+    setPauseAt(ui, raw);
+    setStatus(ui, `pause threshold set to ${ui.playback.pauseAtD4s}`);
+  }
+
+>>>>>>> Stashed changes
   draw();
 });
 
@@ -486,7 +546,18 @@ canvas.addEventListener(
 window.addEventListener("resize", draw);
 
 setDisplayMode(ui, els.displayModeSelect?.value || "prime");
+<<<<<<< Updated upstream
 setPauseAt(ui, els.pauseAtInput?.value || 900);
+=======
+
+const initialPause = String(els.pauseAtInput?.value ?? "").trim();
+if (initialPause) {
+  setPauseAt(ui, initialPause);
+} else {
+  ui.playback.pauseAtD4s = Infinity;
+}
+
+>>>>>>> Stashed changes
 setHz(ui, els.hzInput?.value || 30);
 applyPreset(els.cameraPresetSelect?.value || "junction");
 

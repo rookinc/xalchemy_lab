@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rook.ca/schemas/g900-shell-bulk-experiment.schema.json",
+  "title": "G900 Shell Bulk Experiment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "experiment_id",
+    "model_id",
+    "run_id",
+    "root_id",
+    "index_mode",
+    "shell_scale_definition",
+    "bulk_scale_definition",
+    "rows"
+  ],
+  "properties": {
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "root_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "index_mode": {
+      "type": "string",
+      "enum": ["shell", "tick"]
+    },
+    "shell_scale_definition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bulk_scale_definition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rows": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/row" },
+      "minItems": 1
+    }
+  },
+  "$defs": {
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "occupancy",
+        "shell_capacity",
+        "bulk_capacity",
+        "shell_density",
+        "bulk_density",
+        "density_difference",
+        "notes"
+      ],
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "occupancy": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "shell_capacity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "bulk_capacity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "shell_density": {
+          "type": "number"
+        },
+        "bulk_density": {
+          "type": "number"
+        },
+        "density_difference": {
+          "type": "number"
+        },
+        "density_ratio": {
+          "type": ["number", "null"]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

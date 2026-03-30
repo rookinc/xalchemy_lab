@@ -1,0 +1,76 @@
+Polarized G15 report
+Input: /data/data/com.termux/files/home/storage/downloads/centroids (4).json
+Loaded points: 900
+
+=== Fit quality ===
+Base polarized G15 SSE : 235.611101
+Optimized polarized SSE: 88.122616
+Random 15-site SSE     : 216.049519
+K-means 15-site SSE    : 72.337388
+Base / random ratio    : 1.0905
+Opt  / random ratio    : 0.4079
+Base / kmeans ratio    : 3.2571
+Opt  / kmeans ratio    : 1.2182
+
+=== Optimized parameters ===
+pole_z     0.5000
+side_r     0.5000
+corner_r   0.5000
+corner_z   0.5000
+
+=== Optimized polarized occupancies ===
+C      54
+Fp     50
+Fm     42
+E0     92
+E1     79
+E2     91
+E3    107
+K0     44
+K1     47
+K2     49
+K3     50
+K4     52
+K5     54
+K6     42
+K7     47
+
+=== Role group totals ===
+C          54
+poles      92
+equator   369
+corners   385
+
+=== Optimized within-basin average distance ===
+C    count=  54 avg_dist=0.2062
+Fp   count=  50 avg_dist=0.2011
+Fm   count=  42 avg_dist=0.2474
+E0   count=  92 avg_dist=0.3211
+E1   count=  79 avg_dist=0.2952
+E2   count=  91 avg_dist=0.3291
+E3   count= 107 avg_dist=0.3247
+K0   count=  44 avg_dist=0.2767
+K1   count=  47 avg_dist=0.2794
+K2   count=  49 avg_dist=0.2886
+K3   count=  50 avg_dist=0.3034
+K4   count=  52 avg_dist=0.3224
+K5   count=  54 avg_dist=0.3214
+K6   count=  42 avg_dist=0.2971
+K7   count=  47 avg_dist=0.2928
+
+=== K-means occupancies ===
+cluster00   52
+cluster01   75
+cluster02   86
+cluster03   59
+cluster04   51
+cluster05   53
+cluster06   64
+cluster07   68
+cluster08   48
+cluster09   60
+cluster10   49
+cluster11   55
+cluster12   61
+cluster13   55
+cluster14   64

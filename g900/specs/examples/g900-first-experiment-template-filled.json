@@ -1,0 +1,44 @@
+{
+  "experiment_id": "g900-shell-bulk-v1",
+  "model_id": "G900",
+  "run_id": "RUN_001",
+  "root_id": "ROOT_001",
+  "index_mode": "shell",
+  "shell_scale_definition": "S_k = empirical shell envelope, i.e. max observed occupancy at shell k across comparison runs so far",
+  "bulk_scale_definition": "C_k = cumulative observed occupancy through shell k",
+  "rows": [
+    {
+      "index": 0,
+      "occupancy": 1,
+      "shell_capacity": 1,
+      "bulk_capacity": 1,
+      "shell_density": 1.0,
+      "bulk_density": 1.0,
+      "density_difference": 0.0,
+      "density_ratio": 1.0,
+      "notes": "seed shell"
+    },
+    {
+      "index": 1,
+      "occupancy": 4,
+      "shell_capacity": 4,
+      "bulk_capacity": 5,
+      "shell_density": 1.0,
+      "bulk_density": 0.8,
+      "density_difference": 0.2,
+      "density_ratio": 1.25,
+      "notes": "example first expansion shell"
+    },
+    {
+      "index": 2,
+      "occupancy": 8,
+      "shell_capacity": 8,
+      "bulk_capacity": 13,
+      "shell_density": 1.0,
+      "bulk_density": 0.6153846154,
+      "density_difference": 0.3846153846,
+      "density_ratio": 1.625,
+      "notes": "example second expansion shell"
+    }
+  ]
+}
