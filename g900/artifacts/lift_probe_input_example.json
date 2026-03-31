@@ -1,0 +1,6 @@
+{
+  "source_type": "manual_probe",
+  "frame_count": 5,
+  "cycle": ["o0", "o1", "o2", "s3", "t3", "s0"],
+  "notes": "objective witness candidate"
+}

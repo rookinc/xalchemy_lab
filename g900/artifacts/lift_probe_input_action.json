@@ -1,0 +1,6 @@
+{
+  "source_type": "manual_probe",
+  "frame_count": 5,
+  "cycle": ["o2", "s2", "t0", "s0", "t3", "s3"],
+  "notes": "action cell candidate"
+}

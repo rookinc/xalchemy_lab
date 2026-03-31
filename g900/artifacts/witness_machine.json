@@ -1,0 +1,787 @@
+{
+  "scale": 1,
+  "frame_count": 5,
+  "state_count": 10,
+  "state_species": "O-O-O-S-T-S",
+  "action_species": "O-S-T-S-T-S",
+  "states": [
+    {
+      "state": [
+        0,
+        0
+      ],
+      "frame": 0,
+      "phase": 0,
+      "phase_label": "subjective",
+      "witness_cycle": [
+        "o0",
+        "o1",
+        "o2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "species": "O-O-O-S-T-S",
+      "alignment": "return",
+      "spread": 4,
+      "fiber": 26,
+      "action_cell": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "action_species": "O-S-T-S-T-S",
+      "tau": [
+        1,
+        0
+      ],
+      "tau_inv": [
+        4,
+        0
+      ],
+      "mu": [
+        0,
+        1
+      ],
+      "output": {
+        "alignment": "return",
+        "spread": 4,
+        "fiber": 26
+      }
+    },
+    {
+      "state": [
+        0,
+        1
+      ],
+      "frame": 0,
+      "phase": 1,
+      "phase_label": "objective",
+      "witness_cycle": [
+        "o0",
+        "o1",
+        "o2",
+        "s3",
+        "t3",
+        "s0"
+      ],
+      "species": "O-O-O-S-T-S",
+      "alignment": "forward",
+      "spread": 5,
+      "fiber": 18,
+      "action_cell": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "action_species": "O-S-T-S-T-S",
+      "tau": [
+        1,
+        1
+      ],
+      "tau_inv": [
+        4,
+        1
+      ],
+      "mu": [
+        0,
+        0
+      ],
+      "output": {
+        "alignment": "forward",
+        "spread": 5,
+        "fiber": 18
+      }
+    },
+    {
+      "state": [
+        1,
+        0
+      ],
+      "frame": 1,
+      "phase": 0,
+      "phase_label": "subjective",
+      "witness_cycle": [
+        "o1",
+        "o2",
+        "o3",
+        "s3",
+        "t1",
+        "s1"
+      ],
+      "species": "O-O-O-S-T-S",
+      "alignment": "return",
+      "spread": 4,
+      "fiber": 26,
+      "action_cell": [
+        "o3",
+        "s3",
+        "t1",
+        "s1",
+        "t4",
+        "s4"
+      ],
+      "action_species": "O-S-T-S-T-S",
+      "tau": [
+        2,
+        0
+      ],
+      "tau_inv": [
+        0,
+        0
+      ],
+      "mu": [
+        1,
+        1
+      ],
+      "output": {
+        "alignment": "return",
+        "spread": 4,
+        "fiber": 26
+      }
+    },
+    {
+      "state": [
+        1,
+        1
+      ],
+      "frame": 1,
+      "phase": 1,
+      "phase_label": "objective",
+      "witness_cycle": [
+        "o1",
+        "o2",
+        "o3",
+        "s4",
+        "t4",
+        "s1"
+      ],
+      "species": "O-O-O-S-T-S",
+      "alignment": "forward",
+      "spread": 5,
+      "fiber": 18,
+      "action_cell": [
+        "o3",
+        "s3",
+        "t1",
+        "s1",
+        "t4",
+        "s4"
+      ],
+      "action_species": "O-S-T-S-T-S",
+      "tau": [
+        2,
+        1
+      ],
+      "tau_inv": [
+        0,
+        1
+      ],
+      "mu": [
+        1,
+        0
+      ],
+      "output": {
+        "alignment": "forward",
+        "spread": 5,
+        "fiber": 18
+      }
+    },
+    {
+      "state": [
+        2,
+        0
+      ],
+      "frame": 2,
+      "phase": 0,
+      "phase_label": "subjective",
+      "witness_cycle": [
+        "o2",
+        "o3",
+        "o4",
+        "s4",
+        "t2",
+        "s2"
+      ],
+      "species": "O-O-O-S-T-S",
+      "alignment": "return",
+      "spread": 4,
+      "fiber": 26,
+      "action_cell": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "action_species": "O-S-T-S-T-S",
+      "tau": [
+        3,
+        0
+      ],
+      "tau_inv": [
+        1,
+        0
+      ],
+      "mu": [
+        2,
+        1
+      ],
+      "output": {
+        "alignment": "return",
+        "spread": 4,
+        "fiber": 26
+      }
+    },
+    {
+      "state": [
+        2,
+        1
+      ],
+      "frame": 2,
+      "phase": 1,
+      "phase_label": "objective",
+      "witness_cycle": [
+        "o2",
+        "o3",
+        "o4",
+        "s0",
+        "t0",
+        "s2"
+      ],
+      "species": "O-O-O-S-T-S",
+      "alignment": "forward",
+      "spread": 5,
+      "fiber": 18,
+      "action_cell": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "action_species": "O-S-T-S-T-S",
+      "tau": [
+        3,
+        1
+      ],
+      "tau_inv": [
+        1,
+        1
+      ],
+      "mu": [
+        2,
+        0
+      ],
+      "output": {
+        "alignment": "forward",
+        "spread": 5,
+        "fiber": 18
+      }
+    },
+    {
+      "state": [
+        3,
+        0
+      ],
+      "frame": 3,
+      "phase": 0,
+      "phase_label": "subjective",
+      "witness_cycle": [
+        "o3",
+        "o4",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "species": "O-O-O-S-T-S",
+      "alignment": "return",
+      "spread": 4,
+      "fiber": 26,
+      "action_cell": [
+        "o0",
+        "s0",
+        "t3",
+        "s3",
+        "t1",
+        "s1"
+      ],
+      "action_species": "O-S-T-S-T-S",
+      "tau": [
+        4,
+        0
+      ],
+      "tau_inv": [
+        2,
+        0
+      ],
+      "mu": [
+        3,
+        1
+      ],
+      "output": {
+        "alignment": "return",
+        "spread": 4,
+        "fiber": 26
+      }
+    },
+    {
+      "state": [
+        3,
+        1
+      ],
+      "frame": 3,
+      "phase": 1,
+      "phase_label": "objective",
+      "witness_cycle": [
+        "o3",
+        "o4",
+        "o0",
+        "s1",
+        "t1",
+        "s3"
+      ],
+      "species": "O-O-O-S-T-S",
+      "alignment": "forward",
+      "spread": 5,
+      "fiber": 18,
+      "action_cell": [
+        "o0",
+        "s0",
+        "t3",
+        "s3",
+        "t1",
+        "s1"
+      ],
+      "action_species": "O-S-T-S-T-S",
+      "tau": [
+        4,
+        1
+      ],
+      "tau_inv": [
+        2,
+        1
+      ],
+      "mu": [
+        3,
+        0
+      ],
+      "output": {
+        "alignment": "forward",
+        "spread": 5,
+        "fiber": 18
+      }
+    },
+    {
+      "state": [
+        4,
+        0
+      ],
+      "frame": 4,
+      "phase": 0,
+      "phase_label": "subjective",
+      "witness_cycle": [
+        "o4",
+        "o0",
+        "o1",
+        "s1",
+        "t4",
+        "s4"
+      ],
+      "species": "O-O-O-S-T-S",
+      "alignment": "return",
+      "spread": 4,
+      "fiber": 26,
+      "action_cell": [
+        "o1",
+        "s1",
+        "t4",
+        "s4",
+        "t2",
+        "s2"
+      ],
+      "action_species": "O-S-T-S-T-S",
+      "tau": [
+        0,
+        0
+      ],
+      "tau_inv": [
+        3,
+        0
+      ],
+      "mu": [
+        4,
+        1
+      ],
+      "output": {
+        "alignment": "return",
+        "spread": 4,
+        "fiber": 26
+      }
+    },
+    {
+      "state": [
+        4,
+        1
+      ],
+      "frame": 4,
+      "phase": 1,
+      "phase_label": "objective",
+      "witness_cycle": [
+        "o4",
+        "o0",
+        "o1",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "species": "O-O-O-S-T-S",
+      "alignment": "forward",
+      "spread": 5,
+      "fiber": 18,
+      "action_cell": [
+        "o1",
+        "s1",
+        "t4",
+        "s4",
+        "t2",
+        "s2"
+      ],
+      "action_species": "O-S-T-S-T-S",
+      "tau": [
+        0,
+        1
+      ],
+      "tau_inv": [
+        3,
+        1
+      ],
+      "mu": [
+        4,
+        0
+      ],
+      "output": {
+        "alignment": "forward",
+        "spread": 5,
+        "fiber": 18
+      }
+    }
+  ],
+  "actions": [
+    {
+      "frame": 0,
+      "action_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "species": "O-S-T-S-T-S",
+      "subjective_state": [
+        0,
+        0
+      ],
+      "objective_state": [
+        0,
+        1
+      ]
+    },
+    {
+      "frame": 1,
+      "action_cycle": [
+        "o3",
+        "s3",
+        "t1",
+        "s1",
+        "t4",
+        "s4"
+      ],
+      "species": "O-S-T-S-T-S",
+      "subjective_state": [
+        1,
+        0
+      ],
+      "objective_state": [
+        1,
+        1
+      ]
+    },
+    {
+      "frame": 2,
+      "action_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "species": "O-S-T-S-T-S",
+      "subjective_state": [
+        2,
+        0
+      ],
+      "objective_state": [
+        2,
+        1
+      ]
+    },
+    {
+      "frame": 3,
+      "action_cycle": [
+        "o0",
+        "s0",
+        "t3",
+        "s3",
+        "t1",
+        "s1"
+      ],
+      "species": "O-S-T-S-T-S",
+      "subjective_state": [
+        3,
+        0
+      ],
+      "objective_state": [
+        3,
+        1
+      ]
+    },
+    {
+      "frame": 4,
+      "action_cycle": [
+        "o1",
+        "s1",
+        "t4",
+        "s4",
+        "t2",
+        "s2"
+      ],
+      "species": "O-S-T-S-T-S",
+      "subjective_state": [
+        4,
+        0
+      ],
+      "objective_state": [
+        4,
+        1
+      ]
+    }
+  ],
+  "transitions": {
+    "tau": [
+      {
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          1,
+          0
+        ]
+      },
+      {
+        "from": [
+          0,
+          1
+        ],
+        "to": [
+          1,
+          1
+        ]
+      },
+      {
+        "from": [
+          1,
+          0
+        ],
+        "to": [
+          2,
+          0
+        ]
+      },
+      {
+        "from": [
+          1,
+          1
+        ],
+        "to": [
+          2,
+          1
+        ]
+      },
+      {
+        "from": [
+          2,
+          0
+        ],
+        "to": [
+          3,
+          0
+        ]
+      },
+      {
+        "from": [
+          2,
+          1
+        ],
+        "to": [
+          3,
+          1
+        ]
+      },
+      {
+        "from": [
+          3,
+          0
+        ],
+        "to": [
+          4,
+          0
+        ]
+      },
+      {
+        "from": [
+          3,
+          1
+        ],
+        "to": [
+          4,
+          1
+        ]
+      },
+      {
+        "from": [
+          4,
+          0
+        ],
+        "to": [
+          0,
+          0
+        ]
+      },
+      {
+        "from": [
+          4,
+          1
+        ],
+        "to": [
+          0,
+          1
+        ]
+      }
+    ],
+    "mu": [
+      {
+        "from": [
+          0,
+          0
+        ],
+        "to": [
+          0,
+          1
+        ]
+      },
+      {
+        "from": [
+          0,
+          1
+        ],
+        "to": [
+          0,
+          0
+        ]
+      },
+      {
+        "from": [
+          1,
+          0
+        ],
+        "to": [
+          1,
+          1
+        ]
+      },
+      {
+        "from": [
+          1,
+          1
+        ],
+        "to": [
+          1,
+          0
+        ]
+      },
+      {
+        "from": [
+          2,
+          0
+        ],
+        "to": [
+          2,
+          1
+        ]
+      },
+      {
+        "from": [
+          2,
+          1
+        ],
+        "to": [
+          2,
+          0
+        ]
+      },
+      {
+        "from": [
+          3,
+          0
+        ],
+        "to": [
+          3,
+          1
+        ]
+      },
+      {
+        "from": [
+          3,
+          1
+        ],
+        "to": [
+          3,
+          0
+        ]
+      },
+      {
+        "from": [
+          4,
+          0
+        ],
+        "to": [
+          4,
+          1
+        ]
+      },
+      {
+        "from": [
+          4,
+          1
+        ],
+        "to": [
+          4,
+          0
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "summaries": [
+    {
+      "label": "subjective",
+      "seed_classification": "subjective-state",
+      "total_edits": 54,
+      "class_counts": {
+        "subjective-state": 36,
+        "unresolved": 12,
+        "action-cell": 6
+      },
+      "confidence_counts": {
+        "nearest": 42,
+        "ambiguous": 12
+      },
+      "ambiguous_count": 12,
+      "nearest_action_count": 6,
+      "nearest_subjective_count": 36,
+      "nearest_objective_count": 0
+    },
+    {
+      "label": "objective",
+      "seed_classification": "objective-state",
+      "total_edits": 54,
+      "class_counts": {
+        "objective-state": 36,
+        "unresolved": 12,
+        "action-cell": 6
+      },
+      "confidence_counts": {
+        "nearest": 42,
+        "ambiguous": 12
+      },
+      "ambiguous_count": 12,
+      "nearest_action_count": 6,
+      "nearest_subjective_count": 0,
+      "nearest_objective_count": 36
+    },
+    {
+      "label": "action",
+      "seed_classification": "action-cell",
+      "total_edits": 66,
+      "class_counts": {
+        "unresolved": 10,
+        "objective-state": 11,
+        "action-cell": 45
+      },
+      "confidence_counts": {
+        "ambiguous": 10,
+        "nearest": 56
+      },
+      "ambiguous_count": 10,
+      "nearest_action_count": 45,
+      "nearest_subjective_count": 0,
+      "nearest_objective_count": 11
+    }
+  ]
+}

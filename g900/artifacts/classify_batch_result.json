@@ -1,0 +1,118 @@
+{
+  "scale": 1,
+  "count": 5,
+  "classification_counts": {
+    "subjective-state": 1,
+    "objective-state": 1,
+    "action-cell": 2,
+    "mixed": 0,
+    "unresolved": 1
+  },
+  "results": [
+    {
+      "label": "objective_exact",
+      "classification": "objective-state",
+      "confidence": "exact",
+      "distance_summary": {
+        "best_subjective_distance": 2,
+        "best_objective_distance": 0,
+        "best_action_distance": 4
+      },
+      "normalized_cycle": [
+        "o0",
+        "o1",
+        "o2",
+        "s3",
+        "t3",
+        "s0"
+      ],
+      "meta": {
+        "label": "objective_exact"
+      }
+    },
+    {
+      "label": "subjective_exact",
+      "classification": "subjective-state",
+      "confidence": "exact",
+      "distance_summary": {
+        "best_subjective_distance": 0,
+        "best_objective_distance": 2,
+        "best_action_distance": 5
+      },
+      "normalized_cycle": [
+        "o0",
+        "o1",
+        "o2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "meta": {
+        "label": "subjective_exact"
+      }
+    },
+    {
+      "label": "action_exact",
+      "classification": "action-cell",
+      "confidence": "exact",
+      "distance_summary": {
+        "best_subjective_distance": 5,
+        "best_objective_distance": 4,
+        "best_action_distance": 0
+      },
+      "normalized_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "meta": {
+        "label": "action_exact"
+      }
+    },
+    {
+      "label": "hybrid_ambiguous",
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "distance_summary": {
+        "best_subjective_distance": 1,
+        "best_objective_distance": 1,
+        "best_action_distance": 5
+      },
+      "normalized_cycle": [
+        "o0",
+        "o1",
+        "o2",
+        "s2",
+        "t3",
+        "s0"
+      ],
+      "meta": {
+        "label": "hybrid_ambiguous"
+      }
+    },
+    {
+      "label": "near_action",
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "distance_summary": {
+        "best_subjective_distance": 5,
+        "best_objective_distance": 4,
+        "best_action_distance": 2
+      },
+      "normalized_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t4",
+        "s4"
+      ],
+      "meta": {
+        "label": "near_action"
+      }
+    }
+  ]
+}

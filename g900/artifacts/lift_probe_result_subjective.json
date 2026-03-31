@@ -1,0 +1,61 @@
+{
+  "input": {
+    "source_type": "manual_probe",
+    "frame_count": 5,
+    "cycle": [
+      "o0",
+      "o1",
+      "o2",
+      "s2",
+      "t0",
+      "s0"
+    ],
+    "notes": "subjective witness candidate"
+  },
+  "machine_context": {
+    "frame_count": 5,
+    "subjective_family_size": 5,
+    "objective_family_size": 5,
+    "action_family_size": 5
+  },
+  "subjective_matches": [
+    {
+      "frame": 0,
+      "phase": 0,
+      "phase_label": "subjective",
+      "cycle": [
+        "o0",
+        "o1",
+        "o2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "cycle_str": "o0-o1-o2-s2-t0-s0-o0",
+      "cycle_key": [
+        "o0",
+        "o1",
+        "o2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "alignment": "return",
+      "spread": 4,
+      "fiber": 26,
+      "match_type": "exact_cycle"
+    }
+  ],
+  "objective_matches": [],
+  "action_matches": [],
+  "orbit_block": {
+    "subjective_exact": true,
+    "objective_exact": false,
+    "verdict": "subjective-selected"
+  },
+  "action_block": {
+    "verdict": "no-action-match"
+  },
+  "classification": "subjective-state",
+  "final_verdict": "subjective-state"
+}

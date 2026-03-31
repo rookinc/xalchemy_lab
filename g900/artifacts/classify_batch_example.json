@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "label": "objective_exact",
+      "cycle": ["o0", "o1", "o2", "s3", "t3", "s0"]
+    },
+    {
+      "label": "subjective_exact",
+      "cycle": ["o0", "o1", "o2", "s2", "t0", "s0"]
+    },
+    {
+      "label": "action_exact",
+      "cycle": ["o2", "s2", "t0", "s0", "t3", "s3"]
+    },
+    {
+      "label": "hybrid_ambiguous",
+      "cycle": ["o0", "o1", "o2", "s2", "t3", "s0"]
+    },
+    {
+      "label": "near_action",
+      "cycle": ["o2", "s2", "t0", "s0", "t4", "s4"]
+    }
+  ]
+}

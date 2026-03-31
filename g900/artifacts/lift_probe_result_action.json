@@ -1,0 +1,57 @@
+{
+  "input": {
+    "source_type": "manual_probe",
+    "frame_count": 5,
+    "cycle": [
+      "o2",
+      "s2",
+      "t0",
+      "s0",
+      "t3",
+      "s3"
+    ],
+    "notes": "action cell candidate"
+  },
+  "machine_context": {
+    "frame_count": 5,
+    "subjective_family_size": 5,
+    "objective_family_size": 5,
+    "action_family_size": 5
+  },
+  "subjective_matches": [],
+  "objective_matches": [],
+  "action_matches": [
+    {
+      "frame": 0,
+      "cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "cycle_str": "o2-s2-t0-s0-t3-s3-o2",
+      "cycle_key": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "species": "O-S-T-S-T-S",
+      "match_type": "exact_cycle"
+    }
+  ],
+  "orbit_block": {
+    "subjective_exact": false,
+    "objective_exact": false,
+    "verdict": "unresolved"
+  },
+  "action_block": {
+    "verdict": "action-cell-match"
+  },
+  "classification": "action-cell",
+  "final_verdict": "action-cell"
+}

@@ -1,0 +1,6 @@
+{
+  "source_type": "manual_probe",
+  "frame_count": 5,
+  "cycle": ["o0", "o1", "o2", "s2", "t0", "s0"],
+  "notes": "subjective witness candidate"
+}
