@@ -1,0 +1,7 @@
+{
+  "seed_cycle": ["o2", "s2", "t0", "s0", "t3", "s3"],
+  "vocab": ["o2", "s2", "s3", "s4", "t0", "t3", "t4", "s0", "o0", "o1", "o2", "o3", "o4"],
+  "family": "action-cell",
+  "parent_confidence": "nearest",
+  "per_parent_limit": 40
+}
