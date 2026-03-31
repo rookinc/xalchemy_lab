@@ -341,3 +341,33 @@ balanced subjective/objective state pair
 hinge ambiguity ridge between state chambers
 genuine third action basin
 action basin locally asymmetric and objective-leaning
+
+---
+
+## 13. Normalized basin proportions
+
+Using the normalized basin comparison script, the current local proportions are:
+
+```text
+scan         seed               total   subj%   obj%   act%   unres%  exact%  near%  ambig%
+----------------------------------------------------------------------------------------------
+subjective   subjective-state      54   66.7%   0.0%  11.1%   22.2%    0.0%   77.8%   22.2%
+objective    objective-state       54    0.0%  66.7%  11.1%   22.2%    0.0%   77.8%   22.2%
+action       action-cell           66    0.0%  16.7%  68.2%   15.2%    0.0%   84.8%   15.2%
+Takeaways:
+subjective/objective mirror gap:
+core = 0.0%
+action spill = 0.0%
+unresolved = 0.0%
+action retention = 68.2%
+action -> objective drift = 16.7%
+action -> subjective drift = 0.0%
+Interpretation:
+the subjective and objective state basins are locally mirror-symmetric at this scan resolution
+the action basin is locally robust, with slightly higher retention than either state basin
+the action basin is not centered symmetrically between the two state basins
+when action leaks, it leaks toward objective and not toward subjective
+This strengthens the current working picture:
+two balanced primary state basins
+one robust third action basin
+one-sided objective-facing action drift

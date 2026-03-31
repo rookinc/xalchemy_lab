@@ -1,0 +1,79 @@
+{
+  "summaries": [
+    {
+      "label": "subjective",
+      "seed_classification": "subjective-state",
+      "total_edits": 54,
+      "counts": {
+        "subjective-state": 36,
+        "objective-state": 0,
+        "action-cell": 6,
+        "unresolved": 12,
+        "mixed": 0,
+        "exact": 0,
+        "nearest": 42,
+        "ambiguous": 12
+      },
+      "proportions": {
+        "subjective-state_pct": 66.66666666666667,
+        "objective-state_pct": 0.0,
+        "action-cell_pct": 11.11111111111111,
+        "unresolved_pct": 22.22222222222222,
+        "mixed_pct": 0.0,
+        "exact_pct": 0.0,
+        "nearest_pct": 77.77777777777777,
+        "ambiguous_pct": 22.22222222222222
+      }
+    },
+    {
+      "label": "objective",
+      "seed_classification": "objective-state",
+      "total_edits": 54,
+      "counts": {
+        "subjective-state": 0,
+        "objective-state": 36,
+        "action-cell": 6,
+        "unresolved": 12,
+        "mixed": 0,
+        "exact": 0,
+        "nearest": 42,
+        "ambiguous": 12
+      },
+      "proportions": {
+        "subjective-state_pct": 0.0,
+        "objective-state_pct": 66.66666666666667,
+        "action-cell_pct": 11.11111111111111,
+        "unresolved_pct": 22.22222222222222,
+        "mixed_pct": 0.0,
+        "exact_pct": 0.0,
+        "nearest_pct": 77.77777777777777,
+        "ambiguous_pct": 22.22222222222222
+      }
+    },
+    {
+      "label": "action",
+      "seed_classification": "action-cell",
+      "total_edits": 66,
+      "counts": {
+        "subjective-state": 0,
+        "objective-state": 11,
+        "action-cell": 45,
+        "unresolved": 10,
+        "mixed": 0,
+        "exact": 0,
+        "nearest": 56,
+        "ambiguous": 10
+      },
+      "proportions": {
+        "subjective-state_pct": 0.0,
+        "objective-state_pct": 16.666666666666668,
+        "action-cell_pct": 68.18181818181819,
+        "unresolved_pct": 15.151515151515152,
+        "mixed_pct": 0.0,
+        "exact_pct": 0.0,
+        "nearest_pct": 84.84848484848484,
+        "ambiguous_pct": 15.151515151515152
+      }
+    }
+  ]
+}
