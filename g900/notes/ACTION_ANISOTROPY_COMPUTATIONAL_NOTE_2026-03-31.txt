@@ -1,0 +1,181 @@
+Action-Cell Repair Anisotropy
+Computational Note
+Date: 2026-03-31
+
+Status
+Working computational position report.
+
+Purpose
+Record the current strongest conclusions from the local-basin, greedy-repair, position-support, seam, and rotation-orbit experiments for the action-cell witness.
+
+Seed witness
+The current exact action witness is:
+
+o2, s2, t0, s0, t3, s3
+
+Framework
+All results below refer to the present witness encoding and the current family classifier with action distance measured by best_action_distance.
+
+Main conclusion
+The action-cell repair landscape is anisotropic.
+
+Raw family distance is informative, but it is not sufficient to explain repair behavior.
+Repair outcomes depend strongly on where edits occur in the cycle.
+Moreover, supports that are equivalent up to cyclic rotation do not in general have equivalent repair behavior.
+Therefore the present action witness encoding is not rotationally uniform at the repair level.
+
+Layer 1: Raw distance is informative but incomplete
+
+Distance-only greedy repair improved performance relative to earlier naive local policies.
+This shows that best_action_distance carries real signal.
+
+However, equal or smaller raw distance does not guarantee easier recovery.
+In earlier scans, some action starts at smaller distance stalled while other starts at larger distance repaired successfully.
+
+So best_action_distance is useful, but it is not a complete local potential.
+
+Layer 2: Species-transition signatures matter
+
+Action starts were grouped by edit-signature type.
+This showed that some species-transition patterns are much harder than others, especially patterns with many cross-species flips and widespread index shifting.
+
+This sharpened the picture beyond raw distance, but did not fully explain the failures.
+
+Layer 3: Position support matters more
+
+Grouping action starts by edited position support exposed strong positional structure.
+
+Depth-3 support summary showed:
+
+0|4|5 : count 4, exact 0.0%, stall 100.0%
+3|4|5 : count 5, exact 100.0%, stall 0.0%
+
+This was the first clean seam result.
+It showed that the problem was not simply “positions 4 and 5 together are bad.”
+Instead, the wrap-through support involving position 0 was sharply pathological.
+
+Depth-3 interpretation
+At depth 3, the dominant coarse obstruction was the seam triple 0|4|5.
+
+Layer 4: Depth-4 broadens the seam into a weak sector
+
+At depth 4, the pattern became broader.
+
+Selected support results:
+
+0|1|2|3 : count 7, exact 0.0%, stall 100.0%
+0|1|2|4 : count 13, exact 15.4%, stall 84.6%
+0|1|2|5 : count 12, exact 25.0%, stall 75.0%
+0|1|3|4 : count 6, exact 16.7%, stall 83.3%
+0|1|4|5 : count 10, exact 10.0%, stall 90.0%
+0|2|3|5 : count 11, exact 90.9%, stall 9.1%
+0|2|4|5 : count 6, exact 33.3%, stall 66.7%
+0|3|4|5 : count 6, exact 0.0%, stall 100.0%
+1|2|3|4 : count 6, exact 66.7%, stall 33.3%
+2|3|4|5 : count 5, exact 20.0%, stall 80.0%
+
+This changed the interpretation.
+
+The depth-3 seam triple was not a false signal.
+Rather, it appears to be a sharp local face of a broader positional asymmetry.
+
+Depth-4 interpretation
+At depth 4, the action obstruction is not confined to one exact seam support.
+Instead, there is a larger weak sector in the cycle, with some supports much harder than others.
+
+Layer 5: Seam partition confirms broad positional asymmetry
+
+Depth-4 seam partition produced:
+
+contains_0_and_5           count 49, exact 34.7%, stall 65.3%
+contains_4_and_5_not_0     count 12, exact 25.0%, stall 75.0%
+contains_0_only            count 32, exact 18.8%, stall 81.2%
+contains_5_only            count 1, exact 0.0%, stall 100.0%
+other                      count 6, exact 66.7%, stall 33.3%
+
+This shows that supports involving the seam side of the cycle are generally worse than the remaining supports.
+But it also shows that the badness is not reducible to the single pair 0 and 5 alone.
+
+Layer 6: No single catastrophic anchor
+
+Anchor-position sweep at depth 4 gave:
+
+position 0 : exact 28.4%, stall 71.6%
+position 1 : exact 21.2%, stall 78.8%
+position 2 : exact 36.6%, stall 63.4%
+position 3 : exact 38.2%, stall 61.8%
+position 4 : exact 24.6%, stall 75.4%
+position 5 : exact 32.3%, stall 67.7%
+
+This weakens the hypothesis that position 0 alone is the culprit.
+
+Best anchor interpretation
+There is no single catastrophic anchor.
+Instead, positions 0, 1, 4, and 5 behave as a weaker side of the cycle, while positions 2 and 3 behave as a comparatively healthier side.
+
+Layer 7: Rotation-orbit test is decisive
+
+The strongest structural result came from the rotation-orbit test.
+
+Supports were grouped by cyclic orbit.
+If repair behavior were rotationally uniform, rotated supports in the same orbit would have similar exact and stall rates.
+
+That is not what happened.
+
+Observed member exact-rate spans inside single orbits included:
+
+orbit 0|1|2|3 : exact-rate span 66.7%
+orbit 0|1|2|4 : exact-rate span 50.0%
+orbit 0|1|3|4 : exact-rate span 74.2%
+
+These spreads are large.
+Therefore cyclically rotated supports do not share the same repair behavior.
+
+Decisive conclusion
+The action-cell repair landscape is not rotationally uniform in the present witness encoding.
+
+Best current statement
+
+For the present action-cell witness and classifier, best_action_distance provides useful local information but does not fully govern repair.
+Repair behavior depends strongly on positional support.
+At depth 3, the seam triple 0|4|5 is a sharp local obstruction.
+At depth 4, this broadens into a larger weak-sector geometry.
+Most decisively, cyclically rotated supports within the same orbit show large differences in exact recovery rate.
+Therefore the action-cell repair landscape is genuinely anisotropic in the current encoding.
+
+What is established
+
+1. The classifier detects stable family structure.
+2. The action basin is real and locally attractive.
+3. Earlier repair failures were often policy failures, not basin collapse.
+4. Distance-only greedy repair is informative but incomplete.
+5. Position support is a major determinant of recoverability.
+6. Rotation-equivalent supports can behave very differently.
+7. The current action witness encoding is repair-anisotropic.
+
+What is not yet established
+
+1. No universal theorem across all radii or encodings has been proved.
+2. No closed-form invariant explaining the anisotropy has yet been isolated.
+3. It remains open whether the anisotropy is intrinsic to the witness machine itself or partly induced by the present encoding and metric choices.
+
+Best next experiments
+
+1. Seam-aware or sector-aware greedy policy
+Test whether adding positional penalties or tie-breaks improves exact recovery.
+
+2. Orbit-normalized metric design
+Try a distance or priority function that partially compensates for positional anisotropy.
+
+3. Higher-depth continuation
+Extend the support studies beyond depth 4 and check whether the same weak sector persists.
+
+4. Alternative encodings
+Test whether a different witness normalization reduces or removes the observed rotational nonuniformity.
+
+Working conclusion
+
+The action witness is not merely “locally attractive.”
+It is locally attractive with a structured anisotropic repair geometry.
+The current data show a clear positional and orbit-level asymmetry, with weak supports concentrated on one side of the cycle and strong evidence against rotational uniformity.
+

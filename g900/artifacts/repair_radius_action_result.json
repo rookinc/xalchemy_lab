@@ -1,0 +1,6941 @@
+{
+  "seed_cycle": [
+    "o2",
+    "s2",
+    "t0",
+    "s0",
+    "t3",
+    "s3"
+  ],
+  "target_family": "action-cell",
+  "start_depth": 2,
+  "start_confidence_filter": "nearest",
+  "max_start_distance": 3,
+  "vocab_size": 12,
+  "candidate_count": 1815,
+  "start_count": 300,
+  "max_steps": 6,
+  "summary": {
+    "count": 300,
+    "reached_exact_count": 292,
+    "reached_exact_rate": 0.9733333333333334,
+    "improved_count": 296,
+    "improved_rate": 0.9866666666666667,
+    "stalled_count": 8,
+    "stalled_rate": 0.02666666666666667,
+    "avg_start_distance": 2.296666666666667,
+    "avg_end_distance": 0.05333333333333334,
+    "avg_steps_taken": 2.1533333333333333
+  },
+  "walk_sample_limit": 50,
+  "walks": [
+    {
+      "start_label": "edit_pos0_o2_to_s0__pos1_s2_to_s3",
+      "start_cycle": [
+        "s0",
+        "s3",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s0__pos1_s2_to_s3",
+          "cycle": [
+            "s0",
+            "s3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s0"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_s0_to_o2",
+          "cycle": [
+            "o2",
+            "s3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_s3_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s3",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o0__pos1_s2_to_o2",
+      "start_cycle": [
+        "o0",
+        "o2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o0__pos1_s2_to_o2",
+          "cycle": [
+            "o0",
+            "o2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos1_o2_to_s2",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "o2",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o0__pos1_s2_to_s3",
+      "start_cycle": [
+        "o0",
+        "s3",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o0__pos1_s2_to_s3",
+          "cycle": [
+            "o0",
+            "s3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_s3_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s3",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o0__pos1_s2_to_s0",
+      "start_cycle": [
+        "o0",
+        "s0",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o0__pos1_s2_to_s0",
+          "cycle": [
+            "o0",
+            "s0",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s0",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_s0_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s0",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o0__pos1_s2_to_o1",
+      "start_cycle": [
+        "o0",
+        "o1",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o0__pos1_s2_to_o1",
+          "cycle": [
+            "o0",
+            "o1",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos1_o1_to_s2",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "o1",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o0__pos1_s2_to_o3",
+      "start_cycle": [
+        "o0",
+        "o3",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o0__pos1_s2_to_o3",
+          "cycle": [
+            "o0",
+            "o3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "o3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "o3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_o3_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "o3",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o0__pos1_s2_to_o4",
+      "start_cycle": [
+        "o0",
+        "o4",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o0__pos1_s2_to_o4",
+          "cycle": [
+            "o0",
+            "o4",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "o4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 3,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "o4",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_o4_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "o4",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o1__pos1_s2_to_o2",
+      "start_cycle": [
+        "o1",
+        "o2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o1__pos1_s2_to_o2",
+          "cycle": [
+            "o1",
+            "o2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o1"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos1_o2_to_s2",
+          "cycle": [
+            "o1",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "o2",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o1_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o1",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o1__pos1_s2_to_s3",
+      "start_cycle": [
+        "o1",
+        "s3",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o1__pos1_s2_to_s3",
+          "cycle": [
+            "o1",
+            "s3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o1"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o1_to_o2",
+          "cycle": [
+            "o2",
+            "s3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o1",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_s3_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s3",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o1__pos1_s2_to_s0",
+      "start_cycle": [
+        "o1",
+        "s0",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o1__pos1_s2_to_s0",
+          "cycle": [
+            "o1",
+            "s0",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o1"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o1_to_o2",
+          "cycle": [
+            "o2",
+            "s0",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o1",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_s0_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s0",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o1__pos1_s2_to_o3",
+      "start_cycle": [
+        "o1",
+        "o3",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o1__pos1_s2_to_o3",
+          "cycle": [
+            "o1",
+            "o3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o1"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "o3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o1_to_o2",
+          "cycle": [
+            "o2",
+            "o3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o1",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_o3_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "o3",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o1__pos1_s2_to_o4",
+      "start_cycle": [
+        "o1",
+        "o4",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o1__pos1_s2_to_o4",
+          "cycle": [
+            "o1",
+            "o4",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o1"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "o4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o1_to_o2",
+          "cycle": [
+            "o2",
+            "o4",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o1",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_o4_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "o4",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o3__pos1_s2_to_s3",
+      "start_cycle": [
+        "o3",
+        "s3",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o3__pos1_s2_to_s3",
+          "cycle": [
+            "o3",
+            "s3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o3"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o3_to_o2",
+          "cycle": [
+            "o2",
+            "s3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o3",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_s3_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s3",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o3__pos1_s2_to_s4",
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o3__pos1_s2_to_s4",
+          "cycle": [
+            "o3",
+            "s4",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o3"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos1_s4_to_s2",
+          "cycle": [
+            "o3",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s4",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o3_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o3",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o3__pos1_s2_to_s0",
+      "start_cycle": [
+        "o3",
+        "s0",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o3__pos1_s2_to_s0",
+          "cycle": [
+            "o3",
+            "s0",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o3"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o3_to_o2",
+          "cycle": [
+            "o2",
+            "s0",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o3",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_s0_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s0",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o3__pos1_s2_to_o4",
+      "start_cycle": [
+        "o3",
+        "o4",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o3__pos1_s2_to_o4",
+          "cycle": [
+            "o3",
+            "o4",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o3"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "o4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o3_to_o2",
+          "cycle": [
+            "o2",
+            "o4",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o3",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_o4_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "o4",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o4__pos1_s2_to_s3",
+      "start_cycle": [
+        "o4",
+        "s3",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o4__pos1_s2_to_s3",
+          "cycle": [
+            "o4",
+            "s3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o4"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o4_to_o2",
+          "cycle": [
+            "o2",
+            "s3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o4",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_s3_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s3",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_o4__pos1_s2_to_s0",
+      "start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_o4__pos1_s2_to_s0",
+          "cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o4"
+            },
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o4_to_o2",
+          "cycle": [
+            "o2",
+            "s0",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o4",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos1_s0_to_s2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s0",
+              "to": "s2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s2__pos2_t0_to_o2",
+      "start_cycle": [
+        "s2",
+        "s2",
+        "o2",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s2__pos2_t0_to_o2",
+          "cycle": [
+            "s2",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s2"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s2_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o2_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o2",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s2__pos2_t0_to_o0",
+      "start_cycle": [
+        "s2",
+        "s2",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s2__pos2_t0_to_o0",
+          "cycle": [
+            "s2",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s2"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_s2_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o0_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o0",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s2__pos2_t0_to_o1",
+      "start_cycle": [
+        "s2",
+        "s2",
+        "o1",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s2__pos2_t0_to_o1",
+          "cycle": [
+            "s2",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s2"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s2_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o1_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o1",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s2__pos2_t0_to_o3",
+      "start_cycle": [
+        "s2",
+        "s2",
+        "o3",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s2__pos2_t0_to_o3",
+          "cycle": [
+            "s2",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s2"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s2_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s2",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o3_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o3",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s2__pos2_t0_to_o4",
+      "start_cycle": [
+        "s2",
+        "s2",
+        "o4",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s2__pos2_t0_to_o4",
+          "cycle": [
+            "s2",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s2"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s2_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s2",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o4_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o4",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s3__pos2_t0_to_o2",
+      "start_cycle": [
+        "s3",
+        "s2",
+        "o2",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s3__pos2_t0_to_o2",
+          "cycle": [
+            "s3",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s3_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s3",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o2_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o2",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s3__pos2_t0_to_o0",
+      "start_cycle": [
+        "s3",
+        "s2",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s3__pos2_t0_to_o0",
+          "cycle": [
+            "s3",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_s3_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s3",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o0_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o0",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s3__pos2_t0_to_o1",
+      "start_cycle": [
+        "s3",
+        "s2",
+        "o1",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s3__pos2_t0_to_o1",
+          "cycle": [
+            "s3",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s3_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s3",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o1_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o1",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s3__pos2_t0_to_o3",
+      "start_cycle": [
+        "s3",
+        "s2",
+        "o3",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s3__pos2_t0_to_o3",
+          "cycle": [
+            "s3",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s3_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s3",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o3_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o3",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s3__pos2_t0_to_o4",
+      "start_cycle": [
+        "s3",
+        "s2",
+        "o4",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s3__pos2_t0_to_o4",
+          "cycle": [
+            "s3",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s3_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s3",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o4_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o4",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s4__pos2_t0_to_o2",
+      "start_cycle": [
+        "s4",
+        "s2",
+        "o2",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s4__pos2_t0_to_o2",
+          "cycle": [
+            "s4",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s4_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s4",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o2_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o2",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s4__pos2_t0_to_o0",
+      "start_cycle": [
+        "s4",
+        "s2",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s4__pos2_t0_to_o0",
+          "cycle": [
+            "s4",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_s4_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s4",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o0_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o0",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s4__pos2_t0_to_o1",
+      "start_cycle": [
+        "s4",
+        "s2",
+        "o1",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s4__pos2_t0_to_o1",
+          "cycle": [
+            "s4",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s4_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s4",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o1_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o1",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s4__pos2_t0_to_o3",
+      "start_cycle": [
+        "s4",
+        "s2",
+        "o3",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s4__pos2_t0_to_o3",
+          "cycle": [
+            "s4",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s4_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s4",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o3_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o3",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s4__pos2_t0_to_o4",
+      "start_cycle": [
+        "s4",
+        "s2",
+        "o4",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s4__pos2_t0_to_o4",
+          "cycle": [
+            "s4",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_s4_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s4",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o4_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o4",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t0__pos2_t0_to_o0",
+      "start_cycle": [
+        "t0",
+        "s2",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t0__pos2_t0_to_o0",
+          "cycle": [
+            "t0",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t0"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_t0_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o0_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o0",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t0__pos2_t0_to_o1",
+      "start_cycle": [
+        "t0",
+        "s2",
+        "o1",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t0__pos2_t0_to_o1",
+          "cycle": [
+            "t0",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t0"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t0_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o1_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o1",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t0__pos2_t0_to_o3",
+      "start_cycle": [
+        "t0",
+        "s2",
+        "o3",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t0__pos2_t0_to_o3",
+          "cycle": [
+            "t0",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t0"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o3_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o3",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t0__pos2_t0_to_o4",
+      "start_cycle": [
+        "t0",
+        "s2",
+        "o4",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t0__pos2_t0_to_o4",
+          "cycle": [
+            "t0",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t0"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o4_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o4",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t3__pos2_t0_to_o2",
+      "start_cycle": [
+        "t3",
+        "s2",
+        "o2",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t3__pos2_t0_to_o2",
+          "cycle": [
+            "t3",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t3_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t3",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o2_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o2",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t3__pos2_t0_to_o0",
+      "start_cycle": [
+        "t3",
+        "s2",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t3__pos2_t0_to_o0",
+          "cycle": [
+            "t3",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 3,
+            "best_objective_distance": 3,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_t3_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t3",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o0_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o0",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t3__pos2_t0_to_o1",
+      "start_cycle": [
+        "t3",
+        "s2",
+        "o1",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t3__pos2_t0_to_o1",
+          "cycle": [
+            "t3",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t3_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t3",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o1_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o1",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t3__pos2_t0_to_o3",
+      "start_cycle": [
+        "t3",
+        "s2",
+        "o3",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t3__pos2_t0_to_o3",
+          "cycle": [
+            "t3",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t3_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t3",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o3_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o3",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t3__pos2_t0_to_o4",
+      "start_cycle": [
+        "t3",
+        "s2",
+        "o4",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t3__pos2_t0_to_o4",
+          "cycle": [
+            "t3",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t3_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t3",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o4_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o4",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t4__pos2_t0_to_o2",
+      "start_cycle": [
+        "t4",
+        "s2",
+        "o2",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t4__pos2_t0_to_o2",
+          "cycle": [
+            "t4",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t4_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t4",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o2_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o2",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t4__pos2_t0_to_o0",
+      "start_cycle": [
+        "t4",
+        "s2",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t4__pos2_t0_to_o0",
+          "cycle": [
+            "t4",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_t4_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t4",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o0_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o0",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t4__pos2_t0_to_o1",
+      "start_cycle": [
+        "t4",
+        "s2",
+        "o1",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 3,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t4__pos2_t0_to_o1",
+          "cycle": [
+            "t4",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t4_to_o0",
+          "cycle": [
+            "o0",
+            "s2",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t4",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos2_o1_to_t0",
+          "cycle": [
+            "o0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o1",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t4__pos2_t0_to_o3",
+      "start_cycle": [
+        "t4",
+        "s2",
+        "o3",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t4__pos2_t0_to_o3",
+          "cycle": [
+            "t4",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t4_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t4",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o3_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o3",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_t4__pos2_t0_to_o4",
+      "start_cycle": [
+        "t4",
+        "s2",
+        "o4",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_t4__pos2_t0_to_o4",
+          "cycle": [
+            "t4",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "t4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos0_t4_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "o4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "t4",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_o4_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o4",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s0__pos2_t0_to_o2",
+      "start_cycle": [
+        "s0",
+        "s2",
+        "o2",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s0__pos2_t0_to_o2",
+          "cycle": [
+            "s0",
+            "s2",
+            "o2",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s0"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos2_o2_to_t0",
+          "cycle": [
+            "s0",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o2",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos0_s0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s0__pos2_t0_to_s3",
+      "start_cycle": [
+        "s0",
+        "s2",
+        "s3",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s0__pos2_t0_to_s3",
+          "cycle": [
+            "s0",
+            "s2",
+            "s3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s0"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "s3"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_s0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "s3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_s3_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "s3",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos0_o2_to_s0__pos2_t0_to_s4",
+      "start_cycle": [
+        "s0",
+        "s2",
+        "s4",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "exact",
+      "end_distance": 0,
+      "steps_taken": 2,
+      "reached_exact_target": true,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos0_o2_to_s0__pos2_t0_to_s4",
+          "cycle": [
+            "s0",
+            "s2",
+            "s4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "s0"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "s4"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_s0_to_o2",
+          "cycle": [
+            "o2",
+            "s2",
+            "s4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "s0",
+              "to": "o2"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "label": "edit_pos2_s4_to_t0",
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "s4",
+              "to": "t0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 0
+          }
+        }
+      ]
+    }
+  ],
+  "failed_walks": [
+    {
+      "start_label": "edit_pos1_s2_to_s4__pos2_t0_to_o0",
+      "start_cycle": [
+        "o2",
+        "s4",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o1",
+        "s4",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "nearest",
+      "end_distance": 2,
+      "steps_taken": 2,
+      "reached_exact_target": false,
+      "improved": false,
+      "path": [
+        {
+          "label": "edit_pos1_s2_to_s4__pos2_t0_to_o0",
+          "cycle": [
+            "o2",
+            "s4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o2_to_o0",
+          "cycle": [
+            "o0",
+            "s4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o1",
+          "cycle": [
+            "o1",
+            "s4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos1_s2_to_s4__pos2_t0_to_o1",
+      "start_cycle": [
+        "o2",
+        "s4",
+        "o1",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o1",
+        "s4",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "nearest",
+      "end_distance": 2,
+      "steps_taken": 3,
+      "reached_exact_target": false,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos1_s2_to_s4__pos2_t0_to_o1",
+          "cycle": [
+            "o2",
+            "s4",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "s4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos2_o1_to_o0",
+          "cycle": [
+            "o2",
+            "s4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o1",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o2_to_o0",
+          "cycle": [
+            "o0",
+            "s4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o1",
+          "cycle": [
+            "o1",
+            "s4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos1_s2_to_t0__pos2_t0_to_o0",
+      "start_cycle": [
+        "o2",
+        "t0",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o1",
+        "t0",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "nearest",
+      "end_distance": 2,
+      "steps_taken": 2,
+      "reached_exact_target": false,
+      "improved": false,
+      "path": [
+        {
+          "label": "edit_pos1_s2_to_t0__pos2_t0_to_o0",
+          "cycle": [
+            "o2",
+            "t0",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "t0"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o2_to_o0",
+          "cycle": [
+            "o0",
+            "t0",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o1",
+          "cycle": [
+            "o1",
+            "t0",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos1_s2_to_t0__pos2_t0_to_o1",
+      "start_cycle": [
+        "o2",
+        "t0",
+        "o1",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o1",
+        "t0",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "nearest",
+      "end_distance": 2,
+      "steps_taken": 3,
+      "reached_exact_target": false,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos1_s2_to_t0__pos2_t0_to_o1",
+          "cycle": [
+            "o2",
+            "t0",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "t0"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos2_o1_to_o0",
+          "cycle": [
+            "o2",
+            "t0",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o1",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o2_to_o0",
+          "cycle": [
+            "o0",
+            "t0",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o1",
+          "cycle": [
+            "o1",
+            "t0",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos1_s2_to_t3__pos2_t0_to_o0",
+      "start_cycle": [
+        "o2",
+        "t3",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o1",
+        "t3",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "nearest",
+      "end_distance": 2,
+      "steps_taken": 2,
+      "reached_exact_target": false,
+      "improved": false,
+      "path": [
+        {
+          "label": "edit_pos1_s2_to_t3__pos2_t0_to_o0",
+          "cycle": [
+            "o2",
+            "t3",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "t3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o2_to_o0",
+          "cycle": [
+            "o0",
+            "t3",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o1",
+          "cycle": [
+            "o1",
+            "t3",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos1_s2_to_t3__pos2_t0_to_o1",
+      "start_cycle": [
+        "o2",
+        "t3",
+        "o1",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o1",
+        "t3",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "nearest",
+      "end_distance": 2,
+      "steps_taken": 3,
+      "reached_exact_target": false,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos1_s2_to_t3__pos2_t0_to_o1",
+          "cycle": [
+            "o2",
+            "t3",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "t3"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos2_o1_to_o0",
+          "cycle": [
+            "o2",
+            "t3",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o1",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o2_to_o0",
+          "cycle": [
+            "o0",
+            "t3",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o1",
+          "cycle": [
+            "o1",
+            "t3",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos1_s2_to_t4__pos2_t0_to_o0",
+      "start_cycle": [
+        "o2",
+        "t4",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 2,
+      "end_cycle": [
+        "o1",
+        "t4",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "nearest",
+      "end_distance": 2,
+      "steps_taken": 2,
+      "reached_exact_target": false,
+      "improved": false,
+      "path": [
+        {
+          "label": "edit_pos1_s2_to_t4__pos2_t0_to_o0",
+          "cycle": [
+            "o2",
+            "t4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "t4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o2_to_o0",
+          "cycle": [
+            "o0",
+            "t4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o1",
+          "cycle": [
+            "o1",
+            "t4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        }
+      ]
+    },
+    {
+      "start_label": "edit_pos1_s2_to_t4__pos2_t0_to_o1",
+      "start_cycle": [
+        "o2",
+        "t4",
+        "o1",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "end_cycle": [
+        "o1",
+        "t4",
+        "o0",
+        "s0",
+        "t3",
+        "s3"
+      ],
+      "end_classification": "action-cell",
+      "end_confidence": "nearest",
+      "end_distance": 2,
+      "steps_taken": 3,
+      "reached_exact_target": false,
+      "improved": true,
+      "path": [
+        {
+          "label": "edit_pos1_s2_to_t4__pos2_t0_to_o1",
+          "cycle": [
+            "o2",
+            "t4",
+            "o1",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s2",
+              "to": "t4"
+            },
+            {
+              "position": 2,
+              "from": "t0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 5,
+            "best_action_distance": 3
+          }
+        },
+        {
+          "label": "edit_pos2_o1_to_o0",
+          "cycle": [
+            "o2",
+            "t4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 2,
+              "from": "o1",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o2_to_o0",
+          "cycle": [
+            "o0",
+            "t4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o2",
+              "to": "o0"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        },
+        {
+          "label": "edit_pos0_o0_to_o1",
+          "cycle": [
+            "o1",
+            "t4",
+            "o0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "edits": [
+            {
+              "position": 0,
+              "from": "o0",
+              "to": "o1"
+            }
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 2
+          }
+        }
+      ]
+    }
+  ],
+  "failed_walk_count": 8
+}

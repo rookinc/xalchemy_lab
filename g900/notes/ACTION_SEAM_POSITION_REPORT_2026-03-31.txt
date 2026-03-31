@@ -1,0 +1,99 @@
+Action Seam Position Report
+Date: 2026-03-31
+
+Status
+We now have a much sharper picture of why action-cell greedy repair sometimes fails even when raw family distance is small.
+
+Summary
+The dominant coarse obstruction in the action-cell basin is positional and seam-sensitive.
+
+The strongest observed pattern is:
+
+- exact seam triple 0|4|5 is uniformly bad
+- adjacent non-wrapping triple 3|4|5 is uniformly good
+
+This means the problem is not merely “positions 4 and 5 together are dangerous.”
+The real issue is the wrap-through involvement of position 0.
+
+Key findings
+
+1. Raw family distance is useful but incomplete
+Distance-only greedy repair improved recovery relative to the earlier policy, so distance clearly carries signal.
+However, equal or smaller raw distance does not guarantee easier repair.
+
+In particular, action cases at distance 2 can still fail completely.
+
+2. Species signature sharpens the picture
+Cross-species edit patterns with many species flips and full index shifting are often harder.
+This showed that action repair depends on more than raw distance.
+
+3. Position triple is the strongest coarse invariant found so far
+When action starts were grouped by edited position triple, clear hotspots emerged.
+
+Results from the position-triple summary:
+
+0|4|5 : count 4, exact 0.0%, stall 100.0%
+0|1|5 : count 4, exact 25.0%, stall 75.0%
+1|3|5 : count 4, exact 50.0%, stall 50.0%
+2|4|5 : count 4, exact 50.0%, stall 50.0%
+3|4|5 : count 5, exact 100.0%, stall 0.0%
+
+By contrast, many other triples repaired perfectly:
+
+0|2|3 : 100.0%
+0|2|4 : 100.0%
+0|2|5 : 100.0%
+1|2|4 : 100.0%
+3|4|5 : 100.0%
+
+4. Seam partition confirms the asymmetry
+Partitioning triples by seam involvement produced:
+
+exact_045                  count 4   exact 0.0%   stall 100.0%
+contains_0_and_5           count 9   exact 55.6%  stall 44.4%
+contains_4_and_5_not_0     count 11  exact 72.7%  stall 27.3%
+contains_0_only            count 19  exact 84.2%  stall 15.8%
+contains_5_only            count 7   exact 71.4%  stall 28.6%
+other                      count 13  exact 84.6%  stall 15.4%
+
+Interpretation
+
+The action witness appears to have a genuine cyclic seam-sensitive local geometry.
+
+The wrap-through region around positions 4, 5, and 0 behaves differently from non-wrapping local regions.
+
+This suggests:
+
+- greedy recoverability is not governed only by edit count
+- action-cell repair depends on where the perturbation sits in the cycle
+- the exact seam triple 0|4|5 is the clearest currently identified obstruction
+- nearby-looking triples such as 3|4|5 can behave radically differently
+
+Current best statement
+
+For action-cell repair in the tested depth-3 distance-only scan, the dominant coarse obstruction is seam-sensitive. The exact cyclic seam triple 0|4|5 stalls uniformly, while the adjacent non-wrapping triple 3|4|5 repairs uniformly. This isolates the wrap-through seam involving position 0 as the key positional asymmetry discovered so far.
+
+What this does not yet prove
+
+This does not yet prove a universal theorem for all radii, depths, or action encodings.
+It is currently a strong computational result for the present witness-cycle experiments.
+
+Best next experiments
+
+1. Depth-4 seam retest
+Check whether 0|4|5 remains pathological one shell farther out.
+
+2. Position-plus-species refinement
+Within each bad triple, split by transition signature and compare recovery.
+
+3. Seam-aware greedy policy
+Add a seam penalty or seam-aware tie-breaker and test whether greedy recovery improves.
+
+4. Higher-r witness extension
+When a larger action object is available, test whether the same seam pathology persists.
+
+Working conclusion
+
+The action basin is locally attractive, but not uniformly so under naive greedy descent.
+Its hardest currently observed failures are organized by a seam-sensitive positional geometry rather than by raw distance alone.
+

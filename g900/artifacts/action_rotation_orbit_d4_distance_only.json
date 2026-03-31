@@ -1,0 +1,164 @@
+{
+  "source": "artifacts/action_position_triple_summary_d4_distance_only.json",
+  "rotation_orbits": [
+    {
+      "orbit_canonical": "0|1|2|3",
+      "member_count": 6,
+      "total_count": 46,
+      "aggregate_exact_count": 9,
+      "aggregate_exact_rate": 0.1956521739130435,
+      "aggregate_stall_count": 37,
+      "aggregate_stall_rate": 0.8043478260869565,
+      "aggregate_avg_steps": 3.782608695652174,
+      "member_exact_rate_min": 0.0,
+      "member_exact_rate_max": 0.6666666666666666,
+      "member_exact_rate_span": 0.6666666666666666,
+      "member_stall_rate_min": 0.3333333333333333,
+      "member_stall_rate_max": 1.0,
+      "member_stall_rate_span": 0.6666666666666667,
+      "members": [
+        {
+          "position_signature": "0|1|2|3",
+          "count": 7,
+          "exact_rate": 0.0,
+          "stall_rate": 1.0,
+          "avg_steps": 3.4285714285714284
+        },
+        {
+          "position_signature": "0|1|2|5",
+          "count": 12,
+          "exact_rate": 0.25,
+          "stall_rate": 0.75,
+          "avg_steps": 3.9166666666666665
+        },
+        {
+          "position_signature": "0|1|4|5",
+          "count": 10,
+          "exact_rate": 0.1,
+          "stall_rate": 0.9,
+          "avg_steps": 3.8
+        },
+        {
+          "position_signature": "0|3|4|5",
+          "count": 6,
+          "exact_rate": 0.0,
+          "stall_rate": 1.0,
+          "avg_steps": 4.333333333333333
+        },
+        {
+          "position_signature": "1|2|3|4",
+          "count": 6,
+          "exact_rate": 0.6666666666666666,
+          "stall_rate": 0.3333333333333333,
+          "avg_steps": 3.6666666666666665
+        },
+        {
+          "position_signature": "2|3|4|5",
+          "count": 5,
+          "exact_rate": 0.2,
+          "stall_rate": 0.8,
+          "avg_steps": 3.4
+        }
+      ]
+    },
+    {
+      "orbit_canonical": "0|1|2|4",
+      "member_count": 6,
+      "total_count": 33,
+      "aggregate_exact_count": 9,
+      "aggregate_exact_rate": 0.2727272727272727,
+      "aggregate_stall_count": 24,
+      "aggregate_stall_rate": 0.7272727272727273,
+      "aggregate_avg_steps": 3.5454545454545454,
+      "member_exact_rate_min": 0.0,
+      "member_exact_rate_max": 0.5,
+      "member_exact_rate_span": 0.5,
+      "member_stall_rate_min": 0.5,
+      "member_stall_rate_max": 1.0,
+      "member_stall_rate_span": 0.5,
+      "members": [
+        {
+          "position_signature": "0|1|2|4",
+          "count": 13,
+          "exact_rate": 0.15384615384615385,
+          "stall_rate": 0.8461538461538461,
+          "avg_steps": 3.4615384615384617
+        },
+        {
+          "position_signature": "0|1|3|5",
+          "count": 4,
+          "exact_rate": 0.25,
+          "stall_rate": 0.75,
+          "avg_steps": 3.75
+        },
+        {
+          "position_signature": "0|2|3|4",
+          "count": 6,
+          "exact_rate": 0.5,
+          "stall_rate": 0.5,
+          "avg_steps": 3.5
+        },
+        {
+          "position_signature": "0|2|4|5",
+          "count": 6,
+          "exact_rate": 0.3333333333333333,
+          "stall_rate": 0.6666666666666666,
+          "avg_steps": 3.5
+        },
+        {
+          "position_signature": "1|2|3|5",
+          "count": 1,
+          "exact_rate": 0.0,
+          "stall_rate": 1.0,
+          "avg_steps": 5.0
+        },
+        {
+          "position_signature": "1|3|4|5",
+          "count": 3,
+          "exact_rate": 0.3333333333333333,
+          "stall_rate": 0.6666666666666666,
+          "avg_steps": 3.3333333333333335
+        }
+      ]
+    },
+    {
+      "orbit_canonical": "0|1|3|4",
+      "member_count": 3,
+      "total_count": 21,
+      "aggregate_exact_count": 12,
+      "aggregate_exact_rate": 0.5714285714285714,
+      "aggregate_stall_count": 9,
+      "aggregate_stall_rate": 0.42857142857142855,
+      "aggregate_avg_steps": 3.6666666666666665,
+      "member_exact_rate_min": 0.16666666666666666,
+      "member_exact_rate_max": 0.9090909090909091,
+      "member_exact_rate_span": 0.7424242424242424,
+      "member_stall_rate_min": 0.09090909090909091,
+      "member_stall_rate_max": 0.8333333333333334,
+      "member_stall_rate_span": 0.7424242424242424,
+      "members": [
+        {
+          "position_signature": "0|1|3|4",
+          "count": 6,
+          "exact_rate": 0.16666666666666666,
+          "stall_rate": 0.8333333333333334,
+          "avg_steps": 4.0
+        },
+        {
+          "position_signature": "0|2|3|5",
+          "count": 11,
+          "exact_rate": 0.9090909090909091,
+          "stall_rate": 0.09090909090909091,
+          "avg_steps": 3.6363636363636362
+        },
+        {
+          "position_signature": "1|2|4|5",
+          "count": 4,
+          "exact_rate": 0.25,
+          "stall_rate": 0.75,
+          "avg_steps": 3.25
+        }
+      ]
+    }
+  ]
+}

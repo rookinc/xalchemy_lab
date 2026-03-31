@@ -1,0 +1,186 @@
+Action Two-Step Repair Motifs
+Date: 2026-03-31
+
+Status
+Working note based on targeted oracle analysis of the disputed action-cell depth-4 starts.
+
+Purpose
+Record the strongest current local-grammar conclusion:
+the decisive repair structure appears to be short-horizon paired motifs rather than a scalar first-move rule.
+
+Context
+Earlier stages established:
+
+1. The action-cell basin is real.
+2. Repair anisotropy is real.
+3. Raw distance is informative but incomplete.
+4. Support class and seam/sector structure explain part of the behavior.
+5. A naive weak-sector penalty does not improve recovery on matched samples.
+6. Targeted first-move oracle analysis showed many admissible first moves exist for the disputed starts.
+
+This note records the next rung:
+successful local recovery is organized by two-step repair motifs.
+
+Main conclusion
+The disputed action-cell starts are not merely recoverable.
+They are recoverable by short paired repair motifs.
+
+The decisive local structure is therefore not:
+
+- raw distance alone
+- support class alone
+- first-move feature alone
+
+Instead, the current evidence points to:
+
+a short-horizon repair grammar in which the first move must participate in a valid second-step completion pattern.
+
+Key finding
+For each of the targeted delta starts, there exist two-step motifs that lead back to exact action-cell recovery.
+
+In several cases, the motif is effectively order-flexible:
+A then B works, and B then A also works.
+
+This strongly suggests that some local repairs are organized as paired coordinate corrections rather than as a single rigid one-step rule.
+
+Representative motifs
+
+1. Support 0|1|3|4
+Transition:
+0:o2->o3 | 1:s2->s3 | 3:s0->t3 | 4:t3->s0
+
+Observed motifs:
+- first 0:o3->o2 then 1:s3->s2
+- first 0:o3->s2 then 1:s3->o2
+- first 0:o3->t3 then 3:t3->s2
+
+Interpretation:
+This start admits a small family of two-step repairs that correct two damaged coordinates in succession.
+Some variants restore directly toward the seed witness, others reconfigure first and normalize second.
+
+2. Support 0|2|3|5
+Transition:
+0:o2->s2 | 2:t0->s0 | 3:s0->o3 | 5:s3->s0
+
+Observed motifs:
+- first 0:s2->t0 then 3:o3->s3
+- first 2:s0->o2 then 3:o3->s3
+- first 3:o3->s3 then 0:s2->t0
+
+Interpretation:
+This is a strong example of an order-flexible repair pair.
+The moves on positions 0 and 3 can close in either order.
+
+3. Support 0|1|3|5
+Transition:
+0:o2->s3 | 1:s2->o3 | 3:s0->t4 | 5:s3->o3
+
+Observed motifs:
+- first 0:s3->o2 then 3:t4->s0
+- first 3:t4->s0 then 0:s3->o2
+- first 5:o3->s3 then 0:s3->o2
+
+Interpretation:
+Again we see paired local correction, and again one pair is order-flexible.
+The repair grammar is not limited to one anchor position.
+
+4. Support 0|3|4|5
+Transition:
+0:o2->s3 | 3:s0->s4 | 4:t3->s2 | 5:s3->o3
+
+Observed motifs:
+- first 0:s3->o2 then 5:o3->s3
+- first 1:s2->t3 then 2:t0->s0
+- first 2:t0->s0 then 1:s2->t3
+
+Interpretation:
+This is especially important because this support class appeared difficult in earlier aggregate scans.
+Yet even here, short paired motifs exist, including a clearly order-flexible pair on positions 1 and 2.
+
+5. Support 0|1|3|4
+Transition:
+0:o2->t3 | 1:s2->o1 | 3:s0->o0 | 4:t3->s0
+
+Observed motifs:
+- first 1:o1->s0 then 3:o0->s2
+- first 3:o0->s2 then 1:o1->s0
+- first 1:o1->s2 then 3:o0->s2
+
+Interpretation:
+This is another strong order-flexible paired repair case.
+
+6. Support 0|2|3|5
+Transition:
+0:o2->t3 | 2:t0->s2 | 3:s0->t3 | 5:s3->o4
+
+Observed motifs:
+- first 0:t3->o2 then 5:o4->s3
+- first 0:t3->t0 then 2:s2->o2
+- first 2:s2->o2 then 0:t3->t0
+
+Interpretation:
+The start admits more than one distinct paired motif family, suggesting local redundancy in the repair fan-out.
+
+7. Support 0|2|3|4
+Transition:
+0:o2->t3 | 2:t0->t4 | 3:s0->o3 | 4:t3->s2
+
+Observed motifs:
+- first 0:t3->o2 then 2:t4->t0
+- first 1:s2->s0 then 4:s2->o2
+- first 2:t4->t0 then 0:t3->o2
+
+Interpretation:
+This again shows both direct seedward correction and order-flexible paired repair.
+
+What the motifs suggest
+
+A. Two-coordinate correction is the dominant local unit
+Many successful repairs are not isolated single edits.
+They are paired corrections on two coordinates.
+
+B. Order-flexibility appears in multiple cases
+For several starts, A then B works and B then A works.
+This suggests weak coupling or partial independence between certain local repair channels.
+
+C. First-step quality is relational, not absolute
+A first move is not “good” in isolation.
+It is good insofar as it belongs to a valid two-step completion pattern.
+
+D. Seed restoration is neither necessary nor sufficient at step 1
+Some successful motifs restore seed labels immediately.
+Others do not.
+So the grammar cannot be reduced to “always restore the seed first.”
+
+E. The real control law is short-horizon
+The current evidence strongly suggests that the missing policy invariant is at least two-step.
+A purely myopic first-move rule is too weak.
+
+Best current statement
+The local repair grammar of the action-cell witness is organized by short paired motifs.
+In the analyzed depth-4 delta starts, exact recovery is frequently achieved by two-step correction pairs, often with order flexibility.
+This shows that the decisive policy object is not a scalar first-move property, but participation in a valid short-horizon repair motif.
+
+Implications
+1. Basin failures under current greedy policies are policy failures, not absence of repair paths.
+2. Support class and anisotropy are explanatory but not sufficient for control.
+3. The next useful policy design should score candidate first moves by whether they are likely to admit a strong second-step completion.
+
+Best next experiments
+
+1. Build a two-step motif scorer
+Estimate whether a candidate first move has a high-quality second-step continuation.
+
+2. Compare order-flexible versus order-rigid motifs
+Check whether commutative repair pairs dominate the observed successful motifs.
+
+3. Cluster motifs by coordinate pair
+Identify which coordinate-pair corrections recur most often.
+
+4. Test motif-aware greedy policy
+Replace one-step greedy descent with a shallow two-step lookahead restricted to promising pairs.
+
+Working conclusion
+The action-cell witness is anisotropic but locally rich in admissible exits.
+The currently observed local repair law is best understood as a short-horizon paired repair grammar, not as a scalar first-move rule.
+

@@ -1,0 +1,20 @@
+{
+  "source_file": "artifacts/repair_radius_subjective_result.json",
+  "target_family": "subjective-state",
+  "summary": {
+    "count": 300,
+    "reached_exact_count": 300,
+    "reached_exact_rate": 1.0,
+    "improved_count": 300,
+    "improved_rate": 1.0,
+    "stalled_count": 0,
+    "stalled_rate": 0.0,
+    "avg_start_distance": 2.0966666666666667,
+    "avg_end_distance": 0.0,
+    "avg_steps_taken": 2.0
+  },
+  "saved_walk_count": 50,
+  "saved_failure_count": 0,
+  "saved_failures": [],
+  "diagnostic": "WARNING: result JSON only stores a truncated walks sample. If summary.stalled_count > saved_failure_count, then some failed starts are not present in this file and cannot be beam-tested from this artifact alone."
+}

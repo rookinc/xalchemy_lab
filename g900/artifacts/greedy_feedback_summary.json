@@ -1,0 +1,49 @@
+{
+  "rows": [
+    {
+      "label": "subjective",
+      "family": "subjective-state",
+      "parent_count": 36,
+      "max_steps": 6,
+      "reached_exact_count": 36,
+      "reached_exact_rate": 1.0,
+      "improved_count": 36,
+      "improved_rate": 1.0,
+      "stalled_count": 0,
+      "stalled_rate": 0.0,
+      "avg_start_distance": 1.0,
+      "avg_end_distance": 0.0,
+      "avg_steps_taken": 1.0
+    },
+    {
+      "label": "objective",
+      "family": "objective-state",
+      "parent_count": 36,
+      "max_steps": 6,
+      "reached_exact_count": 36,
+      "reached_exact_rate": 1.0,
+      "improved_count": 36,
+      "improved_rate": 1.0,
+      "stalled_count": 0,
+      "stalled_rate": 0.0,
+      "avg_start_distance": 1.0,
+      "avg_end_distance": 0.0,
+      "avg_steps_taken": 1.0
+    },
+    {
+      "label": "action",
+      "family": "action-cell",
+      "parent_count": 45,
+      "max_steps": 6,
+      "reached_exact_count": 45,
+      "reached_exact_rate": 1.0,
+      "improved_count": 45,
+      "improved_rate": 1.0,
+      "stalled_count": 0,
+      "stalled_rate": 0.0,
+      "avg_start_distance": 1.2444444444444445,
+      "avg_end_distance": 0.0,
+      "avg_steps_taken": 1.0
+    }
+  ]
+}

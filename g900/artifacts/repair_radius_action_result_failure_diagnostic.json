@@ -1,0 +1,20 @@
+{
+  "source_file": "artifacts/repair_radius_action_result.json",
+  "target_family": "action-cell",
+  "summary": {
+    "count": 300,
+    "reached_exact_count": 292,
+    "reached_exact_rate": 0.9733333333333334,
+    "improved_count": 296,
+    "improved_rate": 0.9866666666666667,
+    "stalled_count": 4,
+    "stalled_rate": 0.013333333333333334,
+    "avg_start_distance": 2.296666666666667,
+    "avg_end_distance": 0.05333333333333334,
+    "avg_steps_taken": 2.1533333333333333
+  },
+  "saved_walk_count": 50,
+  "saved_failure_count": 0,
+  "saved_failures": [],
+  "diagnostic": "WARNING: result JSON only stores a truncated walks sample. If summary.stalled_count > saved_failure_count, then some failed starts are not present in this file and cannot be beam-tested from this artifact alone."
+}

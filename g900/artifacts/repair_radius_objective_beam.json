@@ -1,0 +1,563 @@
+{
+  "source_file": "artifacts/repair_radius_objective_result_stalls.json",
+  "target_family": "objective-state",
+  "beam_width": 8,
+  "max_steps": 8,
+  "stall_count": 4,
+  "recovered_count": 4,
+  "recovered_rate": 1.0,
+  "results": [
+    {
+      "start_cycle": [
+        "t0",
+        "s4",
+        "o2",
+        "s3",
+        "t3",
+        "s0"
+      ],
+      "start_classification": "objective-state",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "reached_exact_target": true,
+      "steps_taken": 3,
+      "best_terminal": {
+        "label": "edit_pos4_t3_to_o4",
+        "cycle": [
+          "t0",
+          "s2",
+          "o2",
+          "o3",
+          "o4",
+          "s0"
+        ],
+        "edits": [
+          {
+            "position": 4,
+            "from": "t3",
+            "to": "o4"
+          }
+        ],
+        "classification": "objective-state",
+        "confidence": "exact",
+        "distance_summary": {
+          "best_subjective_distance": 2,
+          "best_objective_distance": 0,
+          "best_action_distance": 4
+        }
+      },
+      "path": [
+        {
+          "label": "start",
+          "cycle": [
+            "t0",
+            "s4",
+            "o2",
+            "s3",
+            "t3",
+            "s0"
+          ],
+          "edits": [],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 3,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos3_s3_to_o3",
+          "cycle": [
+            "t0",
+            "s4",
+            "o2",
+            "o3",
+            "t3",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 3,
+              "from": "s3",
+              "to": "o3"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 2,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos1_s4_to_s2",
+          "cycle": [
+            "t0",
+            "s2",
+            "o2",
+            "o3",
+            "t3",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "s4",
+              "to": "s2"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 3,
+            "best_objective_distance": 1,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos4_t3_to_o4",
+          "cycle": [
+            "t0",
+            "s2",
+            "o2",
+            "o3",
+            "o4",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 4,
+              "from": "t3",
+              "to": "o4"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 2,
+            "best_objective_distance": 0,
+            "best_action_distance": 4
+          }
+        }
+      ],
+      "beam_width": 8,
+      "max_steps": 8
+    },
+    {
+      "start_cycle": [
+        "t0",
+        "t0",
+        "o2",
+        "s3",
+        "t3",
+        "s0"
+      ],
+      "start_classification": "objective-state",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "reached_exact_target": true,
+      "steps_taken": 3,
+      "best_terminal": {
+        "label": "edit_pos4_t3_to_o4",
+        "cycle": [
+          "t0",
+          "s2",
+          "o2",
+          "o3",
+          "o4",
+          "s0"
+        ],
+        "edits": [
+          {
+            "position": 4,
+            "from": "t3",
+            "to": "o4"
+          }
+        ],
+        "classification": "objective-state",
+        "confidence": "exact",
+        "distance_summary": {
+          "best_subjective_distance": 2,
+          "best_objective_distance": 0,
+          "best_action_distance": 4
+        }
+      },
+      "path": [
+        {
+          "label": "start",
+          "cycle": [
+            "t0",
+            "t0",
+            "o2",
+            "s3",
+            "t3",
+            "s0"
+          ],
+          "edits": [],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 3,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos3_s3_to_o3",
+          "cycle": [
+            "t0",
+            "t0",
+            "o2",
+            "o3",
+            "t3",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 3,
+              "from": "s3",
+              "to": "o3"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 2,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos1_t0_to_s2",
+          "cycle": [
+            "t0",
+            "s2",
+            "o2",
+            "o3",
+            "t3",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "t0",
+              "to": "s2"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 3,
+            "best_objective_distance": 1,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos4_t3_to_o4",
+          "cycle": [
+            "t0",
+            "s2",
+            "o2",
+            "o3",
+            "o4",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 4,
+              "from": "t3",
+              "to": "o4"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 2,
+            "best_objective_distance": 0,
+            "best_action_distance": 4
+          }
+        }
+      ],
+      "beam_width": 8,
+      "max_steps": 8
+    },
+    {
+      "start_cycle": [
+        "t0",
+        "t3",
+        "o2",
+        "s3",
+        "t3",
+        "s0"
+      ],
+      "start_classification": "objective-state",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "reached_exact_target": true,
+      "steps_taken": 3,
+      "best_terminal": {
+        "label": "edit_pos4_t3_to_o4",
+        "cycle": [
+          "t0",
+          "s2",
+          "o2",
+          "o3",
+          "o4",
+          "s0"
+        ],
+        "edits": [
+          {
+            "position": 4,
+            "from": "t3",
+            "to": "o4"
+          }
+        ],
+        "classification": "objective-state",
+        "confidence": "exact",
+        "distance_summary": {
+          "best_subjective_distance": 2,
+          "best_objective_distance": 0,
+          "best_action_distance": 4
+        }
+      },
+      "path": [
+        {
+          "label": "start",
+          "cycle": [
+            "t0",
+            "t3",
+            "o2",
+            "s3",
+            "t3",
+            "s0"
+          ],
+          "edits": [],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 3,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos3_s3_to_o3",
+          "cycle": [
+            "t0",
+            "t3",
+            "o2",
+            "o3",
+            "t3",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 3,
+              "from": "s3",
+              "to": "o3"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 2,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos1_t3_to_s2",
+          "cycle": [
+            "t0",
+            "s2",
+            "o2",
+            "o3",
+            "t3",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "t3",
+              "to": "s2"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 3,
+            "best_objective_distance": 1,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos4_t3_to_o4",
+          "cycle": [
+            "t0",
+            "s2",
+            "o2",
+            "o3",
+            "o4",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 4,
+              "from": "t3",
+              "to": "o4"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 2,
+            "best_objective_distance": 0,
+            "best_action_distance": 4
+          }
+        }
+      ],
+      "beam_width": 8,
+      "max_steps": 8
+    },
+    {
+      "start_cycle": [
+        "t0",
+        "t4",
+        "o2",
+        "s3",
+        "t3",
+        "s0"
+      ],
+      "start_classification": "objective-state",
+      "start_confidence": "nearest",
+      "start_distance": 3,
+      "reached_exact_target": true,
+      "steps_taken": 3,
+      "best_terminal": {
+        "label": "edit_pos4_t3_to_o4",
+        "cycle": [
+          "t0",
+          "s2",
+          "o2",
+          "o3",
+          "o4",
+          "s0"
+        ],
+        "edits": [
+          {
+            "position": 4,
+            "from": "t3",
+            "to": "o4"
+          }
+        ],
+        "classification": "objective-state",
+        "confidence": "exact",
+        "distance_summary": {
+          "best_subjective_distance": 2,
+          "best_objective_distance": 0,
+          "best_action_distance": 4
+        }
+      },
+      "path": [
+        {
+          "label": "start",
+          "cycle": [
+            "t0",
+            "t4",
+            "o2",
+            "s3",
+            "t3",
+            "s0"
+          ],
+          "edits": [],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 3,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos3_s3_to_o3",
+          "cycle": [
+            "t0",
+            "t4",
+            "o2",
+            "o3",
+            "t3",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 3,
+              "from": "s3",
+              "to": "o3"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 2,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos1_t4_to_s2",
+          "cycle": [
+            "t0",
+            "s2",
+            "o2",
+            "o3",
+            "t3",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 1,
+              "from": "t4",
+              "to": "s2"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 3,
+            "best_objective_distance": 1,
+            "best_action_distance": 4
+          }
+        },
+        {
+          "label": "edit_pos4_t3_to_o4",
+          "cycle": [
+            "t0",
+            "s2",
+            "o2",
+            "o3",
+            "o4",
+            "s0"
+          ],
+          "edits": [
+            {
+              "position": 4,
+              "from": "t3",
+              "to": "o4"
+            }
+          ],
+          "classification": "objective-state",
+          "confidence": "exact",
+          "distance_summary": {
+            "best_subjective_distance": 2,
+            "best_objective_distance": 0,
+            "best_action_distance": 4
+          }
+        }
+      ],
+      "beam_width": 8,
+      "max_steps": 8
+    }
+  ]
+}

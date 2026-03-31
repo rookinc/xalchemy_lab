@@ -1,0 +1,143 @@
+{
+  "summaries": [
+    {
+      "family": "subjective-state",
+      "metric": "best_subjective_distance",
+      "distance_buckets": [
+        {
+          "distance": 2,
+          "count": 2,
+          "exact_count": 2,
+          "exact_rate": 1.0,
+          "stall_count": 0,
+          "stall_rate": 0.0,
+          "improved_count": 2,
+          "improved_rate": 1.0,
+          "avg_steps": 2.0
+        },
+        {
+          "distance": 3,
+          "count": 40,
+          "exact_count": 40,
+          "exact_rate": 1.0,
+          "stall_count": 0,
+          "stall_rate": 0.0,
+          "improved_count": 40,
+          "improved_rate": 1.0,
+          "avg_steps": 2.975
+        },
+        {
+          "distance": 4,
+          "count": 7,
+          "exact_count": 7,
+          "exact_rate": 1.0,
+          "stall_count": 0,
+          "stall_rate": 0.0,
+          "improved_count": 7,
+          "improved_rate": 1.0,
+          "avg_steps": 3.142857142857143
+        },
+        {
+          "distance": 5,
+          "count": 1,
+          "exact_count": 1,
+          "exact_rate": 1.0,
+          "stall_count": 0,
+          "stall_rate": 0.0,
+          "improved_count": 1,
+          "improved_rate": 1.0,
+          "avg_steps": 3.0
+        }
+      ]
+    },
+    {
+      "family": "objective-state",
+      "metric": "best_objective_distance",
+      "distance_buckets": [
+        {
+          "distance": 2,
+          "count": 1,
+          "exact_count": 1,
+          "exact_rate": 1.0,
+          "stall_count": 0,
+          "stall_rate": 0.0,
+          "improved_count": 1,
+          "improved_rate": 1.0,
+          "avg_steps": 2.0
+        },
+        {
+          "distance": 3,
+          "count": 45,
+          "exact_count": 42,
+          "exact_rate": 0.9333333333333333,
+          "stall_count": 3,
+          "stall_rate": 0.06666666666666667,
+          "improved_count": 44,
+          "improved_rate": 0.9777777777777777,
+          "avg_steps": 2.9555555555555557
+        },
+        {
+          "distance": 4,
+          "count": 4,
+          "exact_count": 4,
+          "exact_rate": 1.0,
+          "stall_count": 0,
+          "stall_rate": 0.0,
+          "improved_count": 4,
+          "improved_rate": 1.0,
+          "avg_steps": 3.0
+        }
+      ]
+    },
+    {
+      "family": "action-cell",
+      "metric": "best_action_distance",
+      "distance_buckets": [
+        {
+          "distance": 2,
+          "count": 2,
+          "exact_count": 0,
+          "exact_rate": 0.0,
+          "stall_count": 2,
+          "stall_rate": 1.0,
+          "improved_count": 2,
+          "improved_rate": 1.0,
+          "avg_steps": 3.0
+        },
+        {
+          "distance": 3,
+          "count": 40,
+          "exact_count": 32,
+          "exact_rate": 0.8,
+          "stall_count": 8,
+          "stall_rate": 0.2,
+          "improved_count": 40,
+          "improved_rate": 1.0,
+          "avg_steps": 3.075
+        },
+        {
+          "distance": 4,
+          "count": 17,
+          "exact_count": 10,
+          "exact_rate": 0.5882352941176471,
+          "stall_count": 7,
+          "stall_rate": 0.4117647058823529,
+          "improved_count": 17,
+          "improved_rate": 1.0,
+          "avg_steps": 3.6470588235294117
+        },
+        {
+          "distance": 5,
+          "count": 4,
+          "exact_count": 3,
+          "exact_rate": 0.75,
+          "stall_count": 1,
+          "stall_rate": 0.25,
+          "improved_count": 4,
+          "improved_rate": 1.0,
+          "avg_steps": 3.25
+        }
+      ]
+    }
+  ]
+}

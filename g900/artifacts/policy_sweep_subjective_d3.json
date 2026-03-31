@@ -1,0 +1,645 @@
+{
+  "source_file": "artifacts/repair_radius_subjective_d3_result_stalls.json",
+  "target_family": "subjective-state",
+  "stall_count": 1,
+  "policies": {
+    "distance_only": {
+      "summary": {
+        "count": 1,
+        "recovered_count": 1,
+        "recovered_rate": 1.0,
+        "avg_steps": 3.0
+      },
+      "results": [
+        {
+          "policy": "distance_only",
+          "start_cycle": [
+            "s4",
+            "s3",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "reached_exact_target": true,
+          "steps_taken": 3,
+          "end_classification": "subjective-state",
+          "end_confidence": "exact",
+          "end_distance": 0,
+          "path": [
+            {
+              "label": "start",
+              "cycle": [
+                "s4",
+                "s3",
+                "t4",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "edits": [],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 5,
+                "best_objective_distance": 6,
+                "best_action_distance": 6
+              }
+            },
+            {
+              "label": "edit_pos0_s4_to_o0",
+              "cycle": [
+                "o0",
+                "s3",
+                "t4",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "edits": [
+                {
+                  "position": 0,
+                  "from": "s4",
+                  "to": "o0"
+                }
+              ],
+              "classification": "action-cell",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 4,
+                "best_objective_distance": 5,
+                "best_action_distance": 3
+              }
+            },
+            {
+              "label": "edit_pos1_s3_to_o1",
+              "cycle": [
+                "o0",
+                "o1",
+                "t4",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "edits": [
+                {
+                  "position": 1,
+                  "from": "s3",
+                  "to": "o1"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 1,
+                "best_objective_distance": 3,
+                "best_action_distance": 5
+              }
+            },
+            {
+              "label": "edit_pos2_t4_to_o2",
+              "cycle": [
+                "o0",
+                "o1",
+                "o2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "edits": [
+                {
+                  "position": 2,
+                  "from": "t4",
+                  "to": "o2"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "exact",
+              "distance_summary": {
+                "best_subjective_distance": 0,
+                "best_objective_distance": 2,
+                "best_action_distance": 5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "distance_then_exact_then_family": {
+      "summary": {
+        "count": 1,
+        "recovered_count": 1,
+        "recovered_rate": 1.0,
+        "avg_steps": 5.0
+      },
+      "results": [
+        {
+          "policy": "distance_then_exact_then_family",
+          "start_cycle": [
+            "s4",
+            "s3",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "reached_exact_target": true,
+          "steps_taken": 5,
+          "end_classification": "subjective-state",
+          "end_confidence": "exact",
+          "end_distance": 0,
+          "path": [
+            {
+              "label": "start",
+              "cycle": [
+                "s4",
+                "s3",
+                "t4",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "edits": [],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 5,
+                "best_objective_distance": 6,
+                "best_action_distance": 6
+              }
+            },
+            {
+              "label": "edit_pos1_s3_to_s1",
+              "cycle": [
+                "s4",
+                "s1",
+                "t4",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "edits": [
+                {
+                  "position": 1,
+                  "from": "s3",
+                  "to": "s1"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 4,
+                "best_objective_distance": 6,
+                "best_action_distance": 6
+              }
+            },
+            {
+              "label": "edit_pos3_s2_to_s4",
+              "cycle": [
+                "s4",
+                "s1",
+                "t4",
+                "s4",
+                "t0",
+                "s0"
+              ],
+              "edits": [
+                {
+                  "position": 3,
+                  "from": "s2",
+                  "to": "s4"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 3,
+                "best_objective_distance": 5,
+                "best_action_distance": 6
+              }
+            },
+            {
+              "label": "edit_pos5_s0_to_o0",
+              "cycle": [
+                "s4",
+                "s1",
+                "t4",
+                "s4",
+                "t0",
+                "o0"
+              ],
+              "edits": [
+                {
+                  "position": 5,
+                  "from": "s0",
+                  "to": "o0"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 2,
+                "best_objective_distance": 4,
+                "best_action_distance": 5
+              }
+            },
+            {
+              "label": "edit_pos0_s4_to_o1",
+              "cycle": [
+                "o1",
+                "s1",
+                "t4",
+                "s4",
+                "t0",
+                "o0"
+              ],
+              "edits": [
+                {
+                  "position": 0,
+                  "from": "s4",
+                  "to": "o1"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 1,
+                "best_objective_distance": 3,
+                "best_action_distance": 5
+              }
+            },
+            {
+              "label": "edit_pos4_t0_to_o4",
+              "cycle": [
+                "o1",
+                "s1",
+                "t4",
+                "s4",
+                "o4",
+                "o0"
+              ],
+              "edits": [
+                {
+                  "position": 4,
+                  "from": "t0",
+                  "to": "o4"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "exact",
+              "distance_summary": {
+                "best_subjective_distance": 0,
+                "best_objective_distance": 2,
+                "best_action_distance": 5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "distance_then_family_then_exact": {
+      "summary": {
+        "count": 1,
+        "recovered_count": 1,
+        "recovered_rate": 1.0,
+        "avg_steps": 5.0
+      },
+      "results": [
+        {
+          "policy": "distance_then_family_then_exact",
+          "start_cycle": [
+            "s4",
+            "s3",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "reached_exact_target": true,
+          "steps_taken": 5,
+          "end_classification": "subjective-state",
+          "end_confidence": "exact",
+          "end_distance": 0,
+          "path": [
+            {
+              "label": "start",
+              "cycle": [
+                "s4",
+                "s3",
+                "t4",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "edits": [],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 5,
+                "best_objective_distance": 6,
+                "best_action_distance": 6
+              }
+            },
+            {
+              "label": "edit_pos1_s3_to_s1",
+              "cycle": [
+                "s4",
+                "s1",
+                "t4",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "edits": [
+                {
+                  "position": 1,
+                  "from": "s3",
+                  "to": "s1"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 4,
+                "best_objective_distance": 6,
+                "best_action_distance": 6
+              }
+            },
+            {
+              "label": "edit_pos3_s2_to_s4",
+              "cycle": [
+                "s4",
+                "s1",
+                "t4",
+                "s4",
+                "t0",
+                "s0"
+              ],
+              "edits": [
+                {
+                  "position": 3,
+                  "from": "s2",
+                  "to": "s4"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 3,
+                "best_objective_distance": 5,
+                "best_action_distance": 6
+              }
+            },
+            {
+              "label": "edit_pos5_s0_to_o0",
+              "cycle": [
+                "s4",
+                "s1",
+                "t4",
+                "s4",
+                "t0",
+                "o0"
+              ],
+              "edits": [
+                {
+                  "position": 5,
+                  "from": "s0",
+                  "to": "o0"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 2,
+                "best_objective_distance": 4,
+                "best_action_distance": 5
+              }
+            },
+            {
+              "label": "edit_pos0_s4_to_o1",
+              "cycle": [
+                "o1",
+                "s1",
+                "t4",
+                "s4",
+                "t0",
+                "o0"
+              ],
+              "edits": [
+                {
+                  "position": 0,
+                  "from": "s4",
+                  "to": "o1"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 1,
+                "best_objective_distance": 3,
+                "best_action_distance": 5
+              }
+            },
+            {
+              "label": "edit_pos4_t0_to_o4",
+              "cycle": [
+                "o1",
+                "s1",
+                "t4",
+                "s4",
+                "o4",
+                "o0"
+              ],
+              "edits": [
+                {
+                  "position": 4,
+                  "from": "t0",
+                  "to": "o4"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "exact",
+              "distance_summary": {
+                "best_subjective_distance": 0,
+                "best_objective_distance": 2,
+                "best_action_distance": 5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "family_then_distance_then_exact": {
+      "summary": {
+        "count": 1,
+        "recovered_count": 1,
+        "recovered_rate": 1.0,
+        "avg_steps": 5.0
+      },
+      "results": [
+        {
+          "policy": "family_then_distance_then_exact",
+          "start_cycle": [
+            "s4",
+            "s3",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "reached_exact_target": true,
+          "steps_taken": 5,
+          "end_classification": "subjective-state",
+          "end_confidence": "exact",
+          "end_distance": 0,
+          "path": [
+            {
+              "label": "start",
+              "cycle": [
+                "s4",
+                "s3",
+                "t4",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "edits": [],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 5,
+                "best_objective_distance": 6,
+                "best_action_distance": 6
+              }
+            },
+            {
+              "label": "edit_pos1_s3_to_s1",
+              "cycle": [
+                "s4",
+                "s1",
+                "t4",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "edits": [
+                {
+                  "position": 1,
+                  "from": "s3",
+                  "to": "s1"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 4,
+                "best_objective_distance": 6,
+                "best_action_distance": 6
+              }
+            },
+            {
+              "label": "edit_pos3_s2_to_s4",
+              "cycle": [
+                "s4",
+                "s1",
+                "t4",
+                "s4",
+                "t0",
+                "s0"
+              ],
+              "edits": [
+                {
+                  "position": 3,
+                  "from": "s2",
+                  "to": "s4"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 3,
+                "best_objective_distance": 5,
+                "best_action_distance": 6
+              }
+            },
+            {
+              "label": "edit_pos5_s0_to_o0",
+              "cycle": [
+                "s4",
+                "s1",
+                "t4",
+                "s4",
+                "t0",
+                "o0"
+              ],
+              "edits": [
+                {
+                  "position": 5,
+                  "from": "s0",
+                  "to": "o0"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 2,
+                "best_objective_distance": 4,
+                "best_action_distance": 5
+              }
+            },
+            {
+              "label": "edit_pos0_s4_to_o1",
+              "cycle": [
+                "o1",
+                "s1",
+                "t4",
+                "s4",
+                "t0",
+                "o0"
+              ],
+              "edits": [
+                {
+                  "position": 0,
+                  "from": "s4",
+                  "to": "o1"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "nearest",
+              "distance_summary": {
+                "best_subjective_distance": 1,
+                "best_objective_distance": 3,
+                "best_action_distance": 5
+              }
+            },
+            {
+              "label": "edit_pos4_t0_to_o4",
+              "cycle": [
+                "o1",
+                "s1",
+                "t4",
+                "s4",
+                "o4",
+                "o0"
+              ],
+              "edits": [
+                {
+                  "position": 4,
+                  "from": "t0",
+                  "to": "o4"
+                }
+              ],
+              "classification": "subjective-state",
+              "confidence": "exact",
+              "distance_summary": {
+                "best_subjective_distance": 0,
+                "best_objective_distance": 2,
+                "best_action_distance": 5
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
