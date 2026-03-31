@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/python3
+#!/usr/bin/env python3
 from __future__ import annotations
 
 import argparse
@@ -225,6 +225,11 @@ def main() -> int:
         r=args.r,
     )
 
+    starts = [
+        s for s in starts
+        if not (s["classification"] == "action-cell" and s["confidence"] == "exact")
+    ]
+
     walks = [
         walk_two_step(
             start=s,
@@ -246,7 +251,7 @@ def main() -> int:
         "top_first": args.top_first,
         "top_second": args.top_second,
         "summary": summarize(walks),
-        "walks": walks[:50],
+        "walks": walks,
         "failed_walks": [w for w in walks if not w["reached_exact_target"]],
         "failed_walk_count": sum(1 for w in walks if not w["reached_exact_target"]),
     }
