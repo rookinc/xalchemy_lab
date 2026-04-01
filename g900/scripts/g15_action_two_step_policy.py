@@ -125,6 +125,9 @@ def choose_best_child_two_step(current: dict[str, Any], vocab: list[str], r: int
 
     scored = []
     for d1, _, first in first_candidates:
+        if first["classification"] == "action-cell" and first["confidence"] == "exact":
+            return first
+
         second_candidates = []
         for item2 in one_edit_variants(first["cycle"], vocab):
             second = classify_row(item2["cycle"], r, item2["label"], item2["edits"])
