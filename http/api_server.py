@@ -8,6 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from server.dictionary.routes import router as dictionary_router
 from server.graph.routes import router as graph_router
+from server.witness.routes import router as witness_router
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -15,6 +16,7 @@ app = FastAPI()
 
 app.include_router(dictionary_router)
 app.include_router(graph_router)
+app.include_router(witness_router)
 
 app.mount("/shared", StaticFiles(directory=BASE_DIR / "shared"), name="shared")
 app.mount("/graph_viewer_assets", StaticFiles(directory=BASE_DIR / "graph_viewer"), name="graph_viewer_assets")

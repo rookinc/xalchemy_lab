@@ -15,7 +15,6 @@ import {
   zoomCamera,
   rotateCamera,
   panCamera,
-  toggleOrbit,
   stepOrbit,
   applyCameraPreset,
   clamp
@@ -32,18 +31,15 @@ import {
 } from "./kernel/d4_projector.js";
 import { buildScaffoldPoints, renderScaffold } from "./kernel/d4_render_scaffold.js";
 import { renderPrimeScene } from "./kernel/d4_render_prime.js";
+import { renderWitnessScene } from "./kernel/d4_render_witness.js";
 
 const engine = new D4GrowthEngine();
 const ui = createUIState();
 ui.camera = createDefaultCamera();
 
-<<<<<<< HEAD
-ui.display.showTrurtle = true;
-=======
 ui.display.showSpinors = true;
 ui.display.showTrurtle = true;
 ui.display.showFaces = true;
->>>>>>> b198ef2 (ui stable)
 ui.display.showEdges = true;
 ui.display.showColorEdges = true;
 ui.display.spinorOpacity = 0.28;
@@ -56,10 +52,6 @@ const canvas = document.getElementById("stage-canvas");
 const ctx = canvas.getContext("2d");
 
 const els = {
-<<<<<<< Updated upstream
-  // top bar
-=======
->>>>>>> Stashed changes
   toggleFaces: document.getElementById("toggle-faces"),
   toggleEdges: document.getElementById("toggle-edges"),
   leftFaceOpacitySlider: document.getElementById("left-face-opacity-slider"),
@@ -69,10 +61,6 @@ const els = {
   stepBtn: document.getElementById("step-btn"),
   playBtn: document.getElementById("play-btn"),
 
-<<<<<<< Updated upstream
-  // rail
-=======
->>>>>>> Stashed changes
   displayModeSelect: document.getElementById("display-mode-select"),
   toggleColorEdges: document.getElementById("toggle-color-edges"),
   toggleTrurtle: document.getElementById("toggle-trurtle"),
@@ -87,20 +75,12 @@ const els = {
   toggleLabels: document.getElementById("toggle-labels"),
   zoomSlider: document.getElementById("zoom-slider"),
 
-<<<<<<< Updated upstream
-  // stage footer
-=======
->>>>>>> Stashed changes
   statusText: document.getElementById("status-text"),
   metricTurn: document.getElementById("metric-turn"),
   metricCameraDistance: document.getElementById("metric-camera-distance"),
   metricCameraYaw: document.getElementById("metric-camera-yaw"),
   metricCameraPitch: document.getElementById("metric-camera-pitch"),
 
-<<<<<<< Updated upstream
-  // hidden bindings + console
-=======
->>>>>>> Stashed changes
   metricCurrent: document.getElementById("metric-current"),
   metricCells: document.getElementById("metric-cells"),
   metricFaces: document.getElementById("metric-faces"),
@@ -129,6 +109,8 @@ const els = {
 };
 
 let snapshot = engine.snapshot();
+let witnessSnapshot = null;
+let witnessCacheKey = null;
 let projector = null;
 let orbitFrame = null;
 let playTimer = null;
@@ -142,10 +124,7 @@ function syncUIFlags() {
   ui.display.showEdges = els.toggleEdges?.checked ?? true;
   ui.display.showColorEdges = els.toggleColorEdges?.checked ?? true;
   ui.display.showTrurtle = els.toggleTrurtle?.checked ?? true;
-<<<<<<< HEAD
-=======
   ui.display.showSpinors = els.toggleSpinors?.checked ?? true;
->>>>>>> b198ef2 (ui stable)
   ui.display.showLabels = els.toggleLabels?.checked ?? false;
   ui.display.showStageGrid = els.toggleGrid?.checked ?? true;
   ui.display.showAxes = els.toggleAxes?.checked ?? false;
@@ -162,16 +141,10 @@ function syncZoomSlider() {
 
 function syncDisplayModeControl() {
   if (els.displayModeSelect) {
-<<<<<<< HEAD
     els.displayModeSelect.value = ui.display.mode;
-=======
-    els.displayModeSelect.value = "prime";
->>>>>>> b198ef2 (ui stable)
   }
 }
 
-<<<<<<< Updated upstream
-=======
 function syncPauseAtInput() {
   if (!els.pauseAtInput) return;
   if (Number.isFinite(ui.playback.pauseAtD4s) && ui.playback.pauseAtD4s > 0) {
@@ -183,9 +156,6 @@ function syncPauseAtInput() {
   }
 }
 
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
 function syncSpinorOpacityVisibility() {
   if (!els.spinorOpacityField) return;
   els.spinorOpacityField.classList.toggle("is-hidden", !ui.display.showSpinors);
@@ -196,7 +166,26 @@ function syncSpinorOpacitySlider() {
   els.spinorOpacitySlider.value = String(Math.round((ui.display.spinorOpacity ?? 0.28) * 100));
 }
 
->>>>>>> b198ef2 (ui stable)
+async function fetchWitnessState(frame, phase, scale = 1) {
+  const res = await fetch(`/api/witness/state?frame=${frame}&phase=${phase}&r=${scale}`);
+  if (!res.ok) {
+    throw new Error(`witness fetch failed: ${res.status}`);
+  }
+  const data = await res.json();
+  return data.payload;
+}
+
+async function ensureWitnessSnapshot() {
+  const key = `${ui.witness.frame}:${ui.witness.phase}:${ui.witness.scale}`;
+  if (witnessSnapshot && witnessCacheKey === key) return;
+  witnessSnapshot = await fetchWitnessState(
+    ui.witness.frame,
+    ui.witness.phase,
+    ui.witness.scale
+  );
+  witnessCacheKey = key;
+}
+
 function formatConsole(readout) {
   return [
     `current_d4s      : ${readout.currentD4s}`,
@@ -213,11 +202,8 @@ function formatConsole(readout) {
     `active_tetra     : ${readout.activeTetraId ?? "-"}`,
     `active_face      : ${readout.activeFaceLabel ?? "-"}`,
     `active_chirality : ${readout.activeChirality ?? "-"}`,
-<<<<<<< HEAD
-=======
     `spinors          : ${ui.display.showSpinors ? "on" : "off"}`,
     `spinor_opacity   : ${Math.round((ui.display.spinorOpacity ?? 0.28) * 100)}%`,
->>>>>>> b198ef2 (ui stable)
     `trurtle          : ${ui.display.showTrurtle ? "on" : "off"}`,
     `edges            : ${ui.display.showEdges ? "on" : "off"}`,
     `color_edges      : ${ui.display.showColorEdges ? "on" : "off"}`,
@@ -270,61 +256,59 @@ function updateReadouts() {
   }
 }
 
-function draw() {
+async function draw() {
   resizeCanvasToDisplaySize(canvas, ctx);
   syncUIFlags();
 
   applyLadderDefaults(ui, snapshot.currentD4s);
-<<<<<<< HEAD
 
   const mode = ui.display.mode;
   ui.camera.projectionMode = mode === "cubic" ? "orthographic" : "perspective";
-=======
-  setDisplayMode(ui, "prime");
-  ui.camera.projectionMode = "perspective";
->>>>>>> b198ef2 (ui stable)
   projector = createProjector(canvas, ui.camera);
 
   syncZoomSlider();
   syncDisplayModeControl();
-<<<<<<< Updated upstream
-=======
   syncPauseAtInput();
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
   syncSpinorOpacitySlider();
   syncSpinorOpacityVisibility();
->>>>>>> b198ef2 (ui stable)
 
   clearStage(ctx, canvas);
   drawStageGrid(ctx, canvas, ui.display.showStageGrid);
   drawCenterGuides(ctx, canvas);
 
-  const spinorPoints = buildScaffoldPoints(snapshot.currentD4s);
+  if (ui.display.mode === "witness") {
+    try {
+      await ensureWitnessSnapshot();
+      renderWitnessScene(ctx, canvas, witnessSnapshot, {
+        showWitnessCycle: ui.witness.showWitnessCycle,
+        showActionCell: ui.witness.showActionCell,
+      });
+      setStatus(ui, `witness (${ui.witness.frame},${ui.witness.phase})`);
+    } catch (err) {
+      console.error(err);
+      setStatus(ui, "witness fetch failed");
+    }
+  } else {
+    const spinorPoints = buildScaffoldPoints(snapshot.currentD4s);
 
-<<<<<<< HEAD
-  if (ui.display.showTrurtle && (mode === "scaffold" || mode === "hybrid")) {
-    renderScaffold(ctx, scaffoldPoints, projector, {
-=======
-  if (ui.display.showSpinors) {
-    renderScaffold(ctx, spinorPoints, projector, {
->>>>>>> b198ef2 (ui stable)
+    if (ui.display.showSpinors) {
+      renderScaffold(ctx, spinorPoints, projector, {
+        showFaces: ui.display.showFaces,
+        showLabels: ui.display.showLabels,
+        alphaScale: ui.display.spinorOpacity ?? 0.28
+      });
+    }
+
+    renderPrimeScene(ctx, snapshot, projector, {
       showFaces: ui.display.showFaces,
+      showEdges: ui.display.showEdges,
+      showColorEdges: ui.display.showColorEdges,
       showLabels: ui.display.showLabels,
-      alphaScale: ui.display.spinorOpacity ?? 0.28
+      highlightActive: true,
+      leftFaceOpacity: ui.display.leftFaceOpacity,
+      rightFaceOpacity: ui.display.rightFaceOpacity
     });
   }
-
-  renderPrimeScene(ctx, snapshot, projector, {
-    showFaces: ui.display.showFaces,
-    showEdges: ui.display.showEdges,
-    showColorEdges: ui.display.showColorEdges,
-    showLabels: ui.display.showLabels,
-    highlightActive: true,
-    leftFaceOpacity: ui.display.leftFaceOpacity,
-    rightFaceOpacity: ui.display.rightFaceOpacity
-  });
 
   drawStageFrame(ctx, canvas);
   drawStageLabel(ctx, canvas, stageLabelText(snapshot), snapshot.currentD4s > 0);
@@ -365,11 +349,11 @@ function startPlayTimer() {
       }
 
       setStatus(ui, `auto-paused at ${snapshot.currentD4s}; threshold ${hit} cleared`);
-      draw();
+      void draw();
       return;
     }
 
-    draw();
+    void draw();
   }, delay);
 }
 
@@ -379,7 +363,7 @@ function ensureOrbitLoop() {
     orbitFrame = requestAnimationFrame(loop);
     if (ui.camera.orbitEnabled && !ui.playback.isPlaying) {
       stepOrbit(ui.camera, 0.004);
-      draw();
+      void draw();
     }
   };
   orbitFrame = requestAnimationFrame(loop);
@@ -415,25 +399,21 @@ function applyPreset(name) {
   setStatus(ui, `camera preset: ${name}`);
 }
 
-els.displayModeSelect?.addEventListener("change", () => {
-<<<<<<< HEAD
+els.displayModeSelect?.addEventListener("change", async () => {
   setDisplayMode(ui, els.displayModeSelect.value);
-  setStatus(ui, `display mode: ${ui.display.mode}`);
-=======
-  setDisplayMode(ui, "prime");
-  if (els.displayModeSelect) {
-    els.displayModeSelect.value = "prime";
+
+  if (ui.display.mode === "witness") {
+    witnessSnapshot = null;
+    witnessCacheKey = null;
+    setStatus(ui, `display mode: witness`);
+  } else {
+    setStatus(ui, `display mode: ${ui.display.mode}`);
   }
-  setStatus(ui, "render mode: prime");
->>>>>>> b198ef2 (ui stable)
-  draw();
+
+  await draw();
 });
 
 els.pauseAtInput?.addEventListener("change", () => {
-<<<<<<< Updated upstream
-  setPauseAt(ui, els.pauseAtInput.value);
-  setStatus(ui, `pause threshold set to ${ui.playback.pauseAtD4s}`);
-=======
   const raw = String(els.pauseAtInput.value ?? "").trim();
 
   if (!raw) {
@@ -445,37 +425,36 @@ els.pauseAtInput?.addEventListener("change", () => {
     setStatus(ui, `pause threshold set to ${ui.playback.pauseAtD4s}`);
   }
 
->>>>>>> Stashed changes
-  draw();
+  void draw();
 });
 
 els.hzInput?.addEventListener("change", () => {
   setHz(ui, els.hzInput.value);
   if (ui.playback.isPlaying) startPlayTimer();
   setStatus(ui, `rate set to ${ui.playback.hz} hz`);
-  draw();
+  void draw();
 });
 
 els.cameraPresetSelect?.addEventListener("change", () => {
   applyPreset(els.cameraPresetSelect.value);
-  draw();
+  void draw();
 });
 
 els.zoomSlider?.addEventListener("input", () => {
   ui.camera.distance = clamp(Number(els.zoomSlider.value), 4.5, 60);
   setStatus(ui, `zoom set to ${ui.camera.distance.toFixed(1)}`);
-  draw();
+  void draw();
 });
 
 els.spinorOpacitySlider?.addEventListener("input", () => {
   ui.display.spinorOpacity = sliderPctToAlpha(els.spinorOpacitySlider.value);
   setStatus(ui, `spinor opacity set to ${els.spinorOpacitySlider.value}%`);
-  draw();
+  void draw();
 });
 
 els.leftFaceOpacitySlider?.addEventListener("input", () => {
   setStatus(ui, `left opacity set to ${els.leftFaceOpacitySlider.value}%`);
-  draw();
+  void draw();
 });
 
 els.rightFaceOpacitySlider?.addEventListener("input", () => {
@@ -492,14 +471,14 @@ els.rightFaceOpacitySlider?.addEventListener("input", () => {
   els.toggleGrid,
   els.toggleAxes,
   els.toggleLabels
-].forEach((el) => el?.addEventListener("change", draw));
+].forEach((el) => el?.addEventListener("change", () => { void draw(); }));
 
 els.resetBtn?.addEventListener("click", () => {
   engine.reset();
   snapshot = engine.snapshot();
   stopPlayTimer();
   setStatus(ui, "reset to seed");
-  draw();
+  void draw();
 });
 
 els.stepBackBtn?.addEventListener("click", () => {
@@ -507,14 +486,14 @@ els.stepBackBtn?.addEventListener("click", () => {
   engine.reset();
   snapshot = engine.snapshot();
   setStatus(ui, "step back not yet implemented");
-  draw();
+  void draw();
 });
 
 els.stepBtn?.addEventListener("click", () => {
   stopPlayTimer();
   snapshot = engine.step();
   setStatus(ui, "stepped");
-  draw();
+  void draw();
 });
 
 els.playBtn?.addEventListener("click", () => {
@@ -525,7 +504,7 @@ els.playBtn?.addEventListener("click", () => {
     startPlayTimer();
     setStatus(ui, `running at ${ui.playback.hz} hz`);
   }
-  draw();
+  void draw();
 });
 
 canvas.addEventListener("contextmenu", (event) => event.preventDefault());
@@ -555,7 +534,7 @@ window.addEventListener("pointermove", (event) => {
   } else {
     panCamera(ui.camera, dx, dy);
   }
-  draw();
+  void draw();
 });
 
 window.addEventListener("pointerup", () => {
@@ -569,24 +548,14 @@ canvas.addEventListener(
   (event) => {
     event.preventDefault();
     zoomCamera(ui.camera, event.deltaY);
-    draw();
+    void draw();
   },
   { passive: false }
 );
 
-window.addEventListener("resize", draw);
+window.addEventListener("resize", () => { void draw(); });
 
-<<<<<<< HEAD
 setDisplayMode(ui, els.displayModeSelect?.value || "prime");
-<<<<<<< Updated upstream
-setPauseAt(ui, els.pauseAtInput?.value || 900);
-=======
-=======
-setDisplayMode(ui, "prime");
-if (els.displayModeSelect) {
-  els.displayModeSelect.value = "prime";
-}
->>>>>>> b198ef2 (ui stable)
 
 const initialPause = String(els.pauseAtInput?.value ?? "").trim();
 if (initialPause) {
@@ -595,9 +564,8 @@ if (initialPause) {
   ui.playback.pauseAtD4s = Infinity;
 }
 
->>>>>>> Stashed changes
 setHz(ui, els.hzInput?.value || 30);
 applyPreset(els.cameraPresetSelect?.value || "perspective_default");
 
-draw();
+void draw();
 ensureOrbitLoop();

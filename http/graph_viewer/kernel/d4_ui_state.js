@@ -25,6 +25,14 @@ export function createUIState() {
       mode: null,
       lastPointer: { x: 0, y: 0 },
     },
+    witness: {
+      frame: 0,
+      phase: 0,
+      scale: 1,
+      showWitnessCycle: true,
+      showActionCell: true,
+      showAssemblyLabels: true,
+    },
     statusText: "ready",
   };
 }
@@ -50,6 +58,10 @@ export function setDisplayMode(uiState, mode) {
     uiState.display.showPrime = true;
     uiState.display.showComposite = true;
   } else if (mode === "cubic") {
+    uiState.display.showScaffold = false;
+    uiState.display.showPrime = false;
+    uiState.display.showComposite = false;
+  } else if (mode === "witness") {
     uiState.display.showScaffold = false;
     uiState.display.showPrime = false;
     uiState.display.showComposite = false;
@@ -126,6 +138,14 @@ export function buildUIReadout(uiState, sceneSnapshot) {
       showComposite: uiState.display.showComposite,
       aggregationMode: uiState.display.aggregationMode,
       labelDensity: uiState.display.labelDensity,
+    },
+    witness: {
+      frame: uiState.witness.frame,
+      phase: uiState.witness.phase,
+      scale: uiState.witness.scale,
+      showWitnessCycle: uiState.witness.showWitnessCycle,
+      showActionCell: uiState.witness.showActionCell,
+      showAssemblyLabels: uiState.witness.showAssemblyLabels,
     },
     camera,
     statusText: uiState.statusText,
