@@ -36,6 +36,7 @@ from .core import (
     witness_assembly,
 )
 from .render import (
+    action_summary,
     render_actions_list,
     render_ascii_graph,
     render_audit_neighborhood,
@@ -47,7 +48,7 @@ from .render import (
     render_states_list,
     render_table,
     render_verify_report,
-    state_label as _state_label,
+    state_summary,
 )
 from .verify import verify_all
 from .theorem_status import build_theorem_status
@@ -1007,6 +1008,7 @@ def cmd_export_paper_theorem_status(args: argparse.Namespace) -> int:
         print(f"wrote {path}")
     return 0
 
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python3 -m witness_machine.cli")
     p.add_argument("--r", type=int, default=1, help="scale parameter, default 1")
@@ -1159,17 +1161,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
-
-def cmd_verify_theorems(args: argparse.Namespace) -> int:
-    result = verify_all(args.r)
-    text = json.dumps(result, indent=2)
-    if args.out:
-        Path(args.out).write_text(text + "\n", encoding="utf-8")
-        print(f"wrote {args.out}")
-    else:
-        if getattr(args, "pretty", False):
-            print(render_verify_report(result))
-        else:
-            print(text)
-    return 0
