@@ -1,0 +1,24 @@
+{
+  "status": "scaffold",
+  "theorem_question": "Does actual cocycle parity on one full G15 cycle realize the sign-closing rule n_15 = -n_0 and the doubled-cycle identity rule n_30 = n_0?",
+  "required_inputs": [
+    "explicit cocycle representative or signed edge assignment on G15",
+    "chosen full G15 cycle or equivalent loop data",
+    "selected witness state classified as subjective/objective/action"
+  ],
+  "expected_outputs": [
+    "witness classification",
+    "alignment/spread/fiber profile",
+    "one-cycle cocycle parity",
+    "predicted sheet endpoint after one cycle",
+    "predicted sheet endpoint after two cycles",
+    "verdict: one-cycle flip yes/no",
+    "verdict: two-cycle restore yes/no"
+  ],
+  "next_wiring_targets": [
+    "scripts/g15_cocycle_decode.py",
+    "scripts/g15_lift_selection_probe.py",
+    "notes/G15_G30_FULL_CYCLE_RULE.md",
+    "notes/G15_LIFT_MATURATION_PROGRAM.md"
+  ]
+}\n
