@@ -1,0 +1,36 @@
+{
+  "summary": {
+    "row_count": 28,
+    "expected_prefix": [
+      "o4",
+      "s0",
+      "t0",
+      "s2"
+    ],
+    "expected_suffix": "s4",
+    "observed_slot4": [
+      "o4",
+      "s0",
+      "s2",
+      "s3",
+      "s4",
+      "t0",
+      "t3",
+      "t4"
+    ],
+    "expected_slot4": [
+      "o4",
+      "s0",
+      "s2",
+      "s3",
+      "s4",
+      "t0",
+      "t3",
+      "t4"
+    ],
+    "shape_ok": true,
+    "slot4_set_ok": true,
+    "bad_shape_count": 0
+  },
+  "bad_shape_examples": []
+}

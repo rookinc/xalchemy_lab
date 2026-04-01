@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "row_count": 28,
+    "E2": [
+      "o4",
+      "s0",
+      "t0",
+      "s2",
+      "t2",
+      "s4"
+    ],
+    "prefix1_ok": 28,
+    "prefix2_ok": 28,
+    "slots_235_ok": 28,
+    "slot4_only_ok": 28,
+    "slot_mismatch_counter": {
+      "4": 28
+    },
+    "full_mismatch_patterns": {
+      "[4]": 28
+    }
+  },
+  "bad_prefix1_examples": [],
+  "bad_prefix2_examples": [],
+  "bad_slots_235_examples": [],
+  "bad_slot4_only_examples": []
+}

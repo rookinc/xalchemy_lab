@@ -1,0 +1,2441 @@
+{
+  "summary": {
+    "raw_A2": [
+      "o4",
+      "s4",
+      "t2",
+      "s2",
+      "t0",
+      "s0"
+    ],
+    "row_count": 67,
+    "seam_survivors_by_slot": {
+      "0": 4,
+      "1": 6,
+      "2": 8,
+      "3": 7,
+      "4": 7,
+      "5": 3
+    },
+    "seam_survivor_values_by_slot": {
+      "0": [
+        "o0",
+        "o1",
+        "o2",
+        "o3"
+      ],
+      "1": [
+        "s0",
+        "s2",
+        "s3",
+        "t0",
+        "t3",
+        "t4"
+      ],
+      "2": [
+        "o4",
+        "s0",
+        "s2",
+        "s3",
+        "s4",
+        "t0",
+        "t3",
+        "t4"
+      ],
+      "3": [
+        "o4",
+        "s0",
+        "s3",
+        "s4",
+        "t0",
+        "t3",
+        "t4"
+      ],
+      "4": [
+        "o4",
+        "s0",
+        "s2",
+        "s3",
+        "s4",
+        "t3",
+        "t4"
+      ],
+      "5": [
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    "seam_survivor_slot4_by_slot": {
+      "0": [
+        "t2"
+      ],
+      "1": [
+        "t2"
+      ],
+      "2": [
+        "o4",
+        "s0",
+        "s2",
+        "s3",
+        "s4",
+        "t0",
+        "t3",
+        "t4"
+      ],
+      "3": [
+        "t2"
+      ],
+      "4": [
+        "t2"
+      ],
+      "5": [
+        "t2"
+      ]
+    },
+    "seam_survivor_distinct_cycles_by_slot": {
+      "0": [
+        [
+          "o0",
+          "s0",
+          "t0",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o1",
+          "s0",
+          "t0",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o2",
+          "s0",
+          "t0",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o3",
+          "s0",
+          "t0",
+          "s2",
+          "t2",
+          "s4"
+        ]
+      ],
+      "1": [
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t2",
+          "s0"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t2",
+          "s2"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t2",
+          "s3"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t2",
+          "t0"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t2",
+          "t3"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t2",
+          "t4"
+        ]
+      ],
+      "2": [
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "o4",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s0",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s4",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t0",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t3",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t4",
+          "s4"
+        ]
+      ],
+      "3": [
+        [
+          "o4",
+          "s0",
+          "t0",
+          "o4",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s0",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s3",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "s4",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "t0",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "t3",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t0",
+          "t4",
+          "t2",
+          "s4"
+        ]
+      ],
+      "4": [
+        [
+          "o4",
+          "s0",
+          "o4",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "s0",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "s2",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "s3",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "s4",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t3",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s0",
+          "t4",
+          "s2",
+          "t2",
+          "s4"
+        ]
+      ],
+      "5": [
+        [
+          "o4",
+          "s2",
+          "t0",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s3",
+          "t0",
+          "s2",
+          "t2",
+          "s4"
+        ],
+        [
+          "o4",
+          "s4",
+          "t0",
+          "s2",
+          "t2",
+          "s4"
+        ]
+      ]
+    },
+    "failure_modes_by_slot": {
+      "0": {
+        "not_action_cell": 7
+      },
+      "1": {
+        "not_action_cell": 5
+      },
+      "2": {
+        "action_cell_distance_2": 1,
+        "action_cell_distance_3": 3
+      },
+      "3": {
+        "not_action_cell": 4
+      },
+      "4": {
+        "not_action_cell": 4
+      },
+      "5": {
+        "not_action_cell": 8
+      }
+    }
+  },
+  "rows": [
+    {
+      "label": "edit_pos0_o4_to_o0",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "o0",
+      "raw_cycle": [
+        "o0",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o0",
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos0_o4_to_o1",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "o1",
+      "raw_cycle": [
+        "o1",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o1",
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos0_o4_to_o2",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "o2",
+      "raw_cycle": [
+        "o2",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o2",
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos0_o4_to_o3",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "o3",
+      "raw_cycle": [
+        "o3",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o3",
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos0_o4_to_s0",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "s0",
+      "raw_cycle": [
+        "s0",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "s0",
+        "s0",
+        "s4",
+        "t2",
+        "s2",
+        "t0"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        2,
+        3
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos0_o4_to_s2",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "s2",
+      "raw_cycle": [
+        "s2",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "s0",
+        "s2",
+        "s4",
+        "t2",
+        "s2",
+        "t0"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        0
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos0_o4_to_s3",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "s3",
+      "raw_cycle": [
+        "s3",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "s0",
+        "s3",
+        "s4",
+        "t2",
+        "s2",
+        "t0"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        1
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos0_o4_to_s4",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "s4",
+      "raw_cycle": [
+        "s4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "s0",
+        "s4",
+        "s4",
+        "t2",
+        "s2",
+        "t0"
+      ],
+      "classification": "objective-state",
+      "confidence": "nearest",
+      "best_action_distance": 6,
+      "nearest_action_frames": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos0_o4_to_t0",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "t0",
+      "raw_cycle": [
+        "t0",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "s4",
+        "t0"
+      ],
+      "classification": "objective-state",
+      "confidence": "nearest",
+      "best_action_distance": 6,
+      "nearest_action_frames": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "s4"
+    },
+    {
+      "label": "edit_pos0_o4_to_t3",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "t3",
+      "raw_cycle": [
+        "t3",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "s4",
+        "t3"
+      ],
+      "classification": "objective-state",
+      "confidence": "nearest",
+      "best_action_distance": 6,
+      "nearest_action_frames": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "s4"
+    },
+    {
+      "label": "edit_pos0_o4_to_t4",
+      "position": 0,
+      "from_raw": "o4",
+      "to_raw": "t4",
+      "raw_cycle": [
+        "t4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "s4",
+        "t4"
+      ],
+      "classification": "objective-state",
+      "confidence": "nearest",
+      "best_action_distance": 6,
+      "nearest_action_frames": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "s4"
+    },
+    {
+      "label": "edit_pos1_s4_to_o0",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "o0",
+      "raw_cycle": [
+        "o4",
+        "o0",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o0",
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        3
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos1_s4_to_o1",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "o1",
+      "raw_cycle": [
+        "o4",
+        "o1",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o1",
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos1_s4_to_o2",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "o2",
+      "raw_cycle": [
+        "o4",
+        "o2",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o2",
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        0
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos1_s4_to_o3",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "o3",
+      "raw_cycle": [
+        "o4",
+        "o3",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o3",
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        1
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos1_s4_to_o4",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "o4",
+      "raw_cycle": [
+        "o4",
+        "o4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos1_s4_to_s0",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "s0",
+      "raw_cycle": [
+        "o4",
+        "s0",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "s0"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos1_s4_to_s2",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "s2",
+      "raw_cycle": [
+        "o4",
+        "s2",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "s2"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos1_s4_to_s3",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "s3",
+      "raw_cycle": [
+        "o4",
+        "s3",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "s3"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos1_s4_to_t0",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "t0",
+      "raw_cycle": [
+        "o4",
+        "t0",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "t0"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos1_s4_to_t3",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "t3",
+      "raw_cycle": [
+        "o4",
+        "t3",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "t3"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos1_s4_to_t4",
+      "position": 1,
+      "from_raw": "s4",
+      "to_raw": "t4",
+      "raw_cycle": [
+        "o4",
+        "t4",
+        "t2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t2",
+        "t4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos2_t2_to_o0",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "o0",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "o0",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o0",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 3,
+      "nearest_action_frames": [
+        0
+      ],
+      "frame2_d1": false,
+      "slot4": "o4"
+    },
+    {
+      "label": "edit_pos2_t2_to_o1",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "o1",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "o1",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o1",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 3,
+      "nearest_action_frames": [
+        0
+      ],
+      "frame2_d1": false,
+      "slot4": "o4"
+    },
+    {
+      "label": "edit_pos2_t2_to_o2",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "o2",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "o2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o2",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 2,
+      "nearest_action_frames": [
+        0
+      ],
+      "frame2_d1": false,
+      "slot4": "o4"
+    },
+    {
+      "label": "edit_pos2_t2_to_o3",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "o3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "o3",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o3",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 3,
+      "nearest_action_frames": [
+        0
+      ],
+      "frame2_d1": false,
+      "slot4": "o4"
+    },
+    {
+      "label": "edit_pos2_t2_to_o4",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "o4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "o4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "o4"
+    },
+    {
+      "label": "edit_pos2_t2_to_s0",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "s0",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "s0",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s0",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "s0"
+    },
+    {
+      "label": "edit_pos2_t2_to_s2",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "s2",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "s2",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos2_t2_to_s3",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "s3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "s3",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "s3"
+    },
+    {
+      "label": "edit_pos2_t2_to_s4",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "s4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "s4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s4",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "s4"
+    },
+    {
+      "label": "edit_pos2_t2_to_t0",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "t0",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t0",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t0",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t0"
+    },
+    {
+      "label": "edit_pos2_t2_to_t3",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "t3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t3",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t3",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t3"
+    },
+    {
+      "label": "edit_pos2_t2_to_t4",
+      "position": 2,
+      "from_raw": "t2",
+      "to_raw": "t4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t4"
+    },
+    {
+      "label": "edit_pos3_s2_to_o0",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "o0",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "o0",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o0",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "t2"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        3
+      ],
+      "frame2_d1": false,
+      "slot4": "s4"
+    },
+    {
+      "label": "edit_pos3_s2_to_o1",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "o1",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "o1",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o1",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "t2"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "s4"
+    },
+    {
+      "label": "edit_pos3_s2_to_o2",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "o2",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "o2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "t2"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        0
+      ],
+      "frame2_d1": false,
+      "slot4": "s4"
+    },
+    {
+      "label": "edit_pos3_s2_to_o3",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "o3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "o3",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o3",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "t2"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        1
+      ],
+      "frame2_d1": false,
+      "slot4": "s4"
+    },
+    {
+      "label": "edit_pos3_s2_to_o4",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "o4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "o4",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "o4",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos3_s2_to_s0",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "s0",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s0",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s0",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos3_s2_to_s3",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "s3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s3",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s3",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos3_s2_to_s4",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "s4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s4",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s4",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos3_s2_to_t0",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "t0",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "t0",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "t0",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos3_s2_to_t3",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "t3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "t3",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "t3",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos3_s2_to_t4",
+      "position": 3,
+      "from_raw": "s2",
+      "to_raw": "t4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "t4",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "t4",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_o0",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "o0",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "o0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o0",
+        "s0",
+        "o4",
+        "s4",
+        "t2",
+        "s2"
+      ],
+      "classification": "subjective-state",
+      "confidence": "nearest",
+      "best_action_distance": 3,
+      "nearest_action_frames": [
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_o1",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "o1",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "o1",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o1",
+        "s0",
+        "o4",
+        "s4",
+        "t2",
+        "s2"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 2,
+      "nearest_action_frames": [
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_o2",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "o2",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "o2",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o2",
+        "s0",
+        "o4",
+        "s4",
+        "t2",
+        "s2"
+      ],
+      "classification": "subjective-state",
+      "confidence": "nearest",
+      "best_action_distance": 3,
+      "nearest_action_frames": [
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_o3",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "o3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "o3",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o3",
+        "s0",
+        "o4",
+        "s4",
+        "t2",
+        "s2"
+      ],
+      "classification": "subjective-state",
+      "confidence": "nearest",
+      "best_action_distance": 3,
+      "nearest_action_frames": [
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_o4",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "o4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "o4",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "o4",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_s0",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "s0",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "s0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "s0",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_s2",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "s2",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "s2",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "s2",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_s3",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "s3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "s3",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "s3",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_s4",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "s4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "s4",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "s4",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_t3",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "t3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t3",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t3",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos4_t0_to_t4",
+      "position": 4,
+      "from_raw": "t0",
+      "to_raw": "t4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t4",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t4",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos5_s0_to_o0",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "o0",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "o0"
+      ],
+      "normalized_cycle": [
+        "o0",
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        3
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos5_s0_to_o1",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "o1",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "o1"
+      ],
+      "normalized_cycle": [
+        "o1",
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        4
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos5_s0_to_o2",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "o2",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "o2"
+      ],
+      "normalized_cycle": [
+        "o2",
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        0
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos5_s0_to_o3",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "o3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "o3"
+      ],
+      "normalized_cycle": [
+        "o3",
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        1
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos5_s0_to_o4",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "o4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "o4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 5,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": false,
+      "slot4": "s2"
+    },
+    {
+      "label": "edit_pos5_s0_to_s2",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "s2",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s2"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos5_s0_to_s3",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "s3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s3"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s3",
+        "t0",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos5_s0_to_s4",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "s4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s4",
+        "t0",
+        "s2",
+        "t2",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": true,
+      "slot4": "t2"
+    },
+    {
+      "label": "edit_pos5_s0_to_t0",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "t0",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "t0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "t0"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 4,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": false,
+      "slot4": "t0"
+    },
+    {
+      "label": "edit_pos5_s0_to_t3",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "t3",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "t3"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "t3"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 4,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": false,
+      "slot4": "t0"
+    },
+    {
+      "label": "edit_pos5_s0_to_t4",
+      "position": 5,
+      "from_raw": "s0",
+      "to_raw": "t4",
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "t4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s4",
+        "t2",
+        "s2",
+        "t0",
+        "t4"
+      ],
+      "classification": "unresolved",
+      "confidence": "ambiguous",
+      "best_action_distance": 4,
+      "nearest_action_frames": [
+        2
+      ],
+      "frame2_d1": false,
+      "slot4": "t0"
+    }
+  ]
+}
