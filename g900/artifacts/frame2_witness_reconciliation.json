@@ -1,0 +1,941 @@
+{
+  "unique_start_count": 4,
+  "results": [
+    {
+      "start_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_best_action_distance": 1,
+      "start_nearest_action_frames": [
+        2
+      ],
+      "all_exact_child_count": 0,
+      "exact_frame2_child_count": 0,
+      "frame2_d1_child_count": 7,
+      "all_exact_children": [],
+      "exact_frame2_children": [],
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos2_t4_to_o4",
+          "position": 2,
+          "from": "t4",
+          "to": "o4",
+          "raw_cycle": [
+            "o4",
+            "s4",
+            "o4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s0",
+          "position": 2,
+          "from": "t4",
+          "to": "s0",
+          "raw_cycle": [
+            "o4",
+            "s4",
+            "s0",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s2",
+          "position": 2,
+          "from": "t4",
+          "to": "s2",
+          "raw_cycle": [
+            "o4",
+            "s4",
+            "s2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s3",
+          "position": 2,
+          "from": "t4",
+          "to": "s3",
+          "raw_cycle": [
+            "o4",
+            "s4",
+            "s3",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s4",
+          "position": 2,
+          "from": "t4",
+          "to": "s4",
+          "raw_cycle": [
+            "o4",
+            "s4",
+            "s4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_t0",
+          "position": 2,
+          "from": "t4",
+          "to": "t0",
+          "raw_cycle": [
+            "o4",
+            "s4",
+            "t0",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_t3",
+          "position": 2,
+          "from": "t4",
+          "to": "t3",
+          "raw_cycle": [
+            "o4",
+            "s4",
+            "t3",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_best_action_distance": 1,
+      "start_nearest_action_frames": [
+        2
+      ],
+      "all_exact_child_count": 0,
+      "exact_frame2_child_count": 0,
+      "frame2_d1_child_count": 7,
+      "all_exact_children": [],
+      "exact_frame2_children": [],
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos0_o4_to_s0",
+          "position": 0,
+          "from": "o4",
+          "to": "s0",
+          "raw_cycle": [
+            "s0",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_s2",
+          "position": 0,
+          "from": "o4",
+          "to": "s2",
+          "raw_cycle": [
+            "s2",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_s3",
+          "position": 0,
+          "from": "o4",
+          "to": "s3",
+          "raw_cycle": [
+            "s3",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_s4",
+          "position": 0,
+          "from": "o4",
+          "to": "s4",
+          "raw_cycle": [
+            "s4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_t0",
+          "position": 0,
+          "from": "o4",
+          "to": "t0",
+          "raw_cycle": [
+            "t0",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_t3",
+          "position": 0,
+          "from": "o4",
+          "to": "t3",
+          "raw_cycle": [
+            "t3",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_t4",
+          "position": 0,
+          "from": "o4",
+          "to": "t4",
+          "raw_cycle": [
+            "t4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s3"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_best_action_distance": 1,
+      "start_nearest_action_frames": [
+        2
+      ],
+      "all_exact_child_count": 0,
+      "exact_frame2_child_count": 0,
+      "frame2_d1_child_count": 7,
+      "all_exact_children": [],
+      "exact_frame2_children": [],
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos5_s3_to_o4",
+          "position": 5,
+          "from": "s3",
+          "to": "o4",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "o4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_s0",
+          "position": 5,
+          "from": "s3",
+          "to": "s0",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_s2",
+          "position": 5,
+          "from": "s3",
+          "to": "s2",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s2"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_s4",
+          "position": 5,
+          "from": "s3",
+          "to": "s4",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_t0",
+          "position": 5,
+          "from": "s3",
+          "to": "t0",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "t0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_t3",
+          "position": 5,
+          "from": "s3",
+          "to": "t3",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "t3"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_t4",
+          "position": 5,
+          "from": "s3",
+          "to": "t4",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "t4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s0"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s0",
+        "s4"
+      ],
+      "start_classification": "action-cell",
+      "start_confidence": "nearest",
+      "start_best_action_distance": 1,
+      "start_nearest_action_frames": [
+        2
+      ],
+      "all_exact_child_count": 0,
+      "exact_frame2_child_count": 0,
+      "frame2_d1_child_count": 7,
+      "all_exact_children": [],
+      "exact_frame2_children": [],
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos5_s0_to_o4",
+          "position": 5,
+          "from": "s0",
+          "to": "o4",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "o4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_s2",
+          "position": 5,
+          "from": "s0",
+          "to": "s2",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s2"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_s3",
+          "position": 5,
+          "from": "s0",
+          "to": "s3",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_s4",
+          "position": 5,
+          "from": "s0",
+          "to": "s4",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_t0",
+          "position": 5,
+          "from": "s0",
+          "to": "t0",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "t0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_t3",
+          "position": 5,
+          "from": "s0",
+          "to": "t3",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "t3"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_t4",
+          "position": 5,
+          "from": "s0",
+          "to": "t4",
+          "raw_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "t4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "action_match_frames": [],
+          "nearest_action_frames": [
+            2
+          ]
+        }
+      ]
+    }
+  ]
+}

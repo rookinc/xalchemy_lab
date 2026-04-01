@@ -5,35 +5,38 @@ import json
 from pathlib import Path
 
 from .core import (
+    action_cell,
     action_dict,
     apply_word,
     batch_classify_cycles,
     classify_cycle,
+    cycle_key,
     export_machine,
-    list_states,
-    mu,
+    nearest_action_frames,
+    normalize_cycle,
+    normalized_diff,
     normalize_word,
-    output_signature,
-    phase_label,
-    species_of_action,
-    species_of_state,
-    state_code,
     state_dict,
+    target_cycle_for_spec,
     tau,
     tau_inv,
+    mu,
     validate_state,
+    state_code,
+    phase_label,
 )
 from .render import (
-    action_summary,
     render_actions_list,
     render_ascii_graph,
+    render_audit_neighborhood,
     render_compare,
+    render_explain_cycle,
     render_info,
     render_observer_view,
     render_orbit,
     render_states_list,
     render_table,
-    state_summary,
+    state_label as _state_label,
 )
 
 
@@ -434,6 +437,130 @@ def cmd_compare(args: argparse.Namespace) -> int:
     return 0
 
 
+def _one_edit_variants(seed: list[str], r: int) -> list[dict]:
+    n = 5 * r
+    vocab = []
+    for i in range(n):
+        vocab.extend([f"o{i}", f"s{i}", f"t{i}"])
+
+    out = []
+    seen = set()
+    for pos in range(len(seed)):
+        original = seed[pos]
+        for candidate in vocab:
+            if candidate == original:
+                continue
+            mutated = seed.copy()
+            mutated[pos] = candidate
+            key = tuple(mutated)
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(
+                {
+                    "label": f"edit_pos{pos}_{original}_to_{candidate}",
+                    "cycle": mutated,
+                }
+            )
+    return out
+
+
+def cmd_explain_cycle(args: argparse.Namespace) -> int:
+    c = classify_cycle(args.cycle, args.r)
+
+    diff_payload = None
+    if args.show_diff:
+        target = target_cycle_for_spec(args.show_diff, args.r)
+        diff = normalized_diff(args.cycle, target)
+        diff_payload = {
+            "target_spec": args.show_diff,
+            "target_normalized_cycle": normalize_cycle(target),
+            "diff": diff,
+            "hamming": len(diff),
+        }
+
+    print(render_explain_cycle(args.cycle, c, diff_payload))
+    return 0
+
+
+def cmd_audit_neighborhood(args: argparse.Namespace) -> int:
+    kids = _one_edit_variants(args.cycle, args.r)
+
+    classification_hist = {}
+    confidence_hist = {}
+    best_action_hist = {}
+    nearest_frame_hist = {}
+    slot4_trans = {}
+
+    examples = {
+        "exact": [],
+        "action_nearest": [],
+        "ambiguous": [],
+    }
+
+    parent_norm = normalize_cycle(args.cycle)
+    parent_slot4 = parent_norm[4] if len(parent_norm) > 4 else None
+
+    for item in kids:
+        c = classify_cycle(item["cycle"], args.r)
+
+        classification_hist[c["classification"]] = classification_hist.get(c["classification"], 0) + 1
+        confidence_hist[c["confidence"]] = confidence_hist.get(c["confidence"], 0) + 1
+
+        a = c["distance_summary"].get("best_action_distance")
+        best_action_hist[a] = best_action_hist.get(a, 0) + 1
+
+        frames = nearest_action_frames(c)
+        for f in frames:
+            nearest_frame_hist[f] = nearest_frame_hist.get(f, 0) + 1
+
+        child_norm = c["normalized_cycle"]
+        child_slot4 = child_norm[4] if len(child_norm) > 4 else None
+        if parent_slot4 is not None and child_slot4 is not None:
+            key = (parent_slot4, child_slot4)
+            slot4_trans[key] = slot4_trans.get(key, 0) + 1
+
+        row = {
+            "label": item["label"],
+            "classification": c["classification"],
+            "confidence": c["confidence"],
+            "best_action_distance": a,
+            "normalized_cycle": child_norm,
+        }
+
+        if c["classification"] == "action-cell" and c["confidence"] == "exact":
+            if len(examples["exact"]) < 10:
+                examples["exact"].append(row)
+        elif c["classification"] == "action-cell" and c["confidence"] == "nearest":
+            if len(examples["action_nearest"]) < 10:
+                examples["action_nearest"].append(row)
+        elif c["confidence"] == "ambiguous":
+            if len(examples["ambiguous"]) < 10:
+                examples["ambiguous"].append(row)
+
+    summary = {
+        "cycle": args.cycle,
+        "normalized_cycle": normalize_cycle(args.cycle),
+        "child_count": len(kids),
+        "classification_histogram": dict(sorted(classification_hist.items())),
+        "confidence_histogram": dict(sorted(confidence_hist.items())),
+        "best_action_distance_histogram": dict(
+            sorted(best_action_hist.items(), key=lambda kv: (kv[0] is None, kv[0]))
+        ),
+        "nearest_action_frame_histogram": dict(sorted(nearest_frame_hist.items())),
+        "slot4_transition_histogram": [
+            {"from": a, "to": b, "count": n}
+            for (a, b), n in sorted(slot4_trans.items(), key=lambda kv: (-kv[1], kv[0]))
+        ],
+        "examples": examples,
+    }
+
+    if args.json:
+        print(json.dumps(summary, indent=2))
+    else:
+        print(render_audit_neighborhood(summary))
+    return 0
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python3 -m witness_machine.cli")
     p.add_argument("--r", type=int, default=1, help="scale parameter, default 1")
@@ -512,6 +639,16 @@ def build_parser() -> argparse.ArgumentParser:
     export.add_argument("--frame", type=int)
     export.add_argument("--out")
     export.set_defaults(func=cmd_export)
+
+    explain = sub.add_parser("explain-cycle")
+    explain.add_argument("--cycle", type=parse_cycle, required=True)
+    explain.add_argument("--show-diff")
+    explain.set_defaults(func=cmd_explain_cycle)
+
+    audit = sub.add_parser("audit-neighborhood")
+    audit.add_argument("--cycle", type=parse_cycle, required=True)
+    audit.add_argument("--json", action="store_true")
+    audit.set_defaults(func=cmd_audit_neighborhood)
 
     return p
 

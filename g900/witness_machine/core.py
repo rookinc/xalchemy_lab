@@ -506,3 +506,57 @@ def export_machine(r: int = 1) -> dict[str, Any]:
             ],
         },
     }
+
+
+def normalized_diff(a: list[str], b: list[str]) -> list[dict[str, Any]]:
+    aa = normalize_cycle(a)
+    bb = normalize_cycle(b)
+    if len(aa) != len(bb):
+        raise ValueError("normalized_diff requires equal-length cycles")
+    out = []
+    for i, (x, y) in enumerate(zip(aa, bb)):
+        if x != y:
+            out.append(
+                {
+                    "position": i,
+                    "from": x,
+                    "to": y,
+                }
+            )
+    return out
+
+
+def nearest_action_frames(classification_result: dict[str, Any]) -> list[int]:
+    frames = sorted(
+        {
+            rec["frame"]
+            for rec in classification_result.get("nearest", {}).get("action", [])
+        }
+    )
+    return frames
+
+
+def is_exact_action_frame(classification_result: dict[str, Any], frame: int) -> bool:
+    return any(
+        rec.get("frame") == frame
+        for rec in classification_result.get("action_matches", [])
+    )
+
+
+def is_nearest_action_frame(classification_result: dict[str, Any], frame: int) -> bool:
+    return any(
+        rec.get("frame") == frame
+        for rec in classification_result.get("nearest", {}).get("action", [])
+    )
+
+
+def target_cycle_for_spec(spec: str, r: int = 1) -> list[str]:
+    kind, value = spec.split(":", 1)
+    frame = int(value)
+    if kind == "action":
+        return action_cell(frame, r)
+    if kind == "subjective":
+        return subjective_cycle(frame, r)
+    if kind == "objective":
+        return objective_cycle(frame, r)
+    raise ValueError("target spec must be one of action:<i>, subjective:<i>, objective:<i>")

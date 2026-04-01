@@ -1,0 +1,1473 @@
+{
+  "easy_witness": {
+    "raw_cycle": [
+      "o4",
+      "s4",
+      "t4",
+      "s2",
+      "t0",
+      "s0"
+    ],
+    "normalized_cycle": [
+      "o4",
+      "s0",
+      "t0",
+      "s2",
+      "t4",
+      "s4"
+    ],
+    "classification": "action-cell",
+    "confidence": "nearest",
+    "best_action_distance": 1,
+    "nearest_action_frames": [
+      2
+    ],
+    "diff_to_frame2_target": [
+      {
+        "position": 4,
+        "from": "t4",
+        "to": "t2"
+      }
+    ],
+    "slot4_value": "t4",
+    "classification_histogram": {
+      "action-cell": 38,
+      "subjective-state": 4,
+      "unresolved": 24
+    },
+    "confidence_histogram": {
+      "ambiguous": 24,
+      "nearest": 42
+    },
+    "best_action_distance_histogram": {
+      "1": 7,
+      "2": 28,
+      "3": 4,
+      "4": 6,
+      "5": 17,
+      "6": 4
+    },
+    "nearest_action_frame_histogram": {
+      "0": 12,
+      "1": 9,
+      "2": 44,
+      "3": 9,
+      "4": 11
+    },
+    "slot4_transition_histogram": [
+      {
+        "from": "t4",
+        "to": "t4",
+        "count": 31
+      },
+      {
+        "from": "t4",
+        "to": "s2",
+        "count": 15
+      },
+      {
+        "from": "t4",
+        "to": "s4",
+        "count": 8
+      },
+      {
+        "from": "t4",
+        "to": "o4",
+        "count": 5
+      },
+      {
+        "from": "t4",
+        "to": "t0",
+        "count": 4
+      },
+      {
+        "from": "t4",
+        "to": "s0",
+        "count": 1
+      },
+      {
+        "from": "t4",
+        "to": "s3",
+        "count": 1
+      },
+      {
+        "from": "t4",
+        "to": "t3",
+        "count": 1
+      }
+    ],
+    "exact_child_count": 0,
+    "exact_frame2_child_count": 0,
+    "frame2_d1_child_count": 7,
+    "exact_children": [],
+    "exact_frame2_children": [],
+    "frame2_d1_children": [
+      {
+        "label": "edit_pos2_t4_to_o4",
+        "position": 2,
+        "from": "t4",
+        "to": "o4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "o4",
+          "s4"
+        ],
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 1,
+        "nearest_action_frames": [
+          2
+        ],
+        "diff_to_frame2_target": [
+          {
+            "position": 4,
+            "from": "o4",
+            "to": "t2"
+          }
+        ]
+      },
+      {
+        "label": "edit_pos2_t4_to_s0",
+        "position": 2,
+        "from": "t4",
+        "to": "s0",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s0",
+          "s4"
+        ],
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 1,
+        "nearest_action_frames": [
+          2
+        ],
+        "diff_to_frame2_target": [
+          {
+            "position": 4,
+            "from": "s0",
+            "to": "t2"
+          }
+        ]
+      },
+      {
+        "label": "edit_pos2_t4_to_s2",
+        "position": 2,
+        "from": "t4",
+        "to": "s2",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s2",
+          "s4"
+        ],
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 1,
+        "nearest_action_frames": [
+          2
+        ],
+        "diff_to_frame2_target": [
+          {
+            "position": 4,
+            "from": "s2",
+            "to": "t2"
+          }
+        ]
+      },
+      {
+        "label": "edit_pos2_t4_to_s3",
+        "position": 2,
+        "from": "t4",
+        "to": "s3",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 1,
+        "nearest_action_frames": [
+          2
+        ],
+        "diff_to_frame2_target": [
+          {
+            "position": 4,
+            "from": "s3",
+            "to": "t2"
+          }
+        ]
+      },
+      {
+        "label": "edit_pos2_t4_to_s4",
+        "position": 2,
+        "from": "t4",
+        "to": "s4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s4",
+          "s4"
+        ],
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 1,
+        "nearest_action_frames": [
+          2
+        ],
+        "diff_to_frame2_target": [
+          {
+            "position": 4,
+            "from": "s4",
+            "to": "t2"
+          }
+        ]
+      },
+      {
+        "label": "edit_pos2_t4_to_t0",
+        "position": 2,
+        "from": "t4",
+        "to": "t0",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t0",
+          "s4"
+        ],
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 1,
+        "nearest_action_frames": [
+          2
+        ],
+        "diff_to_frame2_target": [
+          {
+            "position": 4,
+            "from": "t0",
+            "to": "t2"
+          }
+        ]
+      },
+      {
+        "label": "edit_pos2_t4_to_t3",
+        "position": 2,
+        "from": "t4",
+        "to": "t3",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t3",
+          "s4"
+        ],
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 1,
+        "nearest_action_frames": [
+          2
+        ],
+        "diff_to_frame2_target": [
+          {
+            "position": 4,
+            "from": "t3",
+            "to": "t2"
+          }
+        ]
+      }
+    ]
+  },
+  "locked_witnesses": [
+    {
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "diff_to_frame2_target": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "slot4_value": "t4",
+      "classification_histogram": {
+        "action-cell": 38,
+        "subjective-state": 4,
+        "unresolved": 24
+      },
+      "confidence_histogram": {
+        "ambiguous": 24,
+        "nearest": 42
+      },
+      "best_action_distance_histogram": {
+        "1": 7,
+        "2": 28,
+        "3": 4,
+        "4": 6,
+        "5": 17,
+        "6": 4
+      },
+      "nearest_action_frame_histogram": {
+        "0": 12,
+        "1": 9,
+        "2": 44,
+        "3": 9,
+        "4": 11
+      },
+      "slot4_transition_histogram": [
+        {
+          "from": "t4",
+          "to": "t4",
+          "count": 31
+        },
+        {
+          "from": "t4",
+          "to": "s2",
+          "count": 15
+        },
+        {
+          "from": "t4",
+          "to": "s4",
+          "count": 8
+        },
+        {
+          "from": "t4",
+          "to": "o4",
+          "count": 5
+        },
+        {
+          "from": "t4",
+          "to": "t0",
+          "count": 4
+        },
+        {
+          "from": "t4",
+          "to": "s0",
+          "count": 1
+        },
+        {
+          "from": "t4",
+          "to": "s3",
+          "count": 1
+        },
+        {
+          "from": "t4",
+          "to": "t3",
+          "count": 1
+        }
+      ],
+      "exact_child_count": 0,
+      "exact_frame2_child_count": 0,
+      "frame2_d1_child_count": 7,
+      "exact_children": [],
+      "exact_frame2_children": [],
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos2_t4_to_o4",
+          "position": 2,
+          "from": "t4",
+          "to": "o4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "o4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s0",
+          "position": 2,
+          "from": "t4",
+          "to": "s0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s2",
+          "position": 2,
+          "from": "t4",
+          "to": "s2",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s2",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s3",
+          "position": 2,
+          "from": "t4",
+          "to": "s3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s3",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s4",
+          "position": 2,
+          "from": "t4",
+          "to": "s4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_t0",
+          "position": 2,
+          "from": "t4",
+          "to": "t0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_t3",
+          "position": 2,
+          "from": "t4",
+          "to": "t3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t3",
+              "to": "t2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "raw_cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "diff_to_frame2_target": [
+        {
+          "position": 4,
+          "from": "o4",
+          "to": "t2"
+        }
+      ],
+      "slot4_value": "o4",
+      "classification_histogram": {
+        "action-cell": 46,
+        "objective-state": 2,
+        "subjective-state": 3,
+        "unresolved": 15
+      },
+      "confidence_histogram": {
+        "ambiguous": 15,
+        "nearest": 51
+      },
+      "best_action_distance_histogram": {
+        "1": 7,
+        "2": 25,
+        "3": 15,
+        "4": 4,
+        "5": 15
+      },
+      "nearest_action_frame_histogram": {
+        "0": 15,
+        "1": 3,
+        "2": 45,
+        "3": 4,
+        "4": 8
+      },
+      "slot4_transition_histogram": [
+        {
+          "from": "o4",
+          "to": "o4",
+          "count": 36
+        },
+        {
+          "from": "o4",
+          "to": "s2",
+          "count": 11
+        },
+        {
+          "from": "o4",
+          "to": "s0",
+          "count": 7
+        },
+        {
+          "from": "o4",
+          "to": "t0",
+          "count": 4
+        },
+        {
+          "from": "o4",
+          "to": "s3",
+          "count": 2
+        },
+        {
+          "from": "o4",
+          "to": "s4",
+          "count": 2
+        },
+        {
+          "from": "o4",
+          "to": "t3",
+          "count": 2
+        },
+        {
+          "from": "o4",
+          "to": "t4",
+          "count": 2
+        }
+      ],
+      "exact_child_count": 0,
+      "exact_frame2_child_count": 0,
+      "frame2_d1_child_count": 7,
+      "exact_children": [],
+      "exact_frame2_children": [],
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos0_o4_to_s0",
+          "position": 0,
+          "from": "o4",
+          "to": "s0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_s2",
+          "position": 0,
+          "from": "o4",
+          "to": "s2",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s2",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_s3",
+          "position": 0,
+          "from": "o4",
+          "to": "s3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s3",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_s4",
+          "position": 0,
+          "from": "o4",
+          "to": "s4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_t0",
+          "position": 0,
+          "from": "o4",
+          "to": "t0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_t3",
+          "position": 0,
+          "from": "o4",
+          "to": "t3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t3",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_t4",
+          "position": 0,
+          "from": "o4",
+          "to": "t4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t4",
+              "to": "t2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "raw_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s3"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "diff_to_frame2_target": [
+        {
+          "position": 4,
+          "from": "s3",
+          "to": "t2"
+        }
+      ],
+      "slot4_value": "s3",
+      "classification_histogram": {
+        "action-cell": 40,
+        "objective-state": 3,
+        "subjective-state": 3,
+        "unresolved": 20
+      },
+      "confidence_histogram": {
+        "ambiguous": 20,
+        "nearest": 46
+      },
+      "best_action_distance_histogram": {
+        "1": 7,
+        "2": 26,
+        "3": 6,
+        "4": 10,
+        "5": 17
+      },
+      "nearest_action_frame_histogram": {
+        "0": 12,
+        "1": 7,
+        "2": 39,
+        "3": 15,
+        "4": 7
+      },
+      "slot4_transition_histogram": [
+        {
+          "from": "s3",
+          "to": "s3",
+          "count": 29
+        },
+        {
+          "from": "s3",
+          "to": "s2",
+          "count": 15
+        },
+        {
+          "from": "s3",
+          "to": "t0",
+          "count": 6
+        },
+        {
+          "from": "s3",
+          "to": "s0",
+          "count": 5
+        },
+        {
+          "from": "s3",
+          "to": "o4",
+          "count": 5
+        },
+        {
+          "from": "s3",
+          "to": "s4",
+          "count": 4
+        },
+        {
+          "from": "s3",
+          "to": "t3",
+          "count": 1
+        },
+        {
+          "from": "s3",
+          "to": "t4",
+          "count": 1
+        }
+      ],
+      "exact_child_count": 0,
+      "exact_frame2_child_count": 0,
+      "frame2_d1_child_count": 7,
+      "exact_children": [],
+      "exact_frame2_children": [],
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos5_s3_to_o4",
+          "position": 5,
+          "from": "s3",
+          "to": "o4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "o4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_s0",
+          "position": 5,
+          "from": "s3",
+          "to": "s0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_s2",
+          "position": 5,
+          "from": "s3",
+          "to": "s2",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s2",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_s4",
+          "position": 5,
+          "from": "s3",
+          "to": "s4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_t0",
+          "position": 5,
+          "from": "s3",
+          "to": "t0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_t3",
+          "position": 5,
+          "from": "s3",
+          "to": "t3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t3",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_t4",
+          "position": 5,
+          "from": "s3",
+          "to": "t4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t4",
+              "to": "t2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "raw_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s0",
+        "s4"
+      ],
+      "classification": "action-cell",
+      "confidence": "nearest",
+      "best_action_distance": 1,
+      "nearest_action_frames": [
+        2
+      ],
+      "diff_to_frame2_target": [
+        {
+          "position": 4,
+          "from": "s0",
+          "to": "t2"
+        }
+      ],
+      "slot4_value": "s0",
+      "classification_histogram": {
+        "action-cell": 45,
+        "subjective-state": 8,
+        "unresolved": 13
+      },
+      "confidence_histogram": {
+        "ambiguous": 13,
+        "nearest": 53
+      },
+      "best_action_distance_histogram": {
+        "1": 7,
+        "2": 26,
+        "3": 10,
+        "4": 11,
+        "5": 12
+      },
+      "nearest_action_frame_histogram": {
+        "0": 18,
+        "1": 3,
+        "2": 43,
+        "3": 8,
+        "4": 7
+      },
+      "slot4_transition_histogram": [
+        {
+          "from": "s0",
+          "to": "s0",
+          "count": 33
+        },
+        {
+          "from": "s0",
+          "to": "s2",
+          "count": 12
+        },
+        {
+          "from": "s0",
+          "to": "t0",
+          "count": 8
+        },
+        {
+          "from": "s0",
+          "to": "o4",
+          "count": 5
+        },
+        {
+          "from": "s0",
+          "to": "s3",
+          "count": 2
+        },
+        {
+          "from": "s0",
+          "to": "s4",
+          "count": 2
+        },
+        {
+          "from": "s0",
+          "to": "t3",
+          "count": 2
+        },
+        {
+          "from": "s0",
+          "to": "t4",
+          "count": 2
+        }
+      ],
+      "exact_child_count": 0,
+      "exact_frame2_child_count": 0,
+      "frame2_d1_child_count": 7,
+      "exact_children": [],
+      "exact_frame2_children": [],
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos5_s0_to_o4",
+          "position": 5,
+          "from": "s0",
+          "to": "o4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "o4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_s2",
+          "position": 5,
+          "from": "s0",
+          "to": "s2",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s2",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_s3",
+          "position": 5,
+          "from": "s0",
+          "to": "s3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s3",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_s4",
+          "position": 5,
+          "from": "s0",
+          "to": "s4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "s4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_t0",
+          "position": 5,
+          "from": "s0",
+          "to": "t0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_t3",
+          "position": 5,
+          "from": "s0",
+          "to": "t3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t3",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_t4",
+          "position": 5,
+          "from": "s0",
+          "to": "t4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "nearest_action_frames": [
+            2
+          ],
+          "diff_to_frame2_target": [
+            {
+              "position": 4,
+              "from": "t4",
+              "to": "t2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

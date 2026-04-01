@@ -1,0 +1,1211 @@
+{
+  "locked_slot_values": [
+    "o4",
+    "s0",
+    "s3",
+    "t4"
+  ],
+  "closed_under_locked_values": false,
+  "summary": {
+    "locked_state_count": 4,
+    "reachable_slot_value_histogram": {
+      "o4": 3,
+      "s0": 3,
+      "s2": 4,
+      "s3": 3,
+      "s4": 4,
+      "t0": 4,
+      "t3": 4,
+      "t4": 3
+    },
+    "nearest_action_frame_histogram": {
+      "2": 28
+    },
+    "transition_histogram": [
+      {
+        "from_slot4": "t4",
+        "to_slot4": "o4",
+        "count": 1
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "s0",
+        "count": 1
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "s2",
+        "count": 1
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "s3",
+        "count": 1
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "s4",
+        "count": 1
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "t0",
+        "count": 1
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "t3",
+        "count": 1
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "s0",
+        "count": 1
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "s2",
+        "count": 1
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "s3",
+        "count": 1
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "s4",
+        "count": 1
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "t0",
+        "count": 1
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "t3",
+        "count": 1
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "t4",
+        "count": 1
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "o4",
+        "count": 1
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "s0",
+        "count": 1
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "s2",
+        "count": 1
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "s4",
+        "count": 1
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "t0",
+        "count": 1
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "t3",
+        "count": 1
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "t4",
+        "count": 1
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "o4",
+        "count": 1
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "s2",
+        "count": 1
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "s3",
+        "count": 1
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "s4",
+        "count": 1
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "t0",
+        "count": 1
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "t3",
+        "count": 1
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "t4",
+        "count": 1
+      }
+    ]
+  },
+  "transition_examples": {
+    "t4->o4": [
+      {
+        "label": "edit_pos2_t4_to_o4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "o4",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "t4->s0": [
+      {
+        "label": "edit_pos2_t4_to_s0",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s0",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "t4->s2": [
+      {
+        "label": "edit_pos2_t4_to_s2",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s2",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "t4->s3": [
+      {
+        "label": "edit_pos2_t4_to_s3",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "t4->s4": [
+      {
+        "label": "edit_pos2_t4_to_s4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s4",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "t4->t0": [
+      {
+        "label": "edit_pos2_t4_to_t0",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t0",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "t4->t3": [
+      {
+        "label": "edit_pos2_t4_to_t3",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t3",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "o4->s0": [
+      {
+        "label": "edit_pos0_o4_to_s0",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s0",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "o4->s2": [
+      {
+        "label": "edit_pos0_o4_to_s2",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s2",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "o4->s3": [
+      {
+        "label": "edit_pos0_o4_to_s3",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "o4->s4": [
+      {
+        "label": "edit_pos0_o4_to_s4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s4",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "o4->t0": [
+      {
+        "label": "edit_pos0_o4_to_t0",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t0",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "o4->t3": [
+      {
+        "label": "edit_pos0_o4_to_t3",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t3",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "o4->t4": [
+      {
+        "label": "edit_pos0_o4_to_t4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t4",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s3->o4": [
+      {
+        "label": "edit_pos5_s3_to_o4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "o4",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s3->s0": [
+      {
+        "label": "edit_pos5_s3_to_s0",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s0",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s3->s2": [
+      {
+        "label": "edit_pos5_s3_to_s2",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s2",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s3->s4": [
+      {
+        "label": "edit_pos5_s3_to_s4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s4",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s3->t0": [
+      {
+        "label": "edit_pos5_s3_to_t0",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t0",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s3->t3": [
+      {
+        "label": "edit_pos5_s3_to_t3",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t3",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s3->t4": [
+      {
+        "label": "edit_pos5_s3_to_t4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t4",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s0->o4": [
+      {
+        "label": "edit_pos5_s0_to_o4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "o4",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s0->s2": [
+      {
+        "label": "edit_pos5_s0_to_s2",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s2",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s0->s3": [
+      {
+        "label": "edit_pos5_s0_to_s3",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s0->s4": [
+      {
+        "label": "edit_pos5_s0_to_s4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s4",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s0->t0": [
+      {
+        "label": "edit_pos5_s0_to_t0",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t0",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s0->t3": [
+      {
+        "label": "edit_pos5_s0_to_t3",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t3",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ],
+    "s0->t4": [
+      {
+        "label": "edit_pos5_s0_to_t4",
+        "normalized_cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t4",
+          "s4"
+        ],
+        "nearest_action_frames": [
+          2
+        ]
+      }
+    ]
+  },
+  "states": [
+    {
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "from_slot4": "t4",
+      "frame2_d1_child_count": 7,
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos2_t4_to_o4",
+          "position": 2,
+          "from_raw": "t4",
+          "to_raw": "o4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "to_slot4": "o4",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s0",
+          "position": 2,
+          "from_raw": "t4",
+          "to_raw": "s0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "to_slot4": "s0",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s2",
+          "position": 2,
+          "from_raw": "t4",
+          "to_raw": "s2",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "to_slot4": "s2",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s3",
+          "position": 2,
+          "from_raw": "t4",
+          "to_raw": "s3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "to_slot4": "s3",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_s4",
+          "position": 2,
+          "from_raw": "t4",
+          "to_raw": "s4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "to_slot4": "s4",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_t0",
+          "position": 2,
+          "from_raw": "t4",
+          "to_raw": "t0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "to_slot4": "t0",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos2_t4_to_t3",
+          "position": 2,
+          "from_raw": "t4",
+          "to_raw": "t3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "to_slot4": "t3",
+          "nearest_action_frames": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "raw_cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "from_slot4": "o4",
+      "frame2_d1_child_count": 7,
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos0_o4_to_s0",
+          "position": 0,
+          "from_raw": "o4",
+          "to_raw": "s0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "to_slot4": "s0",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_s2",
+          "position": 0,
+          "from_raw": "o4",
+          "to_raw": "s2",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "to_slot4": "s2",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_s3",
+          "position": 0,
+          "from_raw": "o4",
+          "to_raw": "s3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "to_slot4": "s3",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_s4",
+          "position": 0,
+          "from_raw": "o4",
+          "to_raw": "s4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "to_slot4": "s4",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_t0",
+          "position": 0,
+          "from_raw": "o4",
+          "to_raw": "t0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "to_slot4": "t0",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_t3",
+          "position": 0,
+          "from_raw": "o4",
+          "to_raw": "t3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "to_slot4": "t3",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos0_o4_to_t4",
+          "position": 0,
+          "from_raw": "o4",
+          "to_raw": "t4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "to_slot4": "t4",
+          "nearest_action_frames": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "raw_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s3"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "from_slot4": "s3",
+      "frame2_d1_child_count": 7,
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos5_s3_to_o4",
+          "position": 5,
+          "from_raw": "s3",
+          "to_raw": "o4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "to_slot4": "o4",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_s0",
+          "position": 5,
+          "from_raw": "s3",
+          "to_raw": "s0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "to_slot4": "s0",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_s2",
+          "position": 5,
+          "from_raw": "s3",
+          "to_raw": "s2",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "to_slot4": "s2",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_s4",
+          "position": 5,
+          "from_raw": "s3",
+          "to_raw": "s4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "to_slot4": "s4",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_t0",
+          "position": 5,
+          "from_raw": "s3",
+          "to_raw": "t0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "to_slot4": "t0",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_t3",
+          "position": 5,
+          "from_raw": "s3",
+          "to_raw": "t3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "to_slot4": "t3",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s3_to_t4",
+          "position": 5,
+          "from_raw": "s3",
+          "to_raw": "t4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "to_slot4": "t4",
+          "nearest_action_frames": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "raw_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s0",
+        "s4"
+      ],
+      "from_slot4": "s0",
+      "frame2_d1_child_count": 7,
+      "frame2_d1_children": [
+        {
+          "label": "edit_pos5_s0_to_o4",
+          "position": 5,
+          "from_raw": "s0",
+          "to_raw": "o4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "to_slot4": "o4",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_s2",
+          "position": 5,
+          "from_raw": "s0",
+          "to_raw": "s2",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "to_slot4": "s2",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_s3",
+          "position": 5,
+          "from_raw": "s0",
+          "to_raw": "s3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "to_slot4": "s3",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_s4",
+          "position": 5,
+          "from_raw": "s0",
+          "to_raw": "s4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "to_slot4": "s4",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_t0",
+          "position": 5,
+          "from_raw": "s0",
+          "to_raw": "t0",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t0",
+            "s4"
+          ],
+          "to_slot4": "t0",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_t3",
+          "position": 5,
+          "from_raw": "s0",
+          "to_raw": "t3",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t3",
+            "s4"
+          ],
+          "to_slot4": "t3",
+          "nearest_action_frames": [
+            2
+          ]
+        },
+        {
+          "label": "edit_pos5_s0_to_t4",
+          "position": 5,
+          "from_raw": "s0",
+          "to_raw": "t4",
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "to_slot4": "t4",
+          "nearest_action_frames": [
+            2
+          ]
+        }
+      ]
+    }
+  ]
+}

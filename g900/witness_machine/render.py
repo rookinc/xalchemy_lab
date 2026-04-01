@@ -221,3 +221,104 @@ def render_compare(r1: int, r2: int, words: list[list[str]] | None = None) -> st
     rows.append("")
     rows.append("note: state_count = 10r, bit_count = ceil(log2(10r))")
     return "\n".join(rows)
+
+
+def render_explain_cycle(
+    cycle: list[str],
+    classification: dict,
+    show_diff_target: dict | None = None,
+) -> str:
+    lines = []
+    lines.append(f"raw_cycle: {cycle_to_str(cycle)}")
+    lines.append(f"normalized_cycle: {cycle_to_str(classification['normalized_cycle'])}")
+    lines.append(f"classification: {classification['classification']}")
+    lines.append(f"confidence: {classification['confidence']}")
+
+    ds = classification["distance_summary"]
+    lines.append(
+        "distance_summary: "
+        f"S={ds.get('best_subjective_distance')} "
+        f"O={ds.get('best_objective_distance')} "
+        f"A={ds.get('best_action_distance')}"
+    )
+
+    action_frames = sorted(
+        {rec["frame"] for rec in classification.get("nearest", {}).get("action", [])}
+    )
+    if action_frames:
+        lines.append(f"nearest_action_frames: {action_frames}")
+
+    if classification.get("action_matches"):
+        exact_frames = sorted({rec["frame"] for rec in classification["action_matches"]})
+        lines.append(f"exact_action_frames: {exact_frames}")
+
+    if show_diff_target is not None:
+        lines.append("")
+        lines.append(
+            "target_normalized_cycle: "
+            f"{cycle_to_str(show_diff_target['target_normalized_cycle'])}"
+        )
+        lines.append(f"target_spec: {show_diff_target['target_spec']}")
+        lines.append(f"hamming_to_target: {show_diff_target['hamming']}")
+        if show_diff_target["diff"]:
+            lines.append("normalized_diff:")
+            for row in show_diff_target["diff"]:
+                lines.append(
+                    f"  pos{row['position']}: {row['from']} -> {row['to']}"
+                )
+        else:
+            lines.append("normalized_diff: exact")
+
+    return "\n".join(lines)
+
+
+def render_audit_neighborhood(summary: dict) -> str:
+    lines = []
+    lines.append(f"cycle: {cycle_to_str(summary['cycle'])}")
+    lines.append(f"normalized_cycle: {cycle_to_str(summary['normalized_cycle'])}")
+    lines.append(f"child_count: {summary['child_count']}")
+    lines.append("")
+
+    lines.append("classification_histogram:")
+    for k, v in summary["classification_histogram"].items():
+        lines.append(f"  {k}: {v}")
+
+    lines.append("")
+    lines.append("confidence_histogram:")
+    for k, v in summary["confidence_histogram"].items():
+        lines.append(f"  {k}: {v}")
+
+    lines.append("")
+    lines.append("best_action_distance_histogram:")
+    for k, v in summary["best_action_distance_histogram"].items():
+        lines.append(f"  {k}: {v}")
+
+    if summary.get("nearest_action_frame_histogram"):
+        lines.append("")
+        lines.append("nearest_action_frame_histogram:")
+        for k, v in summary["nearest_action_frame_histogram"].items():
+            lines.append(f"  {k}: {v}")
+
+    if summary.get("slot4_transition_histogram"):
+        lines.append("")
+        lines.append("slot4_transition_histogram:")
+        for row in summary["slot4_transition_histogram"]:
+            lines.append(
+                f"  {row['from']} -> {row['to']} :: {row['count']}"
+            )
+
+    if summary.get("examples"):
+        lines.append("")
+        lines.append("examples:")
+        for label, rows in summary["examples"].items():
+            lines.append(f"  {label}:")
+            for row in rows:
+                lines.append(
+                    f"    {row['label']} :: "
+                    f"class={row['classification']} "
+                    f"conf={row['confidence']} "
+                    f"A={row['best_action_distance']} "
+                    f"cycle={cycle_to_str(row['normalized_cycle'])}"
+                )
+
+    return "\n".join(lines)
