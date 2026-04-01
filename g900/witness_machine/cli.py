@@ -24,8 +24,10 @@ from .core import (
     socket_payload,
     species_of_action,
     species_of_state,
+    so_orbit_summary,
     state_dict,
     state_code,
+    subjective_objective_family,
     target_cycle_for_spec,
     tau,
     tau_inv,
@@ -858,6 +860,92 @@ def _render_pretty_socket_family(result: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+
+def _render_pretty_so_family(result: dict[str, Any]) -> str:
+    lines = []
+    lines.append("subjective/objective family")
+    lines.append("rule: subjective = return / 4 / 26 ; objective = forward / 5 / 18")
+    lines.append("")
+    for row in result["rows"]:
+        s = row["subjective"]
+        o = row["objective"]
+        sa = s["assembly"]["assembly"]
+        oa = o["assembly"]["assembly"]
+        lines.append(f"i={row['i']}")
+        lines.append(
+            f"  S :: [{sa['W']},{sa['X']},{sa['Y']},{sa['Z']},{sa['T']},{sa['I']}] :: "
+            f"{s['alignment']} / spread={s['spread']} / fiber={s['fiber']}"
+        )
+        lines.append(
+            f"  O :: [{oa['W']},{oa['X']},{oa['Y']},{oa['Z']},{oa['T']},{oa['I']}] :: "
+            f"{o['alignment']} / spread={o['spread']} / fiber={o['fiber']}"
+        )
+    return "\n".join(lines)
+
+
+def cmd_so_family(args: argparse.Namespace) -> int:
+    result = subjective_objective_family(args.r)
+    text = json.dumps(result, indent=2)
+    if args.out:
+        Path(args.out).write_text(text + "\\n", encoding="utf-8")
+        print(f"wrote {args.out}")
+    else:
+        if getattr(args, "pretty", False):
+            print(_render_pretty_so_family(result))
+        else:
+            print(text)
+    return 0
+
+
+
+def _render_pretty_so_orbit(result: dict[str, Any]) -> str:
+    s0 = result["subjective_start"]
+    o0 = result["objective_start"]
+    g15 = result["after_g15"]
+    g30 = result["after_g30"]
+
+    lines = []
+    lines.append(f"subjective/objective orbit at i={result['i']}")
+    lines.append(f"G15 length : {result['g15_length']}")
+    lines.append(f"G30 length : {result['g30_length']}")
+    lines.append("")
+    lines.append(
+        f"S0         : {s0['sheet_state']} :: {'-'.join(s0['cycle'] + [s0['cycle'][0]])} :: "
+        f"{s0['alignment']} / spread={s0['spread']} / fiber={s0['fiber']}"
+    )
+    lines.append(
+        f"O0         : {o0['sheet_state']} :: {'-'.join(o0['cycle'] + [o0['cycle'][0]])} :: "
+        f"{o0['alignment']} / spread={o0['spread']} / fiber={o0['fiber']}"
+    )
+    lines.append("")
+    lines.append(
+        f"after G15  : S->{g15['subjective_sheet_state']} / O->{g15['objective_sheet_state']} :: "
+        f"{g15['sign_closing_rule']}"
+    )
+    lines.append(
+        f"after G30  : S->{g30['subjective_sheet_state']} / O->{g30['objective_sheet_state']} :: "
+        f"{g30['identity_restoring_rule']}"
+    )
+    lines.append("")
+    lines.append("sheet rule : one full G15 walk flips sheet; two full passes restore it")
+    lines.append("readout    : one full G15 walk is sign-closing; two passes restore identity")
+    return "\n".join(lines)
+
+
+def cmd_so_orbit(args: argparse.Namespace) -> int:
+    result = so_orbit_summary(args.i, args.r)
+    text = json.dumps(result, indent=2)
+    if args.out:
+        Path(args.out).write_text(text + "\n", encoding="utf-8")
+        print(f"wrote {args.out}")
+    else:
+        if getattr(args, "pretty", False):
+            print(_render_pretty_so_orbit(result))
+        else:
+            print(text)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python3 -m witness_machine.cli")
     p.add_argument("--r", type=int, default=1, help="scale parameter, default 1")
@@ -902,6 +990,17 @@ def build_parser() -> argparse.ArgumentParser:
     socket_family.add_argument("--pretty", action="store_true")
     socket_family.add_argument("--bounded", action="store_true")
     socket_family.set_defaults(func=cmd_socket_family)
+
+    so_family = sub.add_parser("so-family")
+    so_family.add_argument("--out")
+    so_family.add_argument("--pretty", action="store_true")
+    so_family.set_defaults(func=cmd_so_family)
+
+    so_orbit = sub.add_parser("so-orbit")
+    so_orbit.add_argument("--i", type=int, default=0)
+    so_orbit.add_argument("--out")
+    so_orbit.add_argument("--pretty", action="store_true")
+    so_orbit.set_defaults(func=cmd_so_orbit)
 
 
     batch = sub.add_parser("batch-classify")

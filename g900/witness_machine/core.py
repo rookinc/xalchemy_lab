@@ -616,3 +616,126 @@ def witness_assembly(cycle: list[str], r: int = 1) -> dict[str, Any]:
         "diads": ["WX", "YZ", "TI"],
         "couplers": ["XY", "ZT", "IW"],
     }
+
+
+def subjective_family_row(i: int, r: int = 1) -> dict[str, Any]:
+    cyc = subjective_cycle(i, r)
+    return {
+        "i": i,
+        "phase": "subjective",
+        "cycle": cyc,
+        "normalized_cycle": normalize_cycle(cyc),
+        "alignment": alignment((i, 0), r),
+        "spread": spread((i, 0), r),
+        "fiber": fiber_size((i, 0), r),
+        "assembly": witness_assembly(cyc, r),
+    }
+
+
+def objective_family_row(i: int, r: int = 1) -> dict[str, Any]:
+    cyc = objective_cycle(i, r)
+    return {
+        "i": i,
+        "phase": "objective",
+        "cycle": cyc,
+        "normalized_cycle": normalize_cycle(cyc),
+        "alignment": alignment((i, 1), r),
+        "spread": spread((i, 1), r),
+        "fiber": fiber_size((i, 1), r),
+        "assembly": witness_assembly(cyc, r),
+    }
+
+
+def subjective_objective_family(r: int = 1) -> dict[str, Any]:
+    rows = []
+    n = frame_count(r)
+    for i in range(n):
+        rows.append({
+            "i": i,
+            "subjective": subjective_family_row(i, r),
+            "objective": objective_family_row(i, r),
+        })
+    return {
+        "scale": r,
+        "frame_count": n,
+        "rows": rows,
+        "summary": {
+            "subjective_alignment": "return",
+            "subjective_spread": 4,
+            "subjective_fiber": 26,
+            "objective_alignment": "forward",
+            "objective_spread": 5,
+            "objective_fiber": 18,
+        },
+    }
+
+
+def so_orbit_summary(i: int, r: int = 1) -> dict[str, Any]:
+    n = frame_count(r)
+    i = mod_n(i, n)
+
+    subj0 = (i, 0)
+    obj0 = (i, 1)
+
+    subj_g15 = apply_word(subj0, ["tau"] * n, r)
+    obj_g15 = apply_word(obj0, ["tau"] * n, r)
+
+    subj_g30 = apply_word(subj0, ["tau"] * (2 * n), r)
+    obj_g30 = apply_word(obj0, ["tau"] * (2 * n), r)
+
+    def sheet_after_g15(sheet: str) -> str:
+        return "-" if sheet == "+" else "+"
+
+    def sheet_after_g30(sheet: str) -> str:
+        return sheet
+
+    start_sheet = "+"
+
+    return {
+        "i": i,
+        "scale": r,
+        "g15_length": n,
+        "g30_length": 2 * n,
+        "subjective_start": {
+            "state": list(subj0),
+            "phase": phase_label(subj0, r),
+            "cycle": subjective_cycle(i, r),
+            "alignment": alignment(subj0, r),
+            "spread": spread(subj0, r),
+            "fiber": fiber_size(subj0, r),
+            "sheet": start_sheet,
+            "sheet_state": [subj0[0], subj0[1], start_sheet],
+        },
+        "objective_start": {
+            "state": list(obj0),
+            "phase": phase_label(obj0, r),
+            "cycle": objective_cycle(i, r),
+            "alignment": alignment(obj0, r),
+            "spread": spread(obj0, r),
+            "fiber": fiber_size(obj0, r),
+            "sheet": start_sheet,
+            "sheet_state": [obj0[0], obj0[1], start_sheet],
+        },
+        "after_g15": {
+            "subjective_state": list(subj_g15),
+            "objective_state": list(obj_g15),
+            "subjective_phase": phase_label(subj_g15, r),
+            "objective_phase": phase_label(obj_g15, r),
+            "subjective_sheet": sheet_after_g15(start_sheet),
+            "objective_sheet": sheet_after_g15(start_sheet),
+            "subjective_sheet_state": [subj_g15[0], subj_g15[1], sheet_after_g15(start_sheet)],
+            "objective_sheet_state": [obj_g15[0], obj_g15[1], sheet_after_g15(start_sheet)],
+            "sign_closing_rule": "n_15 = -n_0",
+        },
+        "after_g30": {
+            "subjective_state": list(subj_g30),
+            "objective_state": list(obj_g30),
+            "subjective_phase": phase_label(subj_g30, r),
+            "objective_phase": phase_label(obj_g30, r),
+            "subjective_sheet": sheet_after_g30(start_sheet),
+            "objective_sheet": sheet_after_g30(start_sheet),
+            "subjective_sheet_state": [subj_g30[0], subj_g30[1], sheet_after_g30(start_sheet)],
+            "objective_sheet_state": [obj_g30[0], obj_g30[1], sheet_after_g30(start_sheet)],
+            "identity_restoring_rule": "n_30 = n_0",
+        },
+    }
