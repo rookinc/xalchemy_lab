@@ -634,6 +634,61 @@ def cmd_socket_neighborhood(args: argparse.Namespace) -> int:
     return 0
 
 
+
+def cmd_socket_family(args: argparse.Namespace) -> int:
+    if args.r != 1:
+        raise SystemExit("socket-family is currently defined only for r=1")
+
+    full_payloads = ["t2", "o4", "s0", "s1", "s2", "s3", "s4", "t0", "t1", "t3", "t4"]
+    bounded_payloads = ["o4", "s0", "s2", "s3", "s4", "t0", "t3", "t4"]
+
+    if args.bounded:
+        payloads = bounded_payloads
+    else:
+        payloads = full_payloads
+
+    rows = []
+
+    for payload in payloads:
+        cycle = frame2_socket_cycle(payload, args.r)
+        c = classify_cycle(cycle, args.r)
+        asm = witness_assembly(c["normalized_cycle"], args.r)
+        is_exact = payload == "t2"
+        row = {
+            "payload": payload,
+            "normalized_cycle": c["normalized_cycle"],
+            "classification": c["classification"],
+            "confidence": c["confidence"],
+            "best_action_distance": c["distance_summary"]["best_action_distance"],
+            "nearest_action_frames": nearest_action_frames(c),
+            "branch": "exact junction" if is_exact else "punctured socket branch",
+            "assembly": asm,
+        }
+        rows.append(row)
+
+    result = {
+        "frame2_exact_prototype": frame2_exact_prototype(args.r),
+        "mode": "bounded" if args.bounded else "full",
+        "rows": rows,
+        "summary": {
+            "exact_junction_count": sum(1 for r in rows if r["branch"] == "exact junction"),
+            "punctured_branch_count": sum(1 for r in rows if r["branch"] == "punctured socket branch"),
+            "payloads": [r["payload"] for r in rows],
+        },
+    }
+
+    text = json.dumps(result, indent=2)
+    if args.out:
+        Path(args.out).write_text(text + "\n", encoding="utf-8")
+        print(f"wrote {args.out}")
+    else:
+        if getattr(args, "pretty", False):
+            print(_render_pretty_socket_family(result))
+        else:
+            print(text)
+    return 0
+
+
 def cmd_audit_neighborhood(args: argparse.Namespace) -> int:
     kids = _one_edit_variants(args.cycle, args.r)
 
@@ -779,6 +834,30 @@ def _render_pretty_socket_neighborhood(result: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+
+def _render_pretty_socket_family(result: dict[str, Any]) -> str:
+    lines = []
+    lines.append(f"frame2 socket family ({result.get('mode', 'full')})")
+    lines.append(f"exact prototype: {result['frame2_exact_prototype']}")
+    lines.append("")
+    for row in result["rows"]:
+        a = row["assembly"]["assembly"]
+        lines.append(
+            f"{row['payload']:<3} :: "
+            f"[{a['W']},{a['X']},{a['Y']},{a['Z']},{a['T']},{a['I']}] :: "
+            f"{row['classification']}/{row['confidence']} :: "
+            f"A={row['best_action_distance']} :: "
+            f"frame={','.join(str(x) for x in row['nearest_action_frames']) if row['nearest_action_frames'] else 'none'} :: "
+            f"{row['branch']}"
+        )
+    lines.append("")
+    lines.append("summary:")
+    lines.append(f"  exact junctions : {result['summary']['exact_junction_count']}")
+    lines.append(f"  punctured branch: {result['summary']['punctured_branch_count']}")
+    lines.append(f"  payloads        : {', '.join(result['summary']['payloads'])}")
+    return "\n".join(lines)
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python3 -m witness_machine.cli")
     p.add_argument("--r", type=int, default=1, help="scale parameter, default 1")
@@ -817,6 +896,12 @@ def build_parser() -> argparse.ArgumentParser:
     socket_nb.add_argument("--out")
     socket_nb.add_argument("--pretty", action="store_true")
     socket_nb.set_defaults(func=cmd_socket_neighborhood)
+
+    socket_family = sub.add_parser("socket-family")
+    socket_family.add_argument("--out")
+    socket_family.add_argument("--pretty", action="store_true")
+    socket_family.add_argument("--bounded", action="store_true")
+    socket_family.set_defaults(func=cmd_socket_family)
 
 
     batch = sub.add_parser("batch-classify")
