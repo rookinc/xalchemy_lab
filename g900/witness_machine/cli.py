@@ -51,6 +51,7 @@ from .render import (
 )
 from .verify import verify_all
 from .theorem_status import build_theorem_status
+from .theorem_markdown import build_theorem_markdown
 
 
 def _state_label(state: tuple[int, int]) -> str:
@@ -975,6 +976,16 @@ def cmd_export_theorem_status(args: argparse.Namespace) -> int:
         print(text)
     return 0
 
+
+def cmd_export_theorem_markdown(args: argparse.Namespace) -> int:
+    text = build_theorem_markdown(args.r)
+    if args.out:
+        Path(args.out).write_text(text + "\n", encoding="utf-8")
+        print(f"wrote {args.out}")
+    else:
+        print(text)
+    return 0
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python3 -m witness_machine.cli")
     p.add_argument("--r", type=int, default=1, help="scale parameter, default 1")
@@ -1092,6 +1103,10 @@ def build_parser() -> argparse.ArgumentParser:
     explain.add_argument("--cycle", type=parse_cycle, required=True)
     explain.add_argument("--show-diff")
     explain.set_defaults(func=cmd_explain_cycle)
+
+    theorem_md = sub.add_parser("export-theorem-markdown")
+    theorem_md.add_argument("--out")
+    theorem_md.set_defaults(func=cmd_export_theorem_markdown)
 
     theorem_status = sub.add_parser("export-theorem-status")
     theorem_status.add_argument("--out")
