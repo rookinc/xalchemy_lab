@@ -322,3 +322,38 @@ def render_audit_neighborhood(summary: dict) -> str:
                 )
 
     return "\n".join(lines)
+
+
+def render_verify_report(result: dict) -> str:
+    lines = []
+    overall = result.get("overall", {})
+    lines.append("witness_machine theorem verification")
+    lines.append(f"overall: {overall.get('status', 'unknown')}")
+    lines.append("")
+
+    for section in result.get("sections", []):
+        lines.append(f"[{section['section']}] status={section['status']} passed={section['passed']}")
+        for check in section.get("checks", []):
+            mark = "PASS" if check["passed"] else "FAIL"
+            lines.append(
+                f"  - {mark:<4} {check['name']} [{check.get('status', section['status'])}]"
+            )
+            detail = check.get("detail")
+            if detail:
+                lines.append(f"      {detail}")
+        note = section.get("note")
+        if note:
+            lines.append(f"      note: {note}")
+        lines.append("")
+
+    ledger = result.get("ledger", {})
+    if ledger:
+        lines.append("ledger:")
+        for key in ["verified", "modeled", "assumed", "open"]:
+            items = ledger.get(key, [])
+            lines.append(f"  {key}:")
+            for item in items:
+                lines.append(f"    - {item}")
+        lines.append("")
+
+    return "\n".join(lines).rstrip()

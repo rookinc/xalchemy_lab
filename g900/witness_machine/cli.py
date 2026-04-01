@@ -46,8 +46,11 @@ from .render import (
     render_orbit,
     render_states_list,
     render_table,
+    render_verify_report,
     state_label as _state_label,
 )
+from .verify import verify_all
+from .theorem_status import build_theorem_status
 
 
 def _state_label(state: tuple[int, int]) -> str:
@@ -946,6 +949,32 @@ def cmd_so_orbit(args: argparse.Namespace) -> int:
     return 0
 
 
+
+def cmd_verify_theorems(args: argparse.Namespace) -> int:
+    result = verify_all(args.r)
+    text = json.dumps(result, indent=2)
+    if args.out:
+        Path(args.out).write_text(text + "\n", encoding="utf-8")
+        print(f"wrote {args.out}")
+    else:
+        if getattr(args, "pretty", False):
+            print(render_verify_report(result))
+        else:
+            print(text)
+    return 0
+
+
+
+def cmd_export_theorem_status(args: argparse.Namespace) -> int:
+    result = build_theorem_status(args.r)
+    text = json.dumps(result, indent=2)
+    if args.out:
+        Path(args.out).write_text(text + "\n", encoding="utf-8")
+        print(f"wrote {args.out}")
+    else:
+        print(text)
+    return 0
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python3 -m witness_machine.cli")
     p.add_argument("--r", type=int, default=1, help="scale parameter, default 1")
@@ -1064,6 +1093,15 @@ def build_parser() -> argparse.ArgumentParser:
     explain.add_argument("--show-diff")
     explain.set_defaults(func=cmd_explain_cycle)
 
+    theorem_status = sub.add_parser("export-theorem-status")
+    theorem_status.add_argument("--out")
+    theorem_status.set_defaults(func=cmd_export_theorem_status)
+
+    verify = sub.add_parser("verify-theorems")
+    verify.add_argument("--out")
+    verify.add_argument("--pretty", action="store_true")
+    verify.set_defaults(func=cmd_verify_theorems)
+
     audit = sub.add_parser("audit-neighborhood")
     audit.add_argument("--cycle", type=parse_cycle, required=True)
     audit.add_argument("--json", action="store_true")
@@ -1080,3 +1118,17 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+def cmd_verify_theorems(args: argparse.Namespace) -> int:
+    result = verify_all(args.r)
+    text = json.dumps(result, indent=2)
+    if args.out:
+        Path(args.out).write_text(text + "\n", encoding="utf-8")
+        print(f"wrote {args.out}")
+    else:
+        if getattr(args, "pretty", False):
+            print(render_verify_report(result))
+        else:
+            print(text)
+    return 0
