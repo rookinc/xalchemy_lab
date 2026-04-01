@@ -1,0 +1,1191 @@
+{
+  "source": "artifacts/unresolved20_depth4_frame2_d1_hits.json",
+  "exact_frame2_target": [
+    "o4",
+    "s4",
+    "t2",
+    "s2",
+    "t0",
+    "s0"
+  ],
+  "normalized_frame2_target": [
+    "o4",
+    "s0",
+    "t0",
+    "s2",
+    "t2",
+    "s4"
+  ],
+  "summary": {
+    "start_count_with_examples": 12,
+    "total_recorded_frame2_d1_hits": 23,
+    "hamming_histogram": [
+      {
+        "hamming": 1,
+        "count": 23
+      }
+    ],
+    "most_common_normalized_cycles": [
+      {
+        "cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "t4",
+          "s4"
+        ],
+        "count": 13
+      },
+      {
+        "cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "o4",
+          "s4"
+        ],
+        "count": 6
+      },
+      {
+        "cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "count": 3
+      },
+      {
+        "cycle": [
+          "o4",
+          "s0",
+          "t0",
+          "s2",
+          "s0",
+          "s4"
+        ],
+        "count": 1
+      }
+    ],
+    "most_common_mismatch_signatures": [
+      {
+        "signature": [
+          {
+            "position": 4,
+            "from": "t4",
+            "to": "t2"
+          }
+        ],
+        "count": 13,
+        "example_cycles": [
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ]
+        ]
+      },
+      {
+        "signature": [
+          {
+            "position": 4,
+            "from": "o4",
+            "to": "t2"
+          }
+        ],
+        "count": 6,
+        "example_cycles": [
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ]
+        ]
+      },
+      {
+        "signature": [
+          {
+            "position": 4,
+            "from": "s3",
+            "to": "t2"
+          }
+        ],
+        "count": 3,
+        "example_cycles": [
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        ]
+      },
+      {
+        "signature": [
+          {
+            "position": 4,
+            "from": "s0",
+            "to": "t2"
+          }
+        ],
+        "count": 1,
+        "example_cycles": [
+          [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ]
+        ]
+      }
+    ],
+    "position_mismatch_counts": [
+      {
+        "position": 4,
+        "count": 23
+      }
+    ],
+    "value_substitution_counts": [
+      {
+        "position": 4,
+        "from": "t4",
+        "to": "t2",
+        "count": 13
+      },
+      {
+        "position": 4,
+        "from": "o4",
+        "to": "t2",
+        "count": 6
+      },
+      {
+        "position": 4,
+        "from": "s3",
+        "to": "t2",
+        "count": 3
+      },
+      {
+        "position": 4,
+        "from": "s0",
+        "to": "t2",
+        "count": 1
+      }
+    ]
+  },
+  "hits": [
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o3",
+        "t4",
+        "s3"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_s3_to_s0",
+        "edit_pos4_t4_to_t0",
+        "edit_pos3_o3_to_s2",
+        "edit_pos0_o3_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o4",
+        "t4",
+        "s4"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos3_o4_to_s2",
+        "edit_pos2_o1_to_t0",
+        "edit_pos1_s2_to_s0",
+        "edit_pos0_o1_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o4",
+        "t4",
+        "s4"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "o4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos4_t4_to_o4",
+        "edit_pos3_o4_to_s0",
+        "edit_pos2_o1_to_t0",
+        "edit_pos0_o1_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "t4",
+        "s3"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_s3_to_s0",
+        "edit_pos4_t4_to_t0",
+        "edit_pos3_o4_to_s2",
+        "edit_pos0_o3_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "t4",
+        "s3"
+      ],
+      "raw_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s3"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "s3",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos4_t4_to_s4",
+        "edit_pos2_t4_to_s0",
+        "edit_pos1_s4_to_t0",
+        "edit_pos0_o3_to_s2"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos3_o3_to_s2",
+        "edit_pos2_o1_to_t0",
+        "edit_pos1_s2_to_s0",
+        "edit_pos0_o1_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "o4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos4_t4_to_o4",
+        "edit_pos3_o3_to_s0",
+        "edit_pos2_o1_to_t0",
+        "edit_pos0_o1_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o2",
+        "t4",
+        "s4"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos3_o2_to_s2",
+        "edit_pos2_o1_to_t0",
+        "edit_pos1_s2_to_s0",
+        "edit_pos0_o1_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o2",
+        "t4",
+        "s4"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "o4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos4_t4_to_o4",
+        "edit_pos3_o2_to_s0",
+        "edit_pos2_o1_to_t0",
+        "edit_pos0_o1_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "o4",
+        "s3"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_s3_to_s0",
+        "edit_pos4_o4_to_t0",
+        "edit_pos3_o4_to_s2",
+        "edit_pos0_o3_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "o4",
+        "s3"
+      ],
+      "raw_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s3"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "s3",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos4_o4_to_s4",
+        "edit_pos2_t4_to_s0",
+        "edit_pos1_s4_to_t0",
+        "edit_pos0_o3_to_s2"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos3_o3_to_s2",
+        "edit_pos2_o1_to_t0",
+        "edit_pos1_s2_to_s0",
+        "edit_pos0_o1_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "o4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos4_t4_to_o4",
+        "edit_pos3_o3_to_s0",
+        "edit_pos2_o1_to_t0",
+        "edit_pos0_o1_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "s3",
+        "o4",
+        "s3",
+        "t4",
+        "s4",
+        "o3"
+      ],
+      "raw_cycle": [
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4",
+        "o4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_o3_to_o4",
+        "edit_pos2_s3_to_s2",
+        "edit_pos1_o4_to_t0",
+        "edit_pos0_s3_to_s0"
+      ]
+    },
+    {
+      "start_cycle": [
+        "s3",
+        "o4",
+        "s3",
+        "t4",
+        "s4",
+        "o3"
+      ],
+      "raw_cycle": [
+        "s0",
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_o3_to_t0",
+        "edit_pos4_s4_to_s2",
+        "edit_pos2_s3_to_s4",
+        "edit_pos0_s3_to_s0"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "t4",
+        "s3"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_s3_to_s0",
+        "edit_pos4_t4_to_t0",
+        "edit_pos3_o4_to_s2",
+        "edit_pos0_o3_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "t4",
+        "s3"
+      ],
+      "raw_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s3"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "s3",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos4_t4_to_s4",
+        "edit_pos2_t4_to_s0",
+        "edit_pos1_s4_to_t0",
+        "edit_pos0_o3_to_s2"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s4",
+        "t4",
+        "o4",
+        "o1",
+        "s2"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "o4",
+        "s0",
+        "t0",
+        "s2"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "o4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos4_o1_to_t0",
+        "edit_pos3_o4_to_s0",
+        "edit_pos2_t4_to_o4",
+        "edit_pos0_o1_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s4",
+        "t4",
+        "o4",
+        "o1",
+        "s2"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_s2_to_s0",
+        "edit_pos4_o1_to_t0",
+        "edit_pos3_o4_to_s2",
+        "edit_pos0_o1_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o3",
+        "t4",
+        "s3"
+      ],
+      "raw_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_s3_to_s0",
+        "edit_pos4_t4_to_t0",
+        "edit_pos3_o3_to_s2",
+        "edit_pos0_o3_to_o4"
+      ]
+    },
+    {
+      "start_cycle": [
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4",
+        "o1"
+      ],
+      "raw_cycle": [
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4",
+        "o4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_o1_to_o4",
+        "edit_pos2_o3_to_s2",
+        "edit_pos1_o1_to_t0",
+        "edit_pos0_s2_to_s0"
+      ]
+    },
+    {
+      "start_cycle": [
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4",
+        "o1"
+      ],
+      "raw_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "o4"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "o4",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_o1_to_o4",
+        "edit_pos3_t4_to_o4",
+        "edit_pos2_o3_to_s0",
+        "edit_pos1_o1_to_t0"
+      ]
+    },
+    {
+      "start_cycle": [
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4",
+        "o1"
+      ],
+      "raw_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s0"
+      ],
+      "normalized_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s0",
+        "s4"
+      ],
+      "mismatch_signature": [
+        {
+          "position": 4,
+          "from": "s0",
+          "to": "t2"
+        }
+      ],
+      "hamming_to_frame2_target": 1,
+      "labels": [
+        "edit_pos5_o1_to_s0",
+        "edit_pos3_t4_to_o4",
+        "edit_pos2_o3_to_s0",
+        "edit_pos1_o1_to_t0"
+      ]
+    }
+  ]
+}

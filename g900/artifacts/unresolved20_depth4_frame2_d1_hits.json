@@ -1,0 +1,987 @@
+{
+  "source_probe": "artifacts/unresolved20_depth4_parallel_probe.json",
+  "start_count_with_frame2_d1_example": 12,
+  "common_frame2_d1_hit_cycles": [
+    {
+      "cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "count": 6
+    },
+    {
+      "cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "count": 4
+    },
+    {
+      "cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "count": 4
+    },
+    {
+      "cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s3"
+      ],
+      "count": 3
+    },
+    {
+      "cycle": [
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4",
+        "o4"
+      ],
+      "count": 2
+    },
+    {
+      "cycle": [
+        "s0",
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0"
+      ],
+      "count": 1
+    },
+    {
+      "cycle": [
+        "o4",
+        "s4",
+        "o4",
+        "s0",
+        "t0",
+        "s2"
+      ],
+      "count": 1
+    },
+    {
+      "cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "o4"
+      ],
+      "count": 1
+    },
+    {
+      "cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s0"
+      ],
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o3",
+        "t4",
+        "s3"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "o3",
+            "s4",
+            "t4",
+            "o3",
+            "t4",
+            "s3"
+          ],
+          "labels": [
+            "edit_pos5_s3_to_s0",
+            "edit_pos4_t4_to_t0",
+            "edit_pos3_o3_to_s2",
+            "edit_pos0_o3_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o4",
+        "t4",
+        "s4"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "o1",
+            "s2",
+            "o1",
+            "o4",
+            "t4",
+            "s4"
+          ],
+          "labels": [
+            "edit_pos3_o4_to_s2",
+            "edit_pos2_o1_to_t0",
+            "edit_pos1_s2_to_s0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "o1",
+            "s2",
+            "o1",
+            "o4",
+            "t4",
+            "s4"
+          ],
+          "labels": [
+            "edit_pos4_t4_to_o4",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "t4",
+        "s3"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "o3",
+            "s4",
+            "t4",
+            "o4",
+            "t4",
+            "s3"
+          ],
+          "labels": [
+            "edit_pos5_s3_to_s0",
+            "edit_pos4_t4_to_t0",
+            "edit_pos3_o4_to_s2",
+            "edit_pos0_o3_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "o3",
+            "s4",
+            "t4",
+            "o4",
+            "t4",
+            "s3"
+          ],
+          "labels": [
+            "edit_pos4_t4_to_s4",
+            "edit_pos2_t4_to_s0",
+            "edit_pos1_s4_to_t0",
+            "edit_pos0_o3_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "o1",
+            "s2",
+            "o1",
+            "o3",
+            "t4",
+            "s4"
+          ],
+          "labels": [
+            "edit_pos3_o3_to_s2",
+            "edit_pos2_o1_to_t0",
+            "edit_pos1_s2_to_s0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "o1",
+            "s2",
+            "o1",
+            "o3",
+            "t4",
+            "s4"
+          ],
+          "labels": [
+            "edit_pos4_t4_to_o4",
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o2",
+        "t4",
+        "s4"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "o1",
+            "s2",
+            "o1",
+            "o2",
+            "t4",
+            "s4"
+          ],
+          "labels": [
+            "edit_pos3_o2_to_s2",
+            "edit_pos2_o1_to_t0",
+            "edit_pos1_s2_to_s0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "o1",
+            "s2",
+            "o1",
+            "o2",
+            "t4",
+            "s4"
+          ],
+          "labels": [
+            "edit_pos4_t4_to_o4",
+            "edit_pos3_o2_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "o4",
+        "s3"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "o3",
+            "s4",
+            "t4",
+            "o4",
+            "o4",
+            "s3"
+          ],
+          "labels": [
+            "edit_pos5_s3_to_s0",
+            "edit_pos4_o4_to_t0",
+            "edit_pos3_o4_to_s2",
+            "edit_pos0_o3_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "o3",
+            "s4",
+            "t4",
+            "o4",
+            "o4",
+            "s3"
+          ],
+          "labels": [
+            "edit_pos4_o4_to_s4",
+            "edit_pos2_t4_to_s0",
+            "edit_pos1_s4_to_t0",
+            "edit_pos0_o3_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "o1",
+            "s2",
+            "o1",
+            "o3",
+            "t4",
+            "s4"
+          ],
+          "labels": [
+            "edit_pos3_o3_to_s2",
+            "edit_pos2_o1_to_t0",
+            "edit_pos1_s2_to_s0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "o1",
+            "s2",
+            "o1",
+            "o3",
+            "t4",
+            "s4"
+          ],
+          "labels": [
+            "edit_pos4_t4_to_o4",
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s3",
+        "o4",
+        "s3",
+        "t4",
+        "s4",
+        "o3"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "s3",
+            "o4",
+            "s3",
+            "t4",
+            "s4",
+            "o3"
+          ],
+          "labels": [
+            "edit_pos5_o3_to_o4",
+            "edit_pos2_s3_to_s2",
+            "edit_pos1_o4_to_t0",
+            "edit_pos0_s3_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4",
+            "o4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "s3",
+            "o4",
+            "s3",
+            "t4",
+            "s4",
+            "o3"
+          ],
+          "labels": [
+            "edit_pos5_o3_to_t0",
+            "edit_pos4_s4_to_s2",
+            "edit_pos2_s3_to_s4",
+            "edit_pos0_s3_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "t4",
+        "s3"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "o3",
+            "s4",
+            "t4",
+            "o4",
+            "t4",
+            "s3"
+          ],
+          "labels": [
+            "edit_pos5_s3_to_s0",
+            "edit_pos4_t4_to_t0",
+            "edit_pos3_o4_to_s2",
+            "edit_pos0_o3_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "o3",
+            "s4",
+            "t4",
+            "o4",
+            "t4",
+            "s3"
+          ],
+          "labels": [
+            "edit_pos4_t4_to_s4",
+            "edit_pos2_t4_to_s0",
+            "edit_pos1_s4_to_t0",
+            "edit_pos0_o3_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s4",
+        "t4",
+        "o4",
+        "o1",
+        "s2"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "o1",
+            "s4",
+            "t4",
+            "o4",
+            "o1",
+            "s2"
+          ],
+          "labels": [
+            "edit_pos4_o1_to_t0",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_t4_to_o4",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "o4",
+            "s0",
+            "t0",
+            "s2"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "o1",
+            "s4",
+            "t4",
+            "o4",
+            "o1",
+            "s2"
+          ],
+          "labels": [
+            "edit_pos5_s2_to_s0",
+            "edit_pos4_o1_to_t0",
+            "edit_pos3_o4_to_s2",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o3",
+        "t4",
+        "s3"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "o3",
+            "s4",
+            "t4",
+            "o3",
+            "t4",
+            "s3"
+          ],
+          "labels": [
+            "edit_pos5_s3_to_s0",
+            "edit_pos4_t4_to_t0",
+            "edit_pos3_o3_to_s2",
+            "edit_pos0_o3_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4",
+        "o1"
+      ],
+      "frame2_d1_hits": [
+        {
+          "start_cycle": [
+            "s2",
+            "o1",
+            "o3",
+            "t4",
+            "s4",
+            "o1"
+          ],
+          "labels": [
+            "edit_pos5_o1_to_o4",
+            "edit_pos2_o3_to_s2",
+            "edit_pos1_o1_to_t0",
+            "edit_pos0_s2_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4",
+            "o4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "o1",
+            "o3",
+            "t4",
+            "s4",
+            "o1"
+          ],
+          "labels": [
+            "edit_pos5_o1_to_o4",
+            "edit_pos3_t4_to_o4",
+            "edit_pos2_o3_to_s0",
+            "edit_pos1_o1_to_t0"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "o4"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "o1",
+            "o3",
+            "t4",
+            "s4",
+            "o1"
+          ],
+          "labels": [
+            "edit_pos5_o1_to_s0",
+            "edit_pos3_t4_to_o4",
+            "edit_pos2_o3_to_s0",
+            "edit_pos1_o1_to_t0"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "nearest_frames": [
+            2
+          ],
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          }
+        }
+      ]
+    }
+  ]
+}

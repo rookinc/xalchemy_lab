@@ -1,0 +1,4885 @@
+{
+  "unresolved_start_count": 20,
+  "max_workers": 8,
+  "summary": {
+    "has_4step_exact": 0,
+    "has_4step_d1": 20,
+    "to_frame2_d1": 20,
+    "histogram_found_d1_found_exact": [
+      {
+        "found_d1_count": 9,
+        "found_exact_count": 0,
+        "count": 2
+      },
+      {
+        "found_d1_count": 11,
+        "found_exact_count": 0,
+        "count": 3
+      },
+      {
+        "found_d1_count": 13,
+        "found_exact_count": 0,
+        "count": 1
+      },
+      {
+        "found_d1_count": 16,
+        "found_exact_count": 0,
+        "count": 3
+      },
+      {
+        "found_d1_count": 17,
+        "found_exact_count": 0,
+        "count": 5
+      },
+      {
+        "found_d1_count": 18,
+        "found_exact_count": 0,
+        "count": 2
+      },
+      {
+        "found_d1_count": 19,
+        "found_exact_count": 0,
+        "count": 2
+      },
+      {
+        "found_d1_count": 21,
+        "found_exact_count": 0,
+        "count": 2
+      }
+    ],
+    "exact_targets": [],
+    "d1_targets": [
+      {
+        "frame": 0,
+        "cycle": [
+          "o2",
+          "s2",
+          "t0",
+          "s0",
+          "t3",
+          "s3"
+        ],
+        "count": 214
+      },
+      {
+        "frame": 2,
+        "cycle": [
+          "o4",
+          "s4",
+          "t2",
+          "s2",
+          "t0",
+          "s0"
+        ],
+        "count": 99
+      }
+    ]
+  },
+  "runtime_report": {
+    "wall_seconds": 224.75295924994862,
+    "cpu_seconds": 0.021701000000000005,
+    "max_rss_mb": 22.140625
+  },
+  "results": [
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o3",
+        "t4",
+        "s3"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 9,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 8
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 1
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o3",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos3_o3_to_s0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s3_to_s0",
+            "edit_pos4_t4_to_t0",
+            "edit_pos3_o3_to_s2",
+            "edit_pos0_o3_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_o2",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s0",
+            "edit_pos0_o3_to_t3"
+          ],
+          "cycle": [
+            "t3",
+            "s0",
+            "t0",
+            "o3",
+            "o2",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o4",
+        "t4",
+        "s4"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 18,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 7
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 11
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s4_to_s3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s4_to_s3",
+            "edit_pos4_t4_to_t3",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o4",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos3_o4_to_s2",
+            "edit_pos2_o1_to_t0",
+            "edit_pos1_s2_to_s0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_o4",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "t4",
+        "s3"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 11,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 8
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 3
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o4",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s3_to_s0",
+            "edit_pos4_t4_to_t0",
+            "edit_pos3_o4_to_s2",
+            "edit_pos0_o3_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_s4",
+            "edit_pos2_t4_to_s0",
+            "edit_pos1_s4_to_t0",
+            "edit_pos0_o3_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 16,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 7
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 9
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s4_to_s3",
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s4_to_s3",
+            "edit_pos4_t4_to_t3",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o3",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos3_o3_to_s2",
+            "edit_pos2_o1_to_t0",
+            "edit_pos1_s2_to_s0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_o4",
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o2",
+        "t4",
+        "s4"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 21,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 12
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 9
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos3_o2_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s4_to_s3",
+            "edit_pos3_o2_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s4_to_s3",
+            "edit_pos4_t4_to_t3",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o2",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos3_o2_to_s2",
+            "edit_pos2_o1_to_t0",
+            "edit_pos1_s2_to_s0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_o4",
+            "edit_pos3_o2_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s4",
+        "t4",
+        "o4",
+        "t4",
+        "s3",
+        "o3"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 11,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 8
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 3
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_t4_to_o2",
+            "edit_pos2_o4_to_s2",
+            "edit_pos1_t4_to_t0",
+            "edit_pos0_s4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t0",
+            "s2",
+            "o2",
+            "s3",
+            "o3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o3_to_t3",
+            "edit_pos3_t4_to_o2",
+            "edit_pos1_t4_to_t0",
+            "edit_pos0_s4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t0",
+            "o4",
+            "o2",
+            "s3",
+            "t3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o3_to_t3",
+            "edit_pos3_t4_to_o2",
+            "edit_pos2_o4_to_s2",
+            "edit_pos0_s4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t4",
+            "s2",
+            "o2",
+            "s3",
+            "t3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos3_t4_to_t3",
+            "edit_pos2_o4_to_s0",
+            "edit_pos1_t4_to_t0",
+            "edit_pos0_s4_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3",
+            "o3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o3_to_o2",
+            "edit_pos2_o4_to_s0",
+            "edit_pos1_t4_to_t0",
+            "edit_pos0_s4_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "t4",
+            "s3",
+            "o2"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "o4",
+        "s3"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 13,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 9
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 4
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_o4_to_t3",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o4",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_o4_to_t3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s3_to_s0",
+            "edit_pos4_o4_to_t0",
+            "edit_pos3_o4_to_s2",
+            "edit_pos0_o3_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_o4_to_s4",
+            "edit_pos2_t4_to_s0",
+            "edit_pos1_s4_to_t0",
+            "edit_pos0_o3_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s4",
+        "o3",
+        "s3",
+        "o4",
+        "t3",
+        "t4"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 17,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 15
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 2
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_s3_to_t0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "t4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos2_s3_to_t0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o4",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "s3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_s3_to_t0",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "o3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t3_to_s2",
+            "edit_pos3_o4_to_o2",
+            "edit_pos1_o3_to_t3",
+            "edit_pos0_s4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t3",
+            "s3",
+            "o2",
+            "s2",
+            "t4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 16,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 7
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 9
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s4_to_s3",
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s4_to_s3",
+            "edit_pos4_t4_to_t3",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o3",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos3_o3_to_s2",
+            "edit_pos2_o1_to_t0",
+            "edit_pos1_s2_to_s0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_o4",
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_o1_to_t0",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "t4",
+        "s4",
+        "o3",
+        "s3",
+        "o4",
+        "s3"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 19,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 17
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 2
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_s3_to_s0",
+            "edit_pos2_o3_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_t4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_o4_to_t3",
+            "edit_pos2_o3_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_t4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s3",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_o4_to_t3",
+            "edit_pos3_s3_to_s0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_t4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "o3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_o4_to_o2",
+            "edit_pos2_o3_to_t3",
+            "edit_pos1_s4_to_s0",
+            "edit_pos0_t4_to_t0"
+          ],
+          "cycle": [
+            "t0",
+            "s0",
+            "t3",
+            "s3",
+            "o2",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s3_to_s2",
+            "edit_pos2_o3_to_t3",
+            "edit_pos1_s4_to_s0",
+            "edit_pos0_t4_to_t0"
+          ],
+          "cycle": [
+            "t0",
+            "s0",
+            "t3",
+            "s3",
+            "o4",
+            "s2"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s4",
+        "o3",
+        "s3",
+        "o4",
+        "t3",
+        "t4"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 17,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 15
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 2
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_s3_to_t0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "t4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos2_s3_to_t0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o4",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "s3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_s3_to_t0",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "o3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t3_to_s2",
+            "edit_pos3_o4_to_o2",
+            "edit_pos1_o3_to_t3",
+            "edit_pos0_s4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t3",
+            "s3",
+            "o2",
+            "s2",
+            "t4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o4",
+        "s2",
+        "s3",
+        "o3",
+        "s4",
+        "t4"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 21,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 16
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 5
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos4_s4_to_t3",
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_s3_to_t0",
+            "edit_pos0_o4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "t4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_s3_to_t0",
+            "edit_pos0_o4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "s4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos4_s4_to_t3",
+            "edit_pos2_s3_to_t0",
+            "edit_pos0_o4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o3",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos4_s4_to_t3",
+            "edit_pos3_o3_to_s0",
+            "edit_pos0_o4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "s3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_s4_to_s2",
+            "edit_pos3_o3_to_o2",
+            "edit_pos1_s2_to_t3",
+            "edit_pos0_o4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t3",
+            "s3",
+            "o2",
+            "s2",
+            "t4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s3",
+        "o4",
+        "s3",
+        "t4",
+        "s4",
+        "o3"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 19,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 2
+        },
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 17
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos5_o3_to_o4",
+            "edit_pos2_s3_to_s2",
+            "edit_pos1_o4_to_t0",
+            "edit_pos0_s3_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4",
+            "o4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_s4_to_s2",
+            "edit_pos3_t4_to_o2",
+            "edit_pos1_o4_to_t3",
+            "edit_pos0_s3_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t3",
+            "s3",
+            "o2",
+            "s2",
+            "o3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o3_to_t0",
+            "edit_pos4_s4_to_s2",
+            "edit_pos2_s3_to_s4",
+            "edit_pos0_s3_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o3_to_t0",
+            "edit_pos4_s4_to_s2",
+            "edit_pos3_t4_to_o2",
+            "edit_pos0_s3_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "o4",
+            "s3",
+            "o2",
+            "s2",
+            "t0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_s4_to_s0",
+            "edit_pos3_t4_to_t3",
+            "edit_pos1_o4_to_o2",
+            "edit_pos0_s3_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "o2",
+            "s3",
+            "t3",
+            "s0",
+            "o3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s4",
+        "o3",
+        "s3",
+        "o4",
+        "t3",
+        "t4"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 17,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 15
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 2
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_s3_to_t0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "t4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos2_s3_to_t0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o4",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "s3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_s3_to_t0",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "o3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t3_to_s2",
+            "edit_pos3_o4_to_o2",
+            "edit_pos1_o3_to_t3",
+            "edit_pos0_s4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t3",
+            "s3",
+            "o2",
+            "s2",
+            "t4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s4",
+        "t4",
+        "o3",
+        "o1",
+        "s2",
+        "o3"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 17,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 8
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 9
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_o1_to_o2",
+            "edit_pos2_o3_to_s3",
+            "edit_pos1_t4_to_t3",
+            "edit_pos0_s4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t3",
+            "s3",
+            "o2",
+            "s2",
+            "o3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o3_to_t0",
+            "edit_pos2_o3_to_s3",
+            "edit_pos1_t4_to_t3",
+            "edit_pos0_s4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t3",
+            "s3",
+            "o1",
+            "s2",
+            "t0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o3_to_t0",
+            "edit_pos3_o1_to_o2",
+            "edit_pos2_o3_to_s3",
+            "edit_pos0_s4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t4",
+            "s3",
+            "o2",
+            "s2",
+            "t0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos3_o1_to_t0",
+            "edit_pos2_o3_to_s0",
+            "edit_pos1_t4_to_t3",
+            "edit_pos0_s4_to_s3"
+          ],
+          "cycle": [
+            "s3",
+            "t3",
+            "s0",
+            "t0",
+            "s2",
+            "o3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o3_to_o2",
+            "edit_pos3_o1_to_t0",
+            "edit_pos1_t4_to_t3",
+            "edit_pos0_s4_to_s3"
+          ],
+          "cycle": [
+            "s3",
+            "t3",
+            "o3",
+            "t0",
+            "s2",
+            "o2"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s4",
+        "o3",
+        "s3",
+        "o4",
+        "t3",
+        "t4"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 17,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 15
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 2
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_s3_to_t0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "t4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos2_s3_to_t0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o4",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos1_o3_to_s2",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "s3",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_t4_to_s3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_s3_to_t0",
+            "edit_pos0_s4_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "o3",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t3_to_s2",
+            "edit_pos3_o4_to_o2",
+            "edit_pos1_o3_to_t3",
+            "edit_pos0_s4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t3",
+            "s3",
+            "o2",
+            "s2",
+            "t4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o4",
+        "t4",
+        "s3"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 11,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 8
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 3
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o4",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos3_o4_to_s0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s3_to_s0",
+            "edit_pos4_t4_to_t0",
+            "edit_pos3_o4_to_s2",
+            "edit_pos0_o3_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_s4",
+            "edit_pos2_t4_to_s0",
+            "edit_pos1_s4_to_t0",
+            "edit_pos0_o3_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o1",
+        "s4",
+        "t4",
+        "o4",
+        "o1",
+        "s2"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 18,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 7
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 11
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos4_o1_to_t0",
+            "edit_pos2_t4_to_t3",
+            "edit_pos1_s4_to_s3",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s3",
+            "t3",
+            "o4",
+            "t0",
+            "s2"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_o1_to_t0",
+            "edit_pos3_o4_to_s0",
+            "edit_pos1_s4_to_s3",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s3",
+            "t4",
+            "s0",
+            "t0",
+            "s2"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_o1_to_t0",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_t4_to_t3",
+            "edit_pos0_o1_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s4",
+            "t3",
+            "s0",
+            "t0",
+            "s2"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_o1_to_t0",
+            "edit_pos3_o4_to_s0",
+            "edit_pos2_t4_to_o4",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "o4",
+            "s0",
+            "t0",
+            "s2"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s2_to_s0",
+            "edit_pos4_o1_to_t0",
+            "edit_pos3_o4_to_s2",
+            "edit_pos0_o1_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o3",
+        "s4",
+        "t4",
+        "o3",
+        "t4",
+        "s3"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 9,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 8
+        },
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 1
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos3_o3_to_s0",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t4",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "o3",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_t3",
+            "edit_pos3_o3_to_s0",
+            "edit_pos1_s4_to_s2",
+            "edit_pos0_o3_to_o2"
+          ],
+          "cycle": [
+            "o2",
+            "s2",
+            "t4",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_s3_to_s0",
+            "edit_pos4_t4_to_t0",
+            "edit_pos3_o3_to_s2",
+            "edit_pos0_o3_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos4_t4_to_o2",
+            "edit_pos2_t4_to_t0",
+            "edit_pos1_s4_to_s0",
+            "edit_pos0_o3_to_t3"
+          ],
+          "cycle": [
+            "t3",
+            "s0",
+            "t0",
+            "o3",
+            "o2",
+            "s3"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 3,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s2",
+        "o1",
+        "o3",
+        "t4",
+        "s4",
+        "o1"
+      ],
+      "found_exact_count": 0,
+      "found_d1_count": 16,
+      "has_exact": false,
+      "has_d1": true,
+      "has_frame2_d1": true,
+      "exact_targets": [],
+      "d1_targets": [
+        {
+          "frame": 2,
+          "cycle": [
+            "o4",
+            "s4",
+            "t2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "count": 9
+        },
+        {
+          "frame": 0,
+          "cycle": [
+            "o2",
+            "s2",
+            "t0",
+            "s0",
+            "t3",
+            "s3"
+          ],
+          "count": 7
+        }
+      ],
+      "exact_examples": [],
+      "d1_examples": [
+        {
+          "labels": [
+            "edit_pos5_o1_to_o4",
+            "edit_pos2_o3_to_s2",
+            "edit_pos1_o1_to_t0",
+            "edit_pos0_s2_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4",
+            "o4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o1_to_t0",
+            "edit_pos3_t4_to_t3",
+            "edit_pos2_o3_to_s3",
+            "edit_pos1_o1_to_o2"
+          ],
+          "cycle": [
+            "s2",
+            "o2",
+            "s3",
+            "t3",
+            "s4",
+            "t0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 4,
+            "best_objective_distance": 5,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o1_to_t0",
+            "edit_pos4_s4_to_s0",
+            "edit_pos2_o3_to_s3",
+            "edit_pos1_o1_to_o2"
+          ],
+          "cycle": [
+            "s2",
+            "o2",
+            "s3",
+            "t4",
+            "s0",
+            "t0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 4,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 0,
+              "cycle": [
+                "o2",
+                "s2",
+                "t0",
+                "s0",
+                "t3",
+                "s3"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o1_to_o4",
+            "edit_pos3_t4_to_o4",
+            "edit_pos2_o3_to_s0",
+            "edit_pos1_o1_to_t0"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "o4"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        },
+        {
+          "labels": [
+            "edit_pos5_o1_to_s0",
+            "edit_pos3_t4_to_o4",
+            "edit_pos2_o3_to_s0",
+            "edit_pos1_o1_to_t0"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "distance_summary": {
+            "best_subjective_distance": 5,
+            "best_objective_distance": 6,
+            "best_action_distance": 1
+          },
+          "action_matches": [],
+          "nearest_action": [
+            {
+              "frame": 2,
+              "cycle": [
+                "o4",
+                "s4",
+                "t2",
+                "s2",
+                "t0",
+                "s0"
+              ],
+              "species": "O-S-T-S-T-S",
+              "distance": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

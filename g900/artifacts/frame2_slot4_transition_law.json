@@ -1,0 +1,458 @@
+{
+  "unique_frame2_witness_starts": [
+    [
+      "o4",
+      "s0",
+      "t0",
+      "s2",
+      "t4",
+      "s4"
+    ],
+    [
+      "o4",
+      "s0",
+      "t0",
+      "s2",
+      "o4",
+      "s4"
+    ],
+    [
+      "o4",
+      "s0",
+      "t0",
+      "s2",
+      "s3",
+      "s4"
+    ],
+    [
+      "o4",
+      "s0",
+      "t0",
+      "s2",
+      "s0",
+      "s4"
+    ]
+  ],
+  "summary": {
+    "start_count": 4,
+    "visited_corridor_state_count": 8,
+    "slot4_visit_histogram": {
+      "t4": 1,
+      "o4": 1,
+      "s3": 1,
+      "s0": 1,
+      "s2": 1,
+      "s4": 1,
+      "t0": 1,
+      "t3": 1
+    },
+    "exact_frame2_one_edit_hits_found": 0,
+    "corridor_t2_examples_found": 0,
+    "off_corridor_t2_examples_found": 0,
+    "top_transition_counts": [
+      {
+        "from_slot4": "t4",
+        "to_slot4": "t4",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 2,
+        "count": 27
+      },
+      {
+        "from_slot4": "t0",
+        "to_slot4": "t0",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 2,
+        "count": 27
+      },
+      {
+        "from_slot4": "t3",
+        "to_slot4": "t3",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 2,
+        "count": 27
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "s3",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 2,
+        "count": 25
+      },
+      {
+        "from_slot4": "s2",
+        "to_slot4": "s2",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 2,
+        "count": 25
+      },
+      {
+        "from_slot4": "s4",
+        "to_slot4": "s4",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 2,
+        "count": 25
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "o4",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 2,
+        "count": 24
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "s0",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 2,
+        "count": 24
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "s2",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 13
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "s2",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 11
+      },
+      {
+        "from_slot4": "s2",
+        "to_slot4": "s2",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 11
+      },
+      {
+        "from_slot4": "s4",
+        "to_slot4": "s2",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 10
+      },
+      {
+        "from_slot4": "t0",
+        "to_slot4": "s2",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 10
+      },
+      {
+        "from_slot4": "t3",
+        "to_slot4": "s2",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 10
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "s2",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 9
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "o4",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 3,
+        "count": 8
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "s0",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 5
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "s2",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 5
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "s4",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 4
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "s2",
+        "classification": "subjective-state",
+        "confidence": "nearest",
+        "best_action_distance": 5,
+        "count": 4
+      },
+      {
+        "from_slot4": "t0",
+        "to_slot4": "s4",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 4
+      },
+      {
+        "from_slot4": "t3",
+        "to_slot4": "s4",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 4
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "s4",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 6,
+        "count": 3
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "o4",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 3,
+        "count": 3
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "t4",
+        "classification": "subjective-state",
+        "confidence": "nearest",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "t4",
+        "to_slot4": "t0",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "o4",
+        "to_slot4": "o4",
+        "classification": "subjective-state",
+        "confidence": "nearest",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "s0",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 3
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "s3",
+        "classification": "subjective-state",
+        "confidence": "nearest",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "t0",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "s4",
+        "classification": "objective-state",
+        "confidence": "nearest",
+        "best_action_distance": 5,
+        "count": 3
+      },
+      {
+        "from_slot4": "s3",
+        "to_slot4": "o4",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 3,
+        "count": 3
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "s0",
+        "classification": "subjective-state",
+        "confidence": "nearest",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "t0",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "s0",
+        "to_slot4": "o4",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 3,
+        "count": 3
+      },
+      {
+        "from_slot4": "s2",
+        "to_slot4": "s2",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "s2",
+        "to_slot4": "s4",
+        "classification": "objective-state",
+        "confidence": "nearest",
+        "best_action_distance": 5,
+        "count": 3
+      },
+      {
+        "from_slot4": "s2",
+        "to_slot4": "o4",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 3,
+        "count": 3
+      },
+      {
+        "from_slot4": "s2",
+        "to_slot4": "s2",
+        "classification": "subjective-state",
+        "confidence": "nearest",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "s2",
+        "to_slot4": "t0",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "s4",
+        "to_slot4": "s4",
+        "classification": "objective-state",
+        "confidence": "nearest",
+        "best_action_distance": 5,
+        "count": 3
+      },
+      {
+        "from_slot4": "s4",
+        "to_slot4": "o4",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 3,
+        "count": 3
+      },
+      {
+        "from_slot4": "s4",
+        "to_slot4": "s0",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 5,
+        "count": 3
+      },
+      {
+        "from_slot4": "s4",
+        "to_slot4": "s4",
+        "classification": "subjective-state",
+        "confidence": "nearest",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "s4",
+        "to_slot4": "t0",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "t0",
+        "to_slot4": "s2",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 5,
+        "count": 3
+      },
+      {
+        "from_slot4": "t0",
+        "to_slot4": "s4",
+        "classification": "objective-state",
+        "confidence": "nearest",
+        "best_action_distance": 6,
+        "count": 3
+      },
+      {
+        "from_slot4": "t0",
+        "to_slot4": "o4",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 3,
+        "count": 3
+      },
+      {
+        "from_slot4": "t0",
+        "to_slot4": "t0",
+        "classification": "unresolved",
+        "confidence": "ambiguous",
+        "best_action_distance": 4,
+        "count": 3
+      },
+      {
+        "from_slot4": "t0",
+        "to_slot4": "t0",
+        "classification": "action-cell",
+        "confidence": "nearest",
+        "best_action_distance": 3,
+        "count": 3
+      }
+    ]
+  },
+  "exact_attempts": [],
+  "corridor_t2_examples": [],
+  "off_corridor_t2_examples": []
+}

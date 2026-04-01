@@ -1,0 +1,837 @@
+{
+  "unique_start_count": 4,
+  "max_depth": 6,
+  "max_action_distance": 3,
+  "max_workers": 8,
+  "summary": {
+    "has_exact_frame2_count": 0,
+    "has_frame2_d1_count": 4
+  },
+  "runtime_report": {
+    "wall_seconds": 23.64885995798977,
+    "cpu_seconds": 0.008559000000000004,
+    "max_rss_mb": 22.390625
+  },
+  "results": [
+    {
+      "start_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s0"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s0",
+        "s4"
+      ],
+      "has_exact_frame2": false,
+      "has_frame2_d1": true,
+      "exact_frame2_hits": [],
+      "frame2_d1_hits": [
+        {
+          "depth": 0,
+          "labels": [],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s0_to_o4"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "o4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s0_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s2"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s0_to_s3"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s0_to_s4"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ]
+        }
+      ],
+      "visited_state_count": 14656,
+      "depth_histogram": {
+        "0": 1,
+        "1": 43,
+        "2": 659,
+        "3": 3661,
+        "4": 5890,
+        "5": 4118,
+        "6": 284
+      },
+      "slot4_value_histogram": {
+        "s0": 1058,
+        "t0": 1198,
+        "s3": 1119,
+        "s4": 1130,
+        "t3": 3758,
+        "t4": 2294,
+        "o4": 998,
+        "s2": 1094,
+        "o1": 402,
+        "o2": 620,
+        "o3": 792,
+        "o0": 193
+      },
+      "class_histogram": [
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "count": 47
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 2,
+          "count": 1019
+        },
+        {
+          "classification": "unresolved",
+          "confidence": "ambiguous",
+          "best_action_distance": 3,
+          "count": 1800
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 11566
+        },
+        {
+          "classification": "subjective-state",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 66
+        },
+        {
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 149
+        },
+        {
+          "classification": "unresolved",
+          "confidence": "ambiguous",
+          "best_action_distance": 2,
+          "count": 8
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "exact",
+          "best_action_distance": 0,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "has_exact_frame2": false,
+      "has_frame2_d1": true,
+      "exact_frame2_hits": [],
+      "frame2_d1_hits": [
+        {
+          "depth": 0,
+          "labels": [],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos2_t4_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "o4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos2_t4_to_s0"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "s0",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos2_t4_to_s2"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "s2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos2_t4_to_s3"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "s3",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        }
+      ],
+      "visited_state_count": 14656,
+      "depth_histogram": {
+        "0": 1,
+        "1": 39,
+        "2": 661,
+        "3": 3741,
+        "4": 6109,
+        "5": 3925,
+        "6": 180
+      },
+      "slot4_value_histogram": {
+        "t4": 2294,
+        "o4": 998,
+        "s0": 1058,
+        "s2": 1094,
+        "s3": 1119,
+        "s4": 1130,
+        "t0": 1198,
+        "t3": 3758,
+        "o0": 193,
+        "o1": 402,
+        "o2": 620,
+        "o3": 792
+      },
+      "class_histogram": [
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "count": 47
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 2,
+          "count": 1019
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 11566
+        },
+        {
+          "classification": "unresolved",
+          "confidence": "ambiguous",
+          "best_action_distance": 3,
+          "count": 1800
+        },
+        {
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 149
+        },
+        {
+          "classification": "subjective-state",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 66
+        },
+        {
+          "classification": "unresolved",
+          "confidence": "ambiguous",
+          "best_action_distance": 2,
+          "count": 8
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "exact",
+          "best_action_distance": 0,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "has_exact_frame2": false,
+      "has_frame2_d1": true,
+      "exact_frame2_hits": [],
+      "frame2_d1_hits": [
+        {
+          "depth": 0,
+          "labels": [],
+          "cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos0_o4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos0_o4_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos0_o4_to_s3"
+          ],
+          "cycle": [
+            "s3",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos0_o4_to_s4"
+          ],
+          "cycle": [
+            "s4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ]
+        }
+      ],
+      "visited_state_count": 14656,
+      "depth_histogram": {
+        "0": 1,
+        "1": 47,
+        "2": 644,
+        "3": 3541,
+        "4": 5486,
+        "5": 4635,
+        "6": 302
+      },
+      "slot4_value_histogram": {
+        "o4": 998,
+        "s0": 1058,
+        "s2": 1094,
+        "s3": 1119,
+        "s4": 1130,
+        "t0": 1198,
+        "t3": 3758,
+        "t4": 2294,
+        "o0": 193,
+        "o1": 402,
+        "o2": 620,
+        "o3": 792
+      },
+      "class_histogram": [
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "count": 47
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 11566
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 2,
+          "count": 1019
+        },
+        {
+          "classification": "unresolved",
+          "confidence": "ambiguous",
+          "best_action_distance": 3,
+          "count": 1800
+        },
+        {
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 149
+        },
+        {
+          "classification": "subjective-state",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 66
+        },
+        {
+          "classification": "unresolved",
+          "confidence": "ambiguous",
+          "best_action_distance": 2,
+          "count": 8
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "exact",
+          "best_action_distance": 0,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "start_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s3"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "has_exact_frame2": false,
+      "has_frame2_d1": true,
+      "exact_frame2_hits": [],
+      "frame2_d1_hits": [
+        {
+          "depth": 0,
+          "labels": [],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s3_to_o4"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "o4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s3_to_s0"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s3_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s2"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s3_to_s4"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ]
+        }
+      ],
+      "visited_state_count": 14656,
+      "depth_histogram": {
+        "0": 1,
+        "1": 39,
+        "2": 628,
+        "3": 3558,
+        "4": 6336,
+        "5": 4063,
+        "6": 31
+      },
+      "slot4_value_histogram": {
+        "s3": 1119,
+        "t0": 1198,
+        "o4": 998,
+        "s0": 1058,
+        "s2": 1094,
+        "s4": 1130,
+        "t3": 3758,
+        "t4": 2294,
+        "o1": 402,
+        "o2": 620,
+        "o3": 792,
+        "o0": 193
+      },
+      "class_histogram": [
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 1,
+          "count": 47
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 2,
+          "count": 1019
+        },
+        {
+          "classification": "unresolved",
+          "confidence": "ambiguous",
+          "best_action_distance": 3,
+          "count": 1800
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 11566
+        },
+        {
+          "classification": "subjective-state",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 66
+        },
+        {
+          "classification": "objective-state",
+          "confidence": "nearest",
+          "best_action_distance": 3,
+          "count": 149
+        },
+        {
+          "classification": "unresolved",
+          "confidence": "ambiguous",
+          "best_action_distance": 2,
+          "count": 8
+        },
+        {
+          "classification": "action-cell",
+          "confidence": "exact",
+          "best_action_distance": 0,
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

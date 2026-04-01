@@ -1,0 +1,1075 @@
+{
+  "unique_start_count": 4,
+  "max_action_distance": 3,
+  "max_workers": 8,
+  "runs": [
+    {
+      "max_depth": 4,
+      "max_action_distance": 3,
+      "summary": {
+        "start_count": 4,
+        "has_exact_frame2_count": 0,
+        "has_frame2_d1_count": 4,
+        "has_t2_anywhere_count": 0,
+        "has_t2_in_frame2_d1_count": 0,
+        "total_visited_state_count": 41086,
+        "slot4_histogram": {
+          "o4": 3621,
+          "s0": 3480,
+          "s2": 3496,
+          "s3": 3438,
+          "s4": 3415,
+          "t0": 3897,
+          "t3": 8671,
+          "t4": 6030,
+          "o0": 418,
+          "o1": 1008,
+          "o2": 1569,
+          "o3": 2043
+        }
+      },
+      "runtime_report": {
+        "wall_seconds": 10.583218916959595,
+        "cpu_seconds_parent_only": 0.010759999999999992
+      },
+      "results": [
+        {
+          "start_cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "visited_state_count": 9719,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "o4": 966,
+            "s0": 823,
+            "s2": 838,
+            "s3": 781,
+            "s4": 814,
+            "t0": 943,
+            "t3": 2095,
+            "t4": 1280,
+            "o0": 96,
+            "o1": 234,
+            "o2": 366,
+            "o3": 483
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 47,
+            "2": 644,
+            "3": 3541,
+            "4": 5486
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "visited_state_count": 10562,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "s3": 1046,
+            "t0": 990,
+            "o4": 879,
+            "s0": 853,
+            "s2": 930,
+            "s4": 902,
+            "t3": 2279,
+            "t4": 1386,
+            "o1": 252,
+            "o2": 404,
+            "o3": 530,
+            "o0": 111
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 39,
+            "2": 628,
+            "3": 3558,
+            "4": 6336
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "visited_state_count": 10254,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "s0": 986,
+            "t0": 982,
+            "s3": 815,
+            "s4": 864,
+            "t3": 2229,
+            "t4": 1334,
+            "o4": 886,
+            "s2": 873,
+            "o1": 258,
+            "o2": 400,
+            "o3": 514,
+            "o0": 113
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 43,
+            "2": 659,
+            "3": 3661,
+            "4": 5890
+          }
+        },
+        {
+          "start_cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "visited_state_count": 10551,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "t4": 2030,
+            "o4": 890,
+            "s0": 818,
+            "s2": 855,
+            "s3": 796,
+            "s4": 835,
+            "t0": 982,
+            "t3": 2068,
+            "o0": 98,
+            "o1": 264,
+            "o2": 399,
+            "o3": 516
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 39,
+            "2": 661,
+            "3": 3741,
+            "4": 6109
+          }
+        }
+      ]
+    },
+    {
+      "max_depth": 5,
+      "max_action_distance": 3,
+      "summary": {
+        "start_count": 4,
+        "has_exact_frame2_count": 0,
+        "has_frame2_d1_count": 4,
+        "has_t2_anywhere_count": 0,
+        "has_t2_in_frame2_d1_count": 0,
+        "total_visited_state_count": 57827,
+        "slot4_histogram": {
+          "o4": 3992,
+          "s0": 4226,
+          "s2": 4376,
+          "s3": 4413,
+          "s4": 4493,
+          "t0": 4792,
+          "t3": 14813,
+          "t4": 8918,
+          "o0": 722,
+          "o1": 1548,
+          "o2": 2426,
+          "o3": 3108
+        }
+      },
+      "runtime_report": {
+        "wall_seconds": 19.448051457991824,
+        "cpu_seconds_parent_only": 0.0055670000000000025
+      },
+      "results": [
+        {
+          "start_cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "visited_state_count": 14354,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s3": 1097,
+            "s4": 1112,
+            "t0": 1198,
+            "t3": 3689,
+            "t4": 2180,
+            "o0": 175,
+            "o1": 381,
+            "o2": 601,
+            "o3": 771
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 47,
+            "2": 644,
+            "3": 3541,
+            "4": 5486,
+            "5": 4635
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "visited_state_count": 14372,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "s0": 1058,
+            "t0": 1198,
+            "s3": 1099,
+            "s4": 1130,
+            "t3": 3677,
+            "t4": 2181,
+            "o4": 998,
+            "s2": 1094,
+            "o1": 383,
+            "o2": 603,
+            "o3": 773,
+            "o0": 178
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 43,
+            "2": 659,
+            "3": 3661,
+            "4": 5890,
+            "5": 4118
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "visited_state_count": 14625,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "s3": 1119,
+            "t0": 1198,
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s4": 1130,
+            "t3": 3758,
+            "t4": 2263,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792,
+            "o0": 193
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 39,
+            "2": 628,
+            "3": 3558,
+            "4": 6336,
+            "5": 4063
+          }
+        },
+        {
+          "start_cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "visited_state_count": 14476,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "t4": 2294,
+            "o4": 998,
+            "s0": 1052,
+            "s2": 1094,
+            "s3": 1098,
+            "s4": 1121,
+            "t0": 1198,
+            "t3": 3689,
+            "o0": 176,
+            "o1": 382,
+            "o2": 602,
+            "o3": 772
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 39,
+            "2": 661,
+            "3": 3741,
+            "4": 6109,
+            "5": 3925
+          }
+        }
+      ]
+    },
+    {
+      "max_depth": 6,
+      "max_action_distance": 3,
+      "summary": {
+        "start_count": 4,
+        "has_exact_frame2_count": 0,
+        "has_frame2_d1_count": 4,
+        "has_t2_anywhere_count": 0,
+        "has_t2_in_frame2_d1_count": 0,
+        "total_visited_state_count": 58624,
+        "slot4_histogram": {
+          "o4": 3992,
+          "s0": 4232,
+          "s2": 4376,
+          "s3": 4476,
+          "s4": 4520,
+          "t0": 4792,
+          "t3": 15032,
+          "t4": 9176,
+          "o0": 772,
+          "o1": 1608,
+          "o2": 2480,
+          "o3": 3168
+        }
+      },
+      "runtime_report": {
+        "wall_seconds": 23.742815375037026,
+        "cpu_seconds_parent_only": 0.005590000000000012
+      },
+      "results": [
+        {
+          "start_cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s3": 1119,
+            "s4": 1130,
+            "t0": 1198,
+            "t3": 3758,
+            "t4": 2294,
+            "o0": 193,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 47,
+            "2": 644,
+            "3": 3541,
+            "4": 5486,
+            "5": 4635,
+            "6": 302
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "s0": 1058,
+            "t0": 1198,
+            "s3": 1119,
+            "s4": 1130,
+            "t3": 3758,
+            "t4": 2294,
+            "o4": 998,
+            "s2": 1094,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792,
+            "o0": 193
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 43,
+            "2": 659,
+            "3": 3661,
+            "4": 5890,
+            "5": 4118,
+            "6": 284
+          }
+        },
+        {
+          "start_cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "t4": 2294,
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s3": 1119,
+            "s4": 1130,
+            "t0": 1198,
+            "t3": 3758,
+            "o0": 193,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 39,
+            "2": 661,
+            "3": 3741,
+            "4": 6109,
+            "5": 3925,
+            "6": 180
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "s3": 1119,
+            "t0": 1198,
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s4": 1130,
+            "t3": 3758,
+            "t4": 2294,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792,
+            "o0": 193
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 39,
+            "2": 628,
+            "3": 3558,
+            "4": 6336,
+            "5": 4063,
+            "6": 31
+          }
+        }
+      ]
+    },
+    {
+      "max_depth": 7,
+      "max_action_distance": 3,
+      "summary": {
+        "start_count": 4,
+        "has_exact_frame2_count": 0,
+        "has_frame2_d1_count": 4,
+        "has_t2_anywhere_count": 0,
+        "has_t2_in_frame2_d1_count": 0,
+        "total_visited_state_count": 58624,
+        "slot4_histogram": {
+          "t4": 9176,
+          "o4": 3992,
+          "s0": 4232,
+          "s2": 4376,
+          "s3": 4476,
+          "s4": 4520,
+          "t0": 4792,
+          "t3": 15032,
+          "o0": 772,
+          "o1": 1608,
+          "o2": 2480,
+          "o3": 3168
+        }
+      },
+      "runtime_report": {
+        "wall_seconds": 24.97908295801608,
+        "cpu_seconds_parent_only": 0.006673999999999999
+      },
+      "results": [
+        {
+          "start_cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "t4": 2294,
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s3": 1119,
+            "s4": 1130,
+            "t0": 1198,
+            "t3": 3758,
+            "o0": 193,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 39,
+            "2": 661,
+            "3": 3741,
+            "4": 6109,
+            "5": 3925,
+            "6": 180
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "s0": 1058,
+            "t0": 1198,
+            "s3": 1119,
+            "s4": 1130,
+            "t3": 3758,
+            "t4": 2294,
+            "o4": 998,
+            "s2": 1094,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792,
+            "o0": 193
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 43,
+            "2": 659,
+            "3": 3661,
+            "4": 5890,
+            "5": 4118,
+            "6": 284
+          }
+        },
+        {
+          "start_cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s3": 1119,
+            "s4": 1130,
+            "t0": 1198,
+            "t3": 3758,
+            "t4": 2294,
+            "o0": 193,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 47,
+            "2": 644,
+            "3": 3541,
+            "4": 5486,
+            "5": 4635,
+            "6": 302
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "s3": 1119,
+            "t0": 1198,
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s4": 1130,
+            "t3": 3758,
+            "t4": 2294,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792,
+            "o0": 193
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 39,
+            "2": 628,
+            "3": 3558,
+            "4": 6336,
+            "5": 4063,
+            "6": 31
+          }
+        }
+      ]
+    },
+    {
+      "max_depth": 8,
+      "max_action_distance": 3,
+      "summary": {
+        "start_count": 4,
+        "has_exact_frame2_count": 0,
+        "has_frame2_d1_count": 4,
+        "has_t2_anywhere_count": 0,
+        "has_t2_in_frame2_d1_count": 0,
+        "total_visited_state_count": 58624,
+        "slot4_histogram": {
+          "o4": 3992,
+          "s0": 4232,
+          "s2": 4376,
+          "s3": 4476,
+          "s4": 4520,
+          "t0": 4792,
+          "t3": 15032,
+          "t4": 9176,
+          "o0": 772,
+          "o1": 1608,
+          "o2": 2480,
+          "o3": 3168
+        }
+      },
+      "runtime_report": {
+        "wall_seconds": 24.731748624995816,
+        "cpu_seconds_parent_only": 0.005759000000000014
+      },
+      "results": [
+        {
+          "start_cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s3": 1119,
+            "s4": 1130,
+            "t0": 1198,
+            "t3": 3758,
+            "t4": 2294,
+            "o0": 193,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 47,
+            "2": 644,
+            "3": 3541,
+            "4": 5486,
+            "5": 4635,
+            "6": 302
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "s3": 1119,
+            "t0": 1198,
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s4": 1130,
+            "t3": 3758,
+            "t4": 2294,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792,
+            "o0": 193
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 39,
+            "2": 628,
+            "3": 3558,
+            "4": 6336,
+            "5": 4063,
+            "6": 31
+          }
+        },
+        {
+          "start_cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "s0": 1058,
+            "t0": 1198,
+            "s3": 1119,
+            "s4": 1130,
+            "t3": 3758,
+            "t4": 2294,
+            "o4": 998,
+            "s2": 1094,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792,
+            "o0": 193
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 43,
+            "2": 659,
+            "3": 3661,
+            "4": 5890,
+            "5": 4118,
+            "6": 284
+          }
+        },
+        {
+          "start_cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_start_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "visited_state_count": 14656,
+          "has_exact_frame2": false,
+          "has_frame2_d1": true,
+          "has_t2_anywhere": false,
+          "has_t2_in_frame2_d1": false,
+          "slot4_histogram": {
+            "t4": 2294,
+            "o4": 998,
+            "s0": 1058,
+            "s2": 1094,
+            "s3": 1119,
+            "s4": 1130,
+            "t0": 1198,
+            "t3": 3758,
+            "o0": 193,
+            "o1": 402,
+            "o2": 620,
+            "o3": 792
+          },
+          "depth_histogram": {
+            "0": 1,
+            "1": 39,
+            "2": 661,
+            "3": 3741,
+            "4": 6109,
+            "5": 3925,
+            "6": 180
+          }
+        }
+      ]
+    }
+  ]
+}

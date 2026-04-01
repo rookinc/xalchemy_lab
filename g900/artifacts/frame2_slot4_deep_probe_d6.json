@@ -1,0 +1,823 @@
+{
+  "unique_start_count": 4,
+  "max_workers": 8,
+  "max_depth": 6,
+  "max_action_distance": 2,
+  "summary": {
+    "has_exact_frame2_count": 0,
+    "has_frame2_d1_count": 4,
+    "start_slot4_value_histogram": {
+      "s3": 1,
+      "t4": 1,
+      "o4": 1,
+      "s0": 1
+    },
+    "observed_hit_slot4_value_histogram": {
+      "s3": 4,
+      "o4": 4,
+      "s0": 4,
+      "s2": 4,
+      "s4": 3,
+      "t4": 1
+    }
+  },
+  "runtime_report": {
+    "wall_seconds": 0.9286442919983529,
+    "cpu_seconds": 0.008575,
+    "max_rss_mb": 22.46875
+  },
+  "results": [
+    {
+      "start_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s3"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "start_mismatch_signature": [
+        {
+          "position": 4,
+          "from": "s3",
+          "to": "t2"
+        }
+      ],
+      "start_slot4_value": "s3",
+      "max_depth": 6,
+      "max_action_distance": 2,
+      "visited_state_count": 221,
+      "expanded_edge_count": 14586,
+      "accepted_state_count": 220,
+      "has_exact_frame2": false,
+      "has_frame2_d1": true,
+      "exact_frame2_hits": [],
+      "frame2_d1_hits": [
+        {
+          "depth": 0,
+          "labels": [],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s3",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s3_to_o4"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "o4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "o4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s3_to_s0"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s3_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s2"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s2",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s3_to_s4"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s4",
+              "to": "t2"
+            }
+          ]
+        }
+      ],
+      "depth_histogram": {
+        "0": 1,
+        "1": 32,
+        "2": 188
+      },
+      "slot4_value_histogram": {
+        "s3": 26,
+        "o4": 24,
+        "s0": 25,
+        "s2": 26,
+        "s4": 26,
+        "t0": 28,
+        "t3": 28,
+        "t4": 28,
+        "o0": 1,
+        "o1": 2,
+        "o2": 3,
+        "o3": 4
+      }
+    },
+    {
+      "start_cycle": [
+        "o4",
+        "s4",
+        "t4",
+        "s2",
+        "t0",
+        "s0"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "t4",
+        "s4"
+      ],
+      "start_mismatch_signature": [
+        {
+          "position": 4,
+          "from": "t4",
+          "to": "t2"
+        }
+      ],
+      "start_slot4_value": "t4",
+      "max_depth": 6,
+      "max_action_distance": 2,
+      "visited_state_count": 221,
+      "expanded_edge_count": 14586,
+      "accepted_state_count": 220,
+      "has_exact_frame2": false,
+      "has_frame2_d1": true,
+      "exact_frame2_hits": [],
+      "frame2_d1_hits": [
+        {
+          "depth": 0,
+          "labels": [],
+          "cycle": [
+            "o4",
+            "s4",
+            "t4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "t4",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "t4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos2_t4_to_o4"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "o4",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "o4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos2_t4_to_s0"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "s0",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos2_t4_to_s2"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "s2",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s2",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos2_t4_to_s3"
+          ],
+          "cycle": [
+            "o4",
+            "s4",
+            "s3",
+            "s2",
+            "t0",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s3",
+              "to": "t2"
+            }
+          ]
+        }
+      ],
+      "depth_histogram": {
+        "0": 1,
+        "1": 34,
+        "2": 186
+      },
+      "slot4_value_histogram": {
+        "t4": 28,
+        "o4": 24,
+        "s0": 25,
+        "s2": 26,
+        "s3": 26,
+        "s4": 26,
+        "t0": 28,
+        "t3": 28,
+        "o0": 1,
+        "o1": 2,
+        "o2": 3,
+        "o3": 4
+      }
+    },
+    {
+      "start_cycle": [
+        "o4",
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "o4",
+        "s4"
+      ],
+      "start_mismatch_signature": [
+        {
+          "position": 4,
+          "from": "o4",
+          "to": "t2"
+        }
+      ],
+      "start_slot4_value": "o4",
+      "max_depth": 6,
+      "max_action_distance": 2,
+      "visited_state_count": 221,
+      "expanded_edge_count": 14586,
+      "accepted_state_count": 220,
+      "has_exact_frame2": false,
+      "has_frame2_d1": true,
+      "exact_frame2_hits": [],
+      "frame2_d1_hits": [
+        {
+          "depth": 0,
+          "labels": [],
+          "cycle": [
+            "o4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "o4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos0_o4_to_s0"
+          ],
+          "cycle": [
+            "s0",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos0_o4_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s2",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos0_o4_to_s3"
+          ],
+          "cycle": [
+            "s3",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s3",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos0_o4_to_s4"
+          ],
+          "cycle": [
+            "s4",
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s4",
+              "to": "t2"
+            }
+          ]
+        }
+      ],
+      "depth_histogram": {
+        "0": 1,
+        "1": 30,
+        "2": 190
+      },
+      "slot4_value_histogram": {
+        "o4": 24,
+        "s0": 25,
+        "s2": 26,
+        "s3": 26,
+        "s4": 26,
+        "t0": 28,
+        "t3": 28,
+        "t4": 28,
+        "o0": 1,
+        "o1": 2,
+        "o2": 3,
+        "o3": 4
+      }
+    },
+    {
+      "start_cycle": [
+        "s2",
+        "t0",
+        "s0",
+        "o4",
+        "s4",
+        "s0"
+      ],
+      "normalized_start_cycle": [
+        "o4",
+        "s0",
+        "t0",
+        "s2",
+        "s0",
+        "s4"
+      ],
+      "start_mismatch_signature": [
+        {
+          "position": 4,
+          "from": "s0",
+          "to": "t2"
+        }
+      ],
+      "start_slot4_value": "s0",
+      "max_depth": 6,
+      "max_action_distance": 2,
+      "visited_state_count": 221,
+      "expanded_edge_count": 14586,
+      "accepted_state_count": 220,
+      "has_exact_frame2": false,
+      "has_frame2_d1": true,
+      "exact_frame2_hits": [],
+      "frame2_d1_hits": [
+        {
+          "depth": 0,
+          "labels": [],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s0"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s0",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s0",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s0_to_o4"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "o4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "o4",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "o4",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s0_to_s2"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s2"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s2",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s2",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s0_to_s3"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s3"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s3",
+              "to": "t2"
+            }
+          ]
+        },
+        {
+          "depth": 1,
+          "labels": [
+            "edit_pos5_s0_to_s4"
+          ],
+          "cycle": [
+            "s2",
+            "t0",
+            "s0",
+            "o4",
+            "s4",
+            "s4"
+          ],
+          "normalized_cycle": [
+            "o4",
+            "s0",
+            "t0",
+            "s2",
+            "s4",
+            "s4"
+          ],
+          "mismatch_signature": [
+            {
+              "position": 4,
+              "from": "s4",
+              "to": "t2"
+            }
+          ]
+        }
+      ],
+      "depth_histogram": {
+        "0": 1,
+        "1": 31,
+        "2": 189
+      },
+      "slot4_value_histogram": {
+        "s0": 25,
+        "o4": 24,
+        "s2": 26,
+        "s3": 26,
+        "s4": 26,
+        "t0": 28,
+        "t3": 28,
+        "t4": 28,
+        "o0": 1,
+        "o1": 2,
+        "o2": 3,
+        "o3": 4
+      }
+    }
+  ]
+}
