@@ -12,18 +12,26 @@ from .core import (
     classify_cycle,
     cycle_key,
     export_machine,
+    frame2_exact_prototype,
+    frame2_socket_cycle,
+    list_states,
     nearest_action_frames,
     normalize_cycle,
     normalized_diff,
     normalize_word,
+    output_signature,
+    phase_label,
+    socket_payload,
+    species_of_action,
+    species_of_state,
     state_dict,
+    state_code,
     target_cycle_for_spec,
     tau,
     tau_inv,
     mu,
     validate_state,
-    state_code,
-    phase_label,
+    witness_assembly,
 )
 from .render import (
     render_actions_list,
@@ -70,6 +78,13 @@ def parse_cycle(text: str) -> list[str]:
     if len(parts) < 3:
         raise argparse.ArgumentTypeError("cycle must have at least 3 comma-separated vertices")
     return parts
+
+
+def parse_t_value(text: str) -> str:
+    value = text.strip()
+    if not value:
+        raise argparse.ArgumentTypeError("T payload must be non-empty")
+    return value
 
 
 def apply_op(state: tuple[int, int], op: str, r: int) -> tuple[int, int]:
@@ -483,6 +498,142 @@ def cmd_explain_cycle(args: argparse.Namespace) -> int:
     return 0
 
 
+
+
+def cmd_assembly(args: argparse.Namespace) -> int:
+    if args.t:
+        cycle = frame2_socket_cycle(args.t, args.r)
+    elif args.input:
+        payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        cycle = payload.get("cycle")
+        if not cycle:
+            raise SystemExit("input JSON must contain a 'cycle' field")
+    elif args.cycle:
+        cycle = args.cycle
+    else:
+        cycle = frame2_exact_prototype(args.r)
+
+    c = classify_cycle(cycle, args.r)
+    asm = witness_assembly(c["normalized_cycle"], args.r)
+
+    result = {
+        "input_cycle": cycle,
+        "normalized_cycle": c["normalized_cycle"],
+        "classification": c["classification"],
+        "confidence": c["confidence"],
+        "distance_summary": c["distance_summary"],
+        "nearest_action_frames": nearest_action_frames(c),
+        "frame2_exact_prototype": frame2_exact_prototype(args.r),
+        "socket_payload": socket_payload(c["normalized_cycle"]),
+        "assembly": asm,
+    }
+
+    text = json.dumps(result, indent=2)
+    if args.out:
+        Path(args.out).write_text(text + "\n", encoding="utf-8")
+        print(f"wrote {args.out}")
+    else:
+        if getattr(args, "pretty", False):
+            print(_render_pretty_assembly(result))
+        else:
+            print(text)
+    return 0
+
+
+
+def cmd_socket_neighborhood(args: argparse.Namespace) -> int:
+    if args.t:
+        cycle = frame2_socket_cycle(args.t, args.r)
+    elif args.input:
+        payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        cycle = payload.get("cycle")
+        if not cycle:
+            raise SystemExit("input JSON must contain a 'cycle' field")
+    elif args.cycle:
+        cycle = args.cycle
+    else:
+        cycle = frame2_exact_prototype(args.r)
+
+    parent = classify_cycle(cycle, args.r)
+    parent_norm = parent["normalized_cycle"]
+    parent_payload = socket_payload(parent_norm)
+
+    kids = _one_edit_variants(parent_norm, args.r)
+
+    seam_children = []
+    payload_hist = {}
+    mismatch_hist = {}
+    exact_children = []
+    t2_children = []
+    off_scaffold = []
+
+    for item in kids:
+        c = classify_cycle(item["cycle"], args.r)
+        child_norm = c["normalized_cycle"]
+
+        if not (
+            c["classification"] == "action-cell"
+            and c["distance_summary"]["best_action_distance"] == 1
+            and 2 in nearest_action_frames(c)
+        ):
+            continue
+
+        payload = socket_payload(child_norm)
+        payload_hist[payload] = payload_hist.get(payload, 0) + 1
+
+        diff = normalized_diff(child_norm, frame2_exact_prototype(args.r))
+        mism = [row["position"] for row in diff]
+        mismatch_hist[str(mism)] = mismatch_hist.get(str(mism), 0) + 1
+
+        row = {
+            "label": item["label"],
+            "normalized_cycle": child_norm,
+            "socket_payload": payload,
+            "mismatch_positions_vs_E2": mism,
+            "classification": c["classification"],
+            "confidence": c["confidence"],
+            "nearest_action_frames": nearest_action_frames(c),
+        }
+        seam_children.append(row)
+
+        if payload == "t2":
+            t2_children.append(row)
+        if mism != [4]:
+            off_scaffold.append(row)
+        if c["confidence"] == "exact":
+            exact_children.append(row)
+
+    result = {
+        "parent_cycle": parent_norm,
+        "parent_payload": parent_payload,
+        "frame2_exact_prototype": frame2_exact_prototype(args.r),
+        "assembly": witness_assembly(parent_norm, args.r),
+        "summary": {
+            "seam_child_count": len(seam_children),
+            "payload_histogram": dict(sorted(payload_hist.items())),
+            "mismatch_histogram_vs_E2": dict(sorted(mismatch_hist.items())),
+            "t2_child_count": len(t2_children),
+            "off_scaffold_child_count": len(off_scaffold),
+            "exact_child_count": len(exact_children),
+        },
+        "seam_children": seam_children,
+        "t2_child_examples": t2_children[:20],
+        "off_scaffold_child_examples": off_scaffold[:20],
+        "exact_child_examples": exact_children[:20],
+    }
+
+    text = json.dumps(result, indent=2)
+    if args.out:
+        Path(args.out).write_text(text + "\n", encoding="utf-8")
+        print(f"wrote {args.out}")
+    else:
+        if getattr(args, "pretty", False):
+            print(_render_pretty_socket_neighborhood(result))
+        else:
+            print(text)
+    return 0
+
+
 def cmd_audit_neighborhood(args: argparse.Namespace) -> int:
     kids = _one_edit_variants(args.cycle, args.r)
 
@@ -561,6 +712,73 @@ def cmd_audit_neighborhood(args: argparse.Namespace) -> int:
         print(render_audit_neighborhood(summary))
     return 0
 
+
+def _render_pretty_assembly(result: dict[str, Any]) -> str:
+    asm = result["assembly"]
+    a = asm["assembly"]
+    s = asm["scaffold_register"]
+    frames = result.get("nearest_action_frames", [])
+    frame_text = ",".join(str(x) for x in frames) if frames else "none"
+
+    lines = []
+    lines.append(f"assembly   : [W,X,Y,Z,T,I] = [{a['W']},{a['X']},{a['Y']},{a['Z']},{a['T']},{a['I']}]")
+    lines.append(f"witness    : {'-'.join(asm['closed_witness_word'])}")
+    lines.append(f"scaffold   : [{s['W']},{s['X']},{s['Y']},{s['Z']},{s['I']}]")
+    lines.append(f"socket     : {asm['socket']}")
+    lines.append(f"payload    : {asm['payload']}")
+    lines.append(f"exact      : {asm['exact_frame2_payload']}")
+    lines.append(f"installed  : {'yes' if asm['is_exact_payload'] else 'no'}")
+    lines.append(
+        f"branch     : {'exact junction' if asm['is_exact_payload'] else 'punctured socket branch'}"
+    )
+    lines.append(
+        f"status     : {result['classification']} / {result['confidence']} / "
+        f"A={result['distance_summary']['best_action_distance']} / frame={frame_text}"
+    )
+    lines.append(f"rigid edges: {', '.join(asm['rigid_edges'])}")
+    lines.append(f"var edges  : {', '.join(asm['variable_edges'])}")
+    lines.append(f"diads      : {', '.join(asm['diads'])}")
+    lines.append(f"couplers   : {', '.join(asm['couplers'])}")
+    return "\n".join(lines)
+
+
+def _render_pretty_socket_neighborhood(result: dict[str, Any]) -> str:
+    summary = result["summary"]
+    asm = result["assembly"]["assembly"]
+    payload_hist = summary.get("payload_histogram", {})
+    payloads = ", ".join(payload_hist.keys()) if payload_hist else "none"
+    mismatch_hist = summary.get("mismatch_histogram_vs_E2", {})
+    mismatch_text = ", ".join(f"{k}:{v}" for k, v in mismatch_hist.items()) if mismatch_hist else "none"
+
+    lines = []
+    lines.append(f"assembly      : [W,X,Y,Z,T,I] = [{asm['W']},{asm['X']},{asm['Y']},{asm['Z']},{asm['T']},{asm['I']}]")
+    lines.append(f"parent payload: {result['parent_payload']}")
+    lines.append(f"seam children : {summary['seam_child_count']}")
+    lines.append(f"payloads      : {payloads}")
+    lines.append(f"mismatch hist : {mismatch_text}")
+    lines.append(f"t2 children   : {summary['t2_child_count']}")
+    lines.append(f"off scaffold  : {summary['off_scaffold_child_count']}")
+    lines.append(f"exact children: {summary['exact_child_count']}")
+    closure_ok = (
+        summary.get("t2_child_count", 0) == 0
+        and summary.get("off_scaffold_child_count", 0) == 0
+        and summary.get("mismatch_histogram_vs_E2", {}) == {"[4]": summary.get("seam_child_count", 0)}
+    )
+    lines.append(f"closure       : {'yes' if closure_ok else 'no'}")
+    if result.get("seam_children"):
+        lines.append("")
+        lines.append("children:")
+        for row in result["seam_children"][:12]:
+            lines.append(
+                f"  {row['socket_payload']:<3} :: "
+                f"{row['label']} :: "
+                f"mism={row['mismatch_positions_vs_E2']}"
+            )
+        if len(result["seam_children"]) > 12:
+            lines.append(f"  ... ({len(result['seam_children']) - 12} more)")
+    return "\n".join(lines)
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python3 -m witness_machine.cli")
     p.add_argument("--r", type=int, default=1, help="scale parameter, default 1")
@@ -583,6 +801,23 @@ def build_parser() -> argparse.ArgumentParser:
     classify.add_argument("--input")
     classify.add_argument("--out")
     classify.set_defaults(func=cmd_classify)
+
+    assembly = sub.add_parser("assembly")
+    assembly.add_argument("--cycle", type=parse_cycle)
+    assembly.add_argument("--input")
+    assembly.add_argument("--t", type=parse_t_value)
+    assembly.add_argument("--out")
+    assembly.add_argument("--pretty", action="store_true")
+    assembly.set_defaults(func=cmd_assembly)
+
+    socket_nb = sub.add_parser("socket-neighborhood")
+    socket_nb.add_argument("--cycle", type=parse_cycle)
+    socket_nb.add_argument("--input")
+    socket_nb.add_argument("--t", type=parse_t_value)
+    socket_nb.add_argument("--out")
+    socket_nb.add_argument("--pretty", action="store_true")
+    socket_nb.set_defaults(func=cmd_socket_neighborhood)
+
 
     batch = sub.add_parser("batch-classify")
     batch.add_argument("--input", required=True)

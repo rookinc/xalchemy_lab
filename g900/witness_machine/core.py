@@ -560,3 +560,59 @@ def target_cycle_for_spec(spec: str, r: int = 1) -> list[str]:
     if kind == "objective":
         return objective_cycle(frame, r)
     raise ValueError("target spec must be one of action:<i>, subjective:<i>, objective:<i>")
+
+
+def frame2_exact_prototype(r: int = 1) -> list[str]:
+    return normalize_cycle(action_cell(2, r))
+
+
+def frame2_socket_cycle(t_value: str, r: int = 1) -> list[str]:
+    if r != 1:
+        raise ValueError("frame2_socket_cycle is currently defined only for r=1")
+    n = frame_count(r)
+    vocab = {f"o{i}" for i in range(n)} | {f"s{i}" for i in range(n)} | {f"t{i}" for i in range(n)}
+    vocab.add("t2")
+    if t_value not in vocab:
+        raise ValueError(f"invalid T payload: {t_value}")
+    return ["o4", "s0", "t0", "s2", t_value, "s4"]
+
+
+def socket_payload(cycle: list[str]) -> str:
+    norm = normalize_cycle(cycle)
+    if len(norm) < 5:
+        raise ValueError("socket_payload requires a cycle of length at least 5")
+    return norm[4]
+
+
+def witness_assembly(cycle: list[str], r: int = 1) -> dict[str, Any]:
+    norm = normalize_cycle(cycle)
+    if len(norm) != 6:
+        raise ValueError("witness_assembly currently expects a normalized 6-cycle")
+    W, X, Y, Z, T, I = norm
+    return {
+        "normalized_cycle": norm,
+        "assembly": {
+            "W": W,
+            "X": X,
+            "Y": Y,
+            "Z": Z,
+            "T": T,
+            "I": I,
+        },
+        "scaffold_register": {
+            "W": W,
+            "X": X,
+            "Y": Y,
+            "Z": Z,
+            "I": I,
+        },
+        "socket": "T",
+        "payload": T,
+        "exact_frame2_payload": "t2",
+        "is_exact_payload": T == "t2",
+        "closed_witness_word": norm + [norm[0]],
+        "rigid_edges": ["WX", "XY", "YZ", "IW"],
+        "variable_edges": ["ZT", "TI"],
+        "diads": ["WX", "YZ", "TI"],
+        "couplers": ["XY", "ZT", "IW"],
+    }
