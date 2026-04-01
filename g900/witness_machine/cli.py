@@ -986,6 +986,27 @@ def cmd_export_theorem_markdown(args: argparse.Namespace) -> int:
         print(text)
     return 0
 
+
+def cmd_export_paper_theorem_status(args: argparse.Namespace) -> int:
+    text = build_theorem_markdown(args.r)
+
+    wrote = []
+    if args.artifacts_out:
+        Path(args.artifacts_out).write_text(text + "\n", encoding="utf-8")
+        wrote.append(args.artifacts_out)
+
+    if args.paper_out:
+        Path(args.paper_out).write_text(text + "\n", encoding="utf-8")
+        wrote.append(args.paper_out)
+
+    if not wrote:
+        print(text)
+        return 0
+
+    for path in wrote:
+        print(f"wrote {path}")
+    return 0
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python3 -m witness_machine.cli")
     p.add_argument("--r", type=int, default=1, help="scale parameter, default 1")
@@ -1103,6 +1124,11 @@ def build_parser() -> argparse.ArgumentParser:
     explain.add_argument("--cycle", type=parse_cycle, required=True)
     explain.add_argument("--show-diff")
     explain.set_defaults(func=cmd_explain_cycle)
+
+    paper_theorem = sub.add_parser("export-paper-theorem-status")
+    paper_theorem.add_argument("--artifacts-out")
+    paper_theorem.add_argument("--paper-out")
+    paper_theorem.set_defaults(func=cmd_export_paper_theorem_status)
 
     theorem_md = sub.add_parser("export-theorem-markdown")
     theorem_md.add_argument("--out")
