@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>D4 Lab</title>
+  <link rel="stylesheet" href="/graph_viewer_assets/lab.css" />
+</head>
+<body>
+  <div class="lab-shell">
+    <header class="site-header site-header--minimal">
+      <h1 class="site-title">Aletheos.ai</h1>
+      <nav class="site-nav site-nav--text" aria-label="Primary">
+        <a href="/graph_viewer">Lab</a>
+        <a href="/graph_viewer/index.html">Viewer</a>
+        <a href="/graph_viewer/view.html">View</a>
+      </nav>
+    </header>
+
+    <section class="stage-column">
+      <div class="stage-frame">
+        <canvas id="stage-canvas"></canvas>
+      </div>
+
+      <div class="stage-readout">
+        <div class="stage-readout__item"><span>Tick</span><strong id="metric-turn">0</strong></div>
+        <div class="stage-readout__item"><span>Dist</span><strong id="metric-camera-distance">15.00</strong></div>
+        <div class="stage-readout__item"><span>Yaw</span><strong id="metric-camera-yaw">0.00</strong></div>
+        <div class="stage-readout__item"><span>Pitch</span><strong id="metric-camera-pitch">0.00</strong></div>
+        <div class="stage-readout__item stage-readout__status"><span>Status</span><strong id="status-text">ready</strong></div>
+      </div>
+
+      <div class="stage-zoom" aria-label="Zoom">
+        <label for="zoom-slider">Zoom</label>
+        <input id="zoom-slider" type="range" min="0" max="100" step="1" value="82" />
+      </div>
+
+      <div class="stage-camera-bar" aria-label="Camera views">
+        <span class="stage-camera-bar__label">View</span>
+        <div class="stage-view-links" id="camera-mode-group" role="group" aria-label="Camera view">
+          <button id="camera-view-front" class="stage-view-link is-active" type="button">Front</button>
+          <button id="camera-view-top" class="stage-view-link" type="button">Top</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-bar" aria-label="Lab controls">
+      <div class="lab-bar__group lab-bar__group--transport">
+        <button id="reset-btn" class="icon-btn" type="button" aria-label="Reset">↺</button>
+        <button id="step-back-btn" class="icon-btn" type="button" aria-label="Step back">|◀</button>
+        <button id="step-btn" class="icon-btn" type="button" aria-label="Step forward">▶|</button>
+        <button id="play-btn" class="play-btn" type="button" aria-label="Play or pause">▶</button>
+      </div>
+
+      <div class="lab-bar__group lab-bar__group--opacity">
+        <div class="inline-field inline-field--slider">
+          <label for="left-face-opacity-slider">OUT</label>
+          <input id="left-face-opacity-slider" type="range" min="0" max="100" step="1" value="80" />
+        </div>
+
+        <div class="inline-field inline-field--slider">
+          <label for="right-face-opacity-slider">IN</label>
+          <input id="right-face-opacity-slider" type="range" min="0" max="100" step="1" value="80" />
+        </div>
+
+        <div class="inline-field inline-field--slider">
+          <label for="spinor-opacity-slider">Ψ</label>
+          <input id="spinor-opacity-slider" type="range" min="0" max="100" step="1" value="28" />
+        </div>
+
+        <div class="inline-field inline-field--slider">
+          <label for="edge-opacity-slider">Edges</label>
+          <input id="edge-opacity-slider" type="range" min="0" max="100" step="1" value="100" />
+        </div>
+      </div>
+    </section>
+
+    <main class="workspace">
+      <aside class="left-rail">
+        <section class="rail-card">
+          <div class="rail-card__title">Render</div>
+
+          <div class="field">
+            <label for="display-mode-select">Render mode</label>
+            <select id="display-mode-select">
+              <option value="prime" selected>Prime</option>
+              <option value="witness">Witness</option>
+            </select>
+          </div>
+
+          <label class="stack-check">
+            <input type="checkbox" id="toggle-grid" checked />
+            <span>Stage grid</span>
+          </label>
+
+          <label class="stack-check">
+            <input type="checkbox" id="toggle-labels" />
+            <span>Labels</span>
+          </label>
+        </section>
+
+        <section class="rail-card">
+          <div class="rail-card__title">Ticks</div>
+
+          <div class="field">
+            <label for="pause-at-input">Pause at</label>
+            <input id="pause-at-input" type="number" min="0" step="1" value="900" />
+          </div>
+
+          <div class="field">
+            <label for="hz-input">Rate (Hz)</label>
+            <input id="hz-input" type="number" min="1" step="1" value="30" />
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <section class="metrics-panel">
+      <div class="metrics-panel__header">
+        <div class="metrics-panel__title">Console</div>
+      </div>
+
+      <pre class="metrics-console" id="metrics-console">current_d4s      : 0
+turn             : 0
+cells            : 0
+exposed_faces    : 0
+open_vertices    : 0
+phase            : A
+residue          : 0
+increment_target : 3
+regime           : Seed / mediator
+rung             : 1.5
+aggregation      : none
+active_tetra     : -
+active_face      : -
+active_chirality : -
+spinors          : on
+spinor_opacity   : 28%
+trurtle          : on
+edges            : on
+edge_opacity     : 100%
+color_edges      : off
+left_opacity     : 80%
+right_opacity    : 80%
+camera_distance  : 15.00
+camera_yaw       : 0.00
+camera_pitch     : 0.00
+camera_preset    : perspective_default</pre>
+
+      <div class="metrics-hidden-bindings" aria-hidden="true">
+        <span id="metric-current">0</span>
+        <span id="metric-cells">0</span>
+        <span id="metric-faces">0</span>
+        <span id="metric-open-vertices">0</span>
+        <span id="metric-phase">A</span>
+        <span id="metric-residue">0</span>
+        <span id="metric-increment">3</span>
+        <span id="metric-regime">Seed / mediator</span>
+        <span id="metric-rung">1.5</span>
+        <span id="metric-aggregation">none</span>
+        <span id="metric-active-tetra">-</span>
+        <span id="metric-active-face">-</span>
+        <span id="metric-active-chirality">-</span>
+        <span id="metric-trurtle">on</span>
+        <span id="metric-edges">on</span>
+        <span id="metric-color-edges">off</span>
+        <span id="metric-left-opacity">80%</span>
+        <span id="metric-right-opacity">80%</span>
+        <span id="metric-camera-preset">perspective_default</span>
+        <span id="mobile-current">0</span>
+        <span id="mobile-phase">A</span>
+        <span id="mobile-residue">0</span>
+        <span id="mobile-regime">Seed / mediator</span>
+        <span id="mobile-active-tetra">-</span>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="/graph_viewer_assets/lab_boot.js?v=8?v=8"></script>
+</body>
+</html>
