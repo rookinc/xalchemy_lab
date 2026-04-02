@@ -18,6 +18,10 @@ function paletteColor(palette, arm, alpha = 0.74) {
     : `rgba(208, 248, 219, ${alpha})`;
 }
 
+function monoColor(alpha = 0.62) {
+  return `rgba(255, 255, 255, ${alpha})`;
+}
+
 function buildArmPoints(armIndex, count, armAngle) {
   const pts = [];
   if (count <= 0) return pts;
@@ -93,14 +97,15 @@ export function buildScaffoldPoints(currentD4s) {
 
 export function renderScaffold(ctx, points, project3D, options = {}) {
   const {
-    showFaces = true,
+    showEdges = true,
+    showColorEdges = true,
     showLabels = false,
     alphaScale = 1,
     palette = "cmy",
-    faceOpacity = 0.8
+    edgeOpacity = 0.8
   } = options;
 
-  if (!showFaces || points.length < 12) return;
+  if (!showEdges || points.length < 12) return;
 
   const ringSize = 6;
   const byArm = [[], [], []];
@@ -109,11 +114,13 @@ export function renderScaffold(ctx, points, project3D, options = {}) {
   ctx.save();
   ctx.lineWidth = 1.15;
 
-  const opacity = Math.max(0.05, Math.min(1, faceOpacity));
+  const opacity = Math.max(0.05, Math.min(1, edgeOpacity));
 
   for (let arm = 0; arm < 3; arm += 1) {
     const arr = byArm[arm];
-    const color = paletteColor(palette, arm, 0.72 * alphaScale * opacity);
+    const color = showColorEdges
+      ? paletteColor(palette, arm, 0.72 * alphaScale * opacity)
+      : monoColor(0.68 * alphaScale * opacity);
 
     for (let n = 0; n + ringSize * 2 <= arr.length; n += ringSize) {
       for (let k = 0; k < ringSize; k += 1) {

@@ -39,18 +39,11 @@
           <label for="right-face-opacity-slider">R</label>
           <input id="right-face-opacity-slider" type="range" min="0" max="100" step="1" value="80" />
         </div>
-      </div>
 
-      <div class="lab-bar__group lab-bar__group--toggles">
-        <label class="inline-check">
-          <input type="checkbox" id="toggle-faces" checked />
-          <span>Faces</span>
-        </label>
-
-        <label class="inline-check">
-          <input type="checkbox" id="toggle-edges" checked />
-          <span>Edges</span>
-        </label>
+        <div class="inline-field inline-field--slider">
+          <label for="spinor-opacity-slider">S</label>
+          <input id="spinor-opacity-slider" type="range" min="0" max="100" step="1" value="28" />
+        </div>
       </div>
 
       <div class="lab-bar__group lab-bar__group--transport">
@@ -66,12 +59,6 @@
         <div class="stage-frame">
           <canvas id="stage-canvas"></canvas>
         </div>
-
-        <div class="stage-zoom" aria-label="Zoom">
-          <label for="zoom-slider">Zoom</label>
-          <input id="zoom-slider" type="range" min="4.5" max="60" step="0.1" value="15" />
-        </div>
-
         <div class="stage-readout">
           <div class="stage-readout__item"><span>Tick</span><strong id="metric-turn">0</strong></div>
           <div class="stage-readout__item"><span>Dist</span><strong id="metric-camera-distance">15.00</strong></div>
@@ -79,11 +66,52 @@
           <div class="stage-readout__item"><span>Pitch</span><strong id="metric-camera-pitch">0.00</strong></div>
           <div class="stage-readout__item stage-readout__status"><span>Status</span><strong id="status-text">ready</strong></div>
         </div>
-      </section>
+      <div class="stage-zoom" aria-label="Zoom">
+          <label for="zoom-slider">Zoom</label>
+          <input id="zoom-slider" type="range" min="4.5" max="60" step="0.1" value="15" />
+        </div>
+
+        
+
+
+        <div class="stage-camera-bar" aria-label="Camera views">
+          <span class="stage-camera-bar__label">View</span>
+          <div class="smart-radio smart-radio--2" id="camera-mode-group" role="radiogroup" aria-label="Camera view">
+            <label class="smart-radio__option">
+              <input type="radio" name="camera-view" id="camera-view-front" value="front" checked />
+              <span>Front</span>
+            </label>
+
+            <label class="smart-radio__option">
+              <input type="radio" name="camera-view" id="camera-view-top" value="top" />
+              <span>Top</span>
+            </label>
+          </div>
+        </div>
+</section>
 
       <aside class="left-rail">
         <section class="rail-card">
           <div class="rail-card__title">Render</div>
+          <div class="field">
+            <label>Edges</label>
+            <div class="smart-radio" id="edge-mode-group" role="radiogroup" aria-label="Edge mode">
+              <label class="smart-radio__option">
+                <input type="radio" name="edge-mode" id="edge-mode-off" value="off" />
+                <span>Off</span>
+              </label>
+
+              <label class="smart-radio__option">
+                <input type="radio" name="edge-mode" id="edge-mode-color" value="color" checked />
+                <span>Colored</span>
+              </label>
+
+              <label class="smart-radio__option">
+                <input type="radio" name="edge-mode" id="edge-mode-bw" value="bw" />
+                <span>B&amp;W</span>
+              </label>
+            </div>
+          
 
           <div class="field">
             <label for="display-mode-select">Render mode</label>
@@ -93,24 +121,19 @@
             </select>
           </div>
 
-          <label class="stack-check">
-            <input type="checkbox" id="toggle-spinors" checked />
-            <span>Show spinors</span>
-          </label>
-
-          <div class="field spinor-opacity-field" id="spinor-opacity-field">
-            <label for="spinor-opacity-slider">Spinor opacity</label>
-            <input id="spinor-opacity-slider" type="range" min="0" max="100" step="1" value="28" />
-          </div>
-
-          <label class="stack-check">
-            <input type="checkbox" id="toggle-trurtle" checked />
-            <span>Show trurtle</span>
+          </div><label class="stack-check">
+            <input type="checkbox" id="toggle-faces" checked />
+            <span>Faces</span>
           </label>
 
           <label class="stack-check">
-            <input type="checkbox" id="toggle-color-edges" checked />
-            <span>Show color edges</span>
+            <input type="checkbox" id="toggle-grid" checked />
+            <span>Stage grid</span>
+          </label>
+
+          <label class="stack-check">
+            <input type="checkbox" id="toggle-labels" />
+            <span>Labels</span>
           </label>
         </section>
 
@@ -128,37 +151,6 @@
           </div>
         </section>
 
-        <section class="rail-card">
-          <div class="rail-card__title">Camera</div>
-
-          <div class="field">
-            <label for="camera-preset-select">Perspective</label>
-            <select id="camera-preset-select">
-              <option value="perspective_default" selected>Perspective</option>
-              <option value="perspective_15_0_0">Perspective 15,0,0</option>
-              <option value="top">Top</option>
-            </select>
-          </div>
-        </section>
-
-        <section class="rail-card">
-          <div class="rail-card__title">Stage</div>
-
-          <label class="stack-check">
-            <input type="checkbox" id="toggle-grid" checked />
-            <span>Stage grid</span>
-          </label>
-
-          <label class="stack-check">
-            <input type="checkbox" id="toggle-axes" />
-            <span>XYZ axes</span>
-          </label>
-
-          <label class="stack-check">
-            <input type="checkbox" id="toggle-labels" />
-            <span>Labels</span>
-          </label>
-        </section>
       </aside>
     </main>
 

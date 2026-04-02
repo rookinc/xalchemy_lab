@@ -1,0 +1,58 @@
+export function getLabElements() {
+  return {
+    toggleFaces: document.getElementById("toggle-faces"),
+    edgeModeOff: document.getElementById("edge-mode-off"),
+    edgeModeColor: document.getElementById("edge-mode-color"),
+    edgeModeBw: document.getElementById("edge-mode-bw"),
+
+    leftFaceOpacitySlider: document.getElementById("left-face-opacity-slider"),
+    rightFaceOpacitySlider: document.getElementById("right-face-opacity-slider"),
+    spinorOpacitySlider: document.getElementById("spinor-opacity-slider"),
+
+    resetBtn: document.getElementById("reset-btn"),
+    stepBackBtn: document.getElementById("step-back-btn"),
+    stepBtn: document.getElementById("step-btn"),
+    playBtn: document.getElementById("play-btn"),
+
+    displayModeSelect: document.getElementById("display-mode-select"),
+    pauseAtInput: document.getElementById("pause-at-input"),
+    hzInput: document.getElementById("hz-input"),
+    cameraViewFront: document.getElementById("camera-view-front"),
+    cameraViewTop: document.getElementById("camera-view-top"),
+    toggleGrid: document.getElementById("toggle-grid"),
+    toggleLabels: document.getElementById("toggle-labels"),
+    zoomSlider: document.getElementById("zoom-slider"),
+
+    statusText: document.getElementById("status-text"),
+    metricTurn: document.getElementById("metric-turn"),
+    metricCameraDistance: document.getElementById("metric-camera-distance"),
+    metricCameraYaw: document.getElementById("metric-camera-yaw"),
+    metricCameraPitch: document.getElementById("metric-camera-pitch"),
+
+    metricCurrent: document.getElementById("metric-current"),
+    metricCells: document.getElementById("metric-cells"),
+    metricFaces: document.getElementById("metric-faces"),
+    metricOpenVertices: document.getElementById("metric-open-vertices"),
+    metricPhase: document.getElementById("metric-phase"),
+    metricResidue: document.getElementById("metric-residue"),
+    metricIncrement: document.getElementById("metric-increment"),
+    metricRegime: document.getElementById("metric-regime"),
+    metricRung: document.getElementById("metric-rung"),
+    metricAggregation: document.getElementById("metric-aggregation"),
+    metricActiveTetra: document.getElementById("metric-active-tetra"),
+    metricActiveFace: document.getElementById("metric-active-face"),
+    metricActiveChirality: document.getElementById("metric-active-chirality"),
+    metricTrurtle: document.getElementById("metric-trurtle"),
+    metricEdges: document.getElementById("metric-edges"),
+    metricColorEdges: document.getElementById("metric-color-edges"),
+    metricLeftOpacity: document.getElementById("metric-left-opacity"),
+    metricRightOpacity: document.getElementById("metric-right-opacity"),
+    metricCameraPreset: document.getElementById("metric-camera-preset"),
+    mobileCurrent: document.getElementById("mobile-current"),
+    mobilePhase: document.getElementById("mobile-phase"),
+    mobileResidue: document.getElementById("mobile-residue"),
+    mobileRegime: document.getElementById("mobile-regime"),
+    mobileActiveTetra: document.getElementById("mobile-active-tetra"),
+    metricsConsole: document.getElementById("metrics-console")
+  };
+}

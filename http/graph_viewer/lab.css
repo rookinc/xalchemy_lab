@@ -122,7 +122,7 @@ select {
 
 .lab-bar {
   display: grid;
-  grid-template-columns: minmax(240px, 420px) 140px max-content;
+  grid-template-columns: minmax(240px, 420px) max-content;
   align-items: center;
   gap: 20px;
   padding: 12px 18px;
@@ -156,13 +156,6 @@ select {
 
 .inline-field--slider input[type="range"] {
   width: 100%;
-}
-
-.lab-bar__group--toggles {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  justify-items: start;
 }
 
 .inline-check {
@@ -373,6 +366,54 @@ input[type="number"]:hover {
   font-size: 0.84rem;
 }
 
+.smart-radio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.smart-radio--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+.smart-radio__option {
+  position: relative;
+  display: block;
+}
+
+.smart-radio__option input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.smart-radio__option span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+
+.smart-radio__option input:checked + span {
+  color: var(--text);
+  border-color: rgba(121, 192, 255, 0.4);
+  background: rgba(121, 192, 255, 0.12);
+}
+
+.smart-radio__option input:focus-visible + span {
+  outline: 2px solid rgba(121, 192, 255, 0.55);
+  outline-offset: 2px;
+}
+
 .stack-check {
   display: flex;
   align-items: center;
@@ -381,13 +422,6 @@ input[type="number"]:hover {
   margin-bottom: 8px;
 }
 
-.spinor-opacity-field {
-  margin: 4px 0 10px 24px;
-}
-
-.spinor-opacity-field.is-hidden {
-  display: none;
-}
 
 /* console */
 
@@ -495,3 +529,24 @@ input[type="number"]:hover {
     font-size: 12px;
   }
 }
+
+
+.stage-camera-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--line);
+  background: rgba(10, 18, 28, 0.92);
+}
+
+.stage-camera-bar__label {
+  color: var(--muted);
+  font-size: 0.84rem;
+  white-space: nowrap;
+}
+
+.stage-camera-bar .smart-radio {
+  flex: 1;
+}
+
