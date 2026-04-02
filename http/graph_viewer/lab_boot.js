@@ -1,18 +1,18 @@
-import { D4GrowthEngine } from "./kernel/d4_growth_engine.js";
+import { D4GrowthEngine } from "./kernel/d4_growth_engine.js?v=8";
 import {
   createUIState,
   setDisplayMode,
   setPauseAt,
   setHz
-} from "./kernel/d4_ui_state.js";
-import { createDefaultCamera } from "./kernel/d4_camera.js";
-import { getLabElements } from "./lab/lab_dom.js";
-import { draw } from "./lab/lab_render_loop.js";
+} from "./kernel/d4_ui_state.js?v=8";
+import { createDefaultCamera } from "./kernel/d4_camera.js?v=8";
+import { getLabElements } from "./lab/lab_dom.js?v=8";
+import { draw } from "./lab/lab_render_loop.js?v=8";
 import {
   bindLabInteractions,
   ensureOrbitLoop,
   applyInitialPreset
-} from "./lab/lab_interaction.js";
+} from "./lab/lab_interaction.js?v=8";
 
 const engine = new D4GrowthEngine();
 const ui = createUIState();
@@ -23,7 +23,8 @@ ui.display.showSpinors = ui.display.spinorOpacity > 0;
 ui.display.showTrurtle = true;
 ui.display.showFaces = true;
 ui.display.showEdges = true;
-ui.display.showColorEdges = true;
+ui.display.edgeOpacity = 1.0;
+ui.display.showColorEdges = false;
 ui.display.leftFaceOpacity = 0.8;
 ui.display.rightFaceOpacity = 0.8;
 ui.display.showAxes = false;

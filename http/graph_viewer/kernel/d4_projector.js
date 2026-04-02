@@ -30,9 +30,11 @@ export function resizeCanvasToDisplaySize(canvas, ctx) {
 }
 
 export function createProjector(canvas, camera) {
-  return function project3D(point) {
-    const viewport = getViewportFromCanvas(canvas);
-    return projectPoint(point, camera, viewport);
+  return {
+    project(point) {
+      const viewport = getViewportFromCanvas(canvas);
+      return projectPoint(point, camera, viewport);
+    }
   };
 }
 
@@ -109,8 +111,6 @@ export function drawStageLabel(ctx, canvas, label, hidden = false) {
   ctx.fillText(label, rect.width / 2, rect.height / 2);
   ctx.restore();
 }
-
-
 
 function roundRectPath(ctx, x, y, w, h, r) {
   const rr = Math.min(r, w / 2, h / 2);

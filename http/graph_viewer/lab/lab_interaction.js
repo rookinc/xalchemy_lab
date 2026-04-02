@@ -9,10 +9,12 @@ import {
   rotateCamera,
   panCamera,
   stepOrbit,
-  applyCameraPreset,
-  clamp
+  applyCameraPreset
 } from "../kernel/d4_camera.js";
-import { sliderPctToAlpha } from "./lab_controls.js";
+import {
+  sliderPctToAlpha,
+  zoomSliderToDistance
+} from "./lab_controls.js";
 import { startPlayTimer, stopPlayTimer } from "./lab_playback.js";
 import { invalidateWitnessCache } from "./lab_witness.js";
 
@@ -78,20 +80,27 @@ export function bindLabInteractions(state, draw) {
   });
 
   els.zoomSlider?.addEventListener("input", () => {
-    ui.camera.distance = clamp(Number(els.zoomSlider.value), 4.5, 60);
+    ui.camera.distance = zoomSliderToDistance(els.zoomSlider.value);
     setStatus(ui, `zoom set to ${ui.camera.distance.toFixed(1)}`);
     void draw();
   });
 
-  els.cameraViewFront?.addEventListener("change", () => {
-    if (!els.cameraViewFront.checked) return;
+  els.cameraViewFront?.addEventListener("click", () => {
     applyPreset(state, "front");
     void draw();
   });
 
-  els.cameraViewTop?.addEventListener("change", () => {
-    if (!els.cameraViewTop.checked) return;
+  els.cameraViewTop?.addEventListener("click", () => {
     applyPreset(state, "top");
+    void draw();
+  });
+
+  els.edgeOpacitySlider?.addEventListener("input", () => {
+    const alpha = sliderPctToAlpha(els.edgeOpacitySlider.value);
+    ui.display.edgeOpacity = alpha;
+    ui.display.showEdges = alpha > 0;
+    ui.display.showColorEdges = false;
+    setStatus(ui, `edge opacity set to ${els.edgeOpacitySlider.value}%`);
     void draw();
   });
 
@@ -118,10 +127,6 @@ export function bindLabInteractions(state, draw) {
   });
 
   [
-    els.toggleFaces,
-    els.edgeModeOff,
-    els.edgeModeColor,
-    els.edgeModeBw,
     els.toggleGrid,
     els.toggleLabels
   ].forEach((el) => el?.addEventListener("change", () => { void draw(); }));

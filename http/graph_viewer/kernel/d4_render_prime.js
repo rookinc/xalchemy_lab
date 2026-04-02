@@ -1,166 +1,126 @@
-import { tetraEdgePairs } from "./d4_spec.js";
-
-function rgbFaceColor(faceLabel, alpha) {
-  if (faceLabel === 1) return `rgba(255, 96, 96, ${alpha})`;
-  if (faceLabel === 2) return `rgba(96, 220, 120, ${alpha})`;
-  return `rgba(96, 156, 255, ${alpha})`;
+function rgba(rgb, alpha = 1) {
+  return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${alpha})`;
 }
 
-function cmyFaceColor(faceLabel, alpha) {
-  if (faceLabel === 1) return `rgba(120, 236, 255, ${alpha})`;
-  if (faceLabel === 2) return `rgba(255, 120, 220, ${alpha})`;
-  return `rgba(255, 236, 120, ${alpha})`;
+function projectPoint(projector, p) {
+  const q = projector.project(p);
+  return q ? { x: q.x, y: q.y, depth: q.depth } : null;
 }
 
-function edgeColor(alpha = 0.5) {
-  return `rgba(255, 255, 255, ${alpha})`;
-}
-
-function compositeFill(alpha = 0.16) {
-  return `rgba(208, 248, 219, ${alpha})`;
-}
-
-function compositeStroke(alpha = 0.55) {
-  return `rgba(208, 248, 219, ${alpha})`;
-}
-
-function faceKey(vertexIds) {
-  return [...vertexIds].sort((a, b) => a - b).join("|");
-}
-
-function tetraFaces(vertexIds) {
+function faceNormal(a, b, c) {
+  const ux = b[0] - a[0];
+  const uy = b[1] - a[1];
+  const uz = b[2] - a[2];
+  const vx = c[0] - a[0];
+  const vy = c[1] - a[1];
+  const vz = c[2] - a[2];
   return [
-    { label: 1, ids: [vertexIds[1], vertexIds[2], vertexIds[3]] },
-    { label: 2, ids: [vertexIds[0], vertexIds[2], vertexIds[3]] },
-    { label: 3, ids: [vertexIds[0], vertexIds[1], vertexIds[3]] },
-    { label: 4, ids: [vertexIds[0], vertexIds[1], vertexIds[2]] }
+    uy * vz - uz * vy,
+    uz * vx - ux * vz,
+    ux * vy - uy * vx
   ];
 }
 
-function faceFillForTetra(tetra, faceLabel, alpha) {
-  return tetra.chirality === "left"
-    ? rgbFaceColor(faceLabel, alpha)
-    : cmyFaceColor(faceLabel, alpha);
+function avgDepth(points) {
+  return points.reduce((s, p) => s + p.depth, 0) / points.length;
 }
 
-function faceStrokeForTetra(tetra, faceLabel, alpha) {
-  return tetra.chirality === "left"
-    ? rgbFaceColor(faceLabel, alpha)
-    : cmyFaceColor(faceLabel, alpha);
+function drawFace(ctx, pts, fillStyle) {
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, pts[0].y);
+  ctx.lineTo(pts[1].x, pts[1].y);
+  ctx.lineTo(pts[2].x, pts[2].y);
+  ctx.closePath();
+  ctx.fillStyle = fillStyle;
+  ctx.fill();
 }
 
-export function renderPrimeScene(ctx, scene, project3D, options = {}) {
+function drawEdge(ctx, a, b, strokeStyle, width = 2) {
+  ctx.beginPath();
+  ctx.moveTo(a.x, a.y);
+  ctx.lineTo(b.x, b.y);
+  ctx.lineWidth = width;
+  ctx.strokeStyle = strokeStyle;
+  ctx.stroke();
+}
+
+export function renderPrimeScene(ctx, snapshot, projector, opts = {}) {
   const {
     showFaces = true,
     showEdges = true,
-    showColorEdges = true,
+    edgeOpacity = 1,
+    showColorEdges = false,
     showLabels = false,
     highlightActive = true,
     leftFaceOpacity = 0.8,
     rightFaceOpacity = 0.8
-  } = options;
+  } = opts;
 
-  if (!scene || !scene.tetrahedra || !scene.tetrahedra.length) return;
+  const verts3 = [
+    [-1.35, -1.15, -1.1],
+    [ 1.35, -1.15, -1.1],
+    [ 0.00,  1.15, -1.1],
+    [ 0.00,  0.00,  1.25]
+  ];
 
-  const projectedVertices = new Map();
-  for (const v of scene.vertices) {
-    projectedVertices.set(v.id, project3D(v));
+  const verts2 = verts3.map((p) => projectPoint(projector, p));
+  if (verts2.some((v) => !v)) return;
+
+  const faces = [
+    { ids: [0, 1, 2], fill: rgba([120, 255, 180], 0.18) },
+    { ids: [0, 1, 3], fill: rgba([255, 255, 255], 0.10) },
+    { ids: [1, 2, 3], fill: rgba([255, 120, 120], rightFaceOpacity) },
+    { ids: [2, 0, 3], fill: rgba([120, 160, 255], leftFaceOpacity) }
+  ];
+
+  const visibleFaces = faces
+    .map((f) => {
+      const tri3 = f.ids.map((i) => verts3[i]);
+      const tri2 = f.ids.map((i) => verts2[i]);
+      const n = faceNormal(tri3[0], tri3[1], tri3[2]);
+      return { ...f, tri2, tri3, nz: n[2], depth: avgDepth(tri2) };
+    })
+    .sort((a, b) => a.depth - b.depth);
+
+  if (showFaces) {
+    ctx.save();
+    visibleFaces.forEach((f) => drawFace(ctx, f.tri2, f.fill));
+    ctx.restore();
   }
 
-  const openFaceKeys = new Set(scene.openFaces.map((f) => f.faceKey));
+  if (showEdges && edgeOpacity > 0) {
+    const edges = [
+      [0, 1], [1, 2], [2, 0],
+      [0, 3], [1, 3], [2, 3]
+    ];
 
-  const tetraItems = scene.tetrahedra.map((tetra) => {
-    const pts = tetra.vertexIds.map((id) => projectedVertices.get(id));
-    const depth = pts.reduce((sum, p) => sum + p.depth, 0) / pts.length;
-    return { tetra, depth };
-  });
+    const width = 0.25 + edgeOpacity * 2.25;
 
-  tetraItems.sort((a, b) => b.depth - a.depth);
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, Math.min(1, edgeOpacity));
 
-  ctx.save();
-
-  const leftAlpha = Math.max(0, Math.min(1, leftFaceOpacity));
-  const rightAlpha = Math.max(0, Math.min(1, rightFaceOpacity));
-
-  for (const item of tetraItems) {
-    const tetra = item.tetra;
-    const isActive = highlightActive && tetra.id === scene.activeTetraId;
-    const baseAlpha = tetra.chirality === "left" ? leftAlpha : rightAlpha;
-
-    const faces = tetraFaces(tetra.vertexIds).map((face) => {
-      const pts = face.ids.map((id) => projectedVertices.get(id));
-      const depth = pts.reduce((sum, p) => sum + p.depth, 0) / pts.length;
-      return {
-        label: face.label,
-        ids: face.ids,
-        pts,
-        depth,
-        key: faceKey(face.ids)
-      };
+    edges.forEach(([i, j]) => {
+      const color = showColorEdges ? "rgb(180, 220, 255)" : "rgb(255, 255, 255)";
+      drawEdge(ctx, verts2[i], verts2[j], color, width);
     });
 
-    faces.sort((a, b) => b.depth - a.depth);
-
-    if (showFaces) {
-      for (const face of faces) {
-        const isComposite = face.label === 4;
-        const isOpen = !isComposite && openFaceKeys.has(face.key);
-        const isActiveFace = isActive && face.label === scene.activeFaceLabel;
-
-        ctx.beginPath();
-        ctx.moveTo(face.pts[0].x, face.pts[0].y);
-        ctx.lineTo(face.pts[1].x, face.pts[1].y);
-        ctx.lineTo(face.pts[2].x, face.pts[2].y);
-        ctx.closePath();
-
-        if (isComposite) {
-          ctx.fillStyle = compositeFill((isActiveFace ? 0.22 : 0.12) * baseAlpha);
-          ctx.strokeStyle = showColorEdges ? compositeStroke(isActiveFace ? 0.9 : 0.55) : "transparent";
-          ctx.lineWidth = isActiveFace ? 2.0 : 1.0;
-        } else if (isActiveFace) {
-          ctx.fillStyle = faceFillForTetra(tetra, face.label, 0.30 * baseAlpha);
-          ctx.strokeStyle = showColorEdges ? faceStrokeForTetra(tetra, face.label, 0.95) : "transparent";
-          ctx.lineWidth = 2.2;
-        } else if (isOpen) {
-          ctx.fillStyle = faceFillForTetra(tetra, face.label, 0.18 * baseAlpha);
-          ctx.strokeStyle = showColorEdges ? faceStrokeForTetra(tetra, face.label, 0.80) : "transparent";
-          ctx.lineWidth = 1.2;
-        } else {
-          ctx.fillStyle = faceFillForTetra(tetra, face.label, 0.12 * baseAlpha);
-          ctx.strokeStyle = showColorEdges ? faceStrokeForTetra(tetra, face.label, 0.62) : "transparent";
-          ctx.lineWidth = 1.0;
-        }
-
-        ctx.fill();
-        if (showColorEdges) {
-          ctx.stroke();
-        }
-
-        if (showLabels && isComposite) {
-          const cx = (face.pts[0].x + face.pts[1].x + face.pts[2].x) / 3;
-          const cy = (face.pts[0].y + face.pts[1].y + face.pts[2].y) / 3;
-          ctx.fillStyle = "rgba(232,240,248,0.85)";
-          ctx.font = "11px sans-serif";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText(`T${tetra.id}`, cx, cy);
-        }
-      }
-    }
-
-    if (showEdges) {
-      for (const [a, b] of tetraEdgePairs(tetra.vertexIds)) {
-        const pa = projectedVertices.get(a);
-        const pb = projectedVertices.get(b);
-        ctx.beginPath();
-        ctx.moveTo(pa.x, pa.y);
-        ctx.lineTo(pb.x, pb.y);
-        ctx.strokeStyle = edgeColor(isActive ? 0.72 : 0.50);
-        ctx.lineWidth = isActive ? 1.5 : 1.0;
-        ctx.stroke();
-      }
-    }
+    ctx.restore();
   }
 
-  ctx.restore();
+  if (highlightActive && snapshot?.currentD4s === 0 && edgeOpacity > 0) {
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, Math.min(1, edgeOpacity));
+    drawEdge(ctx, verts2[2], verts2[3], "rgb(255,255,255)", 0.4 + edgeOpacity * 2.6);
+    ctx.restore();
+  }
+
+  if (showLabels) {
+    ctx.save();
+    ctx.font = "12px sans-serif";
+    ctx.fillStyle = "rgba(255,255,255,0.78)";
+    verts2.forEach((p, i) => {
+      ctx.fillText(`v${i}`, p.x + 6, p.y - 6);
+    });
+    ctx.restore();
+  }
 }

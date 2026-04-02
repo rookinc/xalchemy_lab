@@ -550,3 +550,150 @@ input[type="number"]:hover {
   flex: 1;
 }
 
+
+/* minimal header */
+.site-header--minimal {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.site-nav--text {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.site-nav--text a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.82;
+}
+
+.site-nav--text a:hover,
+.site-nav--text a:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .site-header--minimal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+.lab-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.lab-bar__main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.lab-bar__side {
+  display: flex;
+  align-items: stretch;
+}
+
+.mini-control-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.9rem;
+  min-width: 12rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(120, 170, 255, 0.18);
+  border-radius: 1rem;
+  background: rgba(10, 22, 40, 0.55);
+}
+
+.stack-check--compact {
+  margin: 0;
+}
+
+.field--compact {
+  margin: 0;
+}
+
+.smart-radio--compact {
+  gap: 0.4rem;
+}
+
+.smart-radio--compact .smart-radio__option span {
+  padding-inline: 0.8rem;
+  min-width: auto;
+}
+
+@media (max-width: 900px) {
+  .lab-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-bar__side {
+    width: 100%;
+  }
+
+  .mini-control-card {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.lab-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stage-view-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.stage-view-link {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: rgba(220, 232, 255, 0.72);
+  font: inherit;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.stage-view-link.is-active {
+  color: rgba(255, 255, 255, 0.98);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.stage-view-link:focus-visible,
+.stage-view-link:hover {
+  color: rgba(255, 255, 255, 0.98);
+}
+
+.inline-field--slider label {
+  min-width: 3.75rem;
+}

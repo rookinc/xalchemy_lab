@@ -1,9 +1,6 @@
 export function getLabElements() {
   return {
-    toggleFaces: document.getElementById("toggle-faces"),
-    edgeModeOff: document.getElementById("edge-mode-off"),
-    edgeModeColor: document.getElementById("edge-mode-color"),
-    edgeModeBw: document.getElementById("edge-mode-bw"),
+    edgeOpacitySlider: document.getElementById("edge-opacity-slider"),
 
     leftFaceOpacitySlider: document.getElementById("left-face-opacity-slider"),
     rightFaceOpacitySlider: document.getElementById("right-face-opacity-slider"),

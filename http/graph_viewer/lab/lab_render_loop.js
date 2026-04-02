@@ -22,7 +22,8 @@ import {
   syncDisplayModeControl,
   syncCameraViewControls,
   syncPauseAtInput,
-  syncSpinorOpacitySlider
+  syncSpinorOpacitySlider,
+  syncEdgeOpacitySlider
 } from "./lab_controls.js";
 import { ensureWitnessSnapshot } from "./lab_witness.js";
 
@@ -46,6 +47,7 @@ function formatConsole(ui, readout) {
     `spinor_opacity   : ${Math.round((ui.display.spinorOpacity ?? 0.28) * 100)}%`,
     `trurtle          : ${ui.display.showTrurtle ? "on" : "off"}`,
     `edges            : ${ui.display.showEdges ? "on" : "off"}`,
+    `edge_opacity     : ${Math.round((ui.display.edgeOpacity ?? 1) * 100)}%`,
     `color_edges      : ${ui.display.showColorEdges ? "on" : "off"}`,
     `left_opacity     : ${Math.round(ui.display.leftFaceOpacity * 100)}%`,
     `right_opacity    : ${Math.round(ui.display.rightFaceOpacity * 100)}%`,
@@ -114,6 +116,7 @@ export async function draw(state) {
   syncCameraViewControls(ui, state.els);
   syncPauseAtInput(ui, state.els);
   syncSpinorOpacitySlider(ui, state.els);
+  syncEdgeOpacitySlider(ui, state.els);
 
   clearStage(ctx, canvas);
   drawStageGrid(ctx, canvas, ui.display.showStageGrid);
@@ -137,6 +140,7 @@ export async function draw(state) {
     if (ui.display.showSpinors) {
       renderScaffold(ctx, spinorPoints, state.projector, {
         showEdges: ui.display.showEdges,
+        edgeOpacity: ui.display.edgeOpacity,
         showColorEdges: ui.display.showColorEdges,
         showLabels: ui.display.showLabels,
         alphaScale: ui.display.spinorOpacity ?? 0.28
@@ -146,6 +150,7 @@ export async function draw(state) {
     renderPrimeScene(ctx, state.snapshot, state.projector, {
       showFaces: ui.display.showFaces,
       showEdges: ui.display.showEdges,
+      edgeOpacity: ui.display.edgeOpacity,
       showColorEdges: ui.display.showColorEdges,
       showLabels: ui.display.showLabels,
       highlightActive: true,
