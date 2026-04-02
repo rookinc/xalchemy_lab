@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Witness Harness</title>
+  <link rel="stylesheet" href="/witness_assets/app.css?v=3" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <h1>Witness Harness</h1>
+      <div class="app-subtitle">Sprint 2 · structure-first witness mapping</div>
+    </header>
+
+    <section class="control-bar" aria-label="Transport controls">
+      <div class="button-row">
+        <button id="reset-btn" type="button">Reset</button>
+        <button id="tau-btn" type="button">τ</button>
+        <button id="tau-inv-btn" type="button">τ⁻¹</button>
+        <button id="mu-btn" type="button">μ</button>
+        <button id="play-btn" type="button">Play</button>
+      </div>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Autoplay op</span>
+          <select id="autoplay-op">
+            <option value="tau" selected>τ</option>
+            <option value="tau_inv">τ⁻¹</option>
+            <option value="mu">μ</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Rate (Hz)</span>
+          <input id="hz-input" type="number" min="1" step="1" value="2" />
+        </label>
+
+        <label class="field">
+          <span>View</span>
+          <select id="view-mode">
+            <option value="console" selected>Console</option>
+            <option value="graph">Graph</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="status-panel" aria-label="Status">
+      <div><strong>Status:</strong> <span id="status-text">booting</span></div>
+      <div><strong>Playback:</strong> <span id="playback-text">paused</span></div>
+      <div><strong>State:</strong> <span id="state-text">-</span></div>
+      <div><strong>Code:</strong> <span id="code-text">-</span></div>
+    </section>
+
+    <section class="console-panel" aria-label="Live console" id="console-panel">
+      <div class="console-title">Live console</div>
+      <pre id="console-output">loading...</pre>
+    </section>
+
+    <section class="graph-panel is-hidden" aria-label="Graph view" id="graph-panel">
+      <div class="console-title">Witness graph</div>
+      <canvas id="graph-canvas"></canvas>
+    </section>
+
+    <section class="readme-panel" aria-label="Harness readme">
+      <h2>Harness README</h2>
+
+      <p>
+        This page is the Sprint 2 witness harness. Sprint 1 established a trustworthy
+        console over the real witness machine. Sprint 2 adds a minimal structural map:
+        the witness cycle is now exposed as a small graph without introducing camera,
+        3D, or speculative geometry.
+      </p>
+
+      <p>
+        The Python witness machine remains the source of truth. The browser does not
+        invent machine semantics. It asks the API for a state payload and a structural
+        payload, then renders either a console readout or a minimal graph view.
+      </p>
+
+      <h3>What changed in Sprint 2</h3>
+      <ul>
+        <li>A new structure endpoint maps a state to nodes, edges, and assembly metadata.</li>
+        <li>A new graph view renders the normalized witness cycle as a closed six-node ring.</li>
+        <li>Diads, couplers, and payload-carrying edges are distinguished visually.</li>
+        <li>The console remains the primary debugging instrument.</li>
+      </ul>
+
+      <h3>Structural interpretation</h3>
+      <p>
+        The normalized witness cycle is interpreted as the ordered register
+        <strong>W, X, Y, Z, T, I</strong>. The first structural layer is the hexagonal witness
+        with diads <strong>WX, YZ, TI</strong> and couplers <strong>XY, ZT, IW</strong>. The
+        payload sits at <strong>T</strong>.
+      </p>
+
+      <h3>How to use it</h3>
+      <ul>
+        <li>Use <strong>τ</strong> to advance around the machine while phase remains fixed.</li>
+        <li>Use <strong>μ</strong> to flip between subjective and objective sheets.</li>
+        <li>Switch between <strong>Console</strong> and <strong>Graph</strong> views to compare readout and structure.</li>
+        <li>Use autoplay to observe local orbit behavior.</li>
+      </ul>
+
+      <h3>Why this is still minimal</h3>
+      <p>
+        Sprint 2 does not add perspective, camera, 3D, or animation beyond state stepping.
+        The graph view is intentionally simple. Its job is only to make the witness cycle
+        legible as structure while keeping the machine payload canonical.
+      </p>
+    </section>
+  </main>
+
+  <script type="module" src="/witness_assets/boot.js?v=3"></script>
+</body>
+</html>
