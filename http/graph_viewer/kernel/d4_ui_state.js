@@ -155,8 +155,3 @@ export function buildUIReadout(uiState, sceneSnapshot) {
 export function stageLabelText(sceneSnapshot) {
   return `${sceneSnapshot.currentD4s} > STAGE`;
 }
-
-export function cameraReadoutText(uiState) {
-  const c = cameraReadout(uiState.camera);
-  return `dist ${c.distance} · yaw ${c.yaw} · pitch ${c.pitch}`;
-}

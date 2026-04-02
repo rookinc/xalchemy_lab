@@ -7,8 +7,7 @@ import {
   setStatus,
   applyLadderDefaults,
   buildUIReadout,
-  stageLabelText,
-  cameraReadoutText
+  stageLabelText
 } from "./kernel/d4_ui_state.js";
 import {
   createDefaultCamera,
@@ -26,8 +25,7 @@ import {
   drawStageGrid,
   drawCenterGuides,
   drawStageFrame,
-  drawStageLabel,
-  drawTopRightReadout
+  drawStageLabel
 } from "./kernel/d4_projector.js";
 import { buildScaffoldPoints, renderScaffold } from "./kernel/d4_render_scaffold.js";
 import { renderPrimeScene } from "./kernel/d4_render_prime.js";
@@ -312,7 +310,6 @@ async function draw() {
 
   drawStageFrame(ctx, canvas);
   drawStageLabel(ctx, canvas, stageLabelText(snapshot), snapshot.currentD4s > 0);
-  drawTopRightReadout(ctx, canvas, cameraReadoutText(ui));
   updateReadouts();
 }
 

@@ -470,9 +470,6 @@ input[type="number"]:hover {
     border-right: none;
   }
 
-  .zoom-rail--mobile-only {
-    display: flex;
-  }
 }
 
 @media (max-width: 640px) {

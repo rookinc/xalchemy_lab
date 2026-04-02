@@ -110,32 +110,7 @@ export function drawStageLabel(ctx, canvas, label, hidden = false) {
   ctx.restore();
 }
 
-export function drawTopRightReadout(ctx, canvas, text) {
-  const rect = canvas.getBoundingClientRect();
 
-  ctx.save();
-  const padX = 12;
-  const padY = 10;
-  ctx.font = "13px sans-serif";
-  const metrics = ctx.measureText(text);
-  const boxW = metrics.width + padX * 2;
-  const boxH = 34;
-  const x = rect.width - boxW - 28;
-  const y = 28;
-
-  ctx.fillStyle = "rgba(12, 18, 27, 0.82)";
-  ctx.strokeStyle = "rgba(42, 52, 66, 0.95)";
-  ctx.lineWidth = 1;
-  roundRectPath(ctx, x, y, boxW, boxH, 16);
-  ctx.fill();
-  ctx.stroke();
-
-  ctx.fillStyle = "rgba(146,164,185,0.95)";
-  ctx.textAlign = "left";
-  ctx.textBaseline = "middle";
-  ctx.fillText(text, x + padX, y + boxH / 2);
-  ctx.restore();
-}
 
 function roundRectPath(ctx, x, y, w, h, r) {
   const rr = Math.min(r, w / 2, h / 2);
